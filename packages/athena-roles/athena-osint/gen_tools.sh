@@ -1,6 +1,6 @@
 #!/bin/sh
 
-to_exclude=("facebrok")
+to_exclude=("facebrok" "trape")
 
 sed -i '/depends=/d' PKGBUILD
 sed -i '/^$/d' PKGBUILD #Delete all empty lines

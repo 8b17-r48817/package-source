@@ -35,3 +35,6 @@ fuzzdb
 :: File /var/cache/pacman/pkg/pfff-0.29-9-x86_64.pkg.tar.xz is corrupted (invalid or corrupted package (PGP signature)).
 Do you want to delete it? [Y/n] error: failed to commit transaction (invalid or corrupted package)
 pfff
+
+## depending on python-flask-cors and python-flask-socketio but these two deps in BA are wrongly a clone of Python2 deps
+trape
