@@ -205,6 +205,6 @@ done
 
 ### Here report new packages that need to be installed by default in Athena in order that also old users can get them
 # sudo pacman -S <package-name>
-
+sudo pacman -S net-tools
 # At the end, run run-once
 source /etc/profile.d/run-once.sh > /dev/null 2>&1
