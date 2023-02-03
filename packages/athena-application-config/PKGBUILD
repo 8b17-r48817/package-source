@@ -1,6 +1,6 @@
 pkgname=athena-application-config
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Application configuration for Athena"
 arch=('any')
 license=("custom")
@@ -87,4 +87,4 @@ package() {
   install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/scripts/copy_pane_pwd.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/scripts/"
   install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/scripts/helpers.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/scripts/"
 }
-sha256sums=('eaa3053a57c34dea4488ab2836820ff67e15ff38138353690e1ff4a826e73fcb')
+sha256sums=('84f454cedd6fe5f593552a610d011f65aa695ea6a858c78dc27310b8613d73db')
