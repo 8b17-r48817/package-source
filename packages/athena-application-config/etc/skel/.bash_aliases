@@ -63,6 +63,10 @@ alias train='sl | lolcat'
 alias vis='vim "+set si"'
 alias devil='fortune | cowsay -f eyes | lolcat'
 
+# Alias's to user support
+alias tb='nc termbin.com 9999'
+alias journalctl-upload='sudo journalctl | tb'
+
 #keyboard
 alias give-me-azerty-be="sudo localectl set-x11-keymap be"
 alias give-me-qwerty-us="sudo localectl set-x11-keymap us"
