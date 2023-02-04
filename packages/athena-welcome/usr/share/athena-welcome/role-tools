@@ -64,6 +64,20 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then # this grammar (the #[] operator) mea
 fi
 
 ################################################
+#            UPDATING ARCH MIRRORS             #
+################################################
+
+echo
+echo "Finding fastest Arch mirrors. Don't be scared of any WARNING message here. I'm just finding the fastest mirrors for you..."
+echo
+
+sudo reflector --age 6 --latest 21 --fastest 21 --threads 21 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
+
+echo
+echo "Arch mirrors updated!"
+echo
+
+################################################
 #            INSTALLING ROLE TOOLS             #
 ################################################
 

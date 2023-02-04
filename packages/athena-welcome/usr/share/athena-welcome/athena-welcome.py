@@ -43,30 +43,33 @@ class Main(Gtk.Window):
             t.start()
             
     def on_role_combo_changed(self, combo):
-        GUI.role_name = combo.get_active_text()
-        if GUI.role_name is not None:
+        #GUI.role_name = combo.get_active_iter()
+        tree_iter = combo.get_active_iter()
+        if tree_iter is not None:
+            model = combo.get_model()
+            GUI.role_name = model[tree_iter][0]
             print("Selected: role=%s" % GUI.role_name)
-            if GUI.role_name == "Black Hat Omniscient":
+            if "Black Hat Omniscient" in GUI.role_name:
                 self.role_id = "BH"
-            elif GUI.role_name == "Bug Bounty Hunter":
+            elif "Bug Bounty Hunter" in GUI.role_name:
                 self.role_id = "BBH"
-            elif GUI.role_name == "Cracker Specialist":
+            elif "Cracker Specialist" in GUI.role_name:
                 self.role_id = "CR"
-            elif GUI.role_name == "Enthusiast Student":
+            elif "Enthusiast Student" in GUI.role_name:
                 self.role_id = "ES"
-            elif GUI.role_name == "Forensic Analyst":
+            elif "Forensic Analyst" in GUI.role_name:
                 self.role_id = "FA"
-            elif GUI.role_name == "Malware Analyst":
+            elif "Malware Analyst" in GUI.role_name:
                 self.role_id = "MA"
-            elif GUI.role_name == "Mobile Analyst":
+            elif "Mobile Analyst" in GUI.role_name:
                 self.role_id = "MO"
-            elif GUI.role_name == "Network Analyst":
+            elif "Network Analyst" in GUI.role_name:
                 self.role_id = "NA"
-            elif GUI.role_name == "OSINT Specialist":
+            elif "OSINT Specialist" in GUI.role_name:
                 self.role_id = "OS"
-            elif GUI.role_name == "Red Teamer":
+            elif "Red Teamer" in GUI.role_name:
                 self.role_id = "RT"
-            elif GUI.role_name == "Web Pentester":
+            elif "Web Pentester" in GUI.role_name:
                 self.role_id = "WP"
             
 

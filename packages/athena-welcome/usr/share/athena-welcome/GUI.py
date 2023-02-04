@@ -5,6 +5,8 @@
 import os
 import getpass
 from os.path import expanduser
+from subprocess import check_output
+import subprocess
 
 DEBUG = False
 #DEBUG = True
@@ -110,27 +112,83 @@ def GUI(self, Gtk, GdkPixbuf):
     #                   COMBO MENU
     # ======================================================================
 
+    role_store = Gtk.ListStore(str)
     roles = [
-        "Black Hat Omniscient",
-        "Bug Bounty Hunter",
-        "Cracker Specialist",
-        "Enthusiast Student",
-        "Forensic Analyst",
-        "Malware Analyst",
-        "Mobile Analyst",
-        "Network Analyst",
-        "OSINT Specialist",
-        "Red Teamer",
-        "Web Pentester",
+        "🔥 Choose your Role 🔥",
+        "🖤 Black Hat Omniscient 🖤",
+        "🐞 Bug Bounty Hunter 🐞",
+        "🍘 Cracker Specialist 🍘",
+        "🎓 Enthusiast Student 🎓",
+        "🔍 Forensic Analyst 🔍",
+        "🦠 Malware Analyst 🦠",
+        "📱 Mobile Analyst 📱",
+        "🖧 Network Analyst 🖧",
+        "🌐 OSINT Specialist 🌐",
+        "❤️ Red Teamer ❤️",
+        "🕸️ Web Pentester 🕸️",
     ]
-    role_combo = Gtk.ComboBoxText()
-    role_combo.set_entry_text_column(0)
-    role_combo.connect("changed", self.on_role_combo_changed)
-    
-    for role in roles:
-        role_combo.append_text(role)
 
-    role_combo.set_active(3)
+    for role in roles:
+        role_store.append([role])
+    
+    role_combo = Gtk.ComboBox.new_with_model(role_store) # Source: https://stackoverflow.com/questions/53678686/python-gtk-3-how-to-center-text-within-combobox-widget
+    role_combo.connect("changed", self.on_role_combo_changed)
+    renderer_text = Gtk.CellRendererText()
+    renderer_text.set_property("xalign", 0.51) #less than 0.51 has no affect
+    role_combo.pack_start(renderer_text, True)
+    role_combo.add_attribute(renderer_text, "text", 0)
+
+    #role_combo.set_entry_text_column(0)
+    
+    athena_packages = [
+        "athena-blackhat",
+        "athena-bountyhunter",
+        "athena-cracker",
+        "athena-student",
+        "athena-forensic",
+        "athena-malware",
+        "athena-mobile",
+        "athena-network",
+        "athena-osint",
+        "athena-redteamer",
+        "athena-webpentester"
+    ]
+
+    
+    for i in athena_packages:
+        #print(i)
+        processinfo = subprocess.Popen(["pacman", "-Qs", i], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        #returncode = processinfo.wait()
+        #print(returncode)
+        strout = processinfo.stdout.read().decode("utf-8") # command output
+        #print(strout)
+        if strout:
+            break
+    
+    if "athena-blackhat" in strout:
+        role_combo.set_active(1)
+    elif "athena-bountyhunter" in strout:
+        role_combo.set_active(2)
+    elif "athena-cracker" in strout:
+        role_combo.set_active(3)
+    elif "athena-student" in strout:
+        role_combo.set_active(4)
+    elif "athena-forensic" in strout:
+        role_combo.set_active(5)
+    elif "athena-malware" in strout:
+        role_combo.set_active(6)
+    elif "athena-mobile" in strout:
+        role_combo.set_active(7)
+    elif "athena-network" in strout:
+        role_combo.set_active(8)
+    elif "athena-osint" in strout:
+        role_combo.set_active(9)
+    elif "athena-redteamer" in strout:
+        role_combo.set_active(10)
+    elif "athena-webpentester" in strout:
+        role_combo.set_active(11)
+    else:
+        role_combo.set_active(0)
     #The position of ComboBox roles is defined in the if-else of the usernames below in hbox1
 
     # ======================================================================
