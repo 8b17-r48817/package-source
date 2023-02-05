@@ -1,0 +1,33 @@
+# This file is part of BlackArch Linux ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+pkgname=impacket
+pkgver=259.7d9e278
+pkgrel=1
+pkgdesc='Collection of Python classes for working with network protocols.'
+arch=('any')
+url='https://github.com/fortra/impacket'
+license=('MIT')
+depends=('python' 'python-charset-normalizer' 'python-dsinternals' 'python-flask' 'python-future' 'python-ldap3' 'python-ldapdomaindump' 'python-pyasn1' 'python-pycryptodomex' 'python-pyopenssl' 'python-six')
+makedepends=('python-setuptools' 'git')
+options=(!emptydirs)
+source=("git+https://github.com/drobotun/$pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$pkgname"
+
+  python setup.py build
+}
+
+package() {
+  cd "$pkgname"
+
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
+}
