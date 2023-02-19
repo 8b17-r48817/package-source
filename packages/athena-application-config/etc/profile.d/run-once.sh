@@ -2,8 +2,8 @@
 
 if [ -z "$SSH_CLIENT" ] ; then
 
-     FLAGFILE="/usr/share/athena-application-config/flag-work-once"
-     #FLAGNET="/usr/share/athena-application-config/flag-net-once"
+     FLAGFILE="$HOME/.flag-work-once"
+     #FLAGNET="$HOME/.flag-net-once"
 
      DCONF_IF="/usr/share/athena-application-config/dconf-interface.ini"
      DCONF_PR="/usr/share/athena-application-config/dconf-preferences.ini"

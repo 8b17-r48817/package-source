@@ -17,6 +17,7 @@ package() {
   cp -rf "${srcdir}/etc/skel/.bash_aliases" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.config" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}"/etc/skel/.face "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}"/etc/skel/.flag-work-once "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.icons" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.local" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.tmux" "${pkgdir}/etc/skel/"
@@ -24,7 +25,6 @@ package() {
   cp -rf "${srcdir}/etc/skel/.vim_runtime" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.viminfo" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.vimrc" "${pkgdir}/etc/skel/"
-  cp -rf "${srcdir}/etc/skel/.flag-net-once" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/sudoers.d/sudo_nopasswd_psd" "${pkgdir}/etc/sudoers.d/"
   
   cp -rf "${srcdir}"/usr/share/athena-application-config/* "${pkgdir}/usr/share/athena-application-config/"
@@ -88,4 +88,4 @@ package() {
   install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/scripts/copy_pane_pwd.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/scripts/"
   install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/scripts/helpers.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/scripts/"
 }
-sha256sums=('d28a58dae860be45bd02a8214e72da2eaaf81122c7089ffaa2f5e9440e151380')
+sha256sums=('d9717b654f6b964e1bab0d8fb6ed630c3327d2fc3f1cf093492c29dd2e170c38')
