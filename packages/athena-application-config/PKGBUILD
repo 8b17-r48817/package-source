@@ -1,6 +1,6 @@
 pkgname=athena-application-config
-pkgver=1.0.1
-pkgrel=6
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Application configuration for Athena"
 arch=('any')
 license=("custom")
@@ -10,10 +10,10 @@ package() {
   mkdir -p "${pkgdir}/etc/profile.d"
   mkdir -p "${pkgdir}/etc/skel"
   mkdir -m 750 -p "${pkgdir}/etc/sudoers.d"
+  mkdir -p "${pkgdir}/usr/share/athena-application-config"
   mkdir -p "${pkgdir}/usr/share/gnome-shell"
 
   cp -rf "${srcdir}/etc/profile.d/run-once.sh" "${pkgdir}/etc/profile.d/"
-  cp -rf "${srcdir}"/etc/skel/* "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.bash_aliases" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.config" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}"/etc/skel/.face "${pkgdir}/etc/skel/"
@@ -27,6 +27,7 @@ package() {
   cp -rf "${srcdir}/etc/skel/.flag-net-once" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/sudoers.d/sudo_nopasswd_psd" "${pkgdir}/etc/sudoers.d/"
   
+  cp -rf "${srcdir}"/usr/share/athena-application-config/* "${pkgdir}/usr/share/athena-application-config/"
   cp -rf "${srcdir}/usr/share/gnome-shell/gnome-shell-theme.gresource.new" "${pkgdir}/usr/share/gnome-shell/"
   
   install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tpm/tpm" "$pkgdir/etc/skel/.tmux/plugins/tpm/"
@@ -87,4 +88,4 @@ package() {
   install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/scripts/copy_pane_pwd.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/scripts/"
   install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/scripts/helpers.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/scripts/"
 }
-sha256sums=('c92db04ce7602feb69c4c62b8cd6124e913f0468ed15239997eabf886edfd769')
+sha256sums=('d28a58dae860be45bd02a8214e72da2eaaf81122c7089ffaa2f5e9440e151380')

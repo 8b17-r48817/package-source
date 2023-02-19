@@ -2,8 +2,12 @@
 
 if [ -z "$SSH_CLIENT" ] ; then
 
-     FLAGFILE="$HOME/flag-work-once"
-     #FLAGNET="$HOME/.flag-net-once"
+     FLAGFILE="/usr/share/athena-application-config/flag-work-once"
+     #FLAGNET="/usr/share/athena-application-config/flag-net-once"
+
+     DCONF_IF="/usr/share/athena-application-config/dconf-interface.ini"
+     DCONF_PR="/usr/share/athena-application-config/dconf-preferences.ini"
+     DCONF_SH="/usr/share/athena-application-config/dconf-shell.ini"
 
      if [ -f "$FLAGFILE" ]; then
 
@@ -37,9 +41,9 @@ if [ -z "$SSH_CLIENT" ] ; then
      
          ############################################################
      
-         cat $HOME/dconf-interface.ini | dconf load /org/gnome/desktop/interface/
-         cat $HOME/dconf-preferences.ini | dconf load /org/gnome/desktop/wm/preferences/
-         cat $HOME/dconf-shell.ini | dconf load /org/gnome/shell/
+         cat $DCONF_IF | dconf load /org/gnome/desktop/interface/
+         cat $DCONF_PR | dconf load /org/gnome/desktop/wm/preferences/
+         cat $DCONF_SH | dconf load /org/gnome/shell/
 
          sh ~/.vim_runtime/install_awesome_parameterized.sh ~/.vim_runtime $USER
 
@@ -121,7 +125,6 @@ if [ -z "$SSH_CLIENT" ] ; then
          ln -sf "/usr/share/themes/$theme_name/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
          ln -sf "/usr/share/themes/$theme_name/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
      
-         rm -rf $HOME/dconf-interface.ini $HOME/dconf-preferences.ini $HOME/dconf-shell.ini
          rm -rf "$FLAGFILE"
 
          systemctl --user enable --now psd
