@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -z "$SSH_CLIENT" ] ; then
+if [ -z "$DISPLAY" ] ; then
 
      FLAGFILE="$HOME/.flag-work-once"
      #FLAGNET="$HOME/.flag-net-once"
