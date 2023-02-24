@@ -1,0 +1,20 @@
+pkgname=droid-sans-mono
+_pkgname=DroidSansMono
+pkgver=2.3.3
+pkgrel=1
+pkgdesc='DroidSansMono fontstyle.'
+arch=('any')
+url='https://github.com/ryanoasis/nerd-fonts'
+license=('MIT')
+depends=()
+makedepends=('git')
+source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/DroidSansMono.zip")
+sha512sums=('00988ea30b79ef9e08ec737de322b23bb4d85e8c888524a52e1417ce0daff1fcf63b2fe84aaceaa04ecace26dccde20cd0989f915c197f072497cb3aee53a146')
+
+package() {
+
+  install -dm 755 "$pkgdir/usr/share/fonts/$pkgname"
+
+  cp "Droid Sans Mono Nerd Font Complete Mono.otf" "Droid Sans Mono Nerd Font Complete.otf" "$pkgdir/usr/share/fonts/$pkgname/"
+
+}
