@@ -4,6 +4,25 @@ appkey=$(secret-tool lookup htb-api user-htb-api)
 machine_json_file="$HOME/.machine.json"
 table_file="$HOME/.table.txt"
 
+RESTORE='\033[0m'
+
+RED='\033[00;31m'
+GREEN='\033[00;32m'
+YELLOW='\033[00;33m'
+BLUE='\033[00;34m'
+PURPLE='\033[00;35m'
+CYAN='\033[00;36m'
+LIGHTGRAY='\033[00;37m'
+
+LRED='\033[01;31m'
+LGREEN='\033[01;32m'
+LYELLOW='\033[01;33m'
+LBLUE='\033[01;34m'
+LPURPLE='\033[01;35m'
+LCYAN='\033[01;36m'
+WHITE='\033[01;37m'
+
+
 ############################################################
 # Banner                                                   #
 ############################################################
@@ -19,16 +38,18 @@ Help()
    # Display Help
    echo "HTB Play allows you to spawn Hack The Box machines from CLI."
    echo
-   echo "$(basename "$0") [-h] [-l]"
+   echo "$(basename "$0") [-h] [-a] [-m] <machine-name> [-r] [-s]"
    echo
    echo "Options:"
+   echo "a     List active machines."
    echo "h     Print this Help."
-   echo "l     List retired machines."
    echo "m     Specify the machine name to play."
+   echo "r     List retired machines."
+   echo "s     List starting point machines."
    echo
    echo "Usage Examples:"
    echo "htb-play"
-   echo "htb-play -l"
+   echo "htb-play -a"
    echo "htb-play -m RouterSpace"
    echo
 }
@@ -227,29 +248,42 @@ progressbar() {
 #                                                          #
 ############################################################
 
-ListRetiredMachines()
+ListMachines()
 {
+    mtype=$1
     echo
-    echo "Connecting to HTB server..."
+    echo -e "${LYELLOW}Connecting to HTB server...${RESTORE}"
     echo
-    { # try
-        curl -s --location --request GET https://www.hackthebox.com/api/v4/machine/list/retired -H "Authorization: Bearer $appkey" | jq > $machine_json_file
-    } || { # catch
-        echo -e "\e[31mError. Maybe your API key is incorrect or expired. Renew your API key by running htb-update.\e[0m"
-        rm -rf $machine_json_file
-        exit 1
-    }
-    echo "Done."
+
+    if [ "$mtype" == "active" ]; then
+        { # try
+            curl -s --location --request GET https://www.hackthebox.com/api/v4/machine/list -H "Authorization: Bearer $appkey" | jq > $machine_json_file
+        } || { # catch
+            echo -e "\e[31mError. Maybe your API key is incorrect or expired. Renew your API key by running htb-update.\e[0m"
+            rm -rf $machine_json_file
+            exit 1
+        }
+    elif [ "$mtype" == "retired" ]; then
+        { # try
+            curl -s --location --request GET https://www.hackthebox.com/api/v4/machine/list/retired -H "Authorization: Bearer $appkey" | jq > $machine_json_file
+        } || { # catch
+            echo -e "\e[31mError. Maybe your API key is incorrect or expired. Renew your API key by running htb-update.\e[0m"
+            rm -rf $machine_json_file
+            exit 1
+        }
+    fi
+
+    echo -e "${LGREEN}Done.${RESTORE}"
     echo
-    echo "Calculating the number of retired machines..."
+    echo -e "${LYELLOW}Calculating the number of machines...${RESTORE}"
     echo
     sleep 1
     count=$(jq -r '.info | length' $machine_json_file)
     array_index_free_machines=()
-    echo "Done."
+    echo -e "${LGREEN}Done.${RESTORE}"
     echo
 
-    echo "ID,Name,Points,Difficulty,Is it Free?" > $table_file
+    echo -e "ID,${LGREEN}Name${RESTORE},${LYELLOW}Points${RESTORE},${LCYAN}Difficulty${RESTORE},${LYELLOW}User Pwned${RESTORE},${LRED}Root Pwned${RESTORE},${LGREEN}Is it Free?${RESTORE}" > $table_file
     for sequence in $(seq $count)
     do
       let index=$sequence-1
@@ -257,52 +291,130 @@ ListRetiredMachines()
       name=$(jq -r ".info[$index].name" $machine_json_file)
       points=$(jq -r ".info[$index].points" $machine_json_file)
       difficultyText=$(jq -r ".info[$index].difficultyText" $machine_json_file)
+      userpwn=$(jq -r ".info[$index].authUserInUserOwns" $machine_json_file)
+      rootpwn=$(jq -r ".info[$index].authUserInRootOwns" $machine_json_file)
       free=$(jq -r ".info[$index].free" $machine_json_file)
 
       # Display variables
-      if [ $free = "true" ]; then
+      if [ $free = "true" ] && [ "$mtype" == "retired" ]; then
         array_index_free_machines+=($index)
       fi
 
-      echo "$id,$name,$points,$difficultyText,$free" >> $table_file
-      progressbar "Loading retired machines" $index $count
+      if [ $userpwn != "null" ]; then
+        userpwn="${LYELLOW}$userpwn${RESTORE}"
+      fi
+
+      if [ $rootpwn != "null" ]; then
+        rootpwn="${LRED}$rootpwn${RESTORE}"
+      fi
+
+      echo "$id,${LGREEN}$name${RESTORE},${LYELLOW}$points${RESTORE},${LCYAN}$difficultyText${RESTORE},$userpwn,$rootpwn,${LGREEN}$free${RESTORE}" >> $table_file
+      progressbar "Loading machines" $index $count
     done
 
     printTable ',' "$(cat $table_file)"
     rm -rf $table_file
 
-    echo
-    echo "Today, the free retired machines are: "
-    echo
-    for elem in "${array_index_free_machines[@]}"
-    do
-        id=$(jq -r ".info[$elem].id" $machine_json_file)
-        name=$(jq -r ".info[$elem].name" $machine_json_file)
-        points=$(jq -r ".info[$elem].points" $machine_json_file)
-        difficultyText=$(jq -r ".info[$elem].difficultyText" $machine_json_file)
-        free=$(jq -r ".info[$elem].free" $machine_json_file)
-        echo $name
-    done
+    if [ "$mtype" == "retired" ]; then
+        echo
+        echo -e "${LGREEN}Today, the free retired machines are:${RESTORE}"
+        echo
+        for elem in "${array_index_free_machines[@]}"
+        do
+            id=$(jq -r ".info[$elem].id" $machine_json_file)
+            name=$(jq -r ".info[$elem].name" $machine_json_file)
+            points=$(jq -r ".info[$elem].points" $machine_json_file)
+            difficultyText=$(jq -r ".info[$elem].difficultyText" $machine_json_file)
+            free=$(jq -r ".info[$elem].free" $machine_json_file)
+            echo $name
+        done
+    fi
+
     rm -rf $machine_json_file
     echo
+}
+
+ListStartingPointMachines()
+{
+    echo
+    echo -e "${LYELLOW}Connecting to HTB server...${RESTORE}"
+    echo
+
+    tiers=3
+
+    for index in $(seq $tiers)
+    do
+        { # try
+            curl -s --location --request GET https://www.hackthebox.com/api/v4/sp/tier/$index -H "Authorization: Bearer $appkey" | jq > $machine_json_file
+        } || { # catch
+            echo -e "\e[31mError. Maybe your API key is incorrect or expired. Renew your API key by running htb-update.\e[0m"
+            rm -rf $machine_json_file
+            exit 1
+        }
+
+        tier=$(($index-1))
+        echo -e "${LYELLOW}Tier $tier Starting Point machines:${RESTORE}"
+        echo
+        sleep 1
+        count=$(jq -r '.data.machines | length' $machine_json_file)
+        array_index_free_machines=()
+
+        echo -e "ID,${LGREEN}Name${RESTORE},${LCYAN}Difficulty${RESTORE}" > $table_file
+        for sequence in $(seq $count)
+        do
+          let index=$sequence-1
+          id=$(jq -r ".data.machines[$index].id" $machine_json_file)
+          name=$(jq -r ".data.machines[$index].name" $machine_json_file)
+          difficultyText=$(jq -r ".data.machines[$index].difficultyText" $machine_json_file)
+          #userpwn=$(jq -r ".data.machines[$index].authUserInUserOwns" $machine_json_file)
+          #rootpwn=$(jq -r ".data.machines[$index].authUserInRootOwns" $machine_json_file)
+
+          #if [ $userpwn != "null" ]; then
+          #  userpwn="${LYELLOW}$userpwn${RESTORE}"
+          #fi
+
+          #if [ $rootpwn != "null" ]; then
+          #  rootpwn="${LRED}$rootpwn${RESTORE}"
+          #fi
+
+          echo "$id,${LGREEN}$name${RESTORE},${LCYAN}$difficultyText${RESTORE}" >> $table_file
+          #progressbar "Loading machines" $index $count
+        done
+
+        printTable ',' "$(cat $table_file)"
+        rm -rf $table_file
+
+        rm -rf $machine_json_file
+        echo
+    done
 }
 
 ############################################################
 # Process the input options. Add options as needed.        #
 ############################################################
 # Get the options
-while getopts ":hlm:" option; do #When using getopts, putting : after an option character means that it requires an argument (i.e., 'i:' requires arg).
+while getopts ":ahm:rs" option; do #When using getopts, putting : after an option character means that it requires an argument (i.e., 'i:' requires arg).
    case "${option}" in
+      a) # Enter a command
+         flag="active"
+         ListMachines "$flag" >&2
+         exit 0
+         ;;
       h) # display Help
          Help >&2
          exit 0
          ;;
-      l) # Enter a command
-         ListRetiredMachines >&2
-         exit 0
-         ;;
       m) # Enter a command
          machine_name=$OPTARG
+         ;;
+      r) # Enter a command
+         flag="retired"
+         ListMachines "$flag" >&2
+         exit 0
+         ;;
+      s) # Enter a command
+         ListStartingPointMachines >&2
+         exit 0
          ;;
       : )
         echo "Missing option argument for -$OPTARG" >&2; exit 0;;
