@@ -170,6 +170,7 @@ if cat $machine_json_file | grep -q "Starting Point Machine"; then
                         cp /etc/hosts ~/hosts.new
                         sed -i "2i$machine_ip  $ans" ~/hosts.new
                         sudo cp -f ~/hosts.new /etc/hosts
+                        rm -rf ~/hosts.new
                     else    
                         sudo sed -i "2i$machine_ip  $ans" /etc/hosts #added on the 2nd line of /etc/hosts
                     fi
@@ -255,6 +256,7 @@ else
                         cp /etc/hosts ~/hosts.new
                         sed -i "2i$machine_ip  $ans" ~/hosts.new
                         sudo cp -f ~/hosts.new /etc/hosts
+                        rm -rf ~/hosts.new
                     else    
                         sudo sed -i "2i$machine_ip  $ans" /etc/hosts #added on the 2nd line of /etc/hosts
                     fi
@@ -303,6 +305,7 @@ else
                         cp /etc/hosts ~/hosts.new
                         sed -i "2i$machine_ip  $ans" ~/hosts.new
                         sudo cp -f ~/hosts.new /etc/hosts
+                        rm -rf ~/hosts.new
                     else    
                         sudo sed -i "2i$machine_ip  $ans" /etc/hosts #added on the 2nd line of /etc/hosts
                     fi
