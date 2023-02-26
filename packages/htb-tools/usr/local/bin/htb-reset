@@ -9,6 +9,11 @@ fi
 
 active_id=$(curl -s --location --request GET https://www.hackthebox.com/api/v4/machine/active -H "Authorization: Bearer $appkey" | jq '.info.id')
 
+if [ -z "$active_id" ] || [ "$active_id" == "null" ];then
+    echo "No active machine detected."
+    exit 1
+fi
+
 if curl -s --location --request GET https://www.hackthebox.com/api/v4/machine/active -H "Authorization: Bearer $appkey" | jq '.info.type' | grep -q "Starting Point"; then
     #Get the IP address of the Starting Point machine, we need for replacing it on the shell prompt
     sp_machine_ip=$(curl -s --location --request GET https://www.hackthebox.com/api/v4/sp/profile/$active_id -H "Authorization: Bearer $appkey" | jq '.info.ip' | tr -d '"')

@@ -114,7 +114,7 @@ fly_new = ""
 
 if "docker" in detect_virt or "podman" in detect_virt:
     with open('/run/secrets/htb-api') as f:
-        appkey = f.read()
+        appkey = f.read().replace('\n','')
 else:
     appkey = subprocess.getoutput("secret-tool lookup htb-api user-htb-api")
 
@@ -156,7 +156,7 @@ if not appkey:
 htb_user=subprocess.getoutput("curl -s --location --request GET https://www.hackthebox.com/api/v4/user/info -H \"Authorization: Bearer "+appkey+"\" | jq '.info.name'")
 htb_user=htb_user.replace('"','')
 
-if "parse error: Invalid numeric literal" in htb_user:
+if "parse error: Invalid numeric literal" in htb_user or not htb_user: # htb_user could be empty if appkey has a \n at the end of APP Token
     if "docker" in detect_virt or "podman" in detect_virt:
         print("Error. Maybe your API key is incorrect or expired. Renew your API key, store it in the htb-api-file and, on the host machine, run: [docker|podman] secret create htb-api htb-api-file")
         exit()

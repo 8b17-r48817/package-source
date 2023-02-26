@@ -52,7 +52,6 @@ if [[ $# -ne 1 ]] ; then
 fi
 
 machine_name=$1
-htb_user=$(curl -s --location --request GET "https://www.hackthebox.com/api/v4/user/info" -H "Authorization: Bearer $appkey" | jq '.info.name')
 htb_config="$HOME/.htb.conf"
 change_prompt=$(cat $htb_config | grep "^prompt_change=" | awk -F"=" '{print $2}')
 detect_virt=$(systemd-detect-virt)
@@ -62,6 +61,8 @@ if [ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]; then
 else
     appkey=$(secret-tool lookup htb-api user-htb-api)
 fi
+
+htb_user=$(curl -s --location --request GET "https://www.hackthebox.com/api/v4/user/info" -H "Authorization: Bearer $appkey" | jq '.info.name')
 
 # Free VPN
 VPNArray=("EUFree1" "EUFree2" "EUFree3" "USFree1" "USFree2" "USFree3" "AUFree1" "SGFree1")
