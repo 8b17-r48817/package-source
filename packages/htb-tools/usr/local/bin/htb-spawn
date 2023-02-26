@@ -56,6 +56,7 @@ appkey=$(secret-tool lookup htb-api user-htb-api)
 htb_user=$(curl -s --location --request GET "https://www.hackthebox.com/api/v4/user/info" -H "Authorization: Bearer $appkey" | jq '.info.name')
 htb_config="$HOME/.htb.conf"
 change_prompt=$(cat $htb_config | grep "^prompt_change=" | awk -F"=" '{print $2}')
+detect_virt=$(systemd-detect-virt)
 
 # Free VPN
 VPNArray=("EUFree1" "EUFree2" "EUFree3" "USFree1" "USFree2" "USFree3" "AUFree1" "SGFree1")
@@ -161,10 +162,17 @@ if cat $machine_json_file | grep -q "Starting Point Machine"; then
         while true; do
             read -p $'\e[32mWould you like to assign a domain name to the target machine IP address and store it in /etc/hosts? (y/n) \e[0m' yn
             case $yn in
-                [yY] ) 
+                [yY] )
                     domain_name="$(echo "$machine_name" | sed -e 's/\(.*\)/\L\1/').htb"
                     read -p "$(echo -e "\e[32mType the domain name to assign \e[31m[i.e., $domain_name]\e[32m: \e[0m")" ans
-                    sudo sed -i "2i$machine_ip  $ans" /etc/hosts #added on the 2nd line of /etc/hosts
+                    
+                    if [ $detect_virt == "docker" ]; then
+                        cp /etc/hosts ~/hosts.new
+                        sed -i "2i$machine_ip  $ans" ~/hosts.new
+                        sudo cp -f ~/hosts.new /etc/hosts
+                    else    
+                        sudo sed -i "2i$machine_ip  $ans" /etc/hosts #added on the 2nd line of /etc/hosts
+                    fi
                     break;;
                 [nN] ) break;;
                 * ) echo "Invalid answer.";;
@@ -242,7 +250,14 @@ else
                 [yY] ) 
                     domain_name="$(echo "$machine_name" | sed -e 's/\(.*\)/\L\1/').htb"
                     read -p "$(echo -e "\e[32mType the domain name to assign \e[31m[i.e., $domain_name]\e[32m: \e[0m")" ans
-                    sudo sed -i "2i$machine_ip  $ans" /etc/hosts #added on the 2nd line of /etc/hosts
+                    
+                    if [ $detect_virt == "docker" ]; then
+                        cp /etc/hosts ~/hosts.new
+                        sed -i "2i$machine_ip  $ans" ~/hosts.new
+                        sudo cp -f ~/hosts.new /etc/hosts
+                    else    
+                        sudo sed -i "2i$machine_ip  $ans" /etc/hosts #added on the 2nd line of /etc/hosts
+                    fi
                     break;;
                 [nN] ) break;;
                 * ) echo "Invalid answer.";;
@@ -283,7 +298,14 @@ else
                 [yY] ) 
                     domain_name="$(echo "$machine_name" | sed -e 's/\(.*\)/\L\1/').htb"
                     read -p "$(echo -e "\e[32mType the domain name to assign \e[31m[i.e., $domain_name]\e[32m: \e[0m")" ans
-                    sudo sed -i "2i$machine_ip  $ans" /etc/hosts #added on the 2nd line of /etc/hosts
+                    
+                    if [ $detect_virt == "docker" ]; then
+                        cp /etc/hosts ~/hosts.new
+                        sed -i "2i$machine_ip  $ans" ~/hosts.new
+                        sudo cp -f ~/hosts.new /etc/hosts
+                    else    
+                        sudo sed -i "2i$machine_ip  $ans" /etc/hosts #added on the 2nd line of /etc/hosts
+                    fi
                     break;;
                 [nN] ) break;;
                 * ) echo "Invalid answer.";;
