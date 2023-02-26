@@ -195,7 +195,7 @@ if cat $machine_json_file | grep -q "Starting Point Machine"; then
     fi
 else
 
-    if ip -o link show | awk -F': ' '{print $2}' | grep -q tun && ([ "$vpn_type" == "Free" ] || [ "$vpn_type" == "VIP" ]); then
+    if ip -o link show | awk -F': ' '{print $2}' | grep -q tun && ([ "$vpn_type" == "Free" ] || [ "$vpn_type" == "VIP" ] || [ "$vpn_type" == "VIP+" ]); then
          echo "Lab VPN Server already running."
     else
       while [[ ! ${VPNArray[*]} =~ (^|[[:space:]])$vpn_server($|[[:space:]]) ]] # Until the VPN input is not contained in the VPNArray variable, loop. Use of ':space:' for Exact match in the array
@@ -209,7 +209,7 @@ else
          echo -e "\e[33m|                           USVIP1 to USVIP27        |\e[0m"
          echo -e "\e[33m|                           SGVIP1 SGVIP2 AUVIP1     |\e[0m"
          echo -e "\e[31m| Machines VIP+ VPN       : EUVIP+1 EUVIP+2          |\e[0m"
-         echo -e "\e[31m| Machines VIP+ VPN       : USVIP+1 SGVIP+1          |\e[0m"
+         echo -e "\e[31m|                         : USVIP+1 SGVIP+1          |\e[0m"
          echo -e "\e[36m└────────────────────────────────────────────────────┘\e[0m"
          echo -ne "VPN Server:"
          read vpn_server
