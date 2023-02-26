@@ -97,8 +97,11 @@ if args.help:
 
 if args.delete:
     print("Deleting the stored Hack The Box API Key...")
-    subprocess.call("secret-tool clear htb-api user-htb-api",shell=True)
-    print("Hack The Box API Key successfully deleted.")
+    if "docker" in detect_virt or "podman" in detect_virt:
+        print("You are in a container. For deleting the API token on the host machine, run: [docker|podman] secret rm htb-api")
+    else:
+        subprocess.call("secret-tool clear htb-api user-htb-api",shell=True)
+        print("Hack The Box API Key successfully deleted.")
     exit()
 
 #### VARIABLE SETTING ####
@@ -106,8 +109,14 @@ input_config = os.path.expandvars("$HOME/.fly.txt")
 output_config = os.path.expandvars("$HOME/.flyout.txt")
 machine_config = os.path.expandvars("$HOME/.machine.json")
 htb_config = os.path.expandvars("$HOME/.htb.conf")
-appkey = subprocess.getoutput("secret-tool lookup htb-api user-htb-api")
+detect_virt = subprocess.getoutput("systemd-detect-virt")
 fly_new = ""
+
+if "docker" in detect_virt or "podman" in detect_virt:
+    with open('/run/secrets/htb-api') as f:
+        appkey = f.readlines()
+else:
+    appkey = subprocess.getoutput("secret-tool lookup htb-api user-htb-api")
 
 file = pathlib.Path(htb_config)
 if not file.exists ():
@@ -119,10 +128,14 @@ if not file.exists ():
 
 if args.reset:
     print("Resetting the Hack The Box API Key...")
-    subprocess.call("secret-tool clear htb-api user-htb-api",shell=True)
-    print("Please, insert your App Token after the 'Password' label, it will be stored in a secure keyring.")
-    subprocess.call("secret-tool store --label='HTB API key' htb-api user-htb-api",shell=True)
-    appkey = subprocess.getoutput("secret-tool lookup htb-api user-htb-api")
+    if "docker" in detect_virt or "podman" in detect_virt:
+        print("You are in a container. For resetting the API token on the host machine, run: [docker|podman] secret rm htb-api; [docker|podman] secret create htb-api htb-api-file")
+        exit()
+    else:
+        subprocess.call("secret-tool clear htb-api user-htb-api",shell=True)
+        print("Please, insert your App Token after the 'Password' label, it will be stored in a secure keyring.")
+        subprocess.call("secret-tool store --label='HTB API key' htb-api user-htb-api",shell=True)
+        appkey = subprocess.getoutput("secret-tool lookup htb-api user-htb-api")
 
 if args.prompt == "false":
     print("Shell prompt change disabled.")
@@ -131,25 +144,37 @@ elif args.prompt == "true":
     subprocess.call("sed -i 's/prompt_change=.*/prompt_change=true/g' "+htb_config,shell=True)
 
 if not appkey:
-    print("Hack The Box API Key not set. Please, insert your App Token after the 'Password' label, it will be stored in a secure keyring.")
-    subprocess.call("secret-tool store --label='HTB API key' htb-api user-htb-api",shell=True)
-    appkey = subprocess.getoutput("secret-tool lookup htb-api user-htb-api")    
+    if "docker" in detect_virt or "podman" in detect_virt:
+        print("API token not set. On the host machine, store the HTB API token in the htb-api-file and run: [docker|podman] secret create htb-api htb-api-file")
+        exit()
+    else:
+        print("Hack The Box API Key not set. Please, insert your App Token after the 'Password' label, it will be stored in a secure keyring.")
+        subprocess.call("secret-tool store --label='HTB API key' htb-api user-htb-api",shell=True)
+        appkey = subprocess.getoutput("secret-tool lookup htb-api user-htb-api")
 
 # Use htb_user only for checking the validity of the HTB APP TOKEN
 htb_user=subprocess.getoutput("curl -s --location --request GET https://www.hackthebox.com/api/v4/user/info -H \"Authorization: Bearer "+appkey+"\" | jq '.info.name'")
 htb_user=htb_user.replace('"','')
 
 if "parse error: Invalid numeric literal" in htb_user:
-    print("Error. Maybe your API key is incorrect or expired. Renew your API key and rerun 'htb-update', or insert the new API key in the 'Password' field.")
-    subprocess.call("secret-tool store --label='HTB API key' htb-api user-htb-api",shell=True)
-    appkey = subprocess.getoutput("secret-tool lookup htb-api user-htb-api")
+    if "docker" in detect_virt or "podman" in detect_virt:
+        print("Error. Maybe your API key is incorrect or expired. Renew your API key, store it in the htb-api-file and, on the host machine, run: [docker|podman] secret create htb-api htb-api-file")
+        exit()
+    else:
+        print("Error. Maybe your API key is incorrect or expired. Renew your API key and rerun 'htb-update', or insert the new API key in the 'Password' field.")
+        subprocess.call("secret-tool store --label='HTB API key' htb-api user-htb-api",shell=True)
+        appkey = subprocess.getoutput("secret-tool lookup htb-api user-htb-api")
 
 htb_user=subprocess.getoutput("curl -s --location --request GET https://www.hackthebox.com/api/v4/user/info -H \"Authorization: Bearer "+appkey+"\" | jq '.info.name'")
 htb_user=htb_user.replace('"','')
 
 if "parse error: Invalid numeric literal" in htb_user:
-    print("Error. Maybe your API key is incorrect or expired. Renew your API key and rerun 'htb-update', or insert the new API key in the 'Password' field. Closing...")
-    exit()
+    if "docker" in detect_virt or "podman" in detect_virt:
+        print("Error. Maybe your API key is incorrect or expired. Renew your API key, store it in the htb-api-file and, on the host machine, run: [docker|podman] secret create htb-api htb-api-file")
+        exit()
+    else:
+        print("Error. Maybe your API key is incorrect or expired. Renew your API key and rerun 'htb-update', or insert the new API key in the 'Password' field. Closing...")
+        exit()
 
 subprocess.call("mkdir -p $HOME/.local/share/icons/hackthebox/avatar",shell=True)
 

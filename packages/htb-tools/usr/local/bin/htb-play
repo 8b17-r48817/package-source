@@ -1,6 +1,12 @@
 #!/bin/sh
 
-appkey=$(secret-tool lookup htb-api user-htb-api)
+detect_virt=$(systemd-detect-virt)
+if [ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]; then
+    appkey=$(cat /run/secrets/htb-api)
+else
+    appkey=$(secret-tool lookup htb-api user-htb-api)
+fi
+
 machine_json_file="$HOME/.machine.json"
 table_file="$HOME/.table.txt"
 
