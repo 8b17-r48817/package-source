@@ -484,12 +484,12 @@ colors:
 #  program: /bin/bash
 #  args:
 #    - --login
-shell:
-  program: /usr/bin/fish
-  args:
-    - --login
-    - --init-command
-    - neofetch
+#shell:
+#  program: /usr/bin/fish
+#  args:
+#    - --login
+#    - --init-command
+#    - neofetch
 
 # Startup directory
 #

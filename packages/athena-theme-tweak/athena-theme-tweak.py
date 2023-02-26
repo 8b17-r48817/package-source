@@ -10,6 +10,7 @@ menu_options = {
     3: 'Exit',
 }
 home = os.path.expandvars("$HOME")
+keybind = "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
 
 class colors:
     '''Colors class:reset all colors with colors.reset; two
@@ -56,6 +57,7 @@ def arg_parse():
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument("-b", "--browser", action='store_true', help="set the current browser logo in PenTOXIC menu")
     parser.add_argument("-c", "--colored", action='store_true', help="let's give some random colored output")
+    parser.add_argument("-e", "--emulator", choices=["alacritty", "kitty"], help="specify a terminal emulator to be set [alacritty|kitty]")
     parser.add_argument("-h", "--help", action='store_true', help="show this help message and exit")
     parser.add_argument("-l", "--list", action='store_true', help="list all available Athena themes")
     parser.add_argument("-t", "--theme", choices=["AkameGaKill", "BlueEyesSamurai", "Graphite", "CyborgGruvbox", "SweetDark"], help="specify an Athena theme to be set [AkameGaKill|BlueEyesSamurai|Graphite|CyborgGruvbox|SweetDark]")
@@ -72,12 +74,14 @@ def help():
    
    print("-b, --browser                 set the current browser logo in PenTOXIC menu")
    print("-c, --colored                 let's give some random colored output")
+   print("-e, --emulator                specify a terminal emulator to be set [alacritty|kitty]")
    print("-h, --help                    show this help message and exit")
    print("-l, --list                    list all available Athena themes")
    print("-t, --theme <theme-name>      specify an Athena theme to be set [AkameGaKill|BlueEyesSamurai|Graphite|CyborgGruvbox|SweetDark]")
    print("\n")
    print("Usage Examples:")
    print("athena-theme-tweak -l")
+   print("athena-theme-tweak -e alacritty")
    print("athena-theme-tweak -t BlueEyesSamurai")
    print("athena-theme-tweak -b")
 
@@ -304,3 +308,29 @@ if args.theme:
     subprocess.call("sed -i 's/set -g @tmux_power_theme.*/set -g @tmux_power_theme \'"+tmux_theme+"\'/g' "+home+"/.tmux.conf", shell=True)
 
     exit()
+
+if args.emulator:
+    chosen_emulator=args.emulator
+
+    if chosen_emulator == "alacritty":
+        subprocess.call(keybind + " command \"alacritty\"", shell=True)
+        subprocess.call("gsettings set org.gnome.desktop.default-applications.terminal exec alacritty", shell=True)
+        subprocess.call("find "+home+"/.local/share/applications -type f -name '*.desktop' -exec sed -i 's/kitty/alacritty -e/g' {} +", shell=True)
+        subprocess.call("sudo sed -i 's/\/usr\/share\/icons\/pentoxic\/kitty.png/\/usr\/share\/pixmaps\/Alacritty.svg/g' /usr/share/athena-application-config/dconf-shell.ini", shell=True)
+        subprocess.call("sudo sed -i 's/kitty/alacritty -e/g' /usr/share/athena-application-config/dconf-shell.ini", shell=True)
+        subprocess.call("sudo cp -rf /usr/share/athena-application-config/dconf-shell.ini /usr/share/athena-application-config/dconf-shell.ini.bak", shell=True)
+        subprocess.call("dconf load /org/gnome/shell/ < /usr/share/athena-application-config/dconf-shell.ini", shell=True)
+        subprocess.call("sudo sed -i 's/kitty/alacritty -e/g' /usr/share/athena-welcome/athena-welcome.py", shell=True)
+        subprocess.call("sudo sed -i 's/kitty/alacritty -e/g' /usr/share/pwnage/hackthebox/htb-update.py", shell=True)
+    elif chosen_emulator == "kitty":
+        subprocess.call(keybind + " command \"kitty\"", shell=True)
+        subprocess.call("gsettings set org.gnome.desktop.default-applications.terminal exec kitty", shell=True)
+        subprocess.call("find "+home+"/.local/share/applications -type f -name '*.desktop' -exec sed -i 's/alacritty -e/kitty/g' {} +", shell=True)
+        subprocess.call("sudo sed -i 's/\/usr\/share\/pixmaps\/Alacritty.svg/\/usr\/share\/icons\/pentoxic\/kitty.png/g' /usr/share/athena-application-config/dconf-shell.ini", shell=True)
+        subprocess.call("sudo sed -i 's/alacritty -e/kitty/g' /usr/share/athena-application-config/dconf-shell.ini", shell=True)
+        subprocess.call("sudo cp -rf /usr/share/athena-application-config/dconf-shell.ini /usr/share/athena-application-config/dconf-shell.ini.bak", shell=True)
+        subprocess.call("dconf load /org/gnome/shell/ < /usr/share/athena-application-config/dconf-shell.ini", shell=True)
+        subprocess.call("sudo sed -i 's/alacritty -e/kitty/g' /usr/share/athena-welcome/athena-welcome.py", shell=True)
+        subprocess.call("sudo sed -i 's/alacritty -e/kitty/g' /usr/share/pwnage/hackthebox/htb-update.py", shell=True)
+    exit()
+        
