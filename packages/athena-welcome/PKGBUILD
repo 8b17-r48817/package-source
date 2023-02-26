@@ -1,6 +1,6 @@
 pkgname=athena-welcome
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Welcome App for Athena"
 arch=('any')
 license=("custom")
@@ -22,6 +22,7 @@ package() {
   install -Dm755 "${srcdir}/usr/local/bin/tool-recipe" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/mirroars" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/set-repo-keys" "${pkgdir}/usr/local/bin/"
+  install -Dm755 "${srcdir}/usr/local/bin/athena-motd" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/athena-upgrade" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/athena-fix" "${pkgdir}/usr/local/bin/"
   cp -rf "${srcdir}/usr/share/applications/athena-welcome.desktop" "${pkgdir}/usr/share/applications/"
@@ -30,4 +31,4 @@ package() {
   chmod 755 "${pkgdir}/usr/share/athena-welcome/role-tools"
 
 }
-sha256sums=('8beba5d22d0730eeec7388c0ed1676edc895e9e01e464128608d002d56e0e55f')
+sha256sums=('343ac3519487ec94d2003820bbe87d4c27febac7dd1412f2b9c61b4103545722')

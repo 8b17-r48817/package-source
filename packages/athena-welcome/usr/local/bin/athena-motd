@@ -1,0 +1,147 @@
+#!/bin/bash
+#Script to update motd with relevant information.
+
+#Define output file
+motd="/etc/motd"
+
+# Collect information
+HOSTNAME=`uname -n`
+KERNEL=`uname -r`
+CPU=`awk -F '[ :][ :]+' '/^model name/ { print $2; exit; }' /proc/cpuinfo`
+ARCH=`uname -m`
+PACMAN=`checkupdates | wc -l`
+#DETECTDISK=`mount -v | fgrep 'on / ' | sed -n 's_^\(/dev/[^ ]*\) .*$_\1_p'`
+#DISC=`df -h | grep $DETECTDISK | awk '{print $5 }'`
+MEMORY1=`free -t -m | grep "Mem" | awk '{print $6" MB";}'`
+MEMORY2=`free -t -m | grep "Mem" | awk '{print $2" MB";}'`
+MEMPERCENT=`free | awk '/Mem/{printf("%.2f% (Used) "), $3/$2*100}'`
+
+#Time of day
+HOUR=$(date +"%H")
+if [ $HOUR -lt 12  -a $HOUR -ge 0 ]
+then   TIME="Morning"
+elif [ $HOUR -lt 17 -a $HOUR -ge 12 ]
+then   TIME="Afternoon"
+else   TIME="Evening"
+fi
+
+#System uptime
+uptime=`cat /proc/uptime | cut -f1 -d.`
+upDays=$((uptime/60/60/24))
+upHours=$((uptime/60/60%24))
+upMins=$((uptime/60%60))
+upSecs=$((uptime%60))
+
+
+#System load
+LOAD1=`cat /proc/loadavg | awk {'print $1'}`
+LOAD5=`cat /proc/loadavg | awk {'print $2'}`
+LOAD15=`cat /proc/loadavg | awk {'print $3'}`
+
+#Color variables
+#W="\033[00;37m"
+W="\033[0m"
+B="\033[01;36m"
+R="\033[01;31m"
+G="\033[01;32m"
+Y="\033[01;33m"
+N="\033[0m"
+
+detect_virt=$(systemd-detect-virt)
+
+if [ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]; then
+
+    #Clear screen before motd
+    cat /dev/null > $motd
+
+    echo -e "
+        $Y. $W
+       $Y/#\ $W         _   _   _                      $Y  ___  ____  
+      $Y/###\ $W       / \ | |_| |__   ___ _ __   __ _ $Y / _ \/ ___| 
+     $Y/#####\ $W     / _ \| __| '_ \ / _ \ '_ \ / _  |$Y| | | \___ \ 
+    $Y/##.-.##\ $W   / ___ \ |_| | | |  __/ | | | (_| |$Y| |_| |___) |
+   $Y/##(   )##\ $W /_/   \_\__|_| |_|\___|_| |_|\__,_|$Y \___/|____/ 
+  $Y/#.--   --.#\ $W
+ $Y/'           '\ 
+    " > $motd
+    echo -e "$G---------------------------------------------------------------" >> $motd
+    echo -e "$W   Good $TIME$A You're Logged Into $Y$A$HOSTNAME$W container! "  >> $motd
+    echo -e "$G---------------------------------------------------------------" >> $motd
+    echo -e "$Y    KERNEL $G:$W $KERNEL $ARCH                                 " >> $motd
+    echo -e "$G       CPU $G:$W $CPU                                          " >> $motd
+    echo -e "$B    MEMORY $G:$W $MEMORY1 / $MEMORY2 - $MEMPERCENT             " >> $motd
+    #echo -e "$B  USE DISK $G:$W $DISC (Used)                      	          " >> $motd
+    echo -e "$G---------------------------------------------------------------" >> $motd
+    echo -e "$Y  LOAD AVG $G:$W $LOAD1, $LOAD5, $LOAD15		          " >> $motd
+    echo -e "$G    UPTIME $G:$W $upDays days $upHours hours $upMins minutes $upSecs seconds " >> $motd
+    #echo -e "$B PROCESSES $G:$W You are running $PSU of $PSA processes        " >> $motd
+    echo -e "$B    PACMAN $G:$W $PACMAN packages can be updated               " >> $motd
+    echo -e "$R     USERS $G:$W `users | wc -w` users logged in 	          " >> $motd
+    echo -e "$G---------------------------------------------------------------" >> $motd
+    echo -e "  $W Please do not share your login and use$G sudo$W for$R root$W access " >> $motd
+    echo -e "$G---------------------------------------------------------------" >> $motd
+    echo -e >> $motd
+    echo -e "
+                         $G&&$W
+                     $G&B5?!!?5B&$W
+                 $G&BP?!~~^~~^~~!?PB&$W
+              $G&PJ7~~^~~7YGGY7~~^~~7JP&$W
+          $G&GY7!~^~~!JP&$W.....$G&PJ!~~^~!7YG&$W
+      $G&B5?!~~~~!?5B&$W............$G&B5?!~~~~!?5B&$W
+   $G&PJ7~~~~~7YG&$W....................$G&GY7~~~~~7JP&$W
+  $G&~~~~~~~?&$W............................$G&?~~~~~~~&$W
+  $G&~~~~~~~!?5B&$W......................$G&B5?!~~~~~~~&$W
+  $G&~~~~~~~~~~~!JP&$W................$G&PJ!~~~~~~~~~~~&$W
+  $G&~~~~B&PJ!~~~~~~7YG&$W........$G&GY7~~~~~~!JP&B~~~~&$W
+  $G&~~~!&$W...$G&B5?!~~~~~!?5B&&B5?!~~~~~!?5B&$W...$G&!~~~&$W
+  $G&~~~!&$W.......$G&GY7~~~~~~!!~~~~~~7YG&$W.......$G&!~~~&$W
+  $G&~~~!&$W...........$G&PJ!~~~~~~!JP&$W...........$G&!~~~&$W
+  $G&~~~!&$W...............$G&~~~~&$W...............$G&!~~~&$W
+  $G&~~~!&$W...............$G&~~~~&$W...............$G&!~~~&$W
+  $G&~~~!&$W...............$G&~~~~&$W...............$G&!~~~&$W
+  $G&~~~!&$W...............$G&~~~~&$W...............$G&!~~~&$W
+  $G&~~~~G$W...............$G&~~~~&$W...............$G&~~~~&$W
+  $G&~~~~~7JP&$W...........$G&~~~~&$W...........$G&PJ7~~~~~&$W
+   $G&P?!~~^~!7YB&$W.......$G&~~~~&$W.......$G&BY7!~^~~!?P&$W
+      $G&G5?!~~~~!?5B&$W...$G&~~~~&$W...$G&B5?!~~~~!?5G&$W
+          $G&GY7~~^~~7JP&J~~~~J&PJ7~~^~~7YG&$W
+              $G&PJ!~~^~~~~~~~~~~^~~!JP&$W
+                 $G&B5?!~~~~~~~~!?5B&$W
+                     $G&GY7!!7YG&$W
+                         $G&&$W
+    " >> $motd
+    echo -e >> $motd
+    echo -e "🔥Choose your ${G}Hacking Role$W🔥" >> $motd
+    echo -e >> $motd
+    echo -e "🖤${R}Black Hat Omniscient: ${W}sudo pacman -Sy athena-blackhat$W" >> $motd
+    echo -e "🐞${G}Bug Bounty Hunter:    ${W}sudo pacman -Sy athena-bountyhunter$W" >> $motd
+    echo -e "🍘${B}Cracker Specialist:   ${W}sudo pacman -Sy athena-cracker$W" >> $motd
+    echo -e "🎓${Y}Enthusiast Student:   ${W}sudo pacman -Sy athena-student$W" >> $motd
+    echo -e "🔍${R}Forensic Analyst:     ${W}sudo pacman -Sy athena-forensic$W" >> $motd
+    echo -e "🦠${G}Malware Analyst:      ${W}sudo pacman -Sy athena-malware$W" >> $motd
+    echo -e "📱${B}Mobile Analyst:       ${W}sudo pacman -Sy athena-mobile$W" >> $motd
+    echo -e "🖧 ${Y}Network Analyst:      ${W}sudo pacman -Sy athena-network$W" >> $motd
+    echo -e "🌐${R}OSINT Specialist:     ${W}sudo pacman -Sy athena-osint$W" >> $motd
+    echo -e "❤️${G}Red Teamer:           ${W}sudo pacman -Sy athena-redteamer$W" >> $motd
+    echo -e "🕸️${B}Web Pentester:        ${W}sudo pacman -Sy athena-webpentester$W" >> $motd
+    echo -e >> $motd
+    echo -e >> $motd
+    echo -e "Are you ready to ${B}Learn${W}, ${G}Play${W} and ${R}Hack${W}?" >> $motd
+    echo -e >> $motd
+    echo -e "${G}Hack The Box${W} commands:" >> $motd
+    echo -e >> $motd
+    echo -e "${G}htb-play${W}:           show or play Hack The Box machines!" >> $motd
+    echo -e "${B}htb-stop${W}:           stop the running machine." >> $motd
+    echo -e "${Y}htb-reset${W}:          reset the running machine." >> $motd
+    echo -e "${R}htb-flag${W}:           submit your flag!" >> $motd
+    echo -e "${W}sudo kill openvpn${W}:  interrupt OpenVPN." >> $motd
+    echo -e
+    echo -e "$G---------------------------------------------------------------" >> $motd
+    echo -e "$W                   Remember to ${G}Have Fun$W!                 " >> $motd
+    echo -e
+    echo -e "$W                      Enjoy ${Y}Athena OS$W                    " >> $motd
+    echo -e "$G---------------------------------------------------------------" >> $motd
+
+else
+    echo "Currently it is not available outside a container."
+fi
