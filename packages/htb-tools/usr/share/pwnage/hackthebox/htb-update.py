@@ -114,7 +114,7 @@ fly_new = ""
 
 if "docker" in detect_virt or "podman" in detect_virt:
     with open('/run/secrets/htb-api') as f:
-        appkey = f.readlines()
+        appkey = f.read()
 else:
     appkey = subprocess.getoutput("secret-tool lookup htb-api user-htb-api")
 
