@@ -113,17 +113,17 @@ if [ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]; then
     echo -e >> $motd
     echo -e "🔥Choose your ${G}Hacking Role$W🔥" >> $motd
     echo -e >> $motd
-    echo -e "🖤${R}Black Hat Omniscient: ${W}sudo pacman -Sy athena-blackhat$W" >> $motd
-    echo -e "🐞${G}Bug Bounty Hunter:    ${W}sudo pacman -Sy athena-bountyhunter$W" >> $motd
-    echo -e "🍘${B}Cracker Specialist:   ${W}sudo pacman -Sy athena-cracker$W" >> $motd
-    echo -e "🎓${Y}Enthusiast Student:   ${W}sudo pacman -Sy athena-student$W" >> $motd
-    echo -e "🔍${R}Forensic Analyst:     ${W}sudo pacman -Sy athena-forensic$W" >> $motd
-    echo -e "🦠${G}Malware Analyst:      ${W}sudo pacman -Sy athena-malware$W" >> $motd
-    echo -e "📱${B}Mobile Analyst:       ${W}sudo pacman -Sy athena-mobile$W" >> $motd
-    echo -e "🖧 ${Y}Network Analyst:      ${W}sudo pacman -Sy athena-network$W" >> $motd
-    echo -e "🌐${R}OSINT Specialist:     ${W}sudo pacman -Sy athena-osint$W" >> $motd
-    echo -e "❤️${G}Red Teamer:           ${W}sudo pacman -Sy athena-redteamer$W" >> $motd
-    echo -e "🕸️${B}Web Pentester:        ${W}sudo pacman -Sy athena-webpentester$W" >> $motd
+    echo -e "🖤${R}Black Hat Omniscient: ${W}sudo pacman -Syu athena-blackhat$W" >> $motd
+    echo -e "🐞${G}Bug Bounty Hunter:    ${W}sudo pacman -Syu athena-bountyhunter$W" >> $motd
+    echo -e "🍘${B}Cracker Specialist:   ${W}sudo pacman -Syu athena-cracker$W" >> $motd
+    echo -e "🎓${Y}Enthusiast Student:   ${W}sudo pacman -Syu athena-student$W" >> $motd
+    echo -e "🔍${R}Forensic Analyst:     ${W}sudo pacman -Syu athena-forensic$W" >> $motd
+    echo -e "🦠${G}Malware Analyst:      ${W}sudo pacman -Syu athena-malware$W" >> $motd
+    echo -e "📱${B}Mobile Analyst:       ${W}sudo pacman -Syu athena-mobile$W" >> $motd
+    echo -e "🖧 ${Y}Network Analyst:      ${W}sudo pacman -Syu athena-network$W" >> $motd
+    echo -e "🌐${R}OSINT Specialist:     ${W}sudo pacman -Syu athena-osint$W" >> $motd
+    echo -e "❤️${G}Red Teamer:           ${W}sudo pacman -Syu athena-redteamer$W" >> $motd
+    echo -e "🕸️${B}Web Pentester:        ${W}sudo pacman -Syu athena-webpentester$W" >> $motd
     echo -e >> $motd
     echo -e >> $motd
     echo -e "Are you ready to ${B}Learn${W}, ${G}Play${W} and ${R}Hack${W}?" >> $motd
