@@ -41,7 +41,6 @@ EOF
              cp -rf $HOME/.zshrc $FILE
           fi
           sed -i "/PROMPT=/c\PROMPT=\"%F{46}┌──[Target:$machine_name🌐IP:$machine_ip🚀⚔️%F{201}Attacker:$htb_user📡IP:\$(ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\\\1/p')🏆%F{46}Prize:$machine_points points]\"$'\\\\n'\"└──╼[👾]%F{44}%~ $%f \"" $HOME/.zshrc
-          exec /usr/bin/zsh
       fi
 }
 ###########################
@@ -229,7 +228,7 @@ else
     machine_rootflag=$(cat $machine_json_file | jq '.info.authUserInRootOwns')
     machine_points=$(cat $machine_json_file | jq '.info.points')
 
-    #rm -rf $machine_json_file
+    rm -rf $machine_json_file
 
     if curl -s --location --request POST "https://www.hackthebox.com/api/v4/machine/play/$machine_id" -H "Authorization: Bearer $appkey" | jq '.message' | grep -q "Playing"; then
 
