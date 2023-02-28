@@ -7,6 +7,28 @@ else
     appkey=$(secret-tool lookup htb-api user-htb-api)
 fi
 
+ARRAY_OF_CONN=( "UDP" "TCP" )
+while true; do
+    echo -e "\e[32mWould you like to connect to Hack The Box VPN by UDP or TCP?\e[0m"
+    select CHOICE in "${ARRAY_OF_CONN[@]}"; do
+        if [ $REPLY != "udp" ] && [ $REPLY != "tcp" ] && [ $REPLY != "UDP" ] && [ $REPLY != "TCP" ]; then
+            echo -e "\e[32mPlease select UDP or TCP:\e[0m"
+        elif [ $REPLY == "udp" ] || [ $REPLY == "UDP" ]; then
+            udp=1
+            tcp=0
+            break;
+        elif [ $REPLY == "tcp" ] || [ $REPLY == "TCP" ]; then
+            tcp=1
+            udp=0
+            vpn_tcp="/1"
+            break;
+        fi
+    done
+    if [[ $udp -eq 1 ]] || [[ $tcp -eq 1 ]]; then
+        break;
+    fi
+done
+
 if [[ $# -ne 1 ]] ; then
     echo 'Please, provide one VPN server you prefer to connect:'
     echo -e "\e[36m┌────────────────────────────────────────────────────┐\e[0m"
@@ -49,7 +71,7 @@ htb-stop
 
 { # try
 
-    curl --silent --location --request GET "https://www.hackthebox.com/api/v4/access/ovpnfile/$vpn_id/0" -H "Authorization: Bearer $appkey" -o $HOME/lab-vpn.ovpn
+    curl --silent --location --request GET "https://www.hackthebox.com/api/v4/access/ovpnfile/$vpn_id/0$vpn_tcp" -H "Authorization: Bearer $appkey" -o $HOME/lab-vpn.ovpn
 
 } || { # catch
     echo -e "\e[33mError. Maybe your API key is incorrect or expired. Renew your API key by running htb-update.\e[0m"
@@ -59,7 +81,7 @@ htb-stop
 if grep -q "You are not assigned to this VPN Server" "$HOME/lab-vpn.ovpn"; then
    { # try
       curl --silent --location --request POST "https://www.hackthebox.com/api/v4/connections/servers/switch/$vpn_id" -H "Authorization: Bearer $appkey" | jq '.message'
-      curl --silent --location --request GET "https://www.hackthebox.com/api/v4/access/ovpnfile/$vpn_id/0" -H "Authorization: Bearer $appkey" -o $HOME/lab-vpn.ovpn
+      curl --silent --location --request GET "https://www.hackthebox.com/api/v4/access/ovpnfile/$vpn_id/0$vpn_tcp" -H "Authorization: Bearer $appkey" -o $HOME/lab-vpn.ovpn
    } || { # catch
       echo -e "\e[33mError. Maybe your API key is incorrect or expired. Renew your API key by running htb-update. If not working, could be a VPN related error.\e[0m"
       exit 1
