@@ -315,7 +315,7 @@ ListMachines()
       fi
 
       echo "$id,${LGREEN}$name${RESTORE},${LYELLOW}$points${RESTORE},${LCYAN}$difficultyText${RESTORE},$userpwn,$rootpwn,${LGREEN}$free${RESTORE}" >> $table_file
-      progressbar "Loading machines" $index $count
+      progressbar "Loading machines" $sequence $count
     done
 
     printTable ',' "$(cat $table_file)"
@@ -384,7 +384,7 @@ ListStartingPointMachines()
           #fi
 
           echo "$id,${LGREEN}$name${RESTORE},${LCYAN}$difficultyText${RESTORE}" >> $table_file
-          #progressbar "Loading machines" $index $count
+          #progressbar "Loading machines" $sequence $count
         done
 
         printTable ',' "$(cat $table_file)"
