@@ -79,7 +79,7 @@ if [ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]; then
     echo -e "$R     USERS $G:$W `users | wc -w` users logged in 	          " >> $motd
     echo -e "$G---------------------------------------------------------------" >> $motd
     echo -e "  $W Please do not share your login and use$G sudo$W for$R root$W access " >> $motd
-    echo -e "$G---------------------------------------------------------------" >> $motd
+    echo -e "$G---------------------------------------------------------------$W" >> $motd
     echo -e >> $motd
     echo -e "
                          $G&&$W
@@ -140,7 +140,7 @@ if [ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]; then
     echo -e "$W                   Remember to ${G}Have Fun$W!                 " >> $motd
     echo -e
     echo -e "$W                      Enjoy ${Y}Athena OS$W                    " >> $motd
-    echo -e "$G---------------------------------------------------------------" >> $motd
+    echo -e "$G---------------------------------------------------------------$W" >> $motd
 
 else
     echo "Currently it is not available outside a container."
