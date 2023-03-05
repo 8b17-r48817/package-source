@@ -8,6 +8,15 @@ import base64, zlib
 import argparse
 import pathlib
 
+#### VARIABLE SETTING ####
+input_config = os.path.expandvars("$HOME/.fly.txt")
+output_config = os.path.expandvars("$HOME/.flyout.txt")
+machine_config = os.path.expandvars("$HOME/.machine.json")
+htb_config = os.path.expandvars("$HOME/.htb.conf")
+Xdisplay = os.path.expandvars("$DISPLAY")
+detect_virt = subprocess.getoutput("systemd-detect-virt")
+fly_new = ""
+
 class ParseDataArgs(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         setattr(namespace, self.dest, dict())
@@ -103,15 +112,6 @@ if args.delete:
         subprocess.call("secret-tool clear htb-api user-htb-api",shell=True)
         print("Hack The Box API Key successfully deleted.")
     exit()
-
-#### VARIABLE SETTING ####
-input_config = os.path.expandvars("$HOME/.fly.txt")
-output_config = os.path.expandvars("$HOME/.flyout.txt")
-machine_config = os.path.expandvars("$HOME/.machine.json")
-htb_config = os.path.expandvars("$HOME/.htb.conf")
-Xdisplay = os.path.expandvars("$DISPLAY")
-detect_virt = subprocess.getoutput("systemd-detect-virt")
-fly_new = ""
 
 if ("docker" in detect_virt or "podman" in detect_virt) and not Xdisplay:
     with open('/run/secrets/htb-api') as f:
