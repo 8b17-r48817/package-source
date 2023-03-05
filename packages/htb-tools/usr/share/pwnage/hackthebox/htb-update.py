@@ -106,7 +106,7 @@ if args.help:
 
 if args.delete:
     print("Deleting the stored Hack The Box API Key...")
-    if "docker" in detect_virt or "podman" in detect_virt:
+    if ("docker" in detect_virt or "podman" in detect_virt) and not Xdisplay:
         print("You are in a container. For deleting the API token on the host machine, run: [docker|podman] secret rm htb-api")
     else:
         subprocess.call("secret-tool clear htb-api user-htb-api",shell=True)
@@ -129,7 +129,7 @@ if not file.exists ():
 
 if args.reset:
     print("Resetting the Hack The Box API Key...")
-    if "docker" in detect_virt or "podman" in detect_virt:
+    if ("docker" in detect_virt or "podman" in detect_virt) and not Xdisplay:
         print("You are in a container. For resetting the API token on the host machine, run: [docker|podman] secret rm htb-api; [docker|podman] secret create htb-api htb-api-file")
         exit()
     else:
@@ -145,7 +145,7 @@ elif args.prompt == "true":
     subprocess.call("sed -i 's/prompt_change=.*/prompt_change=true/g' "+htb_config,shell=True)
 
 if not appkey:
-    if "docker" in detect_virt or "podman" in detect_virt:
+    if ("docker" in detect_virt or "podman" in detect_virt) and not Xdisplay:
         print("API token not set. On the host machine, store the HTB API token in the htb-api-file and run: [docker|podman] secret create htb-api htb-api-file")
         exit()
     else:
@@ -158,7 +158,7 @@ htb_user=subprocess.getoutput("curl -s --location --request GET https://www.hack
 htb_user=htb_user.replace('"','')
 
 if "parse error: Invalid numeric literal" in htb_user or not htb_user: # htb_user could be empty if appkey has a \n at the end of APP Token
-    if "docker" in detect_virt or "podman" in detect_virt:
+    if ("docker" in detect_virt or "podman" in detect_virt) and not Xdisplay:
         print("Error. Maybe your API key is incorrect or expired. Renew your API key, store it in the htb-api-file and, on the host machine, run: [docker|podman] secret create htb-api htb-api-file")
         exit()
     else:
@@ -170,7 +170,7 @@ htb_user=subprocess.getoutput("curl -s --location --request GET https://www.hack
 htb_user=htb_user.replace('"','')
 
 if "parse error: Invalid numeric literal" in htb_user:
-    if "docker" in detect_virt or "podman" in detect_virt:
+    if ("docker" in detect_virt or "podman" in detect_virt) and not Xdisplay:
         print("Error. Maybe your API key is incorrect or expired. Renew your API key, store it in the htb-api-file and, on the host machine, run: [docker|podman] secret create htb-api htb-api-file")
         exit()
     else:

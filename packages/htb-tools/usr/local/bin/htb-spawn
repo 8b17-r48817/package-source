@@ -171,7 +171,7 @@ if cat $machine_json_file | grep -q "Starting Point Machine"; then
                     domain_name="$(echo "$machine_name" | sed -e 's/\(.*\)/\L\1/').htb"
                     read -p "$(echo -e "\e[32mType the domain name to assign \e[31m[i.e., $domain_name]\e[32m: \e[0m")" ans
                     
-                    if [ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]; then
+                    if ([ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]) && [ -z $DISPLAY ]; then
                         cp /etc/hosts ~/hosts.new
                         sed -i "2i$machine_ip  $ans" ~/hosts.new
                         sudo cp -f ~/hosts.new /etc/hosts
@@ -257,7 +257,7 @@ else
                     domain_name="$(echo "$machine_name" | sed -e 's/\(.*\)/\L\1/').htb"
                     read -p "$(echo -e "\e[32mType the domain name to assign \e[31m[i.e., $domain_name]\e[32m: \e[0m")" ans
                     
-                    if [ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]; then
+                    if ([ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]) && [ -z $DISPLAY ]; then
                         cp /etc/hosts ~/hosts.new
                         sed -i "2i$machine_ip  $ans" ~/hosts.new
                         sudo cp -f ~/hosts.new /etc/hosts
@@ -306,7 +306,7 @@ else
                     domain_name="$(echo "$machine_name" | sed -e 's/\(.*\)/\L\1/').htb"
                     read -p "$(echo -e "\e[32mType the domain name to assign \e[31m[i.e., $domain_name]\e[32m: \e[0m")" ans
                     
-                    if [ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]; then
+                    if ([ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]) && [ -z $DISPLAY ]; then
                         cp /etc/hosts ~/hosts.new
                         sed -i "2i$machine_ip  $ans" ~/hosts.new
                         sudo cp -f ~/hosts.new /etc/hosts
