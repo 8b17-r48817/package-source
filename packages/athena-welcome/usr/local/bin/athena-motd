@@ -1,8 +1,58 @@
 #!/bin/bash
 #Script to update motd with relevant information.
 
+############################################################
+# Help                                                     #
+############################################################
+Help()
+{
+   # Display Help
+   echo "Athea MOTD sets a customized Message Of The Day."
+   echo
+   echo "$(basename "$0") [-f] <filename> [-h]"
+   echo
+   echo "Options:"
+   echo "f     Specify the output file."
+   echo "h     Print this Help."
+   echo
+   echo "Usage Examples:"
+   echo "athena-motd -f /etc/motd"
+   echo
+}
+
+############################################################
+# Process the input options. Add options as needed.        #
+############################################################
+# Get the options
+while getopts ":f:h" option; do #When using getopts, putting : after an option character means that it requires an argument (i.e., 'i:' requires arg).
+   case "${option}" in
+      f)
+         filename=$OPTARG
+         ;;
+      h) # display Help
+         Help >&2
+         exit 0
+         ;;
+      : )
+        echo "Missing option argument for -$OPTARG" >&2; exit 0;;
+      #*  )
+        #echo "Unimplemented option: -$OPTARG" >&2; exit 0;;
+     \?) # Invalid option
+         echo "Error: Invalid option" >&2
+         exit 0
+         ;;
+   esac
+done
+
+
+echo
+if [[ $# -eq 0 ]] ; then
+    Help
+    exit 0
+fi
+
 #Define output file
-motd="/etc/motd"
+motd="$filename"
 
 # Collect information
 HOSTNAME=`uname -n`
@@ -135,10 +185,10 @@ if [ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]; then
     echo -e "${Y}htb-reset${W}:          reset the running machine." >> $motd
     echo -e "${R}htb-flag${W}:           submit your flag!" >> $motd
     echo -e "${W}sudo kill openvpn${W}:  interrupt OpenVPN." >> $motd
-    echo -e
+    echo -e >> $motd
     echo -e "$G---------------------------------------------------------------" >> $motd
     echo -e "$W                   Remember to ${G}Have Fun$W!                 " >> $motd
-    echo -e
+    echo -e >> $motd
     echo -e "$W                      Enjoy ${Y}Athena OS$W                    " >> $motd
     echo -e "$G---------------------------------------------------------------$W" >> $motd
 
