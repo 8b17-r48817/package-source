@@ -109,10 +109,11 @@ input_config = os.path.expandvars("$HOME/.fly.txt")
 output_config = os.path.expandvars("$HOME/.flyout.txt")
 machine_config = os.path.expandvars("$HOME/.machine.json")
 htb_config = os.path.expandvars("$HOME/.htb.conf")
+Xdisplay = os.path.expandvars("$DISPLAY")
 detect_virt = subprocess.getoutput("systemd-detect-virt")
 fly_new = ""
 
-if "docker" in detect_virt or "podman" in detect_virt:
+if ("docker" in detect_virt or "podman" in detect_virt) and not Xdisplay:
     with open('/run/secrets/htb-api') as f:
         appkey = f.read().replace('\n','')
 else:

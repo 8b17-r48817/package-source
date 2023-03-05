@@ -55,7 +55,7 @@ htb_config="$HOME/.htb.conf"
 change_prompt=$(cat $htb_config | grep "^prompt_change=" | awk -F"=" '{print $2}')
 detect_virt=$(systemd-detect-virt)
 
-if [ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]; then
+if ([ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]) && [ -z $DISPLAY ]; then
     appkey=$(cat /run/secrets/htb-api)
 else
     appkey=$(secret-tool lookup htb-api user-htb-api)
