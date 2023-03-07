@@ -7,6 +7,8 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '$HOME/.zshrc'
 
+alias shopt='/usr/bin/shopt'
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
