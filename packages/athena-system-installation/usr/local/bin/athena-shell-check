@@ -21,8 +21,8 @@ done
 
 package=athena-fish
 if pacman -Qq $package > /dev/null ; then
-    sed -i 's/\/usr\/bin\/bash;/\/usr\/bin\/fish;/g' /usr/share/athena-application-config/dconf-shell.ini
-    sed -i 's/\/usr\/bin\/bash;/\/usr\/bin\/fish;/g' /etc/skel/.local/share/applications/*
+    sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/fish/g' /usr/share/athena-application-config/dconf-shell.ini
+    sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/fish/g' /etc/skel/.local/share/applications/*
     sed -i 's/Bash/Fish/g' /etc/skel/.local/share/applications/*
     sed -i "/export SHELL=/c\export SHELL=\$(which fish)" /etc/skel/.bashrc
 
@@ -40,8 +40,8 @@ fi
 
 package=athena-zsh
 if pacman -Qq $package > /dev/null ; then
-    sed -i 's/\/usr\/bin\/bash;/\/usr\/bin\/zsh;/g' /usr/share/athena-application-config/dconf-shell.ini
-    sed -i 's/\/usr\/bin\/bash;/\/usr\/bin\/zsh;/g' /etc/skel/.local/share/applications/*
+    sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/zsh/g' /usr/share/athena-application-config/dconf-shell.ini
+    sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/zsh/g' /etc/skel/.local/share/applications/*
     sed -i 's/Bash/Zsh/g' /etc/skel/.local/share/applications/*
     sed -i "/export SHELL=/c\export SHELL=\$(which zsh)" /etc/skel/.bashrc
 
