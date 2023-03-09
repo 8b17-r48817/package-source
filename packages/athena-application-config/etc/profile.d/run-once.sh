@@ -2,7 +2,7 @@
 
 detect_virt=$(systemd-detect-virt)
 
-if [ ! -z $DISPLAY ] ||  ([ $detect_virt != "docker" ] && [ $detect_virt != "podman" ]); then
+if [ ! -z $DISPLAY ] ||  ([ $detect_virt != "docker" ] && [ $detect_virt != "podman" ] && [ $detect_virt != "wsl" ]); then
 
      FLAGFILE="$HOME/.flag-work-once"
      #FLAGNET="$HOME/.flag-net-once"
