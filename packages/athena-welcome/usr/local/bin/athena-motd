@@ -1,58 +1,5 @@
 #!/bin/bash
-#Script to update motd with relevant information.
-
-############################################################
-# Help                                                     #
-############################################################
-Help()
-{
-   # Display Help
-   echo "Athea MOTD sets a customized Message Of The Day."
-   echo
-   echo "$(basename "$0") [-f] <filename> [-h]"
-   echo
-   echo "Options:"
-   echo "f     Specify the output file."
-   echo "h     Print this Help."
-   echo
-   echo "Usage Examples:"
-   echo "athena-motd -f /etc/motd"
-   echo
-}
-
-############################################################
-# Process the input options. Add options as needed.        #
-############################################################
-# Get the options
-while getopts ":f:h" option; do #When using getopts, putting : after an option character means that it requires an argument (i.e., 'i:' requires arg).
-   case "${option}" in
-      f)
-         filename=$OPTARG
-         ;;
-      h) # display Help
-         Help >&2
-         exit 0
-         ;;
-      : )
-        echo "Missing option argument for -$OPTARG" >&2; exit 0;;
-      #*  )
-        #echo "Unimplemented option: -$OPTARG" >&2; exit 0;;
-     \?) # Invalid option
-         echo "Error: Invalid option" >&2
-         exit 0
-         ;;
-   esac
-done
-
-
-echo
-if [[ $# -eq 0 ]] ; then
-    Help
-    exit 0
-fi
-
-#Define output file
-motd="$filename"
+#motd with relevant information.
 
 # Collect information
 HOSTNAME=`uname -n`
@@ -99,12 +46,7 @@ N="\033[0m"
 
 detect_virt=$(systemd-detect-virt)
 
-if [ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]; then
-
-    #Clear screen before motd
-    cat /dev/null > $motd
-
-    echo -e "
+echo -e "
         $Y. $W
        $Y/#\ $W         _   _   _                      $Y  ___  ____  
       $Y/###\ $W       / \ | |_| |__   ___ _ __   __ _ $Y / _ \/ ___| 
@@ -113,25 +55,25 @@ if [ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]; then
    $Y/##(   )##\ $W /_/   \_\__|_| |_|\___|_| |_|\__,_|$Y \___/|____/ 
   $Y/#.--   --.#\ $W
  $Y/'           '\ 
-    " > $motd
-    echo -e "$G---------------------------------------------------------------" >> $motd
-    echo -e "$W   Good $TIME$A You're Logged Into $Y$A$HOSTNAME$W container! "  >> $motd
-    echo -e "$G---------------------------------------------------------------" >> $motd
-    echo -e "$Y    KERNEL $G:$W $KERNEL $ARCH                                 " >> $motd
-    echo -e "$G       CPU $G:$W $CPU                                          " >> $motd
-    echo -e "$B    MEMORY $G:$W $MEMORY1 / $MEMORY2 - $MEMPERCENT             " >> $motd
-    #echo -e "$B  USE DISK $G:$W $DISC (Used)                      	          " >> $motd
-    echo -e "$G---------------------------------------------------------------" >> $motd
-    echo -e "$Y  LOAD AVG $G:$W $LOAD1, $LOAD5, $LOAD15		          " >> $motd
-    echo -e "$G    UPTIME $G:$W $upDays days $upHours hours $upMins minutes $upSecs seconds " >> $motd
-    #echo -e "$B PROCESSES $G:$W You are running $PSU of $PSA processes        " >> $motd
-    echo -e "$B    PACMAN $G:$W $PACMAN packages can be updated               " >> $motd
-    echo -e "$R     USERS $G:$W `users | wc -w` users logged in 	          " >> $motd
-    echo -e "$G---------------------------------------------------------------" >> $motd
-    echo -e "  $W Please do not share your login and use$G sudo$W for$R root$W access " >> $motd
-    echo -e "$G---------------------------------------------------------------$W" >> $motd
-    echo -e >> $motd
-    echo -e "
+    "
+echo -e "$G---------------------------------------------------------------"
+echo -e "$W   Good $TIME$A You're Logged Into $Y$A$HOSTNAME$W container! " 
+echo -e "$G---------------------------------------------------------------"
+echo -e "$Y    KERNEL $G:$W $KERNEL $ARCH                                 "
+echo -e "$G       CPU $G:$W $CPU                                          "
+echo -e "$B    MEMORY $G:$W $MEMORY1 / $MEMORY2 - $MEMPERCENT             "
+#echo -e "$B  USE DISK $G:$W $DISC (Used)                      	          "
+echo -e "$G---------------------------------------------------------------"
+echo -e "$Y  LOAD AVG $G:$W $LOAD1, $LOAD5, $LOAD15		          "
+echo -e "$G    UPTIME $G:$W $upDays days $upHours hours $upMins minutes $upSecs seconds "
+#echo -e "$B PROCESSES $G:$W You are running $PSU of $PSA processes        "
+echo -e "$B    PACMAN $G:$W $PACMAN packages can be updated               "
+echo -e "$R     USERS $G:$W `users | wc -w` users logged in 	          "
+echo -e "$G---------------------------------------------------------------"
+echo -e "  $W Please do not share your login and use$G sudo$W for$R root$W access "
+echo -e "$G---------------------------------------------------------------$W"
+echo -e
+echo -e "
                          $G&&$W
                      $G&B5?!!?5B&$W
                  $G&BP?!~~^~~^~~!?PB&$W
@@ -159,39 +101,35 @@ if [ $detect_virt == "docker" ] || [ $detect_virt == "podman" ]; then
                  $G&B5?!~~~~~~~~!?5B&$W
                      $G&GY7!!7YG&$W
                          $G&&$W
-    " >> $motd
-    echo -e >> $motd
-    echo -e "🔥Choose your ${G}Hacking Role$W🔥" >> $motd
-    echo -e >> $motd
-    echo -e "🖤${R}Black Hat Omniscient: ${W}sudo pacman -Syu athena-blackhat$W" >> $motd
-    echo -e "🐞${G}Bug Bounty Hunter:    ${W}sudo pacman -Syu athena-bountyhunter$W" >> $motd
-    echo -e "🍘${B}Cracker Specialist:   ${W}sudo pacman -Syu athena-cracker$W" >> $motd
-    echo -e "🎓${Y}Enthusiast Student:   ${W}sudo pacman -Syu athena-student$W" >> $motd
-    echo -e "🔍${R}Forensic Analyst:     ${W}sudo pacman -Syu athena-forensic$W" >> $motd
-    echo -e "🦠${G}Malware Analyst:      ${W}sudo pacman -Syu athena-malware$W" >> $motd
-    echo -e "📱${B}Mobile Analyst:       ${W}sudo pacman -Syu athena-mobile$W" >> $motd
-    echo -e "🖧 ${Y}Network Analyst:      ${W}sudo pacman -Syu athena-network$W" >> $motd
-    echo -e "🌐${R}OSINT Specialist:     ${W}sudo pacman -Syu athena-osint$W" >> $motd
-    echo -e "❤️${G}Red Teamer:           ${W}sudo pacman -Syu athena-redteamer$W" >> $motd
-    echo -e "🕸️${B}Web Pentester:        ${W}sudo pacman -Syu athena-webpentester$W" >> $motd
-    echo -e >> $motd
-    echo -e >> $motd
-    echo -e "Are you ready to ${B}Learn${W}, ${G}Play${W} and ${R}Hack${W}?" >> $motd
-    echo -e >> $motd
-    echo -e "${G}Hack The Box${W} commands:" >> $motd
-    echo -e >> $motd
-    echo -e "${G}htb-play${W}:           show or play Hack The Box machines!" >> $motd
-    echo -e "${B}htb-stop${W}:           stop the running machine." >> $motd
-    echo -e "${Y}htb-reset${W}:          reset the running machine." >> $motd
-    echo -e "${R}htb-flag${W}:           submit your flag!" >> $motd
-    echo -e "${W}sudo kill openvpn${W}:  interrupt OpenVPN." >> $motd
-    echo -e >> $motd
-    echo -e "$G---------------------------------------------------------------" >> $motd
-    echo -e "$W                   Remember to ${G}Have Fun$W!                 " >> $motd
-    echo -e >> $motd
-    echo -e "$W                      Enjoy ${Y}Athena OS$W                    " >> $motd
-    echo -e "$G---------------------------------------------------------------$W" >> $motd
-
-else
-    echo "Currently it is not available outside a container."
-fi
+    "
+echo -e
+echo -e "🔥Choose your ${G}Hacking Role$W🔥"
+echo -e
+echo -e "🖤${R}Black Hat Omniscient: ${W}sudo pacman -Syu athena-blackhat$W"
+echo -e "🐞${G}Bug Bounty Hunter:    ${W}sudo pacman -Syu athena-bountyhunter$W"
+echo -e "🍘${B}Cracker Specialist:   ${W}sudo pacman -Syu athena-cracker$W"
+echo -e "🎓${Y}Enthusiast Student:   ${W}sudo pacman -Syu athena-student$W"
+echo -e "🔍${R}Forensic Analyst:     ${W}sudo pacman -Syu athena-forensic$W"
+echo -e "🦠${G}Malware Analyst:      ${W}sudo pacman -Syu athena-malware$W"
+echo -e "📱${B}Mobile Analyst:       ${W}sudo pacman -Syu athena-mobile$W"
+echo -e "🖧 ${Y}Network Analyst:      ${W}sudo pacman -Syu athena-network$W"
+echo -e "🌐${R}OSINT Specialist:     ${W}sudo pacman -Syu athena-osint$W"
+echo -e "❤️${G}Red Teamer:           ${W}sudo pacman -Syu athena-redteamer$W"
+echo -e "🕸️${B}Web Pentester:        ${W}sudo pacman -Syu athena-webpentester$W"
+echo -e
+echo -e
+echo -e "Are you ready to ${B}Learn${W}, ${G}Play${W} and ${R}Hack${W}?"
+echo -e
+echo -e "${G}Hack The Box${W} commands:"
+echo -e
+echo -e "${G}htb-play${W}:           show or play Hack The Box machines!"
+echo -e "${B}htb-stop${W}:           stop the running machine."
+echo -e "${Y}htb-reset${W}:          reset the running machine."
+echo -e "${R}htb-flag${W}:           submit your flag!"
+echo -e "${W}sudo kill openvpn${W}:  interrupt OpenVPN."
+echo -e
+echo -e "$G---------------------------------------------------------------"
+echo -e "$W                   Remember to ${G}Have Fun$W!                 "
+echo -e
+echo -e "$W                      Enjoy ${Y}Athena OS$W                    "
+echo -e "$G---------------------------------------------------------------$W"
