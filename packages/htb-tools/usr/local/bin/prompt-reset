@@ -34,6 +34,5 @@ elif [ $result = "zsh" ]; then
     FILE="$HOME/.zshrc.htb.bak"
     if [ -f "$FILE" ]; then
        cp -rf $FILE $HOME/.zshrc
-       exec /usr/bin/zsh
     fi
 fi
