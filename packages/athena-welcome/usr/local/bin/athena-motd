@@ -48,27 +48,27 @@ detect_virt=$(systemd-detect-virt)
 
 echo -e "
         $Y. $W
-       $Y/#\ $W         _   _   _                      $Y  ___  ____  
-      $Y/###\ $W       / \ | |_| |__   ___ _ __   __ _ $Y / _ \/ ___| 
-     $Y/#####\ $W     / _ \| __| '_ \ / _ \ '_ \ / _  |$Y| | | \___ \ 
+       $Y/#\ $W         _   _   _                      $Y  ___  ____
+      $Y/###\ $W       / \ | |_| |__   ___ _ __   __ _ $Y / _ \/ ___|
+     $Y/#####\ $W     / _ \| __| '_ \ / _ \ '_ \ / _  |$Y| | | \\___ \\
     $Y/##.-.##\ $W   / ___ \ |_| | | |  __/ | | | (_| |$Y| |_| |___) |
-   $Y/##(   )##\ $W /_/   \_\__|_| |_|\___|_| |_|\__,_|$Y \___/|____/ 
+   $Y/##(   )##\ $W /_/   \_\__|_| |_|\___|_| |_|\__,_|$Y \___/|____/
   $Y/#.--   --.#\ $W
- $Y/'           '\ 
+ $Y/'           '\\
     "
 echo -e "$G---------------------------------------------------------------"
-echo -e "$W   Good $TIME$A You're Logged Into $Y$A$HOSTNAME$W container! " 
+echo -e "$W   Good $TIME$A You're Logged Into $Y$A$HOSTNAME$W container! "
 echo -e "$G---------------------------------------------------------------"
 echo -e "$Y    KERNEL $G:$W $KERNEL $ARCH                                 "
 echo -e "$G       CPU $G:$W $CPU                                          "
 echo -e "$B    MEMORY $G:$W $MEMORY1 / $MEMORY2 - $MEMPERCENT             "
-#echo -e "$B  USE DISK $G:$W $DISC (Used)                      	          "
+#echo -e "$B  USE DISK $G:$W $DISC (Used)                                 "
 echo -e "$G---------------------------------------------------------------"
-echo -e "$Y  LOAD AVG $G:$W $LOAD1, $LOAD5, $LOAD15		          "
+echo -e "$Y  LOAD AVG $G:$W $LOAD1, $LOAD5, $LOAD15                       "
 echo -e "$G    UPTIME $G:$W $upDays days $upHours hours $upMins minutes $upSecs seconds "
 #echo -e "$B PROCESSES $G:$W You are running $PSU of $PSA processes        "
 echo -e "$B    PACMAN $G:$W $PACMAN packages can be updated               "
-echo -e "$R     USERS $G:$W `users | wc -w` users logged in 	          "
+echo -e "$R     USERS $G:$W `users | wc -w` users logged in               "
 echo -e "$G---------------------------------------------------------------"
 echo -e "  $W Please do not share your login and use$G sudo$W for$R root$W access "
 echo -e "$G---------------------------------------------------------------$W"
@@ -105,17 +105,17 @@ echo -e "
 echo -e
 echo -e "🔥Choose your ${G}Hacking Role$W🔥"
 echo -e
-echo -e "🖤${R}Black Hat Omniscient: ${W}sudo pacman -Syu athena-blackhat$W"
-echo -e "🐞${G}Bug Bounty Hunter:    ${W}sudo pacman -Syu athena-bountyhunter$W"
-echo -e "🍘${B}Cracker Specialist:   ${W}sudo pacman -Syu athena-cracker$W"
-echo -e "🎓${Y}Enthusiast Student:   ${W}sudo pacman -Syu athena-student$W"
-echo -e "🔍${R}Forensic Analyst:     ${W}sudo pacman -Syu athena-forensic$W"
-echo -e "🦠${G}Malware Analyst:      ${W}sudo pacman -Syu athena-malware$W"
-echo -e "📱${B}Mobile Analyst:       ${W}sudo pacman -Syu athena-mobile$W"
-echo -e "🖧 ${Y}Network Analyst:      ${W}sudo pacman -Syu athena-network$W"
-echo -e "🌐${R}OSINT Specialist:     ${W}sudo pacman -Syu athena-osint$W"
-echo -e "❤️${G}Red Teamer:           ${W}sudo pacman -Syu athena-redteamer$W"
-echo -e "🕸️${B}Web Pentester:        ${W}sudo pacman -Syu athena-webpentester$W"
+echo -e "🖤 ${R}Black Hat Omniscient: ${W}sudo pacman -Syu athena-blackhat$W"
+echo -e "🐞 ${G}Bug Bounty Hunter:    ${W}sudo pacman -Syu athena-bountyhunter$W"
+echo -e "🍘 ${B}Cracker Specialist:   ${W}sudo pacman -Syu athena-cracker$W"
+echo -e "🎓 ${Y}Enthusiast Student:   ${W}sudo pacman -Syu athena-student$W"
+echo -e "🔍 ${R}Forensic Analyst:     ${W}sudo pacman -Syu athena-forensic$W"
+echo -e "🦠 ${G}Malware Analyst:      ${W}sudo pacman -Syu athena-malware$W"
+echo -e "📱 ${B}Mobile Analyst:       ${W}sudo pacman -Syu athena-mobile$W"
+echo -e "🌐 ${Y}Network Analyst:      ${W}sudo pacman -Syu athena-network$W"
+echo -e "🕵️ ${R}OSINT Specialist:     ${W}sudo pacman -Syu athena-osint$W"
+echo -e "❤️ ${G}Red Teamer:           ${W}sudo pacman -Syu athena-redteamer$W"
+echo -e "🕸️ ${B}Web Pentester:        ${W}sudo pacman -Syu athena-webpentester$W"
 echo -e
 echo -e
 echo -e "Are you ready to ${B}Learn${W}, ${G}Play${W} and ${R}Hack${W}?"
@@ -129,7 +129,9 @@ echo -e "${R}htb-flag${W}:           submit your flag!"
 echo -e "${W}sudo kill openvpn${W}:  interrupt OpenVPN."
 echo -e
 echo -e "$G---------------------------------------------------------------"
-echo -e "$W                   Remember to ${G}Have Fun$W!                 "
+echo -e "$W            Run ${B}athena-motd$W for showing this message     "
 echo -e
-echo -e "$W                      Enjoy ${Y}Athena OS$W                    "
+echo -e "$W                     Remember to ${G}Have Fun$W!               "
+echo -e
+echo -e "$W                        Enjoy ${Y}Athena OS$W                  "
 echo -e "$G---------------------------------------------------------------$W"
