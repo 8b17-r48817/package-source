@@ -440,18 +440,20 @@ if [[ $# -eq 0 ]] ; then
 fi
 
 { # try
+
     curl -s --location --request GET "https://www.hackthebox.com/api/v4/machine/profile/$machine_name" -H "Authorization: Bearer $appkey" | jq > $machine_json_file 
-    if cat $machine_json_file | grep -q "Machine not found"; then
-       echo "Machine not found"
-       echo
-       rm -rf $machine_json_file
-       exit 1
-    fi
+    
 } || { # catch
     echo -e "\e[31mError. Maybe your API key is incorrect or expired. Renew your API key by running htb-update.\e[0m"
     rm -rf $machine_json_file
     exit 1
 }
+
+if cat $machine_json_file | grep -q "Machine not found"; then
+    echo "Machine not found"
+    rm -rf $machine_json_file
+    exit 1
+fi
 
 name=$(jq -r ".info.name" $machine_json_file)
 rm -rf $machine_json_file
