@@ -32,7 +32,9 @@ class Main(Gtk.Window):
         if not os.path.exists(GUI.home + "/.config/athena-welcome/"):
             os.mkdir(GUI.home + "/.config/athena-welcome/")
             with open(GUI.Settings, "w") as f:
-                f.write("autostart=True")
+                lines = ["autostart=True\n", "role=none"]
+                #f.writelines(["autostart=True\n", "role=none"])
+                f.writelines(lines)
                 f.close()
 
         GUI.GUI(self, Gtk, GdkPixbuf)
@@ -165,8 +167,13 @@ class Main(Gtk.Window):
         self.save_settings(widget.get_active())
 
     def save_settings(self, state):
+        with open(GUI.Settings, "r") as f:
+            contents = f.read()
+            f.close()
+        role_state = contents.split("role=")[1]
         with open(GUI.Settings, "w") as f:
-            f.write("autostart=" + str(state))
+            lines = ["autostart=" + str(state) + "\n", "role=" + str(role_state)]
+            f.writelines(lines)
             f.close()
 
     def load_settings(self):

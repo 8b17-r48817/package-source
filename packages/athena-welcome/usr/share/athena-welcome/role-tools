@@ -13,42 +13,12 @@ role=$1
 gitweb=0
 
 declare -A gitsource=(["https://github.com/danielmiessler/SecLists"]="/usr/share/payloads/SecLists" ["https://github.com/DragonJAR/Security-Wordlist"]="/usr/share/payloads/Security-Wordlist")
+declare -A rolepkg=(["BH"]="athena-blackhat" ["BBH"]="athena-bountyhunter" ["CR"]="athena-cracker" ["ES"]="athena-student" ["FA"]="athena-forensic" ["MA"]="athena-malware" ["MO"]="athena-mobile" ["NA"]="athena-network" ["OS"]="athena-osint" ["RT"]="athena-redteamer" ["WP"]="athena-webpentester")
 
 #echo $role
-if [ $role = "BH" ]; then
-   hacktools="athena-blackhat"
+if [ $role = "BH" ] || [ $role = "BBH" ] || [ $role = "CR" ] || [ $role = "ES" ] || [ $role = "RT" ] || [ $role = "WP" ]; then
    gitweb=1
-elif [ $role = "BBH" ]; then   
-   hacktools="athena-bountyhunter"
-   gitweb=1
-elif [ $role = "CR" ]; then
-   hacktools="athena-cracker"
-   gitweb=1
-elif [ $role = "ES" ]; then
-   hacktools="athena-student"
-   gitweb=1
-elif [ $role = "FA" ]; then
-   hacktools="athena-forensic"
-elif [ $role = "MA" ]; then
-   hacktools="athena-malware"
-elif [ $role = "MO" ]; then
-   hacktools="athena-mobile"
-elif [ $role = "NA" ]; then
-   hacktools="athena-network"
-elif [ $role = "OS" ]; then
-   hacktools="athena-osint"
-elif [ $role = "RT" ]; then
-   hacktools="athena-redteamer"
-   gitweb=1
-elif [ $role = "WP" ]; then
-   hacktools="athena-webpentester"
-   gitweb=1
-else
-   echo "No valid role."
-   exit 1
 fi
-
-index=0
 
 ################################################
 #              UNINSTALLING TOOLS              #
@@ -60,7 +30,14 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then # this grammar (the #[] operator) mea
    echo "Uninstalling any previous role tools..."
    echo
 
-   sudo pacman -Rs --noconfirm athena-blackhat athena-bountyhunter athena-cracker athena-student athena-forensic athena-malware athena-mobile athena-network athena-osint athena-redteamer athena-webpentester
+   for i in "${!rolepkg[@]}"
+   do
+      if pacman -Qq ${rolepkg[$i]} 2> /dev/null ; then
+         roletools=$(pacman -Qi ${rolepkg[$i]} | grep "Depends On" | sed -e "s/Depends On      : //g" -e "s/  / /g" | awk '!seen[$0]++' | awk -F"=" '{print $1}' | awk -F".so" '{print $1}' 2> /dev/null) 
+         sudo pacman -Rs --noconfirm ${rolepkg[$i]}
+         sudo pacman -Rs --noconfirm $roletools 2> /dev/null
+      fi
+   done   
 fi
 
 ################################################
@@ -71,7 +48,7 @@ echo
 echo "Finding fastest Arch mirrors. Don't be scared of any WARNING message here. I'm just finding the fastest mirrors for you..."
 echo
 
-sudo reflector --age 6 --latest 21 --fastest 21 --threads 21 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
+sudo reflector --age 6 --latest 21 --fastest 21 --threads 21 --sort rate --protocol https --save /etc/pacman.d/mirrorlist 2> /dev/null
 
 echo
 echo "Arch mirrors updated!"
@@ -81,18 +58,20 @@ echo
 #            INSTALLING ROLE TOOLS             #
 ################################################
 
+hacktools=${rolepkg[$role]}
+
 echo
-echo "Installing tools..."
+echo "Installing $hacktools tools..."
 echo
 
-sudo pacman -S --noconfirm $hacktools
+sudo pacman -Syyu --noconfirm --needed $hacktools
 
 if [ $gitweb ]; then
    echo
    echo "Retrieving payload repositories..."
    echo
    
-   sudo pacman -S --noconfirm athena-payloadsallthethings athena-fuzzdb athena-auto-wordlists
+   sudo pacman -Syyu --noconfirm --needed athena-payloadsallthethings athena-fuzzdb athena-auto-wordlists
 
    for i in "${!gitsource[@]}"
    do
@@ -114,6 +93,8 @@ if [ $gitweb ]; then
    sudo sed -i 's/^\#.*$//g' /usr/share/payloads/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt && sudo sed -i '/^$/d' /usr/share/payloads/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt
    sudo sed -i 's/^\#.*$//g' /usr/share/payloads/SecLists/Discovery/Web-Content/directory-list-2.3-big.txt && sudo sed -i '/^$/d' /usr/share/payloads/SecLists/Discovery/Web-Content/directory-list-2.3-big.txt
 fi
+
+sed -i "s/^role=.*/role=$role/g" $HOME/.config/athena-welcome/settings.conf
 
 echo "All done. Your role has been set!"
 read -p "Press enter to continue"

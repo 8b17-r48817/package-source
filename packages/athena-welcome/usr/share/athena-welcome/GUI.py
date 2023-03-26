@@ -139,56 +139,37 @@ def GUI(self, Gtk, GdkPixbuf):
     role_combo.add_attribute(renderer_text, "text", 0)
 
     #role_combo.set_entry_text_column(0)
-    
-    athena_packages = [
-        "athena-blackhat",
-        "athena-bountyhunter",
-        "athena-cracker",
-        "athena-student",
-        "athena-forensic",
-        "athena-malware",
-        "athena-mobile",
-        "athena-network",
-        "athena-osint",
-        "athena-redteamer",
-        "athena-webpentester"
-    ]
 
+    with open(Settings, "r") as f:
+        contents = f.read()
+        f.close()
+    strout = contents.split("role=")[1].replace('\n', '')  # Extract the latest installed role from the $HOME/.config/athena-welcome/settings.conf
     
-    for i in athena_packages:
-        #print(i)
-        processinfo = subprocess.Popen(["pacman", "-Qs", i], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        #returncode = processinfo.wait()
-        #print(returncode)
-        strout = processinfo.stdout.read().decode("utf-8") # command output
-        #print(strout)
-        if strout:
-            break
-    
-    if "athena-blackhat" in strout:
+    if "BH" == strout:
         role_combo.set_active(1)
-    elif "athena-bountyhunter" in strout:
+    elif "BBH" == strout:
         role_combo.set_active(2)
-    elif "athena-cracker" in strout:
+    elif "CR" == strout:
         role_combo.set_active(3)
-    elif "athena-student" in strout:
+    elif "ES" == strout:
         role_combo.set_active(4)
-    elif "athena-forensic" in strout:
+    elif "FA" == strout:
         role_combo.set_active(5)
-    elif "athena-malware" in strout:
+    elif "MA" == strout:
         role_combo.set_active(6)
-    elif "athena-mobile" in strout:
+    elif "MO" == strout:
         role_combo.set_active(7)
-    elif "athena-network" in strout:
+    elif "NA" == strout:
         role_combo.set_active(8)
-    elif "athena-osint" in strout:
+    elif "OS" == strout:
         role_combo.set_active(9)
-    elif "athena-redteamer" in strout:
+    elif "RT" == strout:
         role_combo.set_active(10)
-    elif "athena-webpentester" in strout:
+    elif "WP" == strout:
         role_combo.set_active(11)
     else:
         role_combo.set_active(0)
+
     #The position of ComboBox roles is defined in the if-else of the usernames below in hbox1
 
     # ======================================================================
