@@ -170,7 +170,10 @@ class Main(Gtk.Window):
         with open(GUI.Settings, "r") as f:
             contents = f.read()
             f.close()
-        role_state = contents.split("role=")[1]
+        if "role=" in contents:
+            role_state = contents.split("role=")[1]
+        else:
+            role_state = "none"
         with open(GUI.Settings, "w") as f:
             lines = ["autostart=" + str(state) + "\n", "role=" + str(role_state)]
             f.writelines(lines)

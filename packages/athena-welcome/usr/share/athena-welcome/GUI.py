@@ -143,8 +143,11 @@ def GUI(self, Gtk, GdkPixbuf):
     with open(Settings, "r") as f:
         contents = f.read()
         f.close()
-    strout = contents.split("role=")[1].replace('\n', '')  # Extract the latest installed role from the $HOME/.config/athena-welcome/settings.conf
-    
+    if "role=" in contents:
+        strout = contents.split("role=")[1].replace('\n', '')  # Extract the latest installed role from the $HOME/.config/athena-welcome/settings.conf
+    else:
+        strout = "none"
+
     if "BH" == strout:
         role_combo.set_active(1)
     elif "BBH" == strout:
