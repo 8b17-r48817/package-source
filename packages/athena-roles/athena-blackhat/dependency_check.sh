@@ -12,15 +12,10 @@ deps=$(grep "^depends=" PKGBUILD | awk -F"=" '{print $2}' | sed -e "s/[()']//g" 
 echo "Checking for nested dependencies"
 while read -r dep
 do
-    list=$(pacman -Si $dep | grep "Depends On" | sed -e "s/Depends On      : //g" -e "s/  /\n/g" | awk '!seen[$0]++' | awk -F"=" '{print $1}' | awk -F".so" '{print $1}') #Extract sub-dependencies for each package dep
-    while read -r subdep
-    do
-        if [ $target == "$subdep" ]; then
-            echo "The PKGBUILD dependency "$dep" contains the provided dependency $target."
-        fi
-    done <<< $list
-    
-    if [ $target == "$dep" ]; then
-        echo "The typed dependency "$dep" is directly inside the PKGBUILD ad dependency."
+    echo "Package: $dep"
+    list=$(pactree -su $dep)
+
+    if [[ "$list" =~ "$target" ]]; then
+        echo "The PKGBUILD dependency "$dep" contains the provided dependency $target."
     fi
 done <<< $deps
