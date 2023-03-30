@@ -1,6 +1,6 @@
 pkgname=athena-welcome
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Welcome App for Athena"
 arch=('any')
 license=("custom")
@@ -31,4 +31,4 @@ package() {
   chmod 755 "${pkgdir}/usr/share/athena-welcome/role-tools"
 
 }
-sha256sums=('7c410f77b4cfdc9117666507ec9f3ca4e5ca1043e99f566fad0f2d47a42a6872')
+sha256sums=('1763f322627c2b06acbec68c117752c122b39cbc2441b09b8eb7acfd4bdd2812')
