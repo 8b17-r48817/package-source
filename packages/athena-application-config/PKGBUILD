@@ -20,6 +20,7 @@ package() {
   cp -rf "${srcdir}"/etc/skel/.flag-work-once "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.icons" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.local" "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}/etc/skel/.nanorc" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.tmux" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.tmux.conf" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.vim_runtime" "${pkgdir}/etc/skel/"
@@ -87,5 +88,8 @@ package() {
   install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/scripts/copy_line.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/scripts/"
   install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/scripts/copy_pane_pwd.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/scripts/"
   install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/scripts/helpers.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/scripts/"
+
+  # Fixing nano-syntax-highlighting bug: https://github.com/scopatz/nanorc/pull/399
+  sed -i 's/icolor brightnormal " brightnormal"/icolor normal " brightnormal"/g' "$pkgdir/etc/skel/.nanorc"
 }
-sha256sums=('0861f253a65383526aa55a89d3740d28f8d813528fb970ae4af9fa19f0a056ad')
+sha256sums=('f56e1ba263242c9e3afda1da0a981937d4179323270763ecd1f27b1f77dae4af')
