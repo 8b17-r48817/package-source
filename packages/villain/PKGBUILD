@@ -1,5 +1,5 @@
 pkgname=villain
-pkgver=104.cab1716
+pkgver=113.5d0a3a1
 pkgrel=1
 pkgdesc='Windows & Linux backdoor generator and multi-session handler that allows users to connect with other machines running Villain and share their backdoor sessions, handy for working as a team.'
 arch=('any')
