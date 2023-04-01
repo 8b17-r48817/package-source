@@ -10,7 +10,7 @@ if [ -f /usr/bin/snapper ]; then
 		snapper --no-dbus delete $i
 	done
 
-sed -i 's/#GRUB_BTRFS_LIMIT=.*/GRUB_BTRFS_LIMIT="10"/g' /etc/default/grub-btrfs/config
+sed -i 's/#GRUB_BTRFS_LIMIT=.*/GRUB_BTRFS_LIMIT="5"/g' /etc/default/grub-btrfs/config
 sed -i 's/#GRUB_BTRFS_SHOW_SNAPSHOTS_FOUND=.*/GRUB_BTRFS_SHOW_SNAPSHOTS_FOUND="false"/g' /etc/default/grub-btrfs/config
 sed -i 's/#GRUB_BTRFS_SHOW_TOTAL_SNAPSHOTS_FOUND=.*/GRUB_BTRFS_SHOW_TOTAL_SNAPSHOTS_FOUND="false"/g' /etc/default/grub-btrfs/config
 
@@ -53,9 +53,9 @@ BACKGROUND_COMPARISON="yes"
 NUMBER_CLEANUP="yes"
 
 # limit for number cleanup
-NUMBER_MIN_AGE="1800"
-NUMBER_LIMIT="10"
-NUMBER_LIMIT_IMPORTANT="5"
+NUMBER_MIN_AGE="900"
+NUMBER_LIMIT="5"
+NUMBER_LIMIT_IMPORTANT="2"
 
 
 # create hourly snapshots
@@ -65,9 +65,9 @@ TIMELINE_CREATE="no"
 TIMELINE_CLEANUP="yes"
 
 # limits for timeline cleanup
-TIMELINE_MIN_AGE="1800"
-TIMELINE_LIMIT_HOURLY="5"
-TIMELINE_LIMIT_DAILY="7"
+TIMELINE_MIN_AGE="900"
+TIMELINE_LIMIT_HOURLY="3"
+TIMELINE_LIMIT_DAILY="3"
 TIMELINE_LIMIT_WEEKLY="0"
 TIMELINE_LIMIT_MONTHLY="0"
 TIMELINE_LIMIT_YEARLY="0"
@@ -77,7 +77,7 @@ TIMELINE_LIMIT_YEARLY="0"
 EMPTY_PRE_POST_CLEANUP="yes"
 
 # limits for empty pre-post-pair cleanup
-EMPTY_PRE_POST_MIN_AGE="1800"
+EMPTY_PRE_POST_MIN_AGE="900"
 EOF
 
 echo "Done."
