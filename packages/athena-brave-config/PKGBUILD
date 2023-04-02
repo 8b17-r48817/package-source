@@ -1,6 +1,6 @@
 pkgname=athena-brave-config
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Brave configuration for Athena"
 arch=('any')
 license=("custom")
@@ -16,4 +16,4 @@ package() {
   cp -rf "${srcdir}/etc/skel/.config/psd/psd.conf" "${pkgdir}/etc/skel/.config/psd/"  
   
 }
-sha256sums=('7ab0120068099f405fc9b98cf2a803300d8059394ba338f51f84bc3a1fc0d6bb')
+sha256sums=('c7ebed82697bc29a1bae79c0e871b7adba148a869a736098be4604d0773059ed')
