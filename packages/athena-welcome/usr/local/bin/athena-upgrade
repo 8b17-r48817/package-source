@@ -9,7 +9,6 @@ touch "$HOME/flag-work-once"
 
 ### Here report new packages that need to be installed by default in Athena in order that also old users can get them
 # sudo pacman -S <package-name>
-sudo pacman -S --noconfirm --needed net-tools alacritty
 
 echo
 echo -e "\e[32mSynchronize the updated configuration files in your HOME folder..."
