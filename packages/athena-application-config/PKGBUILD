@@ -92,4 +92,4 @@ package() {
   # Fixing nano-syntax-highlighting bug: https://github.com/scopatz/nanorc/pull/399
   sed -i 's/icolor brightnormal " brightnormal"/icolor normal " brightnormal"/g' "$pkgdir/etc/skel/.nanorc"
 }
-sha256sums=('f56e1ba263242c9e3afda1da0a981937d4179323270763ecd1f27b1f77dae4af')
+sha256sums=('d26be6440213d793b08d977469963bf952a71a123d35e6d90f343eddfaafecd7')

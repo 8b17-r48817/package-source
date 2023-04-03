@@ -151,8 +151,3 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
      gsettings set org.gnome.shell disable-user-extensions false
 fi
-
-if ([ "$detect_virt" == "wsl" ] && [ "$DISPLAY" == ":0" ]); then
-    rm -rf /run/user/1000/wayland-0*
-    source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh 2> /dev/null
-fi
