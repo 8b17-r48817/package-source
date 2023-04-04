@@ -127,6 +127,9 @@ if not file.exists ():
         file.writelines(lines)
         file.close()
 
+if (detect_virt == "wsl" and Xdisplay == ":0"):
+    subprocess.call("source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh 2> /dev/null",shell=True)
+
 if args.reset:
     print("Resetting the Hack The Box API Key...")
     if ("docker" in detect_virt or "podman" in detect_virt) and not Xdisplay:
