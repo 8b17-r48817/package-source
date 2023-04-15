@@ -187,8 +187,8 @@ def GUI(self, Gtk, GdkPixbuf):
 
     buttonkeys = Gtk.Button(label="")
     buttonkeys_label = buttonkeys.get_child()
-    buttonkeys_label.set_markup("<span size='large'><b>Set BlackArch and Chaotic keys</b></span>")
-    buttonkeys.connect("clicked", self.on_keys_clicked)
+    buttonkeys_label.set_markup("<span size='large'><b>Update Calamares Installer</b></span>")
+    buttonkeys.connect("clicked", self.on_calamares_update_clicked)
     buttonkeys.set_size_request(0, 50)
 
     #button2 = Gtk.Button(label="")

@@ -25,6 +25,7 @@ if pacman -Qq $package > /dev/null ; then
     sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/fish/g' /etc/skel/.local/share/applications/*
     sed -i 's/Bash/Fish/g' /etc/skel/.local/share/applications/*
     sed -i "/export SHELL=/c\export SHELL=\$(which fish)" /etc/skel/.bashrc
+    pacman -Rns bash-completion --noconfirm
 
 cat >> /etc/profile.d/shell.sh << EOF
 export SHELL=\$(which fish)
@@ -44,6 +45,7 @@ if pacman -Qq $package > /dev/null ; then
     sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/zsh/g' /etc/skel/.local/share/applications/*
     sed -i 's/Bash/Zsh/g' /etc/skel/.local/share/applications/*
     sed -i "/export SHELL=/c\export SHELL=\$(which zsh)" /etc/skel/.bashrc
+    pacman -Rns bash-completion --noconfirm
 
 cat >> /etc/profile.d/shell.sh << EOF
 export SHELL=\$(which zsh)

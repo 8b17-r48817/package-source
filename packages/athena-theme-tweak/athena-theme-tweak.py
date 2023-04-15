@@ -57,7 +57,7 @@ def arg_parse():
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument("-b", "--browser", action='store_true', help="set the current browser logo in PenTOXIC menu")
     parser.add_argument("-c", "--colored", action='store_true', help="let's give some random colored output")
-    parser.add_argument("-e", "--emulator", choices=["alacritty", "kitty"], help="specify a terminal emulator to be set [alacritty|kitty]")
+    parser.add_argument("-e", "--emulator", choices=["alacritty", "cool-retro-term", "gnome-terminal", "kitty", "konsole", "urxvt", "xterm"], help="specify a terminal emulator to be set [alacritty|cool-retro-term|gnome-terminal|kitty|konsole|urxvt|xterm]")
     parser.add_argument("-h", "--help", action='store_true', help="show this help message and exit")
     parser.add_argument("-l", "--list", action='store_true', help="list all available Athena themes")
     parser.add_argument("-t", "--theme", choices=["AkameGaKill", "BlueEyesSamurai", "Graphite", "CyborgGruvbox", "SweetDark"], help="specify an Athena theme to be set [AkameGaKill|BlueEyesSamurai|Graphite|CyborgGruvbox|SweetDark]")
@@ -74,7 +74,7 @@ def help():
    
    print("-b, --browser                 set the current browser logo in PenTOXIC menu")
    print("-c, --colored                 let's give some random colored output")
-   print("-e, --emulator                specify a terminal emulator to be set [alacritty|kitty]")
+   print("-e, --emulator                specify a terminal emulator to be set [alacritty|cool-retro-term|gnome-terminal|kitty|konsole|urxvt|xterm]")
    print("-h, --help                    show this help message and exit")
    print("-l, --list                    list all available Athena themes")
    print("-t, --theme <theme-name>      specify an Athena theme to be set [AkameGaKill|BlueEyesSamurai|Graphite|CyborgGruvbox|SweetDark]")
@@ -309,30 +309,51 @@ if args.theme:
 
     exit()
 
+terminal_map = {
+    "alacritty": "alacritty",
+    "cool-retro-term": "cool-retro-term",
+    "gnome-terminal": "gnome-terminal",
+    "kitty": "kitty",
+    "Konsole": "konsole",
+    "urxvt": "rxvt-unicode",
+    "xterm": "xterm"
+}
+
+terminal_command = {
+    "alacritty": "-e",
+    "cool-retro-term": "-e",
+    "gnome-terminal": "--",
+    "kitty": "-e",
+    "konsole": "-e",
+    "urxvt": "-e",
+    "xterm": "-e"
+}
+
 if args.emulator:
     chosen_emulator=args.emulator
 
-    if chosen_emulator == "alacritty":
-        subprocess.call(keybind + " command \"alacritty\"", shell=True)
-        subprocess.call("gsettings set org.gnome.desktop.default-applications.terminal exec alacritty", shell=True)
-        subprocess.call("find "+home+"/.local/share/applications -type f -name '*.desktop' -exec sed -i 's/kitty/alacritty -e/g' {} +", shell=True)
-        subprocess.call("sudo sed -i 's/\/usr\/share\/icons\/pentoxic\/kitty.png/\/usr\/share\/pixmaps\/Alacritty.svg/g' /usr/share/athena-application-config/dconf-shell.ini", shell=True)
-        subprocess.call("sudo sed -i 's/Kitty/Alacritty/g' /usr/share/athena-application-config/dconf-shell.ini", shell=True)
-        subprocess.call("sudo sed -i 's/kitty/alacritty -e/g' /usr/share/athena-application-config/dconf-shell.ini", shell=True)
-        subprocess.call("sudo cp -rf /usr/share/athena-application-config/dconf-shell.ini /usr/share/athena-application-config/dconf-shell.ini.bak", shell=True)
-        subprocess.call("dconf load /org/gnome/shell/ < /usr/share/athena-application-config/dconf-shell.ini", shell=True)
-        subprocess.call("sudo sed -i 's/kitty/alacritty -e/g' /usr/share/athena-welcome/athena-welcome.py", shell=True)
-        subprocess.call("sudo sed -i 's/kitty/alacritty -e/g' /usr/share/pwnage/hackthebox/htb-update.py", shell=True)
-    elif chosen_emulator == "kitty":
-        subprocess.call(keybind + " command \"kitty\"", shell=True)
-        subprocess.call("gsettings set org.gnome.desktop.default-applications.terminal exec kitty", shell=True)
-        subprocess.call("find "+home+"/.local/share/applications -type f -name '*.desktop' -exec sed -i 's/alacritty -e/kitty/g' {} +", shell=True)
-        subprocess.call("sudo sed -i 's/\/usr\/share\/pixmaps\/Alacritty.svg/\/usr\/share\/icons\/pentoxic\/kitty.png/g' /usr/share/athena-application-config/dconf-shell.ini", shell=True)
-        subprocess.call("sudo sed -i 's/Alacritty/Kitty/g' /usr/share/athena-application-config/dconf-shell.ini", shell=True)
-        subprocess.call("sudo sed -i 's/alacritty -e/kitty/g' /usr/share/athena-application-config/dconf-shell.ini", shell=True)
-        subprocess.call("sudo cp -rf /usr/share/athena-application-config/dconf-shell.ini /usr/share/athena-application-config/dconf-shell.ini.bak", shell=True)
-        subprocess.call("dconf load /org/gnome/shell/ < /usr/share/athena-application-config/dconf-shell.ini", shell=True)
-        subprocess.call("sudo sed -i 's/alacritty -e/kitty/g' /usr/share/athena-welcome/athena-welcome.py", shell=True)
-        subprocess.call("sudo sed -i 's/alacritty -e/kitty/g' /usr/share/pwnage/hackthebox/htb-update.py", shell=True)
-    exit()
+    for i in terminal_map:
+        terminal_bin = i
+        terminal_pkg = terminal_map[i]
+        terminal_arg_cmd = terminal_command[i]
+        
+        if chosen_emulator == terminal_bin:
+            terminal_check = subprocess.getoutput("command -v "+terminal_bin)
+            if terminal_check:
+                print("The package "+terminal_pkg+" is installed.")
+            else:
+                print("The package "+terminal_pkg+" is not installed. Please, install it.")
+                exit()
+            subprocess.call(keybind + " command \""+terminal_bin+"\"", shell=True)
+            subprocess.call("gsettings set org.gnome.desktop.default-applications.terminal exec "+terminal_bin, shell=True)
+
+            subprocess.call("find "+home+"/.local/share/applications -type f -name '*.desktop' -exec sed -i -e 's/alacritty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/cool-retro-term -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/gnome-terminal --/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/kitty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/konsole -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/urxvt -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/xterm -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' {} +", shell=True)
+
+            subprocess.call("sudo sed -i -e 's/alacritty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/cool-retro-term -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/gnome-terminal --/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/kitty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/konsole -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/urxvt -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/xterm -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' /usr/share/athena-application-config/dconf-shell.ini /usr/share/pwnage/hackthebox/htb-update.py", shell=True)
+
+            subprocess.call("sudo sed -i -e 's/\"alacritty\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"cool-retro-term\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"gnome-terminal\", \"--\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"kitty\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"konsole\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"urxvt\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"xterm\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' /usr/share/athena-welcome/athena-welcome.py", shell=True)
+
+            subprocess.call("sudo cp -rf /usr/share/athena-application-config/dconf-shell.ini /usr/share/athena-application-config/dconf-shell.ini.bak", shell=True)
+            subprocess.call("dconf load /org/gnome/shell/ < /usr/share/athena-application-config/dconf-shell.ini", shell=True)
+            exit()
         

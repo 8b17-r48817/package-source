@@ -2,7 +2,13 @@
 
 echo -e "\e[32mFixing known issues...\e[0m"
 sudo sed -i "/mirror.osbeck.com/d" /etc/pacman.d/mirrorlist
+sudo sed -i "/geo.mirror.pkgbuild.com/d" /etc/pacman.d/mirrorlist
+sudo sed -i "/mirror.rackspace.com/d" /etc/pacman.d/mirrorlist
+sudo sed -i "/mirror.leaseweb.net/d" /etc/pacman.d/mirrorlist
 sudo sed -i "s/#Server/Server/g" /etc/pacman.d/blackarch-mirrorlist
+sudo sed -i "/mirrors.fosshost.org/d" /etc/pacman.d/blackarch-mirrorlist
+sudo sed -i "/mirrors.fossho.st/d" /etc/pacman.d/blackarch-mirrorlist
 sudo sed -i "/cdn-mirror.chaotic.cx/d" /etc/pacman.d/chaotic-mirrorlist
+
 sudo pacman -Syy
 echo -e "\e[32mDone.\e[0m"

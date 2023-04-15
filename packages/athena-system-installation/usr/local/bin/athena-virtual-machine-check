@@ -75,6 +75,9 @@ if [ $result = "oracle" ];
 			pacman -Rns qemu-guest-agent --noconfirm
 			echo "Removed qemu-guest-agent"
 		fi
+
+		#installing virtualbox packages
+		pacman -S --noconfirm --needed virtualbox-guest-utils
 fi
 
 if [ $result = "kvm" ];
@@ -129,6 +132,63 @@ if [ $result = "kvm" ];
 		fi
 fi
 
+if [ $result = "qemu" ];
+	then
+		#remove virtualbox
+		if pacman -Qi virtualbox-guest-utils &> /dev/null; then
+			systemctl disable vboxservice.service
+			pacman -Rns virtualbox-guest-utils --noconfirm
+			echo "Removed virtualbox-guest-utils"
+                        rm /etc/systemd/system/multi-user.target.wants/vboxservice.service
+                        echo "Removed vboxservice.service if still exists"
+		fi
+
+		if pacman -Qi virtualbox-guest-utils-nox &> /dev/null; then
+			systemctl disable vboxservice.service
+			pacman -Rns virtualbox-guest-utils-nox --noconfirm
+			echo "Removed virtualbox-guest-utils-nox"
+                        rm /etc/systemd/system/multi-user.target.wants/vboxservice.service
+                        echo "Removed vboxservice.service if still exists"
+		fi
+
+		#remove vmware
+		if [ -f /etc/xdg/autostart/vmware-user.desktop ]; then
+   			rm /etc/xdg/autostart/vmware-user.desktop
+			echo "Removed vmware-user.desktop"
+		fi
+
+		if pacman -Qi open-vm-tools &> /dev/null; then
+			systemctl disable vmware-vmblock-fuse.service
+			echo "Disabled vmware-vmblock-fuse.service"
+			systemctl disable vmtoolsd.service
+			echo "Disabled vmtoolsd.service"
+			systemctl disable mnt-hgfs.mount
+			echo "Disabled mnt-hgfs.mount"
+			pacman -Rns open-vm-tools --noconfirm
+			echo "Removed open-vm-tools"
+		fi
+
+		if pacman -Qi xf86-video-vmware &> /dev/null; then
+			pacman -Rns xf86-video-vmware --noconfirm
+			echo "Removed xf86-video-vmware"
+		fi
+
+		if [ -f /etc/systemd/system/multi-user.target.wants/vmtoolsd.service ]; then
+	   		rm /etc/systemd/system/multi-user.target.wants/vmtoolsd.service
+			echo "Removed vmtoolsd.service if still exists"
+			rm /etc/systemd/system/multi-user.target.wants/vmware-vmblock-fuse.service
+			echo "Removed vmware-vmblock-fuse.service if still exists"
+			rm /etc/systemd/system/mnt-hgfs.mount
+			echo "Removed mnt-hgfs.mount if still exists"
+			rm /etc/modules-load.d/open-vm-tools.conf
+			echo "Removed open-vm-tools.conf if still exists"
+		fi
+
+		#installing virtualbox packages
+		pacman -S --noconfirm --needed qemu-guest-agent
+		
+fi
+
 if [ $result = "vmware" ];
 	then
 		#remove virtualbox
@@ -153,8 +213,17 @@ if [ $result = "vmware" ];
 			pacman -Rns qemu-guest-agent --noconfirm
 			echo "Removed qemu-guest-agent"
 		fi
+
+		#installing vmware packages
+		pacman -S --noconfirm --needed open-vm-tools xf86-video-vmware
+
+		#setting shared folders service
+		mkdir -p /etc/modules-load.d
+		echo -n "fuse" > /etc/modules-load.d/open-vm-tools.conf
 		systemctl enable mnt-hgfs.mount
 		modprobe -v fuse
+
+		#No need to enable vmtoolsd and vmware-vmblock-fuse services because they are already in /etc/systemd/system/multi-user.target.wants folder in archiso
 
 		sed -in '/^MODULES*/ s/"$/ vsock vmw_vsock_vmci_transport vmw_balloon vmw_vmci vmwgfx"/g' /etc/mkinitcpio.conf
                 mkinitcpio -P

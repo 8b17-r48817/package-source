@@ -1,3 +1,12 @@
+- name: "QEMU Virtual Machine"
+  description: "Install packages for QEMU VM"
+  critical: false
+  hidden: false
+  selected: false
+  immutable: false
+  expanded: false
+  packages:
+    - qemu-guest-agent
 - name: "VMware Virtual Machine"
   description: "Install packages for VMware VM"
   critical: false

@@ -106,8 +106,8 @@ class Main(Gtk.Window):
         t.daemon = True
         t.start()
 
-    def on_keys_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["kitty", os.path.expandvars('$SHELL'), "-c", "/usr/local/bin/set-repo-keys"],))
+    def on_calamares_update_clicked(self, widget):
+        t = threading.Thread(target=self.run_app, args=(["alacritty", "-e", os.path.expandvars('$SHELL'), "-c", "pacman -S --noconfirm --needed athena-calamares-config athena-system-installation"],))
         t.daemon = True
         t.start()
 
@@ -117,7 +117,7 @@ class Main(Gtk.Window):
         #t.start()
 
     def on_buttonhtb_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["kitty", os.path.expandvars('$SHELL'), "-c", "/usr/local/bin/htb-update"],))
+        t = threading.Thread(target=self.run_app, args=(["alacritty", "-e", os.path.expandvars('$SHELL'), "-c", "/usr/local/bin/htb-update"],))
         t.daemon = True
         t.start()
 
@@ -127,7 +127,7 @@ class Main(Gtk.Window):
         t.start()
 
     def on_buttonrtm_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["kitty", os.path.expandvars('$SHELL'), "-c", "/usr/share/athena-welcome/role-tools "+self.role_id],))
+        t = threading.Thread(target=self.run_app, args=(["alacritty", "-e", os.path.expandvars('$SHELL'), "-c", "/usr/share/athena-welcome/role-tools "+self.role_id],))
         t.daemon = True
         t.start()
 
@@ -137,7 +137,7 @@ class Main(Gtk.Window):
         t.start()
 
     def on_buttonupdate_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["kitty", os.path.expandvars('$SHELL'), "-c", "/usr/local/bin/athena-upgrade"],))
+        t = threading.Thread(target=self.run_app, args=(["alacritty", "-e", os.path.expandvars('$SHELL'), "-c", "/usr/local/bin/athena-upgrade"],))
         t.daemon = True
         t.start()
 
@@ -288,9 +288,9 @@ Do you want to install it?")
         GLib.idle_add(self.button8.set_sensitive, False)
         subprocess.run(["pkexec", "/usr/bin/reflector", "--age", "6", "--latest", "21", "--fastest", "21", "--threads", "21", "--sort", "rate", "--protocol", "https", "--save", "/etc/pacman.d/mirrorlist"], shell=False)
         GLib.idle_add(self.cc.set_markup, "<span foreground='orange'><b><i>Updating BlackArch mirrorlist</i></b> \nThis may take around 5 minutes, please wait...</span>")  # noqa
-        subprocess.run(["pkexec", "/usr/local/bin/mirroars", "-t", "-r", "blackarch", "/etc/pacman.d/blackarch-mirrorlist", "-w"], shell=False)
+        subprocess.run(["pkexec", "/usr/local/bin/mirroars", "-n", "21", "-m", "5", "-p", "-t", "-r", "blackarch", "/etc/pacman.d/blackarch-mirrorlist", "-w"], shell=False)
         GLib.idle_add(self.cc.set_markup, "<span foreground='orange'><b><i>Updating Chaotic AUR mirrorlist</i></b> \nThis may take some time, please wait...</span>")  # noqa
-        subprocess.run(["pkexec", "/usr/local/bin/mirroars", "-t", "-r", "chaotic-aur", "/etc/pacman.d/chaotic-mirrorlist", "-w"], shell=False)
+        subprocess.run(["pkexec", "/usr/local/bin/mirroars", "-n", "21", "-m", "5", "-p", "-t", "-r", "chaotic-aur", "/etc/pacman.d/chaotic-mirrorlist", "-w"], shell=False)
         GLib.idle_add(self.cc.set_markup, "<span foreground='orange'><b><i>Running pacman sync...</i></b></span>")  # noqa
         subprocess.run(["pkexec", "/usr/bin/pacman", "-Syy"], shell=False)
         print("FINISHED!!!")

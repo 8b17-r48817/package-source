@@ -4,7 +4,7 @@ pkgrel=2
 pkgdesc="Welcome App for Athena"
 arch=('any')
 license=("custom")
-depends=('libwnck3' 'reflector' 'rsync')
+depends=('libwnck3' 'parallel' 'reflector' 'rsync')
 source=("$pkgname.tar.gz")
 
 package() {
@@ -21,7 +21,6 @@ package() {
   install -Dm755 "${srcdir}/usr/local/bin/role-viewer" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/tool-recipe" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/mirroars" "${pkgdir}/usr/local/bin/"
-  install -Dm755 "${srcdir}/usr/local/bin/set-repo-keys" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/athena-motd" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/athena-upgrade" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/athena-fix" "${pkgdir}/usr/local/bin/"
@@ -31,4 +30,4 @@ package() {
   chmod 755 "${pkgdir}/usr/share/athena-welcome/role-tools"
 
 }
-sha256sums=('f273a20f9a01b5545369fe59f0234790841bc4f68c4e76170150ee55ec854954')
+sha256sums=('3a2dc7e6adbcdb20462d6970b99a408ecd8c7dd011dd2406bb34aae3b5fdbb9b')

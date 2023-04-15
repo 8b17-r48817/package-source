@@ -25,7 +25,7 @@ do
     fi
 done
 
-package=nvidia-dkms
+package=nvidia-open-dkms
 if pacman -Qq $package > /dev/null ; then
   sed -in '/^MODULES*/ s/"$/ nvidia nvidia_modeset nvidia_uvm nvidia_drm"/g' /etc/mkinitcpio.conf
   mkinitcpio -P

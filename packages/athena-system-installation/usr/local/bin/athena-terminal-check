@@ -1,0 +1,55 @@
+#!/bin/bash
+#set -e
+###############################################################################
+# Author	:	Antonio Voza
+###############################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+###############################################################################
+echo
+echo
+echo "#################################"
+echo "Start athena-terminal-check"
+echo "#################################"
+echo
+
+while [ -e "/var/lib/pacman/db.lck" ];
+do
+    echo 'Pacman is not ready yet. Will try again in 5 seconds.'
+    seconds=$(($seconds + 5))
+    sleep 5
+    if [[ "$seconds" == "30" ]]; then
+        echo 'Warning: removing pacman db.lck!'
+        rm /var/lib/pacman/db.lck
+    fi
+done
+
+declare -A terminal_map=( ["alacritty"]="alacritty" ["cool-retro-term"]="cool-retro-term" ["gnome-terminal"]="gnome-terminal" ["kitty"]="kitty" ["konsole"]="konsole" ["urxvt"]="rxvt-unicode" ["xterm"]="xterm")
+declare -A terminal_command=( ["alacritty"]="-e" ["cool-retro-term"]="-e" ["gnome-terminal"]="--" ["kitty"]="-e" ["konsole"]="-e" ["urxvt"]="-e" ["xterm"]="-e")
+
+keybind="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+
+for i in "${!terminal_map[@]}"
+do
+  terminal_bin="$i"
+  terminal_pkg="${terminal_package[$i]}"
+  terminal_arg_cmd="${terminal_command[$i]}"
+  
+  if pacman -Qq $terminal_pkg > /dev/null ; then
+    sed -i -e "s/alacritty/$terminal_bin/g" /etc/profile.d/run-once.sh
+
+    find /etc/skel/.local/share/applications -type f -name '*.desktop' -exec sed -i -e "s/alacritty -e/$terminal_bin $terminal_arg_cmd/g" -e "s/cool-retro-term -e/$terminal_bin $terminal_arg_cmd/g" -e "s/gnome-terminal --/$terminal_bin $terminal_arg_cmd/g" -e "s/kitty -e/$terminal_bin $terminal_arg_cmd/g" -e "s/konsole -e/$terminal_bin $terminal_arg_cmd/g" -e "s/urxvt -e/$terminal_bin $terminal_arg_cmd/g" -e "s/xterm -e/$terminal_bin $terminal_arg_cmd/g" {} +
+
+    sed -i -e "s/alacritty -e/$terminal_bin $terminal_arg_cmd/g" -e "s/cool-retro-term -e/$terminal_bin $terminal_arg_cmd/g" -e "s/gnome-terminal --/$terminal_bin $terminal_arg_cmd/g" -e "s/kitty -e/$terminal_bin $terminal_arg_cmd/g" -e "s/konsole -e/$terminal_bin $terminal_arg_cmd/g" -e "s/urxvt -e/$terminal_bin $terminal_arg_cmd/g" -e "s/xterm -e/$terminal_bin $terminal_arg_cmd/g" /usr/share/athena-application-config/dconf-shell.ini /usr/share/pwnage/hackthebox/htb-update.py
+
+    sed -i -e "s/\"alacritty\", \"-e\"/\"$terminal_bin\", \"$terminal_arg_cmd\"/g" -e "s/\"cool-retro-term\", \"-e\"/\"$terminal_bin\", \"$terminal_arg_cmd\"/g" -e "s/\"gnome-terminal\", \"--\"/\"$terminal_bin\", \"$terminal_arg_cmd\"/g" -e "s/\"kitty\", \"-e\"/\"$terminal_bin\", \"$terminal_arg_cmd\"/g" -e "s/\"konsole\", \"-e\"/\"$terminal_bin\", \"$terminal_arg_cmd\"/g" -e "s/\"urxvt\", \"-e\"/\"$terminal_bin\", \"$terminal_arg_cmd\"/g" -e "s/\"xterm\", \"-e\"/\"$terminal_bin\", \"$terminal_arg_cmd\"/g" /usr/share/athena-welcome/athena-welcome.py
+  fi
+
+done
+
+echo
+echo "#################################"
+echo "End athena-terminal-check"
+echo "#################################"
+echo

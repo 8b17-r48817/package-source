@@ -65,14 +65,7 @@ def htb_machines_to_flypie(data,param):
 
         shell=os.path.expandvars('$SHELL')
 
-        if "bash" in shell:
-            machine_command = 'kitty /usr/bin/bash -c \\\\\\\\\\\"htb-spawn '+machine_name+';bash\\\\\\\\\\\"'
-        elif "fish" in shell:
-            machine_command = 'kitty /usr/bin/fish -c \\\\\\\\\\\"htb-spawn '+machine_name+';fish\\\\\\\\\\\"'
-        elif "zsh" in shell:
-            machine_command = 'kitty /usr/bin/zsh -c \\\\\\\\\\\"htb-spawn '+machine_name+';zsh\\\\\\\\\\\"'
-        else:
-            machine_command = 'kitty /usr/bin/bash -c \\\\\\\\\\\"htb-spawn '+machine_name+';bash\\\\\\\\\\\"'
+        machine_command = 'alacritty -e /usr/bin/'+shell+' -c \\\\\\\\\\\"htb-spawn '+machine_name+';'+shell+'\\\\\\\\\\\"'
 
         # Open the url image, set stream to True, this will return the stream content.
         r = requests.get(avatar_url, stream = True)
