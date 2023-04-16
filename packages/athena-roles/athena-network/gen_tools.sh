@@ -1,6 +1,6 @@
 #!/bin/sh
 
-to_exclude=("argus-clients" "xplico" "gerix-wifi-cracker" "pmacct" "sagan")
+to_exclude=("argus-clients" "xplico" "gerix-wifi-cracker" "pmacct" "sagan" "fastnetmon" "vpnpivot" "ncpfs")
 
 sed -i '/depends=/d' PKGBUILD
 sed -i '/^$/d' PKGBUILD #Delete all empty lines

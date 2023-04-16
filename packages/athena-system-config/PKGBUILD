@@ -19,6 +19,7 @@ package() {
   cp -rf "${srcdir}"/etc/modprobe.d/* "${pkgdir}/etc/modprobe.d/"
   cp -rf "${srcdir}/etc/pacman.d/gnupg/gpg.conf" "${pkgdir}/etc/pacman.d/gnupg/"
   cp -rf "${srcdir}"/etc/pacman.d/hooks/* "${pkgdir}/etc/pacman.d/hooks/"
+  cp -rf "${srcdir}/etc/vconsole.conf" "${pkgdir}/etc/"
 
   cp -rf "${srcdir}/usr/lib/os-release-athena" "${pkgdir}/usr/lib/"
   cp -rf "${srcdir}"/usr/local/bin/* "${pkgdir}/usr/local/bin/"  
@@ -26,4 +27,4 @@ package() {
   cp -rf "${srcdir}"/usr/share/icons/hicolor/* "${pkgdir}/usr/share/icons/hicolor/"
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
-sha256sums=('16985e5a8f149a57632291ff77defdaee1d01e815da8d3aedb0591daf728504e')
+sha256sums=('0ae3d1f34cea32690cd67ab8b4be3c5e410c5c293411910819ddf300fe2327fa')

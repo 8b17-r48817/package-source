@@ -1,6 +1,6 @@
 #!/bin/sh
 
-to_exclude=("facebrok" "trape")
+to_exclude=("facebrok" "trape" "vpnpivot")
 
 sed -i '/depends=/d' PKGBUILD
 sed -i '/^$/d' PKGBUILD #Delete all empty lines

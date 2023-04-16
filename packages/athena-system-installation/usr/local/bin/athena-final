@@ -75,6 +75,10 @@ sed -i 's/#BUILDDIR=.*/BUILDDIR=\/tmp\/makepkg/g' /etc/makepkg.conf
 echo
 
 echo "#################################"
+echo "Anacron Jobs"
+echo "#################################"
+echo "15      5       htb-update              /usr/local/bin/htb-update" >> /etc/anacrontab
+echo "#################################"
 echo "Enable last services"
 echo "#################################"
 systemctl enable set-cfs-tweaks.service

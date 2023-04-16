@@ -25,14 +25,41 @@ do
     fi
 done
 
-package=nvidia-open-dkms
-if pacman -Qq $package > /dev/null ; then
-  sed -in '/^MODULES*/ s/"$/ nvidia nvidia_modeset nvidia_uvm nvidia_drm"/g' /etc/mkinitcpio.conf
-  mkinitcpio -P
-  sed -in '/^GRUB_CMDLINE_LINUX_DEFAULT*/ s/"$/ nvidia-drm.modeset=1"/g' /etc/default/grub
-  grub-mkconfig -o /boot/grub/grub.cfg
-  nvx on
-  sed -i '$a__VK_LAYER_NV_optimus=NVIDIA_only\n__GLX_VENDOR_LIBRARY_NAME=nvidia' /etc/environment
+cpudetect=$(lscpu | grep -A 0 -E "Model name")
+
+if [[ $cpudetect =~ "Intel" ]]; then
+   echo "Intel CPU detected."
+   pacman -S --noconfirm intel-compute-runtime
+fi
+
+gpudetect=$(lspci -k | grep -A 0 -E "(VGA compatible|3D)")
+
+if [[ $gpudetect =~ "AMD" ]]; then
+   echo "AMD GPU detected."
+   pacman -S --noconfirm opencl-amd
+fi
+
+if [[ $gpudetect =~ "ATI" ]]; then
+   echo "AMD GPU detected."
+   pacman -S --noconfirm opencl-mesa
+fi
+
+if [[ $gpudetect =~ "NVIDIA" ]]; then
+   echo "NVIDIA GPU detected."
+   pacman -S --noconfirm nvidia-open-dkms nvidia-settings nvidia-utils gwe nvtop
+   pacman -S --noconfirm cuda
+   pacman -S --noconfirm opencl-nvidia
+
+   sed -in '/^MODULES*/ s/"$/ nvidia nvidia_modeset nvidia_uvm nvidia_drm"/g' /etc/mkinitcpio.conf
+   mkinitcpio -P
+   sed -in '/^GRUB_CMDLINE_LINUX_DEFAULT*/ s/"$/ nvidia-drm.modeset=1"/g' /etc/default/grub
+   grub-mkconfig -o /boot/grub/grub.cfg
+
+   if [[ $gpudetect =~ "Intel" ]]; then
+      pacman -S --noconfirm nvidia-exec optimus-manager-qt
+      nvx on
+      sed -i '$a__VK_LAYER_NV_optimus=NVIDIA_only\n__GLX_VENDOR_LIBRARY_NAME=nvidia' /etc/environment
+   fi
 fi
 
 echo

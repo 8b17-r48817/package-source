@@ -1,12 +1,12 @@
-- name: "NVIDIA DKMS"
-  description: "Install NVIDIA DKMS"
+- name: "NVIDIA OPEN DKMS"
+  description: "Install NVIDIA OPEN DKMS"
   critical: false
   hidden: false
   selected: false
   immutable: false
   expanded: false
   packages:
-    - nvidia-dkms
+    - nvidia-open-dkms
     - nvidia-exec
     - nvidia-settings
     - nvidia-utils

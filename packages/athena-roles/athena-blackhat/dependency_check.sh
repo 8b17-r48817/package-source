@@ -15,7 +15,10 @@ do
     echo "Package: $dep"
     list=$(pactree -su $dep)
 
-    if [[ "$list" =~ "$target" ]]; then
-        echo "The PKGBUILD dependency "$dep" contains the provided dependency $target."
-    fi
+    while read line
+    do
+        if [[ "$line" == "$target" ]]; then
+            echo "The PKGBUILD dependency "$dep" contains the provided dependency $target."
+        fi
+    done <<< "$list"
 done <<< $deps
