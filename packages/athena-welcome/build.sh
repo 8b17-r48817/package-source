@@ -13,7 +13,7 @@ pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
 
 echo $pkgfile
 
-sed -i '/^sha256/d' PKGBUILD
+sed -i -e '/^sha256/d' -e '/^sha512/d' PKGBUILD
 
 tar -zcvf $pkgname.tar.gz $sourcefiles 
 

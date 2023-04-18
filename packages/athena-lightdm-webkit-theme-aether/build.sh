@@ -15,7 +15,7 @@ tar -zcvf $pkgname.tar.gz $sourcefiles
 
 echo $pkgfile
 
-sed -i '/^sha256/d' PKGBUILD
+sed -i -e '/^sha256/d' -e '/^sha512/d' PKGBUILD
 
 makepkg -g >> PKGBUILD
 makepkg -f -sr --sign

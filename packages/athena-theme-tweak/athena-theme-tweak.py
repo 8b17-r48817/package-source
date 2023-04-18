@@ -349,11 +349,11 @@ if args.emulator:
 
             subprocess.call("find "+home+"/.local/share/applications -type f -name '*.desktop' -exec sed -i -e 's/alacritty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/cool-retro-term -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/gnome-terminal --/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/kitty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/konsole -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/urxvt -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/xterm -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' {} +", shell=True)
 
-            subprocess.call("sudo sed -i -e 's/alacritty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/cool-retro-term -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/gnome-terminal --/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/kitty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/konsole -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/urxvt -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/xterm -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' /usr/share/athena-application-config/dconf-shell.ini /usr/share/pwnage/hackthebox/htb-update.py", shell=True)
+            subprocess.call("sudo sed -i -e 's/alacritty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/cool-retro-term -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/gnome-terminal --/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/kitty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/konsole -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/urxvt -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/xterm -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' /usr/share/athena-gnome-config/dconf-shell.ini /usr/share/pwnage/hackthebox/htb-update.py", shell=True)
 
             subprocess.call("sudo sed -i -e 's/\"alacritty\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"cool-retro-term\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"gnome-terminal\", \"--\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"kitty\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"konsole\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"urxvt\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"xterm\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' /usr/share/athena-welcome/athena-welcome.py", shell=True)
 
-            subprocess.call("sudo cp -rf /usr/share/athena-application-config/dconf-shell.ini /usr/share/athena-application-config/dconf-shell.ini.bak", shell=True)
-            subprocess.call("dconf load /org/gnome/shell/ < /usr/share/athena-application-config/dconf-shell.ini", shell=True)
+            subprocess.call("sudo cp -rf /usr/share/athena-gnome-config/dconf-shell.ini /usr/share/athena-gnome-config/dconf-shell.ini.bak", shell=True)
+            subprocess.call("dconf load /org/gnome/shell/ < /usr/share/athena-gnome-config/dconf-shell.ini", shell=True)
             exit()
         

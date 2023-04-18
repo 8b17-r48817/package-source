@@ -1,0 +1,15 @@
+pkgname=athena-neofetch-config
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Neofetch configuration for Athena"
+arch=('any')
+license=("custom")
+depends=('neofetch')
+source=("$pkgname.tar.gz")
+
+package() {
+  mkdir -p "${pkgdir}/etc/skel"
+
+  cp -rf "${srcdir}/etc/skel/.config" "${pkgdir}/etc/skel/"
+}
+sha512sums=('d221a6ca80983a7f71d7519cd64d938378fff341affd69bcff708a5184dd0fe1570006ab5db1231fd60d4a9f8337f0cbcbcc428062e4a025f7dad8ac87f7e307')

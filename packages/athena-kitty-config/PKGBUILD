@@ -1,0 +1,15 @@
+pkgname=athena-kitty-config
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Kitty configuration for Athena"
+arch=('any')
+license=("custom")
+depends=('kitty')
+source=("$pkgname.tar.gz")
+
+package() {
+  mkdir -p "${pkgdir}/etc/skel"
+
+  cp -rf "${srcdir}/etc/skel/.config" "${pkgdir}/etc/skel/"
+}
+sha512sums=('1b38972456fcbbdf8e6f9072cf6dba70135fc14856f52c944561c7fbf56f34ad87a7b4c1ba9f29df9c641ff5797c379bfe56ce04b5aabc9d2ce8b37dfa6ef549')

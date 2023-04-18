@@ -1,0 +1,15 @@
+pkgname=athena-alacritty-config
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Alacritty configuration for Athena"
+arch=('any')
+license=("custom")
+depends=('alacritty')
+source=("$pkgname.tar.gz")
+
+package() {
+  mkdir -p "${pkgdir}/etc/skel"
+
+  cp -rf "${srcdir}/etc/skel/.config" "${pkgdir}/etc/skel/"
+}
+sha512sums=('0e901ca26fff1482bda6261723fae829fad644d540a34469303c6f64d9d5875af2a25df6782a729f7a09802ee1edebd9614e0946cd5a6f6ad2ec141a56d971ff')

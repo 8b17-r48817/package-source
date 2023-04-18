@@ -1,0 +1,21 @@
+pkgname=athena-gnome-config
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="GNOME configuration for Athena"
+arch=('any')
+license=("custom")
+source=("$pkgname.tar.gz")
+
+package() {
+  mkdir -p "${pkgdir}/etc/skel"
+  mkdir -m 750 -p "${pkgdir}/etc/sudoers.d"
+  mkdir -p "${pkgdir}/usr/share/athena-gnome-config"
+  mkdir -p "${pkgdir}/usr/share/gnome-shell"
+
+  cp -rf "${srcdir}/etc/skel/.local" "${pkgdir}/etc/skel/"
+  
+  cp -rf "${srcdir}"/usr/share/athena-gnome-config/* "${pkgdir}/usr/share/athena-gnome-config/"
+  cp -rf "${srcdir}/usr/share/gnome-shell/gnome-shell-theme.gresource.new" "${pkgdir}/usr/share/gnome-shell/"
+  
+}
+sha512sums=('32fc001e9a8abb3aaecdc9de6a434086bf7bfdd81021750319523b75ef563fdadaae5059920e440adbcdabbd3f26c958a507a152a0dbe2304cd77fa8d16de5fd')

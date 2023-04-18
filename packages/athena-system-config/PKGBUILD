@@ -10,6 +10,7 @@ package() {
   mkdir -p "${pkgdir}/etc/modprobe.d"
   mkdir -p "${pkgdir}/etc/pacman.d/gnupg"
   mkdir -p "${pkgdir}/etc/pacman.d/hooks"
+  mkdir -p "${pkgdir}/etc/skel"
   mkdir -p "${pkgdir}/usr/lib"
   mkdir -p "${pkgdir}/usr/local/bin"
   mkdir -p "${pkgdir}/usr/local/share"
@@ -19,6 +20,12 @@ package() {
   cp -rf "${srcdir}"/etc/modprobe.d/* "${pkgdir}/etc/modprobe.d/"
   cp -rf "${srcdir}/etc/pacman.d/gnupg/gpg.conf" "${pkgdir}/etc/pacman.d/gnupg/"
   cp -rf "${srcdir}"/etc/pacman.d/hooks/* "${pkgdir}/etc/pacman.d/hooks/"
+  cp -rf "${srcdir}/etc/profile.d" "${pkgdir}/etc/"
+  cp -rf "${srcdir}/etc/skel/.bash_aliases" "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}/etc/skel/.face" "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}/etc/skel/.flag-work-once" "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}/etc/skel/.local" "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}/etc/sudoers.d" "${pkgdir}/etc/"
   cp -rf "${srcdir}/etc/vconsole.conf" "${pkgdir}/etc/"
 
   cp -rf "${srcdir}/usr/lib/os-release-athena" "${pkgdir}/usr/lib/"
@@ -27,4 +34,4 @@ package() {
   cp -rf "${srcdir}"/usr/share/icons/hicolor/* "${pkgdir}/usr/share/icons/hicolor/"
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
-sha256sums=('0ae3d1f34cea32690cd67ab8b4be3c5e410c5c293411910819ddf300fe2327fa')
+sha512sums=('42dcf9984549cfa3d682cda3d4bc0944a33164fb149534f2805a8b617d266d33f4f9154c8cd199d0bcee11462ad818eb2f84d7ceadd5449794626278e61966b2')

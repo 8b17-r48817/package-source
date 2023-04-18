@@ -30,7 +30,6 @@ variable_list = [
     ("gparted", "GNOME Partition Editor for creating, reorganizing, and deleting disk partitions."),
     ("htb-play", "Select any Hack The Box you want to play."),
     ("htb-update", "Set, update or delete your Hack The Box App Token and update Hack The Box machine data."),
-    ("kitty", "The fast, feature-rich, GPU based terminal emulator."),
     ("la", "An lsd -a alias"),
     ("ll", "An lsd -alFh alias."),
     ("lolcat", "Concatenate like similar to 'cat' command and adds rainbow coloring to it."),
