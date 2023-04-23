@@ -8,7 +8,8 @@ source=("$pkgname.tar.gz")
 
 package() {
   mkdir -p "${pkgdir}/usr/share/themes"
-  mkdir -p "${pkgdir}/usr/share/icons/pentoxic/cyan"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/categories"
   mkdir -p "${pkgdir}/usr/share/backgrounds/default"  
 
   cp -rf "${srcdir}/usr/share/themes/Tokyonight-Dark-B" "${pkgdir}/usr/share/themes/"
@@ -16,7 +17,8 @@ package() {
   cp -rf "${srcdir}/usr/share/icons/tokyonight_dark" "${pkgdir}/usr/share/icons/"
   cp -rf "${srcdir}/usr/share/icons/oreo_blue_cursors" "${pkgdir}/usr/share/icons/"
   cp -rf "${srcdir}/usr/share/backgrounds/default/blue-eyes.jpg" "${pkgdir}/usr/share/backgrounds/default/"
-  cp -rf "${srcdir}"/usr/share/icons/pentoxic/cyan/* "${pkgdir}/usr/share/icons/pentoxic/"
+  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/apps/* "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
+  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/categories/* "${pkgdir}/usr/share/icons/hicolor/256x256/categories/"
 
 }
-sha256sums=('772898a6924ff97997d04ee5de0ec89be76feb0b91bc9a06be30d6baaf784eb2')
+sha512sums=('d51bfa08f95dcdabda8e7d8e146c9abe3960f78ada8056ec88867b235c1865b1d7738f614bc0e96873cf00a715c5a38ad2358d5c0a92274c6337ca5aee897e37')

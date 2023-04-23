@@ -8,7 +8,8 @@ source=("$pkgname.tar.gz")
 
 package() {
   mkdir -p "${pkgdir}/usr/share/themes"
-  mkdir -p "${pkgdir}/usr/share/icons/pentoxic/blue"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/categories"
   mkdir -p "${pkgdir}/usr/share/backgrounds/default"
 
   cp -rf "${srcdir}/usr/share/themes/Graphite-Dark" "${pkgdir}/usr/share/themes/"
@@ -17,7 +18,8 @@ package() {
   cp -rf "${srcdir}/usr/share/icons/Tela-circle-black-dark" "${pkgdir}/usr/share/icons/"
   cp -rf "${srcdir}/usr/share/icons/Bibata-Modern-Ice" "${pkgdir}/usr/share/icons/"
   cp -rf "${srcdir}/usr/share/backgrounds/default/arch-ascii.png" "${pkgdir}/usr/share/backgrounds/default/"  
-  cp -rf "${srcdir}"/usr/share/icons/pentoxic/blue/* "${pkgdir}/usr/share/icons/pentoxic/"
+  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/apps/* "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
+  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/categories/* "${pkgdir}/usr/share/icons/hicolor/256x256/categories/"
 
 }
-sha256sums=('6c3a33479e69ce57aae3dc9ef607bd92f5fe7c1a0cad6591662588728f87944d')
+sha512sums=('7671940945243d2e321915dc8a43ccab910b0279af4f11a926401ab3836a2715ca9f4ef4181cb66d7f8afbababc33535e598730a20d18a8858ff95d0150200b4')

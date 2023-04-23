@@ -8,7 +8,8 @@ source=("$pkgname.tar.gz")
 
 package() {
   mkdir -p "${pkgdir}/usr/share/themes"
-  mkdir -p "${pkgdir}/usr/share/icons/pentoxic/purple"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/categories"
   mkdir -p "${pkgdir}/usr/share/backgrounds/default"
 
   cp -rf "${srcdir}/usr/share/themes/Sweet-Dark-v40" "${pkgdir}/usr/share/themes/"
@@ -16,6 +17,7 @@ package() {
   cp -rf "${srcdir}/usr/share/icons/candy-icons" "${pkgdir}/usr/share/icons/"
   cp -rf "${srcdir}/usr/share/icons/oreo_spark_purple_cursors" "${pkgdir}/usr/share/icons/"
   cp -rf "${srcdir}/usr/share/backgrounds/default/neon_circle.jpg" "${pkgdir}/usr/share/backgrounds/default/"
-  cp -rf "${srcdir}"/usr/share/icons/pentoxic/purple/* "${pkgdir}/usr/share/icons/pentoxic/"
+  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/apps/* "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
+  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/categories/* "${pkgdir}/usr/share/icons/hicolor/256x256/categories/"
 }
-sha256sums=('8719b93c5c14fda3dd36640d85cd10e2b721b2610a983e15c234e1ff42921db2')
+sha512sums=('361c5b168889b086c776d3df06d8864eaf3a98af2d9268ae395ce3ad5a0f75411fa7e82e7e7306eab6d2d8cf279bbc166ae8043cc6a1241f72c3d6dcdd1cd0fb')

@@ -8,15 +8,17 @@ source=("$pkgname.tar.gz")
 
 package() {
   mkdir -p "${pkgdir}/usr/share/themes"
-  mkdir -p "${pkgdir}/usr/share/icons/pentoxic/red"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/categories"
   mkdir -p "${pkgdir}/usr/share/backgrounds/default"
 
   cp -rf "${srcdir}/usr/share/themes/Quartz-Red" "${pkgdir}/usr/share/themes/"
   cp -rf "${srcdir}/usr/share/themes/Quartz-Dark-Red" "${pkgdir}/usr/share/themes/"
   cp -rf "${srcdir}/usr/share/icons/Material-Black-Cherry-Suru" "${pkgdir}/usr/share/icons/"
   cp -rf "${srcdir}/usr/share/icons/Bibata-Modern-DarkRed" "${pkgdir}/usr/share/icons/"
-  cp -rf "${srcdir}/usr/share/backgrounds/default/akame.jpg" "${pkgdir}/usr/share/backgrounds/default/"  
-  cp -rf "${srcdir}"/usr/share/icons/pentoxic/red/* "${pkgdir}/usr/share/icons/pentoxic/"
+  cp -rf "${srcdir}/usr/share/backgrounds/default/akame.jpg" "${pkgdir}/usr/share/backgrounds/default/"
+  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/apps/* "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
+  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/categories/* "${pkgdir}/usr/share/icons/hicolor/256x256/categories/"
 
 }
-sha256sums=('b19f00bfab17636e0370816e22ad627ae56436aaf5493a35747ed378be87f74c')
+sha512sums=('c0c43c32df97c4da831bb780ba89a40418a904172c6be1bc4409bea00dfe413718f73ead6728ba235f59df4196aa2287b0eca2d3aaef674927d15bf396647d51')

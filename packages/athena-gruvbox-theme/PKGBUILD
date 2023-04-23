@@ -8,7 +8,8 @@ source=("$pkgname.tar.gz")
 
 package() {
   mkdir -p "${pkgdir}/usr/share/themes"
-  mkdir -p "${pkgdir}/usr/share/icons/pentoxic/gruvbox"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/categories"
   mkdir -p "${pkgdir}/usr/share/backgrounds/default"
 
   cp -rf "${srcdir}/usr/share/themes/Gruvbox-Dark-B" "${pkgdir}/usr/share/themes/"
@@ -16,7 +17,8 @@ package() {
   cp -rf "${srcdir}/usr/share/icons/Material-Black-Mango-Suru" "${pkgdir}/usr/share/icons/"
   cp -rf "${srcdir}/usr/share/icons/Fuchsia-Pop" "${pkgdir}/usr/share/icons/"
   cp -rf "${srcdir}/usr/share/backgrounds/default/cyborg_gruv.png" "${pkgdir}/usr/share/backgrounds/default/"  
-  cp -rf "${srcdir}"/usr/share/icons/pentoxic/gruvbox/* "${pkgdir}/usr/share/icons/pentoxic/"
+  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/apps/* "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
+  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/categories/* "${pkgdir}/usr/share/icons/hicolor/256x256/categories/"
 
 }
-sha256sums=('dce3e318fef7e21c5dc80566b59805ad8760661029cc41fba907eb2fa9bfbbc9')
+sha512sums=('145268d0b3398cbf4f4451588dbf033c8a45633cfc1d76e4684d89ea4b3e0a74b446d427f8503871362770e2167830d15859d7fe79f47dc8e5e5178b85586929')
