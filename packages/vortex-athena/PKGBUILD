@@ -1,0 +1,14 @@
+pkgname=vortex-athena
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Vortex Athena Plymouth theme."
+arch=('any')
+license=("custom")
+source=("$pkgname.tar.gz")
+
+package() {
+  mkdir -p "${pkgdir}/usr/share/plymouth/themes/vortex-athena"
+
+  cp -rf "${srcdir}"/usr/share/plymouth/themes/vortex-athena/* "${pkgdir}/usr/share/plymouth/themes/vortex-athena/"
+}
+sha512sums=('9027d7687c8aaf301b0c94947c19769b4333422ab6ccfe3ad53627996910863d616a65844ad139e1abfb3d4b24862af1739d8772fcfc3db87c6d351d5d59b9d2')

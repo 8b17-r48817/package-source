@@ -53,6 +53,11 @@ echo "Getting fastest BlackLinux mirrors for your location"
 echo "Getting fastest Chaotic mirrors for your location"
 /usr/local/bin/mirroars -n 21 -m 5 -p -t -r chaotic-aur /etc/pacman.d/chaotic-mirrorlist -w
 echo
+echo "#########################################"
+echo "      Setting Athena Plymouth theme      "
+echo "#########################################"
+echo
+plymouth-set-default-theme -R vortex-athena
 echo "#################################"
 echo "End athena-before"
 echo "#################################"

@@ -4799,19 +4799,19 @@ class TreeViewFilterWindow(Gtk.Window):
 
         # creating buttons to filter by Category, and setting up their events
         self.buttons = list()
-        for var_category in ["Black Hat Omniscient", "Bug Bounty Hunter", "Cracker Specialist", "Enthusiast Student", "Forensic Analyst"]:
+        for var_category in ["Black Hat Omniscient", "Blue Teamer", "Bug Bounty Hunter", "Cracker Specialist", "DoS Attacker"]:
             button = Gtk.Button(label=var_category)
             self.buttons.append(button)
             button.connect("clicked", self.on_selection_button_clicked)
 
         self.buttons_bottom = list()
-        for var_category in ["Malware Analyst", "Mobile Analyst", "Network Analyst", "OSINT Specialist", "Red Teamer"]:
+        for var_category in ["Enthusiast Student", "Forensic Analyst", "Malware Analyst", "Mobile Analyst", "Network Analyst"]:
             button_bottom = Gtk.Button(label=var_category)
             self.buttons_bottom.append(button_bottom)
             button_bottom.connect("clicked", self.on_selection_button_clicked)
 
         self.buttons_deeper = list()
-        for var_category in ["Web Pentester", "None"]:
+        for var_category in ["OSINT Specialist", "Red Teamer", "Web Pentester", "None"]:
             button_deeper = Gtk.Button(label=var_category)
             self.buttons_deeper.append(button_deeper)
             button_deeper.connect("clicked", self.on_selection_button_clicked)

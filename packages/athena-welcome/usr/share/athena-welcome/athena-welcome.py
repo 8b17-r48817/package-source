@@ -55,8 +55,12 @@ class Main(Gtk.Window):
                 self.role_id = "BH"
             elif "Bug Bounty Hunter" in GUI.role_name:
                 self.role_id = "BBH"
+            elif "Blue Teamer" in GUI.role_name:
+                self.role_id = "BT"
             elif "Cracker Specialist" in GUI.role_name:
                 self.role_id = "CR"
+            elif "DoS Attacker" in GUI.role_name:
+                self.role_id = "DA"
             elif "Enthusiast Student" in GUI.role_name:
                 self.role_id = "ES"
             elif "Forensic Analyst" in GUI.role_name:

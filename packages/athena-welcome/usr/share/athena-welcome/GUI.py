@@ -116,8 +116,10 @@ def GUI(self, Gtk, GdkPixbuf):
     roles = [
         "🔥 Choose your Role 🔥",
         "🖤 Black Hat Omniscient 🖤",
+        "💙 Blue Teamer 💙",
         "🐞 Bug Bounty Hunter 🐞",
         "🍘 Cracker Specialist 🍘",
+        "💀 DoS Attacker 💀",
         "🎓 Enthusiast Student 🎓",
         "🔍 Forensic Analyst 🔍",
         "🦠 Malware Analyst 🦠",
@@ -152,24 +154,28 @@ def GUI(self, Gtk, GdkPixbuf):
         role_combo.set_active(1)
     elif "BBH" == strout:
         role_combo.set_active(2)
-    elif "CR" == strout:
+    elif "BT" == strout:
         role_combo.set_active(3)
-    elif "ES" == strout:
+    elif "CR" == strout:
         role_combo.set_active(4)
-    elif "FA" == strout:
+    elif "DA" == strout:
         role_combo.set_active(5)
-    elif "MA" == strout:
+    elif "ES" == strout:
         role_combo.set_active(6)
-    elif "MO" == strout:
+    elif "FA" == strout:
         role_combo.set_active(7)
-    elif "NA" == strout:
+    elif "MA" == strout:
         role_combo.set_active(8)
-    elif "OS" == strout:
+    elif "MO" == strout:
         role_combo.set_active(9)
-    elif "RT" == strout:
+    elif "NA" == strout:
         role_combo.set_active(10)
-    elif "WP" == strout:
+    elif "OS" == strout:
         role_combo.set_active(11)
+    elif "RT" == strout:
+        role_combo.set_active(12)
+    elif "WP" == strout:
+        role_combo.set_active(13)
     else:
         role_combo.set_active(0)
 
