@@ -197,11 +197,11 @@ while true; do
     esac
 done
 
-# Commented because if I change theme, and I type Y here, it restores my first installed theme in VSCode. By the way, athena-theme-tweak is better for changing it.
+# Commented because if I change theme, and I type Y here, it restores my first installed theme in VSCodium. By the way, athena-theme-tweak is better for changing it.
 #while true; do
 #    read -p $'\e[33m[16/16] Do you wish to update VSCode theme and config files? Type "n" or "N" if you customized them (y/n) \e[0m' yn
 #    case $yn in
-#        [yY] ) rsync -a --delete "/etc/skel/.config/Code - OSS/User/" "$HOME/.config/Code - OSS/User/"; rsync -a --delete "/etc/skel/.vscode-oss/extensions/" "$HOME/.vscode-oss/extensions/"; break;;
+#        [yY] ) rsync -a --delete "/etc/skel/.config/VSCodium/User/" "$HOME/.config/VSCodium/User/"; rsync -a --delete "/etc/skel/.vscode-oss/extensions/" "$HOME/.vscode-oss/extensions/"; break;;
 #        [nN] ) break;;
 #        * ) echo "Invalid answer.";;
 #    esac

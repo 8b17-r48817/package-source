@@ -303,7 +303,7 @@ if args.theme:
     subprocess.call("gsettings set org.gnome.desktop.background picture-uri "+background_theme, shell=True)
     subprocess.call("gsettings set org.gnome.desktop.background picture-options "+picture_options, shell=True)
 
-    subprocess.call("sed -i 's/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \""+vscode_theme+"\",/g' \""+home+"/.config/Code - OSS/User/settings.json\"", shell=True)
+    subprocess.call("sed -i 's/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \""+vscode_theme+"\",/g' \""+home+"/.config/VSCodium/User/settings.json\"", shell=True)
     subprocess.call("cp -rf "+home+"/.config/kitty/kitty-themes/themes/"+kitty_theme+" "+home+"/.config/kitty/current-theme.conf", shell=True)
     subprocess.call("sed -i 's/set -g @tmux_power_theme.*/set -g @tmux_power_theme \'"+tmux_theme+"\'/g' "+home+"/.tmux.conf", shell=True)
 
