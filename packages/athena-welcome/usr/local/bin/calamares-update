@@ -1,0 +1,6 @@
+#!/bin/sh
+
+sudo pacman -Syy
+sudo pacman -S athena-calamares-config athena-system-installation
+
+read -p "Press enter to continue"

@@ -20,4 +20,4 @@ package() {
   cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/apps/* "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
   cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/categories/* "${pkgdir}/usr/share/icons/hicolor/256x256/categories/"
 }
-sha512sums=('361c5b168889b086c776d3df06d8864eaf3a98af2d9268ae395ce3ad5a0f75411fa7e82e7e7306eab6d2d8cf279bbc166ae8043cc6a1241f72c3d6dcdd1cd0fb')
+sha512sums=('90c37493aea554abed2245f36f95a4a34d09b0f54c1eeceff85bde4e1e6ce6cb1ba1d7813c04a110ed28e727fafca5cdb3b3df10382f3f02906c993e171dbabe')

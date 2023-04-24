@@ -111,7 +111,7 @@ class Main(Gtk.Window):
         t.start()
 
     def on_calamares_update_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["alacritty", "-e", os.path.expandvars('$SHELL'), "-c", "pacman -S --noconfirm --needed athena-calamares-config athena-system-installation"],))
+        t = threading.Thread(target=self.run_app, args=(["alacritty", "-e", os.path.expandvars('$SHELL'), "-c", "/usr/local/bin/calamares-update"],))
         t.daemon = True
         t.start()
 

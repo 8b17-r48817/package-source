@@ -13,6 +13,6 @@ autoload -U +X bashcompinit && bashcompinit
 autoload -U +X compinit && compinit
 # End of lines added by compinstall
 source ~/.bash_aliases
-PROMPT="%F{46}┌──[HQ🚀%F{201}$(ip -4 addr | grep -v '127.0.0.1' | grep -v 'secondary' | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | sed -z 's/\n/|/g;s/|\$/\n/' | rev | cut -c 2- | rev)⚔️%n%F{46}]"$'\n'"└──╼[👾]%F{44}%~ $%f "
+PROMPT="%F{46}┌──[HQ🚀🌐%F{201}$(ip -4 addr | grep -v '127.0.0.1' | grep -v 'secondary' | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | sed -z 's/\n/|/g;s/|\$/\n/' | rev | cut -c 2- | rev)🔥%n%F{46}]"$'\n'"└──╼[👾]%F{44}%~ $%f "
 precmd() { eval "$PROMPT_COMMAND" }
 export PROMPT_COMMAND='source ~/.zshrc'

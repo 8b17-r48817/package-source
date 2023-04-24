@@ -55,7 +55,7 @@ class colors:
 
 def arg_parse():
     parser = argparse.ArgumentParser(add_help=False)
-    parser.add_argument("-b", "--browser", action='store_true', help="set the current browser logo in PenTOXIC menu")
+    parser.add_argument("-b", "--browser", action='store_true', help="set the current browser logo in Red Team menu")
     parser.add_argument("-c", "--colored", action='store_true', help="let's give some random colored output")
     parser.add_argument("-e", "--emulator", choices=["alacritty", "cool-retro-term", "gnome-terminal", "kitty", "konsole", "urxvt", "xterm"], help="specify a terminal emulator to be set [alacritty|cool-retro-term|gnome-terminal|kitty|konsole|urxvt|xterm]")
     parser.add_argument("-h", "--help", action='store_true', help="show this help message and exit")
@@ -72,7 +72,7 @@ def help():
 
    print("List of arguments:\n")
    
-   print("-b, --browser                 set the current browser logo in PenTOXIC menu")
+   print("-b, --browser                 set the current browser logo in Red Team menu")
    print("-c, --colored                 let's give some random colored output")
    print("-e, --emulator                specify a terminal emulator to be set [alacritty|cool-retro-term|gnome-terminal|kitty|konsole|urxvt|xterm]")
    print("-h, --help                    show this help message and exit")
@@ -154,13 +154,13 @@ if args.browser:
             break
     if current_browser_package == "athena-firefox-config":
         subprocess.call("dconf dump /org/gnome/shell/ > "+home+"/.tmp.txt", shell=True)
-        subprocess.call("sed -i 's/{\\\\\"name\\\\\":\\\\\"Brave\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/pentoxic\/brave.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"brave\\\\\"},\\\\\"angle\\\\\":-1}/{\\\\\"name\\\\\":\\\\\"Firefox ESR\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/pentoxic\/firefox_logo_arch-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"firefox-esr\\\\\"},\\\\\"angle\\\\\":-1}/g' "+home+"/.tmp.txt", shell=True)
+        subprocess.call("sed -i 's/{\\\\\"name\\\\\":\\\\\"Brave\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/256x256\/apps\/brave-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"brave\\\\\"},\\\\\"angle\\\\\":-1}/{\\\\\"name\\\\\":\\\\\"Firefox ESR\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/256x256\/apps\/firefox_logo_arch-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"firefox-esr\\\\\"},\\\\\"angle\\\\\":-1}/g' "+home+"/.tmp.txt", shell=True)
         subprocess.call("dconf load /org/gnome/shell/ < "+home+"/.tmp.txt", shell=True)
         subprocess.call("rm -rf "+home+"/.tmp.txt", shell=True)
         print("Done.")
     elif current_browser_package == "athena-brave-config":
         subprocess.call("dconf dump /org/gnome/shell/ > "+home+"/.tmp.txt", shell=True)
-        subprocess.call("sed -i 's/{\\\\\"name\\\\\":\\\\\"Firefox ESR\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/pentoxic\/firefox_logo_arch-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"firefox-esr\\\\\"},\\\\\"angle\\\\\":-1}/{\\\\\"name\\\\\":\\\\\"Brave\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/pentoxic\/brave.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"brave\\\\\"},\\\\\"angle\\\\\":-1}/g' "+home+"/.tmp.txt", shell=True)
+        subprocess.call("sed -i 's/{\\\\\"name\\\\\":\\\\\"Firefox ESR\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/256x256\/apps\/firefox_logo_arch-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"firefox-esr\\\\\"},\\\\\"angle\\\\\":-1}/{\\\\\"name\\\\\":\\\\\"Brave\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/256x256\/apps\/brave-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"brave\\\\\"},\\\\\"angle\\\\\":-1}/g' "+home+"/.tmp.txt", shell=True)
         subprocess.call("dconf load /org/gnome/shell/ < "+home+"/.tmp.txt", shell=True)
         subprocess.call("rm -rf "+home+"/.tmp.txt", shell=True)
         print("Done.")
@@ -342,8 +342,8 @@ if args.emulator:
             if terminal_check:
                 print("The package "+terminal_pkg+" is installed.")
             else:
-                print("The package "+terminal_pkg+" is not installed. Please, install it.")
-                exit()
+                print("The package "+terminal_pkg+" is not installed. Installing...")
+                subprocess.call("sudo pacman -S "+terminal_pkg, shell=True)
             subprocess.call(keybind + " command \""+terminal_bin+"\"", shell=True)
             subprocess.call("gsettings set org.gnome.desktop.default-applications.terminal exec "+terminal_bin, shell=True)
 

@@ -24,10 +24,11 @@ package() {
   install -Dm755 "${srcdir}/usr/local/bin/athena-motd" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/athena-upgrade" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/athena-fix" "${pkgdir}/usr/local/bin/"
+  install -Dm755 "${srcdir}/usr/local/bin/calamares-update" "${pkgdir}/usr/local/bin/"
   cp -rf "${srcdir}/usr/share/applications/athena-welcome.desktop" "${pkgdir}/usr/share/applications/"
   cp -rf "${srcdir}/usr/share/icons/hicolor/scalable/apps/athena-hello-logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
   cp -rf "${srcdir}/usr/share/athena-welcome" "${pkgdir}/usr/share/"
   chmod 755 "${pkgdir}/usr/share/athena-welcome/role-tools"
 
 }
-sha512sums=('db2a1f21524bc134b0ecd86eff6bcb157bfd86d4e25c2f757e9a211e8698f70327db6ed2b91f43addfa71216d61d2cff9647fe9465e6700aad4f0332b39855e1')
+sha512sums=('8446c20ba5b93d7f47703c069ad521f29479ce0b6376c26b178a808923225a7fa5b5f932f7589101537b9b5315535bd12907ed28510b7e1ab13a33848d29fa74')
