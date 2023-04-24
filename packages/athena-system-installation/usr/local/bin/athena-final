@@ -74,6 +74,13 @@ sed -i 's/MAKEFLAGS=.*/MAKEFLAGS="-j$(nproc)"/g' /etc/makepkg.conf
 sed -i 's/#BUILDDIR=.*/BUILDDIR=\/tmp\/makepkg/g' /etc/makepkg.conf
 echo
 
+echo "#########################################"
+echo "      Setting Athena Plymouth theme      "
+echo "#########################################"
+echo
+plymouth-set-default-theme -R vortex-athena
+echo
+
 echo "#################################"
 echo "Anacron Jobs"
 echo "#################################"
