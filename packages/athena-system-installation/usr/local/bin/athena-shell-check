@@ -24,12 +24,12 @@ if pacman -Qq $package > /dev/null ; then
     sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/fish/g' /usr/share/athena-gnome-config/dconf-shell.ini
     sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/fish/g' /etc/skel/.local/share/applications/*
     sed -i 's/Bash/Fish/g' /etc/skel/.local/share/applications/*
-    sed -i "/export SHELL=/c\export SHELL=\$(which fish)" /etc/skel/.bashrc
+    ##sed -i "/export SHELL=/c\export SHELL=\$(which fish)" /etc/skel/.bashrc
     pacman -Rns bash-completion --noconfirm
 
-cat >> /etc/profile.d/shell.sh << EOF
-export SHELL=\$(which fish)
-EOF
+##cat >> /etc/profile.d/shell.sh << EOF
+##export SHELL=\$(which fish)
+##EOF
 
 cat >> /etc/skel/.bashrc << EOF
 if [[ \$(ps --no-header --pid=\$PPID --format=comm) != "fish" && -z \${BASH_EXECUTION_STRING} ]]
@@ -44,12 +44,12 @@ if pacman -Qq $package > /dev/null ; then
     sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/zsh/g' /usr/share/athena-gnome-config/dconf-shell.ini
     sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/zsh/g' /etc/skel/.local/share/applications/*
     sed -i 's/Bash/Zsh/g' /etc/skel/.local/share/applications/*
-    sed -i "/export SHELL=/c\export SHELL=\$(which zsh)" /etc/skel/.bashrc
+    ##sed -i "/export SHELL=/c\export SHELL=\$(which zsh)" /etc/skel/.bashrc
     pacman -Rns bash-completion --noconfirm
 
-cat >> /etc/profile.d/shell.sh << EOF
-export SHELL=\$(which zsh)
-EOF
+##cat >> /etc/profile.d/shell.sh << EOF
+##export SHELL=\$(which zsh)
+##EOF
 
 cat >> /etc/skel/.bashrc << EOF
 if [[ \$(ps --no-header --pid=\$PPID --format=comm) != "zsh" && -z \${BASH_EXECUTION_STRING} ]]
