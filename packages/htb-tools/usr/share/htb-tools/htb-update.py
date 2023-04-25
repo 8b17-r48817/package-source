@@ -194,7 +194,7 @@ with open(input_config,'r') as fly_file:
 subprocess.call("rm -rf "+input_config,shell=True)
 
 #NOTE: if you change the icon of Available Machine, REMEMBER to change the path here below
-fly_out = re.sub(r'(?<=\{\\"name\\":\\"Available Machines\\",\\"icon\\":\\"\/usr\/share\/icons\/pwnage\/htb-machines.png\\",\\"type\\":\\"CustomMenu\\",\\"children\\":)(.*?)(?=,\\"angle\\":-1,\\"data\\":\{\}\})', fly_new, contents)
+fly_out = re.sub(r'(?<=\{\\"name\\":\\"Available Machines\\",\\"icon\\":\\"\/usr\/share\/icons\/htb-tools\/htb-machines.png\\",\\"type\\":\\"CustomMenu\\",\\"children\\":)(.*?)(?=,\\"angle\\":-1,\\"data\\":\{\}\})', fly_new, contents)
 
 with open(output_config, 'w') as f:
     f.write(fly_out)
@@ -220,7 +220,7 @@ with open(input_config,'r') as fly_file:
 subprocess.call("rm -rf "+input_config,shell=True)
 
 #NOTE: if you change the icon of Tier-0, REMEMBER to change the path here below
-fly_out = re.sub(r'(?<=\{\\"name\\":\\"Tier 0\\",\\"icon\\":\\"\/usr\/share\/icons\/pwnage\/Tier-0.svg\\",\\"type\\":\\"CustomMenu\\",\\"children\\":)(.*?)(?=,\\"angle\\":-1,\\"data\\":\{\}\})', fly_new, contents)
+fly_out = re.sub(r'(?<=\{\\"name\\":\\"Tier 0\\",\\"icon\\":\\"\/usr\/share\/icons\/htb-tools\/Tier-0.svg\\",\\"type\\":\\"CustomMenu\\",\\"children\\":)(.*?)(?=,\\"angle\\":-1,\\"data\\":\{\}\})', fly_new, contents)
 
 with open(output_config, 'w') as f:
     f.write(fly_out)
@@ -246,7 +246,7 @@ with open(input_config,'r') as fly_file:
 subprocess.call("rm -rf "+input_config,shell=True)
 
 #NOTE: if you change the icon of Tier-1, REMEMBER to change the path here below
-fly_out = re.sub(r'(?<=\{\\"name\\":\\"Tier 1\\",\\"icon\\":\\"\/usr\/share\/icons\/pwnage\/Tier-1.svg\\",\\"type\\":\\"CustomMenu\\",\\"children\\":)(.*?)(?=,\\"angle\\":-1,\\"data\\":\{\}\})', fly_new, contents)
+fly_out = re.sub(r'(?<=\{\\"name\\":\\"Tier 1\\",\\"icon\\":\\"\/usr\/share\/icons\/htb-tools\/Tier-1.svg\\",\\"type\\":\\"CustomMenu\\",\\"children\\":)(.*?)(?=,\\"angle\\":-1,\\"data\\":\{\}\})', fly_new, contents)
 
 with open(output_config, 'w') as f:
     f.write(fly_out)
@@ -272,7 +272,7 @@ with open(input_config,'r') as fly_file:
 subprocess.call("rm -rf "+input_config,shell=True)
 
 #NOTE: if you change the icon of Tier-2, REMEMBER to change the path here below
-fly_out = re.sub(r'(?<=\{\\"name\\":\\"Tier 2\\",\\"icon\\":\\"\/usr\/share\/icons\/pwnage\/Tier-2.svg\\",\\"type\\":\\"CustomMenu\\",\\"children\\":)(.*?)(?=,\\"angle\\":-1,\\"data\\":\{\}\})', fly_new, contents)
+fly_out = re.sub(r'(?<=\{\\"name\\":\\"Tier 2\\",\\"icon\\":\\"\/usr\/share\/icons\/htb-tools\/Tier-2.svg\\",\\"type\\":\\"CustomMenu\\",\\"children\\":)(.*?)(?=,\\"angle\\":-1,\\"data\\":\{\}\})', fly_new, contents)
 
 with open(output_config, 'w') as f:
     f.write(fly_out)

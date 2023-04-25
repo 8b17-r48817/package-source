@@ -11,7 +11,6 @@ package() {
   mkdir -p "${pkgdir}/etc/pacman.d/gnupg"
   mkdir -p "${pkgdir}/etc/pacman.d/hooks"
   mkdir -p "${pkgdir}/etc/skel"
-  mkdir -p "${pkgdir}/etc/systemd/system/plymouth-quit.service.d"
   mkdir -p "${pkgdir}/usr/lib"
   mkdir -p "${pkgdir}/usr/local/bin"
   mkdir -p "${pkgdir}/usr/local/share"
@@ -27,14 +26,13 @@ package() {
   cp -rf "${srcdir}/etc/skel/.flag-work-once" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.local" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/sudoers.d" "${pkgdir}/etc/"
-  cp -rf "${srcdir}/etc/systemd/system/plymouth-quit.service.d/super_long_splash.conf" "${pkgdir}/etc/systemd/system/plymouth-quit.service.d/"
   cp -rf "${srcdir}/etc/vconsole.conf" "${pkgdir}/etc/"
 
   cp -rf "${srcdir}/usr/lib/os-release-athena" "${pkgdir}/usr/lib/"
-  cp -rf "${srcdir}"/usr/local/bin/* "${pkgdir}/usr/local/bin/"  
+  cp -rf "${srcdir}"/usr/local/bin/* "${pkgdir}/usr/local/bin/"
   cp -rf "${srcdir}/usr/local/share/athena" "${pkgdir}/usr/local/share/"
   cp -rf "${srcdir}"/usr/share/icons/hicolor/* "${pkgdir}/usr/share/icons/hicolor/"
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
 
-sha512sums=('357a81dffc6b9eccbf994bcef55257235f051d5dcfbc0931c607b179ecafac71db87da03fd456f979debc0ad784d19b72eb520d4439f5b49380734473ab99b65')
+sha512sums=('23fcf0b547f7233074eb358c2e7161415e2b4a6ccde6ac50a90871c0ae1ee78bb2f53ad931b3f08ddeaa5a9e40474119e4d90443d0b7cf70a2c0a4f5978ea506')

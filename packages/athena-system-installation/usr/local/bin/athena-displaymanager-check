@@ -28,6 +28,7 @@ echo
 package=gdm
 if pacman -Qq $package > /dev/null ; then
   ln -sf /usr/lib/systemd/system/gdm.service /etc/systemd/system/display-manager.service
+  echo "WaylandEnable=false" > /etc/gdm/custom.conf
 fi
 
 package=sddm
@@ -41,6 +42,7 @@ if pacman -Qq $package > /dev/null ; then
   #lighdm user must have exec permission to user home folder for retrieving .face avatar
   chmod 711 /home/*
   sed -i "/^webkit_theme .*/c\webkit_theme = lightdm-webkit-theme-aether" /etc/lightdm/lightdm-webkit2-greeter.conf
+  sed -i 's/^#user-session.*/user-session=gnome-xorg/g' /etc/lightdm/lightdm.conf
 fi
 
 package=lxdm

@@ -4,7 +4,6 @@ pkgrel=1
 pkgdesc="GNOME configuration for Athena"
 arch=('any')
 license=("custom")
-depends=('accountsservice')
 source=("$pkgname.tar.gz")
 
 package() {
@@ -19,4 +18,4 @@ package() {
   cp -rf "${srcdir}/usr/share/gnome-shell/gnome-shell-theme.gresource.new" "${pkgdir}/usr/share/gnome-shell/"
   
 }
-sha512sums=('8919ffbc002538533d5ebfa9cfa1ee7d5efe7f5da20d16c1f410e89e446bb27b27ca6097e820a28d84855f76158ec0c49f26a3a42bc2c5da6c3482302db17626')
+sha512sums=('3192012c17f4d07c6317d7c57378b221295529dcf77e0d9230ef5a9233826f8f6645e729068a43c81d50070cc1bc1f296da057adecb53e562e071614165d906f')

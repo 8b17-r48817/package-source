@@ -10,25 +10,25 @@ source=("$pkgname.tar.gz")
 package() {
   mkdir -p "${pkgdir}/etc/skel"
   mkdir -p "${pkgdir}/usr/local/bin"
-  mkdir -p "${pkgdir}/usr/share/icons/pwnage"  
-  mkdir -p "${pkgdir}/usr/share/pwnage/hackthebox"  
+  mkdir -p "${pkgdir}/usr/share/icons/htb-tools"
+  mkdir -p "${pkgdir}/usr/share/htb-tools"
 
   cp -rf "${srcdir}/etc/skel/.htb.conf" "${pkgdir}/etc/skel/"
-  cp -rf "${srcdir}/usr/share/icons/pwnage/flags" "${pkgdir}/usr/share/icons/pwnage/"
-  cp -rf "${srcdir}/usr/share/icons/pwnage/htb-flag.png" "${pkgdir}/usr/share/icons/pwnage/"
-  cp -rf "${srcdir}/usr/share/icons/pwnage/htb-machines.png" "${pkgdir}/usr/share/icons/pwnage/"
-  cp -rf "${srcdir}/usr/share/icons/pwnage/htb-reset.png" "${pkgdir}/usr/share/icons/pwnage/"
-  cp -rf "${srcdir}/usr/share/icons/pwnage/htb-stop.png" "${pkgdir}/usr/share/icons/pwnage/"
-  cp -rf "${srcdir}/usr/share/icons/pwnage/htb-website.png" "${pkgdir}/usr/share/icons/pwnage/"
-  cp -rf "${srcdir}/usr/share/icons/pwnage/ic-vip+-big.svg" "${pkgdir}/usr/share/icons/pwnage/"
-  cp -rf "${srcdir}/usr/share/icons/pwnage/ic-vip-big.svg" "${pkgdir}/usr/share/icons/pwnage/"
-  cp -rf "${srcdir}/usr/share/icons/pwnage/machines.svg" "${pkgdir}/usr/share/icons/pwnage/"
-  cp -rf "${srcdir}/usr/share/icons/pwnage/startingpoint.svg" "${pkgdir}/usr/share/icons/pwnage/"
-  cp -rf "${srcdir}/usr/share/icons/pwnage/Tier-0.svg" "${pkgdir}/usr/share/icons/pwnage/"
-  cp -rf "${srcdir}/usr/share/icons/pwnage/Tier-1.svg" "${pkgdir}/usr/share/icons/pwnage/"
-  cp -rf "${srcdir}/usr/share/icons/pwnage/Tier-2.svg" "${pkgdir}/usr/share/icons/pwnage/"
-  cp -rf "${srcdir}/usr/share/icons/pwnage/vpn-icon.png" "${pkgdir}/usr/share/icons/pwnage/"
-  cp -rf "${srcdir}/usr/share/icons/pwnage/vpnfree.svg" "${pkgdir}/usr/share/icons/pwnage/"
+  cp -rf "${srcdir}/usr/share/icons/htb-tools/flags" "${pkgdir}/usr/share/icons/htb-tools/"
+  cp -rf "${srcdir}/usr/share/icons/htb-tools/htb-flag.png" "${pkgdir}/usr/share/icons/htb-tools/"
+  cp -rf "${srcdir}/usr/share/icons/htb-tools/htb-machines.png" "${pkgdir}/usr/share/icons/htb-tools/"
+  cp -rf "${srcdir}/usr/share/icons/htb-tools/htb-reset.png" "${pkgdir}/usr/share/icons/htb-tools/"
+  cp -rf "${srcdir}/usr/share/icons/htb-tools/htb-stop.png" "${pkgdir}/usr/share/icons/htb-tools/"
+  cp -rf "${srcdir}/usr/share/icons/htb-tools/htb-website.png" "${pkgdir}/usr/share/icons/htb-tools/"
+  cp -rf "${srcdir}/usr/share/icons/htb-tools/ic-vip+-big.svg" "${pkgdir}/usr/share/icons/htb-tools/"
+  cp -rf "${srcdir}/usr/share/icons/htb-tools/ic-vip-big.svg" "${pkgdir}/usr/share/icons/htb-tools/"
+  cp -rf "${srcdir}/usr/share/icons/htb-tools/machines.svg" "${pkgdir}/usr/share/icons/htb-tools/"
+  cp -rf "${srcdir}/usr/share/icons/htb-tools/startingpoint.svg" "${pkgdir}/usr/share/icons/htb-tools/"
+  cp -rf "${srcdir}/usr/share/icons/htb-tools/Tier-0.svg" "${pkgdir}/usr/share/icons/htb-tools/"
+  cp -rf "${srcdir}/usr/share/icons/htb-tools/Tier-1.svg" "${pkgdir}/usr/share/icons/htb-tools/"
+  cp -rf "${srcdir}/usr/share/icons/htb-tools/Tier-2.svg" "${pkgdir}/usr/share/icons/htb-tools/"
+  cp -rf "${srcdir}/usr/share/icons/htb-tools/vpn-icon.png" "${pkgdir}/usr/share/icons/htb-tools/"
+  cp -rf "${srcdir}/usr/share/icons/htb-tools/vpnfree.svg" "${pkgdir}/usr/share/icons/htb-tools/"
 
   install -Dm755 "${srcdir}/usr/local/bin/htb-flag" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/htb-play" "${pkgdir}/usr/local/bin/"
@@ -37,14 +37,14 @@ package() {
   install -Dm755 "${srcdir}/usr/local/bin/htb-spawn" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/htb-vpn" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/prompt-reset" "${pkgdir}/usr/local/bin/"
-  install -Dm755 "${srcdir}/usr/share/pwnage/hackthebox/htb-update.py" "${pkgdir}/usr/share/pwnage/hackthebox/"
+  install -Dm755 "${srcdir}/usr/share/htb-tools/htb-update.py" "${pkgdir}/usr/share/htb-tools/"
 
   cat > "${pkgdir}/usr/local/bin/htb-update" << EOF
 #!/bin/sh
 
-python /usr/share/pwnage/hackthebox/htb-update.py "\$@"
+python /usr/share/htb-tools/htb-update.py "\$@"
 EOF
   
   chmod a+x "${pkgdir}/usr/local/bin/htb-update"
 }
-sha256sums=('5bd69592ac5439bb1d262069dae3b1aad899a81cc0751582622157c59bc66a52')
+sha512sums=('5efb78a16c6b577737776fb1b69d5a04bb2527616b7a7ad887cd187554cd43a2c6255a07dd60f610eede5981a4ac9b97028e59a96d3433e2cc2f705b43e227c4')
