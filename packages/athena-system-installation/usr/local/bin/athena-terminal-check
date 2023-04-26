@@ -33,7 +33,7 @@ keybind="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybi
 for i in "${!terminal_map[@]}"
 do
   terminal_bin="$i"
-  terminal_pkg="${terminal_package[$i]}"
+  terminal_pkg="${terminal_map[$i]}"
   terminal_arg_cmd="${terminal_command[$i]}"
   
   if pacman -Qq $terminal_pkg > /dev/null ; then
