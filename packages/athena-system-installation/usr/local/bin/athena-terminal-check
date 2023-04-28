@@ -25,18 +25,22 @@ do
     fi
 done
 
-declare -A terminal_map=( ["alacritty"]="alacritty" ["cool-retro-term"]="cool-retro-term" ["gnome-terminal"]="gnome-terminal" ["kitty"]="kitty" ["konsole"]="konsole" ["urxvt"]="rxvt-unicode" ["xterm"]="xterm")
-declare -A terminal_command=( ["alacritty"]="-e" ["cool-retro-term"]="-e" ["gnome-terminal"]="--" ["kitty"]="-e" ["konsole"]="-e" ["urxvt"]="-e" ["xterm"]="-e")
+terminal_bin=("alacritty" "cool-retro-term" "gnome-terminal" "kitty" "konsole" "urxvt" "xterm")
+terminal_pkg=("alacritty" "cool-retro-term" "gnome-terminal" "kitty" "konsole" "rxvt-unicode" "xterm")
+terminal_command=("-e" "-e" "--" "-e" "-e" "-e" "-e")
+
+length=${#terminal_bin[@]}
 
 keybind="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
 
-for i in "${!terminal_map[@]}"
+for (( i=0; i<${length}; i++ ));
 do
-  terminal_bin="$i"
-  terminal_pkg="${terminal_map[$i]}"
-  terminal_arg_cmd="${terminal_command[$i]}"
+  bin="${terminal_bin[$i]}"
+  pkg="${terminal_pkg[$i]}"
+  arg_cmd="${terminal_command[$i]}"
   
   if pacman -Qq $terminal_pkg > /dev/null ; then
+
     sed -i -e "s/alacritty/$terminal_bin/g" /etc/profile.d/run-once.sh
 
     find /etc/skel/.local/share/applications -type f -name '*.desktop' -exec sed -i -e "s/alacritty -e/$terminal_bin $terminal_arg_cmd/g" -e "s/cool-retro-term -e/$terminal_bin $terminal_arg_cmd/g" -e "s/gnome-terminal --/$terminal_bin $terminal_arg_cmd/g" -e "s/kitty -e/$terminal_bin $terminal_arg_cmd/g" -e "s/konsole -e/$terminal_bin $terminal_arg_cmd/g" -e "s/urxvt -e/$terminal_bin $terminal_arg_cmd/g" -e "s/xterm -e/$terminal_bin $terminal_arg_cmd/g" {} +
@@ -44,6 +48,7 @@ do
     sed -i -e "s/alacritty -e/$terminal_bin $terminal_arg_cmd/g" -e "s/cool-retro-term -e/$terminal_bin $terminal_arg_cmd/g" -e "s/gnome-terminal --/$terminal_bin $terminal_arg_cmd/g" -e "s/kitty -e/$terminal_bin $terminal_arg_cmd/g" -e "s/konsole -e/$terminal_bin $terminal_arg_cmd/g" -e "s/urxvt -e/$terminal_bin $terminal_arg_cmd/g" -e "s/xterm -e/$terminal_bin $terminal_arg_cmd/g" /usr/share/athena-gnome-config/dconf-shell.ini /usr/share/htb-tools/htb-update.py
 
     sed -i -e "s/\"alacritty\", \"-e\"/\"$terminal_bin\", \"$terminal_arg_cmd\"/g" -e "s/\"cool-retro-term\", \"-e\"/\"$terminal_bin\", \"$terminal_arg_cmd\"/g" -e "s/\"gnome-terminal\", \"--\"/\"$terminal_bin\", \"$terminal_arg_cmd\"/g" -e "s/\"kitty\", \"-e\"/\"$terminal_bin\", \"$terminal_arg_cmd\"/g" -e "s/\"konsole\", \"-e\"/\"$terminal_bin\", \"$terminal_arg_cmd\"/g" -e "s/\"urxvt\", \"-e\"/\"$terminal_bin\", \"$terminal_arg_cmd\"/g" -e "s/\"xterm\", \"-e\"/\"$terminal_bin\", \"$terminal_arg_cmd\"/g" /usr/share/athena-welcome/athena-welcome.py
+    
   fi
 
 done

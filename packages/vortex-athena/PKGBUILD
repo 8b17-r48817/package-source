@@ -11,4 +11,4 @@ package() {
 
   cp -rf "${srcdir}"/usr/share/plymouth/themes/vortex-athena/* "${pkgdir}/usr/share/plymouth/themes/vortex-athena/"
 }
-sha512sums=('caf2f87e20625eacb01345fe667fad9b6dccfc7e7705a2180e3a38253c6c7a126c2592b10094349d0872ab13cf8350ad6201883ccaa82087bfdd89e4e6a296dd')
+sha512sums=('c3716786735ab2f8febd24398aecd10951898182ccaa5417f0551a4a6e21822ab9ec6ba8e017c230eec72b43a2b95befe05ec63caadee58699814a95c547e1ca')
