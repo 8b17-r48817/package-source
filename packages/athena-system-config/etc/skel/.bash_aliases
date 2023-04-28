@@ -241,7 +241,7 @@ alias big="expac -H M '%m\t%n' | sort -h | nl"
 alias unhblock="hblock -S none -D none"
 
 #systeminfo
-alias probe="sudo -E hw-probe -all -upload"
+#alias probe="sudo -E hw-probe -all -upload"
 alias sysfailed="systemctl list-units --failed"
 
 #shutdown or reboot
