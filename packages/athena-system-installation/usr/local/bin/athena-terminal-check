@@ -49,6 +49,10 @@ do
 
     sed -i -e "s/alacritty -e/$bin $arg_cmd/g" -e "s/cool-retro-term -e/$bin $arg_cmd/g" -e "s/gnome-terminal --/$bin $arg_cmd/g" -e "s/kitty -e/$bin $arg_cmd/g" -e "s/konsole -e/$bin $arg_cmd/g" -e "s/urxvt -e/$bin $arg_cmd/g" -e "s/xterm -e/$bin $arg_cmd/g" /usr/share/athena-gnome-config/dconf-shell.ini /usr/share/htb-tools/htb-update.py
 
+    sed -i -e "s/alacritty/$bin/g" -e "s/cool-retro-term/$bin/g" -e "s/gnome-terminal/$bin/g" -e "s/kitty/$bin/g" -e "s/konsole/$bin/g" -e "s/urxvt/$bin/g" -e "s/xterm/$bin/g" /etc/skel/.local/share/applications/bash.desktop
+
+    sed -i -e "s/alacritty\\\\\"}/$bin\\\\\"}/g" -e "s/cool-retro-term\\\\\"}/$bin\\\\\"}/g" -e "s/gnome-terminal\\\\\"}/$bin\\\\\"}/g" -e "s/kitty\\\\\"}/$bin\\\\\"}/g" -e "s/konsole\\\\\"}/$bin\\\\\"}/g" -e "s/urxvt\\\\\"}/$bin\\\\\"}/g" -e "s/xterm\\\\\"}/$bin\\\\\"}/g" -e "s/terminator\\\\\"}/$bin\\\\\"}/g" -e "s/terminology\\\\\"}/$bin\\\\\"}/g" -e "s/xfce4-terminal\\\\\"}/$bin\\\\\"}/g" /usr/share/athena-gnome-config/dconf-shell.ini
+
     sed -i -e "s/\"alacritty\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"cool-retro-term\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"gnome-terminal\", \"--\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"kitty\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"konsole\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"urxvt\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"xterm\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" /usr/share/athena-welcome/athena-welcome.py
     
   fi
@@ -60,9 +64,11 @@ do
   
   if pacman -Qq $bin > /dev/null ; then
 
-    sed -i -e "s/alacritty/$non_std_terminal_bin/g" -e "s/cool-retro-term/$non_std_terminal_bin/g" -e "s/gnome-terminal/$non_std_terminal_bin/g" -e "s/kitty/$non_std_terminal_bin/g" -e "s/konsole/$non_std_terminal_bin/g" -e "s/urxvt/$non_std_terminal_bin/g" -e "s/xterm/$non_std_terminal_bin/g" -e "s/terminator/$non_std_terminal_bin/g" -e "s/terminology/$non_std_terminal_bin/g" -e "s/xfce4-terminal/$non_std_terminal_bin/g" /etc/skel/.local/share/applications/bash.desktop
+    sed -i -e "s/gnome-terminal/$bin/g" /etc/profile.d/run-once.sh
+
+    sed -i -e "s/alacritty/$bin/g" -e "s/cool-retro-term/$bin/g" -e "s/gnome-terminal/$bin/g" -e "s/kitty/$bin/g" -e "s/konsole/$bin/g" -e "s/urxvt/$bin/g" -e "s/xterm/$bin/g" -e "s/terminator/$bin/g" -e "s/terminology/$bin/g" -e "s/xfce4-terminal/$bin/g" /etc/skel/.local/share/applications/bash.desktop
     
-    sed -i -e "s/alacritty\\\\\"}/$non_std_terminal_bin\\\\\"}/g" -e "s/cool-retro-term\\\\\"}/$non_std_terminal_bin\\\\\"}/g" -e "s/gnome-terminal\\\\\"}/$non_std_terminal_bin\\\\\"}/g" -e "s/kitty\\\\\"}/$non_std_terminal_bin\\\\\"}/g" -e "s/konsole\\\\\"}/$non_std_terminal_bin\\\\\"}/g" -e "s/urxvt\\\\\"}/$non_std_terminal_bin\\\\\"}/g" -e "s/xterm\\\\\"}/$non_std_terminal_bin\\\\\"}/g" -e "s/terminator\\\\\"}/$non_std_terminal_bin\\\\\"}/g" -e "s/terminology\\\\\"}/$non_std_terminal_bin\\\\\"}/g" -e "s/xfce4-terminal\\\\\"}/$non_std_terminal_bin\\\\\"}/g" /usr/share/athena-gnome-config/dconf-shell.ini #It changes only the Terminal button of Red Team menu
+    sed -i -e "s/alacritty\\\\\"}/$bin\\\\\"}/g" -e "s/cool-retro-term\\\\\"}/$bin\\\\\"}/g" -e "s/gnome-terminal\\\\\"}/$bin\\\\\"}/g" -e "s/kitty\\\\\"}/$bin\\\\\"}/g" -e "s/konsole\\\\\"}/$bin\\\\\"}/g" -e "s/urxvt\\\\\"}/$bin\\\\\"}/g" -e "s/xterm\\\\\"}/$bin\\\\\"}/g" -e "s/terminator\\\\\"}/$bin\\\\\"}/g" -e "s/terminology\\\\\"}/$bin\\\\\"}/g" -e "s/xfce4-terminal\\\\\"}/$bin\\\\\"}/g" /usr/share/athena-gnome-config/dconf-shell.ini #It changes only the Terminal button of Red Team menu
   fi
 done
 
