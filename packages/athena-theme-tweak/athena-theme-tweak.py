@@ -142,7 +142,8 @@ if args.help:
 
 browser_map = {
     "Brave": "athena-brave-config",
-    "Firefox ESR": "athena-firefox-config"
+    "Firefox ESR": "athena-firefox-config",
+    "Mullvad": "athena-mullvad-config"
 }
 
 if args.browser:
@@ -152,18 +153,22 @@ if args.browser:
         if not "error" in current_browser_package:
             print("The browser "+current_browser_package+" is installed.")
             break
+
+    subprocess.call("dconf dump /org/gnome/shell/ > "+home+"/.tmp.txt", shell=True)
+    
     if current_browser_package == "athena-firefox-config":
-        subprocess.call("dconf dump /org/gnome/shell/ > "+home+"/.tmp.txt", shell=True)
-        subprocess.call("sed -i 's/{\\\\\"name\\\\\":\\\\\"Brave\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/256x256\/apps\/brave-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"brave\\\\\"},\\\\\"angle\\\\\":-1}/{\\\\\"name\\\\\":\\\\\"Firefox ESR\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/256x256\/apps\/firefox_logo_arch-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"firefox-esr\\\\\"},\\\\\"angle\\\\\":-1}/g' "+home+"/.tmp.txt", shell=True)
-        subprocess.call("dconf load /org/gnome/shell/ < "+home+"/.tmp.txt", shell=True)
-        subprocess.call("rm -rf "+home+"/.tmp.txt", shell=True)
-        print("Done.")
+        subprocess.call("sed -i 's/{\\\\\"name\\\\\":\\\\\"Brave\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/hicolor\/256x256\/apps\/brave-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"brave\\\\\"},\\\\\"angle\\\\\":-1}/{\\\\\"name\\\\\":\\\\\"Firefox ESR\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/hicolor\/256x256\/apps\/firefox_logo_arch-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"firefox-esr\\\\\"},\\\\\"angle\\\\\":-1}/g' "+home+"/.tmp.txt", shell=True)
+        subprocess.call("sed -i 's/{\\\\\"name\\\\\":\\\\\"Mullvad\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/hicolor\/128x128\/apps\/mullvad-browser.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"mullvad-browser\\\\\"},\\\\\"angle\\\\\":-1}/{\\\\\"name\\\\\":\\\\\"Firefox ESR\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/hicolor\/256x256\/apps\/firefox_logo_arch-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"firefox-esr\\\\\"},\\\\\"angle\\\\\":-1}/g' "+home+"/.tmp.txt", shell=True)
     elif current_browser_package == "athena-brave-config":
-        subprocess.call("dconf dump /org/gnome/shell/ > "+home+"/.tmp.txt", shell=True)
-        subprocess.call("sed -i 's/{\\\\\"name\\\\\":\\\\\"Firefox ESR\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/256x256\/apps\/firefox_logo_arch-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"firefox-esr\\\\\"},\\\\\"angle\\\\\":-1}/{\\\\\"name\\\\\":\\\\\"Brave\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/256x256\/apps\/brave-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"brave\\\\\"},\\\\\"angle\\\\\":-1}/g' "+home+"/.tmp.txt", shell=True)
-        subprocess.call("dconf load /org/gnome/shell/ < "+home+"/.tmp.txt", shell=True)
-        subprocess.call("rm -rf "+home+"/.tmp.txt", shell=True)
-        print("Done.")
+        subprocess.call("sed -i 's/{\\\\\"name\\\\\":\\\\\"Firefox ESR\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/hicolor\/256x256\/apps\/firefox_logo_arch-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"firefox-esr\\\\\"},\\\\\"angle\\\\\":-1}/{\\\\\"name\\\\\":\\\\\"Brave\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/hicolor\/256x256\/apps\/brave-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"brave\\\\\"},\\\\\"angle\\\\\":-1}/g' "+home+"/.tmp.txt", shell=True)
+        subprocess.call("sed -i 's/{\\\\\"name\\\\\":\\\\\"Mullvad\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/hicolor\/128x128\/apps\/mullvad-browser.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"mullvad-browser\\\\\"},\\\\\"angle\\\\\":-1}/{\\\\\"name\\\\\":\\\\\"Brave\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/hicolor\/256x256\/apps\/brave-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"brave\\\\\"},\\\\\"angle\\\\\":-1}/g' "+home+"/.tmp.txt", shell=True)
+    elif current_browser_package == "athena-mullvad-config":
+        subprocess.call("sed -i 's/{\\\\\"name\\\\\":\\\\\"Firefox ESR\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/hicolor\/256x256\/apps\/firefox_logo_arch-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"firefox-esr\\\\\"},\\\\\"angle\\\\\":-1}/{\\\\\"name\\\\\":\\\\\"Mullvad\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/hicolor\/128x128\/apps\/mullvad-browser.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"mullvad-browser\\\\\"},\\\\\"angle\\\\\":-1}/g' "+home+"/.tmp.txt", shell=True)
+        subprocess.call("sed -i 's/{\\\\\"name\\\\\":\\\\\"Brave\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/hicolor\/256x256\/apps\/brave-256x256.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"brave\\\\\"},\\\\\"angle\\\\\":-1}/{\\\\\"name\\\\\":\\\\\"Mullvad\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/hicolor\/128x128\/apps\/mullvad-browser.png\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"mullvad-browser\\\\\"},\\\\\"angle\\\\\":-1}/g' "+home+"/.tmp.txt", shell=True)
+    
+    subprocess.call("dconf load /org/gnome/shell/ < "+home+"/.tmp.txt", shell=True)
+    subprocess.call("rm -rf "+home+"/.tmp.txt", shell=True)
+    print("Done.")
     exit()
 
 theme_map = {

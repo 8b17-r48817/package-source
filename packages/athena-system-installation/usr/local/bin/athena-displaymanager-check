@@ -28,7 +28,13 @@ echo
 package=gdm
 if pacman -Qq $package > /dev/null ; then
   ln -sf /usr/lib/systemd/system/gdm.service /etc/systemd/system/display-manager.service
-  sed -i 's/^#WaylandEnable=.*/WaylandEnable=false/g' /etc/gdm/custom.conf
+
+  if grep -Rq "WaylandEnable" /etc/gdm/custom.conf
+  then
+      sed -i 's/.*WaylandEnable=.*/WaylandEnable=false/g' /etc/gdm/custom.conf
+  else
+      echo "WaylandEnable=false" >> /etc/gdm/custom.conf
+  fi
 fi
 
 package=sddm

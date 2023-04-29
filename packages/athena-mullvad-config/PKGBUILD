@@ -1,0 +1,15 @@
+pkgname=athena-mullvad-config
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Mullvad browser configuration for Athena"
+arch=('any')
+license=("custom")
+depends=('athena-nighttab' 'mullvad-browser-bin')
+source=("$pkgname.tar.gz")
+
+package() {
+  install -dm 755 "${pkgdir}/etc/skel/"
+
+  cp -rf "${srcdir}/etc/skel/.mullvad" "${pkgdir}/etc/skel/"
+}
+sha512sums=('9cfcd3bc7f3ba15f79eb5913d8b619693adb977b07fd23c28b3a2ab399777e3c832b8d4cfe1766129e117b2d2ec270c628085eb7f82c8903564af0daabb8517c')

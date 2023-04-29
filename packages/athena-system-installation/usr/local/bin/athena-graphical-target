@@ -49,7 +49,7 @@ if [[ $selection == "free" ]]; then
 	echo "#################################"
 	echo
 	pacman -Rns --noconfirm nvidia-dkms nvidia-utils nvidia-settings egl-wayland
-	cp /etc/calamares/settings-advanced-no-nivida.conf /etc/calamares/settings-advanced.conf
+	cp /etc/calamares/settings-advanced-no-nvidia.conf /etc/calamares/settings-advanced.conf
 fi
 
 ##############################################################################################
@@ -63,7 +63,7 @@ if [[ $selection == "freenonouveau" ]]; then
 	echo
 	pacman -Rns --noconfirm nvidia-dkms nvidia-utils nvidia-settings egl-wayland
 	pacman -Rns --noconfirm xf86-video-nouveau
-	cp /etc/calamares/settings-advanced-no-nivida.conf /etc/calamares/settings-advanced.conf
+	cp /etc/calamares/settings-advanced-no-nvidia.conf /etc/calamares/settings-advanced.conf
 fi
 
 ##############################################################################################
