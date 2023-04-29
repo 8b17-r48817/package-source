@@ -30,7 +30,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
          $BEGINNING/custom0/ binding "<Super>L"
 
          $BEGINNING/custom1/ name "Terminal"
-         $BEGINNING/custom1/ command "alacritty"
+         $BEGINNING/custom1/ command "gnome-terminal"
          $BEGINNING/custom1/ binding "<CTRL><ALT>T"
 
          gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>E']"
@@ -39,7 +39,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
          ############################################################
 
          xdg-mime default org.gnome.Nautilus.desktop inode/directory
-         gsettings set org.gnome.desktop.default-applications.terminal exec alacritty
+         gsettings set org.gnome.desktop.default-applications.terminal exec gnome-terminal
      
          ############################################################
      

@@ -4,6 +4,6 @@ Encoding=UTF-8
 Name=Bash Shell
 Comment=Bash Shell
 Icon=/usr/share/icons/hicolor/scalable/apps/bash.svg
-Exec=alacritty -e /usr/bin/bash
+Exec=gnome-terminal
 Terminal=false
 Categories=Tags;Describing;Application

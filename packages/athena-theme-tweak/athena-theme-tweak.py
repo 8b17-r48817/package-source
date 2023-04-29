@@ -57,7 +57,7 @@ def arg_parse():
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument("-b", "--browser", action='store_true', help="set the current browser logo in Red Team menu")
     parser.add_argument("-c", "--colored", action='store_true', help="let's give some random colored output")
-    parser.add_argument("-e", "--emulator", choices=["alacritty", "cool-retro-term", "gnome-terminal", "kitty", "konsole", "urxvt", "xterm"], help="specify a terminal emulator to be set [alacritty|cool-retro-term|gnome-terminal|kitty|konsole|urxvt|xterm]")
+    parser.add_argument("-e", "--emulator", choices=["alacritty", "cool-retro-term", "gnome-terminal", "kitty", "konsole", "terminator", "terminology", "urxvt", "xfce4-terminal", "xterm"], help="specify a terminal emulator to be set [alacritty|cool-retro-term|gnome-terminal|kitty|konsole|terminator|terminology|urxvt|xfce4-terminal|xterm]")
     parser.add_argument("-h", "--help", action='store_true', help="show this help message and exit")
     parser.add_argument("-l", "--list", action='store_true', help="list all available Athena themes")
     parser.add_argument("-t", "--theme", choices=["AkameGaKill", "BlueEyesSamurai", "Graphite", "CyborgGruvbox", "SweetDark"], help="specify an Athena theme to be set [AkameGaKill|BlueEyesSamurai|Graphite|CyborgGruvbox|SweetDark]")
@@ -319,7 +319,7 @@ terminal_map = {
     "cool-retro-term": "cool-retro-term",
     "gnome-terminal": "gnome-terminal",
     "kitty": "kitty",
-    "Konsole": "konsole",
+    "konsole": "konsole",
     "urxvt": "rxvt-unicode",
     "xterm": "xterm"
 }
@@ -334,8 +334,11 @@ terminal_command = {
     "xterm": "-e"
 }
 
+non_stf_terminal_array = ["terminator", "terminology", "xfce4-terminal"]
+
 if args.emulator:
     chosen_emulator=args.emulator
+    subprocess.call("sudo cp -rf /usr/share/athena-gnome-config/dconf-shell.ini /usr/share/athena-gnome-config/dconf-shell.ini.bak", shell=True)
 
     for i in terminal_map:
         terminal_bin = i
@@ -358,7 +361,14 @@ if args.emulator:
 
             subprocess.call("sudo sed -i -e 's/\"alacritty\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"cool-retro-term\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"gnome-terminal\", \"--\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"kitty\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"konsole\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"urxvt\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"xterm\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' /usr/share/athena-welcome/athena-welcome.py", shell=True)
 
-            subprocess.call("sudo cp -rf /usr/share/athena-gnome-config/dconf-shell.ini /usr/share/athena-gnome-config/dconf-shell.ini.bak", shell=True)
-            subprocess.call("dconf load /org/gnome/shell/ < /usr/share/athena-gnome-config/dconf-shell.ini", shell=True)
-            exit()
+            
         
+    for i in non_stf_terminal_array:
+        non_std_terminal_bin = i
+
+        if chosen_emulator == non_std_terminal_bin:
+            subprocess.call("sudo sed -i -e 's/alacritty/"+non_std_terminal_bin+"/g' -e 's/cool-retro-term/"+non_std_terminal_bin+"/g' -e 's/gnome-terminal/"+non_std_terminal_bin+"/g' -e 's/kitty/"+non_std_terminal_bin+"/g' -e 's/konsole/"+non_std_terminal_bin+"/g' -e 's/urxvt/"+non_std_terminal_bin+"/g' -e 's/xterm/"+non_std_terminal_bin+"/g' -e 's/terminator/"+non_std_terminal_bin+"/g' -e 's/terminology/"+non_std_terminal_bin+"/g' -e 's/xfce4-terminal/"+non_std_terminal_bin+"/g' "+home+"/.local/share/applications/bash.desktop", shell=True)
+            
+            subprocess.call("sudo sed -i -e 's/alacritty\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/cool-retro-term\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/gnome-terminal\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/kitty\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/konsole\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/urxvt\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/xterm\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/terminator\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/terminology\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/xfce4-terminal\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' /usr/share/athena-gnome-config/dconf-shell.ini", shell=True) #Used only for Terminal button in Red Team menu
+    
+    subprocess.call("dconf load /org/gnome/shell/ < /usr/share/athena-gnome-config/dconf-shell.ini", shell=True)

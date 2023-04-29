@@ -4,6 +4,6 @@ Encoding=UTF-8
 Name=PowerShell
 Comment=PowerShell
 Icon=/usr/share/icons/hicolor/scalable/apps/powershell.svg
-Exec=alacritty -e /usr/bin/bash -c 'pwsh'
+Exec=gnome-terminal -- /usr/bin/bash -c 'pwsh'
 Terminal=false
 Categories=Tags;Describing;Application
