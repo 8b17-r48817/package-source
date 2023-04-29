@@ -367,6 +367,13 @@ if args.emulator:
         non_std_terminal_bin = i
 
         if chosen_emulator == non_std_terminal_bin:
+            terminal_check = subprocess.getoutput("command -v "+non_std_terminal_bin)
+            if terminal_check:
+                print("The package "+non_std_terminal_bin+" is installed.")
+            else:
+                print("The package "+non_std_terminal_bin+" is not installed. Installing...")
+                subprocess.call("sudo pacman -S "+non_std_terminal_bin, shell=True)
+
             subprocess.call("sudo sed -i -e 's/alacritty/"+non_std_terminal_bin+"/g' -e 's/cool-retro-term/"+non_std_terminal_bin+"/g' -e 's/gnome-terminal/"+non_std_terminal_bin+"/g' -e 's/kitty/"+non_std_terminal_bin+"/g' -e 's/konsole/"+non_std_terminal_bin+"/g' -e 's/urxvt/"+non_std_terminal_bin+"/g' -e 's/xterm/"+non_std_terminal_bin+"/g' -e 's/terminator/"+non_std_terminal_bin+"/g' -e 's/terminology/"+non_std_terminal_bin+"/g' -e 's/xfce4-terminal/"+non_std_terminal_bin+"/g' "+home+"/.local/share/applications/bash.desktop", shell=True)
             
             subprocess.call("sudo sed -i -e 's/alacritty\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/cool-retro-term\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/gnome-terminal\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/kitty\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/konsole\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/urxvt\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/xterm\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/terminator\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/terminology\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/xfce4-terminal\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' /usr/share/athena-gnome-config/dconf-shell.ini", shell=True) #Used only for Terminal button in Red Team menu
