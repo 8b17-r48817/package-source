@@ -65,7 +65,7 @@ def htb_machines_to_flypie(data,param):
 
         shell=os.path.expandvars('$SHELL')
 
-        machine_command = 'gnome-terminal -- /usr/bin/'+shell+' -c \\\\\\\\\\\"htb-spawn '+machine_name+';'+shell+'\\\\\\\\\\\"'
+        machine_command = 'gnome-terminal -- /usr/bin/bash -c \\\\\\\\\\\"htb-spawn '+machine_name+';'+shell+'\\\\\\\\\\\"'
 
         # Open the url image, set stream to True, this will return the stream content.
         r = requests.get(avatar_url, stream = True)
