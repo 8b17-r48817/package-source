@@ -33,8 +33,6 @@ non_std_terminal_bin=("terminator" "terminology" "xfce4-terminal")
 length=${#terminal_bin[@]}
 non_std_length=${#non_std_terminal_bin[@]}
 
-keybind="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
-
 for (( i=0; i<${length}; i++ ));
 do
   bin="${terminal_bin[$i]}"
@@ -44,6 +42,8 @@ do
   if pacman -Qq $pkg > /dev/null ; then
 
     sed -i -e "s/gnome-terminal/$bin/g" /etc/profile.d/run-once.sh
+
+    # In the following commands I don't use the terminals like terminator, terminology and so on because they have different syntax
 
     find /etc/skel/.local/share/applications -type f -name '*.desktop' -exec sed -i -e "s/alacritty -e/$bin $arg_cmd/g" -e "s/cool-retro-term -e/$bin $arg_cmd/g" -e "s/gnome-terminal --/$bin $arg_cmd/g" -e "s/kitty -e/$bin $arg_cmd/g" -e "s/konsole -e/$bin $arg_cmd/g" -e "s/urxvt -e/$bin $arg_cmd/g" -e "s/xterm -e/$bin $arg_cmd/g" {} +
 
