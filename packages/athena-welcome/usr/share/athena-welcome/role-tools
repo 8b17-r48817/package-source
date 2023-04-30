@@ -68,6 +68,8 @@ sudo pacman -Syyu --noconfirm --needed $hacktools
 
 if [ $gitweb ]; then
    echo
+   read -p "Let's retrieve payload repositories! Press ENTER key to continue..."
+   echo
    echo "Retrieving payload repositories..."
    echo
    
