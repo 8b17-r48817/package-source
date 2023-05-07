@@ -1,24 +1,39 @@
 pkgname=athena-gruvbox-theme
-pkgver=1.0.0
-pkgrel=3
+pkgver=46.44e81d82
+pkgrel=1
 pkgdesc="Gruvbox theme with Material Black Mango Suru icons for Athena"
 arch=('any')
-license=("custom")
-source=("$pkgname.tar.gz")
+license=("GPL3")
+makedepends=('git')
+source=("git+https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme.git"
+        "git+https://github.com/rtlewis88/rtl88-Themes#branch=material-black-COLORS"
+        "https://github.com/ful1e5/fuchsia-cursor/releases/latest/download/Fuchsia-Pop.tar.gz"
+        "cyborg_gruv.png"
+        "$pkgname.tar.gz")
+
+pkgver() {
+  cd Gruvbox-GTK-Theme
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/themes"
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/categories"
-  mkdir -p "${pkgdir}/usr/share/backgrounds/default"
+  install -dm 755 "$pkgdir/usr/share/themes"
+  install -dm 755 "$pkgdir/usr/share/icons/hicolor/256x256"
+  install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
-  cp -rf "${srcdir}/usr/share/themes/Gruvbox-Dark-B" "${pkgdir}/usr/share/themes/"
-  cp -rf "${srcdir}/usr/share/themes/Gruvbox-Dark-BL" "${pkgdir}/usr/share/themes/"
-  cp -rf "${srcdir}/usr/share/icons/Material-Black-Mango-Suru" "${pkgdir}/usr/share/icons/"
-  cp -rf "${srcdir}/usr/share/icons/Fuchsia-Pop" "${pkgdir}/usr/share/icons/"
-  cp -rf "${srcdir}/usr/share/backgrounds/default/cyborg_gruv.png" "${pkgdir}/usr/share/backgrounds/default/"  
-  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/apps/* "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
-  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/categories/* "${pkgdir}/usr/share/icons/hicolor/256x256/categories/"
+  cp -a Gruvbox-GTK-Theme/themes/Gruvbox-Dark-B "$pkgdir/usr/share/themes/"
+  cp -a Gruvbox-GTK-Theme/themes/Gruvbox-Dark-BL "$pkgdir/usr/share/themes/"
+  cp -a rtl88-Themes/Material-Black-Mango-Suru "$pkgdir/usr/share/icons/"
+  cp -a Fuchsia-Pop "$pkgdir/usr/share/icons/"
+  install -Dm 644 "cyborg_gruv.png" "$pkgdir/usr/share/backgrounds/default/"
+
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/256x256/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/256x256/"
 
 }
-sha512sums=('11a1a29472322d037b58de0ec55556893333657dac6fc392e24bb6072ebd043d0ccd11418fd3ba3bd4579b4f83fae2d64989e64d10f29b04f1f02f12eea00015')
+sha512sums=('SKIP'
+            'SKIP'
+            '6007a5db701981997719a38ae99181b6269a58332f245b31b6756a5fcad6b9f8bb991c5820c16b16419005cf5631ffa3410c9c9068b16d09e69042734aa99eb0'
+            'bbd4a82c1dda3dc26271e36c2ff7c362d513e720696fa9912e7d025f049337f551a6f1e1969cb087303c2dd02344ac27523e1a6662d16daca9c616bbd7c80445'
+            '46ef483cbebba4b02f1fa5b2e6116090f679dfb539cfacf1b796a716c1216c7a61fc206fb6b2ab2c15fa1fbfa24554254de5e9561403bf004b0f37d404a8fc2e')

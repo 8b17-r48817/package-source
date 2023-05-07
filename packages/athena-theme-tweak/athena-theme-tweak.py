@@ -228,7 +228,7 @@ if args.theme:
             gnome_shell = "Tokyonight-Dark-BL"
 
         color_scheme = "prefer-dark"
-        icon_theme = "tokyonight_dark"
+        icon_theme = "Tokyonight-Dark"
         cursor_theme = "oreo_blue_cursors"
         background_theme = "file:///usr/share/backgrounds/default/blue-eyes.jpg"
         picture_options = "stretched"
@@ -260,8 +260,8 @@ if args.theme:
             theme_name = "Graphite-Dark"
             gnome_shell = "Graphite-Dark"
         else:
-            theme_name = "Graphite-Dark-Rimless"
-            gnome_shell = "Graphite-Dark-Rimless"
+            theme_name = "Graphite-Rimless-Dark"
+            gnome_shell = "Graphite-Rimless-Dark"
 
         color_scheme = "prefer-dark"
         icon_theme = "Tela-circle-black-dark"

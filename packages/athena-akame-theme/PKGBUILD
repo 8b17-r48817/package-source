@@ -1,24 +1,37 @@
 pkgname=athena-akame-theme
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.r160.g3864d851aa
+pkgrel=1
 pkgdesc="Akame theme with Material Black Cherry Suru icons for Athena"
 arch=('any')
-license=("custom")
-source=("$pkgname.tar.gz")
+license=("GPL3")
+makedepends=('git')
+source=("git+https://github.com/rtlewis88/rtl88-Themes#branch=material-black-COLORS"
+        "https://github.com/ful1e5/Bibata_Extra_Cursor/releases/latest/download/Bibata-Modern-DarkRed.tar.gz"
+        "akame.jpg"
+        "$pkgname.tar.gz")
+
+pkgver() {
+  cd rtl88-Themes
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/themes"
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/categories"
-  mkdir -p "${pkgdir}/usr/share/backgrounds/default"
+  install -dm 755 "$pkgdir/usr/share/themes"
+  install -dm 755 "$pkgdir/usr/share/icons/hicolor/256x256"
+  install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
-  cp -rf "${srcdir}/usr/share/themes/Quartz-Red" "${pkgdir}/usr/share/themes/"
-  cp -rf "${srcdir}/usr/share/themes/Quartz-Dark-Red" "${pkgdir}/usr/share/themes/"
-  cp -rf "${srcdir}/usr/share/icons/Material-Black-Cherry-Suru" "${pkgdir}/usr/share/icons/"
-  cp -rf "${srcdir}/usr/share/icons/Bibata-Modern-DarkRed" "${pkgdir}/usr/share/icons/"
-  cp -rf "${srcdir}/usr/share/backgrounds/default/akame.jpg" "${pkgdir}/usr/share/backgrounds/default/"
-  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/apps/* "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
-  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/categories/* "${pkgdir}/usr/share/icons/hicolor/256x256/categories/"
+  cp -a rtl88-Themes/Material-Black-Cherry-Suru "$pkgdir/usr/share/icons/"
+  cp -a Bibata-Modern-DarkRed "$pkgdir/usr/share/icons/"
+  install -Dm 644 "akame.jpg" "$pkgdir/usr/share/backgrounds/default/"
+
+  cp -a "$srcdir/Quartz-Red" "$pkgdir/usr/share/themes/"
+  cp -a "$srcdir/Quartz-Dark-Red" "$pkgdir/usr/share/themes/"
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/256x256/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/256x256/"
 
 }
-sha512sums=('4a3e7a299485be9b921628806d1b079ca1127fa8c99345caf8c2451e91fa838023c98f56c3bbd9b2ac600e389f246d509a50bca3f5ac31fd3984cf2e504c0408')
+sha512sums=('SKIP'
+            '3a1360ba5541598ec6c4dfa6cd261e49ec849dafbe21e5a047820412b093486a975bbb97c1fac616f510f1e878e19afacbfd9e82baa21664b022af25347ecc2d'
+            'a31f009dbaff153513a552da000bc86307ab248aba5c84965594239794e1c8fd94a4c3f06b64538aa8956b5a732efd17a4197bcd7f89c2ca1d02a7e0dbbfae05'
+            '2aa8468ece1d3f27f9bae6f09bf217b36df283cf1a530e2d63f0d48edd0c2782a04ccd15f4cf4786c3356f820df0e7c6edfeae5334cb14328ba35f30f9f6ad02')

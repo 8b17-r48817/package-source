@@ -1,23 +1,37 @@
 pkgname=athena-sweet-dark-theme
-pkgver=1.0.0
-pkgrel=3
+pkgver=14.b2192ff
+pkgrel=1
 pkgdesc="Sweet Dark theme with Sweet Purple icons for Athena"
 arch=('any')
-license=("custom")
-source=("$pkgname.tar.gz")
+license=("GPL3")
+makedepends=('git')
+source=("git+https://github.com/EliverLara/Sweet-folders.git"
+        "git+https://github.com/EliverLara/candy-icons.git"
+        "neon_circle.jpg"
+        "$pkgname.tar.gz")
+
+pkgver() {
+  cd Sweet-folders
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/themes"
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/categories"
-  mkdir -p "${pkgdir}/usr/share/backgrounds/default"
+  install -dm 755 "$pkgdir/usr/share/themes"
+  install -dm 755 "$pkgdir/usr/share/icons/hicolor/256x256"
+  install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
-  cp -rf "${srcdir}/usr/share/themes/Sweet-Dark-v40" "${pkgdir}/usr/share/themes/"
-  cp -rf "${srcdir}/usr/share/icons/Sweet-Purple" "${pkgdir}/usr/share/icons/"
-  cp -rf "${srcdir}/usr/share/icons/candy-icons" "${pkgdir}/usr/share/icons/"
-  cp -rf "${srcdir}/usr/share/icons/oreo_spark_purple_cursors" "${pkgdir}/usr/share/icons/"
-  cp -rf "${srcdir}/usr/share/backgrounds/default/neon_circle.jpg" "${pkgdir}/usr/share/backgrounds/default/"
-  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/apps/* "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
-  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/categories/* "${pkgdir}/usr/share/icons/hicolor/256x256/categories/"
+  cp -a Sweet-folders/Sweet-Purple "$pkgdir/usr/share/icons/"
+  rm -rf candy-icons/.github candy-icons/LICENSE candy-icons/README.md
+  cp -a candy-icons "$pkgdir/usr/share/icons/"
+  install -Dm 644 "neon_circle.jpg" "$pkgdir/usr/share/backgrounds/default/"
+
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/256x256/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/256x256/"
+  cp -rf "$srcdir/Sweet-Dark-v40" "$pkgdir/usr/share/themes/"
+  cp -rf "$srcdir/oreo_spark_purple_cursors" "$pkgdir/usr/share/icons/"
 }
-sha512sums=('90c37493aea554abed2245f36f95a4a34d09b0f54c1eeceff85bde4e1e6ce6cb1ba1d7813c04a110ed28e727fafca5cdb3b3df10382f3f02906c993e171dbabe')
+sha512sums=('SKIP'
+            'SKIP'
+            '8dc1636380142b71c9c2af783784161c7663d410437b1fdab4139aeca7f2e611750d9eb1233a75b5d19d9a82985ee4fde1581ef1a952ab24b7ced5b12c54b395'
+            '059edfdf15339be6a6a91a48338f067ff8792bbbd94076e7c2c1ab4524210864cb0f6b1ebb70ebc611feebc71a9210934d8acc622d5e06858a2cdfdb848b3589')

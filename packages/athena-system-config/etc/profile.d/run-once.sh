@@ -106,7 +106,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
               gnome_shell="Tokyonight-Dark-B"
 
               color_scheme="prefer-dark"
-              icon_theme="tokyonight_dark"
+              icon_theme="Tokyonight-Dark"
               cursor_theme="oreo_blue_cursors"
               background_theme="file:///usr/share/backgrounds/default/blue-eyes.jpg"
               picture_options="stretched"

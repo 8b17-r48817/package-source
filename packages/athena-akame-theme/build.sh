@@ -2,7 +2,7 @@
 
 #NEED ONLY TO EDIT  sourcefiles VARIABLE
 
-sourcefiles="usr"
+sourcefiles="icons Quartz-Red Quartz-Dark-Red"
 
 pkgname=$(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}')
 pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
@@ -13,14 +13,14 @@ pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
 
 echo $pkgfile
 
-sed -i -e '/^sha256/d' -e '/^sha512/d' PKGBUILD
+#sed -i -e '/^sha256/d' -e '/^sha512/d' PKGBUILD
 
 tar -zcvf $pkgname.tar.gz $sourcefiles 
 
-makepkg -g >> PKGBUILD
+#makepkg -g >> PKGBUILD
 makepkg -f -scr --sign
 
-rm -rf src pkg $pkgname.tar.gz
+rm -rf src pkg $pkgname.tar.gz Bibata-Modern-DarkRed.tar.gz rtl88-Themes
 
 rm -rf ../../$pkgfile ../../$pkgfile.sig
 

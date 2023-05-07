@@ -1,25 +1,48 @@
 pkgname=athena-graphite-theme
-pkgver=1.0.0
-pkgrel=3
+pkgver=2023.04.26.r4.g7c17e9c
+pkgrel=1
 pkgdesc="Graphite Dark theme with Tela Circle Black Dark icons for Athena"
 arch=('any')
-license=("custom")
-source=("$pkgname.tar.gz")
+license=("GPL3")
+makedepends=('git' 'sassc')
+source=("git+https://github.com/vinceliuice/Graphite-gtk-theme.git"
+        "git+https://github.com/vinceliuice/Tela-circle-icon-theme.git"
+        "https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Ice.tar.gz"
+        "arch-ascii.png"
+        "$pkgname.tar.gz")
+
+pkgver() {
+  cd Graphite-gtk-theme
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/themes"
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/categories"
-  mkdir -p "${pkgdir}/usr/share/backgrounds/default"
 
-  cp -rf "${srcdir}/usr/share/themes/Graphite-Dark" "${pkgdir}/usr/share/themes/"
-  cp -rf "${srcdir}/usr/share/themes/Graphite-Dark-Rimless" "${pkgdir}/usr/share/themes/"
-  cp -rf "${srcdir}/usr/share/icons/Tela-circle-black" "${pkgdir}/usr/share/icons/"
-  cp -rf "${srcdir}/usr/share/icons/Tela-circle-black-dark" "${pkgdir}/usr/share/icons/"
-  cp -rf "${srcdir}/usr/share/icons/Bibata-Modern-Ice" "${pkgdir}/usr/share/icons/"
-  cp -rf "${srcdir}/usr/share/backgrounds/default/arch-ascii.png" "${pkgdir}/usr/share/backgrounds/default/"  
-  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/apps/* "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
-  cp -rf "${srcdir}"/usr/share/icons/hicolor/256x256/categories/* "${pkgdir}/usr/share/icons/hicolor/256x256/categories/"
+  install -dm 755 "$pkgdir/usr/share/themes"
+  install -dm 755 "$pkgdir/usr/share/icons/hicolor/256x256"
+  install -dm 755 "$pkgdir/usr/share/backgrounds/default"
+
+  cp -a Bibata-Modern-Ice "$pkgdir/usr/share/icons/"
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/256x256/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/256x256/"
+  install -Dm 644 "arch-ascii.png" "$pkgdir/usr/share/backgrounds/default/"
+
+  cd Graphite-gtk-theme
+
+  ./install.sh -n Graphite -l -c dark -d $pkgdir/usr/share/themes
+  ./install.sh -n Graphite-Rimless -l -c dark --tweaks rimless -d $pkgdir/usr/share/themes
+
+  rm -rf $pkgdir/usr/share/themes/Graphite-Dark-hdpi $pkgdir/usr/share/themes/Graphite-Dark-xhdpi $pkgdir/usr/share/themes/Graphite-Rimless-Dark-hdpi $pkgdir/usr/share/themes/Graphite-Rimless-Dark-xhdpi
+
+
+  cd ../Tela-circle-icon-theme
+
+  ./install.sh black -d "$pkgdir/usr/share/icons" -c
 
 }
-sha512sums=('2952a813769102ecf89ab66636c1357241b722c2e8c8df98c6cba95a08d30abc3827d6f414750c1c0de0b46375cadea951531759adf8b58c4d6b2c9569e9c316')
+sha512sums=('SKIP'
+            'SKIP'
+            'bb11cc73a15b26ad98818a70e22547fb1be0984e0f92250e1c5a8f42a537552a1193d53136d91290ca6fb2e52b6cee217c9c66551b7308195d2da8ee37dfe554'
+            '180debc64a86b577ca3f465157ccf853f87d74ba9f101559ddda74a32169910d7b0fef829fa7672bfb306c58131ab27300154557e36bc402c833f097244dd18e'
+            '69c0b948ae5799717aa7830128ec2897274caeb67d1767969a5d555746af6f8c146d3ace09a37f87c58f0c87395cc331ef8a3d6662b2673e2a135c8fc5f723fe')
