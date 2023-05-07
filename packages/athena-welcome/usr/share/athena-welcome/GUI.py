@@ -119,7 +119,7 @@ def GUI(self, Gtk, GdkPixbuf):
         "💙 Blue Teamer 💙",
         "🐞 Bug Bounty Hunter 🐞",
         "🍘 Cracker Specialist 🍘",
-        "💀 DoS Attacker 💀",
+        "💀 DoS Tester 💀",
         "🎓 Enthusiast Student 🎓",
         "🔍 Forensic Analyst 🔍",
         "🦠 Malware Analyst 🦠",
@@ -158,7 +158,7 @@ def GUI(self, Gtk, GdkPixbuf):
         role_combo.set_active(3)
     elif "CR" == strout:
         role_combo.set_active(4)
-    elif "DA" == strout:
+    elif "DT" == strout:
         role_combo.set_active(5)
     elif "ES" == strout:
         role_combo.set_active(6)

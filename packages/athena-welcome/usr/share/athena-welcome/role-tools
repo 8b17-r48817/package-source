@@ -13,7 +13,7 @@ role=$1
 gitweb=0
 
 declare -A gitsource=(["https://github.com/danielmiessler/SecLists"]="/usr/share/payloads/SecLists" ["https://github.com/DragonJAR/Security-Wordlist"]="/usr/share/payloads/Security-Wordlist")
-declare -A rolepkg=(["BH"]="athena-blackhat" ["BBH"]="athena-bountyhunter" ["BT"]="athena-blueteamer" ["CR"]="athena-cracker" ["DA"]="athena-dos" ["ES"]="athena-student" ["FA"]="athena-forensic" ["MA"]="athena-malware" ["MO"]="athena-mobile" ["NA"]="athena-network" ["OS"]="athena-osint" ["RT"]="athena-redteamer" ["WP"]="athena-webpentester")
+declare -A rolepkg=(["BH"]="athena-blackhat" ["BBH"]="athena-bountyhunter" ["BT"]="athena-blueteamer" ["CR"]="athena-cracker" ["DT"]="athena-dos" ["ES"]="athena-student" ["FA"]="athena-forensic" ["MA"]="athena-malware" ["MO"]="athena-mobile" ["NA"]="athena-network" ["OS"]="athena-osint" ["RT"]="athena-redteamer" ["WP"]="athena-webpentester")
 
 #echo $role
 if [ $role = "BH" ] || [ $role = "BBH" ] || [ $role = "CR" ] || [ $role = "ES" ] || [ $role = "RT" ] || [ $role = "WP" ]; then
@@ -66,7 +66,7 @@ echo
 
 sudo pacman -Syyu --noconfirm --needed $hacktools
 
-if [ $gitweb ]; then
+if [[ $gitweb == 1 ]]; then
    echo
    read -p "Let's retrieve payload repositories! Press ENTER key to continue..."
    echo
