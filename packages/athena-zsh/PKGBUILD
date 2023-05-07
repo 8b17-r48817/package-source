@@ -14,4 +14,4 @@ package() {
   cp -rf "${srcdir}/etc/skel/.zshrc" "${pkgdir}/etc/skel/"
   install -Dm 755 "${srcdir}/usr/bin/shopt" "${pkgdir}/usr/bin/"
 }
-sha512sums=('08e3b3fd67c71b6c41068434ef395d082bc8b1f55595267e6cd469b83df28db58861f3fdc34c4f79a941c5346b815fd38e9c84d1590ba67e2076bb04d5d3ac7b')
+sha512sums=('66a5992d564ed8833427c34499e8f13620a1ee706e31bdee3483af6910f3b23fafe0b412c14bceabd2f96cca5fdf567f2e6438cd471e417489a26dba0d4f399e')

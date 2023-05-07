@@ -9,6 +9,9 @@ zstyle :compinstall filename '$HOME/.zshrc'
 
 alias shopt='/usr/bin/shopt'
 
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 autoload -U +X bashcompinit && bashcompinit
 autoload -U +X compinit && compinit
 # End of lines added by compinstall

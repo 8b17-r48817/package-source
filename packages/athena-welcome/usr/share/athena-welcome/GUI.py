@@ -152,9 +152,9 @@ def GUI(self, Gtk, GdkPixbuf):
 
     if "BH" == strout:
         role_combo.set_active(1)
-    elif "BBH" == strout:
-        role_combo.set_active(2)
     elif "BT" == strout:
+        role_combo.set_active(2)
+    elif "BBH" == strout:
         role_combo.set_active(3)
     elif "CR" == strout:
         role_combo.set_active(4)
