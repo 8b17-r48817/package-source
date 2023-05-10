@@ -22,39 +22,23 @@ done
 package=athena-fish
 if pacman -Qq $package > /dev/null ; then
     #sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/fish/g' /usr/share/athena-gnome-config/dconf-shell.ini # No, FlyPie menu must have bash because fish has different statements
-    sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/fish/g' /etc/skel/.local/share/applications/*
+    #sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/fish/g' /etc/skel/.local/share/applications/* # .desktop files should have /usr/bin/bash
     sed -i 's/Bash/Fish/g' /etc/skel/.local/share/applications/*
-    sed -i "/export SHELL=/c\export SHELL=\$(which fish)" /etc/skel/.bashrc
-    pacman -Rns bash-completion --noconfirm
+    sed -i "s/export SHELL=.*/export SHELL=\$(which fish)/g" /etc/skel/.bashrc
 
 cat >> /etc/profile.d/shell.sh << EOF
 export SHELL=\$(which fish)
-EOF
-
-cat >> /etc/skel/.bashrc << EOF
-if [[ \$(ps --no-header --pid=\$PPID --format=comm) != "fish" && -z \${BASH_EXECUTION_STRING} ]]
-then
-    exec fish
-fi
 EOF
 fi
 
 package=athena-zsh
 if pacman -Qq $package > /dev/null ; then
     #sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/zsh/g' /usr/share/athena-gnome-config/dconf-shell.ini # It should stay /usr/bin/bash
-    sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/zsh/g' /etc/skel/.local/share/applications/*
+    #sed -i 's/\/usr\/bin\/bash/\/usr\/bin\/zsh/g' /etc/skel/.local/share/applications/* It should stay /usr/bin/bash
     sed -i 's/Bash/Zsh/g' /etc/skel/.local/share/applications/*
-    sed -i "/export SHELL=/c\export SHELL=\$(which zsh)" /etc/skel/.bashrc
-    pacman -Rns bash-completion --noconfirm
+    sed -i "s/export SHELL=.*/export SHELL=\$(which zsh)/g" /etc/skel/.bashrc
 
 cat >> /etc/profile.d/shell.sh << EOF
 export SHELL=\$(which zsh)
-EOF
-
-cat >> /etc/skel/.bashrc << EOF
-if [[ \$(ps --no-header --pid=\$PPID --format=comm) != "zsh" && -z \${BASH_EXECUTION_STRING} ]]
-then
-    exec zsh
-fi
 EOF
 fi

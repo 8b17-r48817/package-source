@@ -12,10 +12,10 @@ ucode=$(lscpu | grep "^Vendor ID:" | awk -F":" '{print $2}' | xargs)
 
 if [[ "$ucode" == *"Intel"* ]]; then
   echo "Intel processor detected. Installing intel-ucode...."
-  pacman -S --noconfirm intel-ucode
+  pacman -Rns --noconfirm amd-ucode
 elif [[ "$ucode" == *"AMD"* ]]; then
   echo "AMD processor detected. Installing amd-ucode...."
-  pacman -S --noconfirm amd-ucode
+  pacman -Rns --noconfirm intel-ucode
 else
   echo "No Intel or AMD processor detected."
 fi

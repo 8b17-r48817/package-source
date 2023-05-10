@@ -100,7 +100,13 @@ class Main(Gtk.Window):
         t = threading.Thread(target=self.run_app, args=(["sudo", "cp", "/etc/calamares/settings-athena-advanced.conf", "/etc/calamares/settings.conf"],))
         t.daemon = True
         t.start()
-        t = threading.Thread(target=self.run_app, args=(["sudo", "cp", "/etc/calamares/modules/packages-system-update.conf", "/etc/calamares/modules/packages.conf"],))
+        #t = threading.Thread(target=self.run_app, args=(["sudo", "cp", "/etc/calamares/modules/packages-system-update.conf", "/etc/calamares/modules/packages.conf"],))
+        #t.daemon = True
+        #t.start()
+        subprocess.Popen(["/usr/bin/calamares_polkit", "-d"], shell=False)
+
+    def on_offline_clicked(self, widget):
+        t = threading.Thread(target=self.run_app, args=(["sudo", "cp", "/etc/calamares/settings-athena-offline.conf", "/etc/calamares/settings.conf"],))
         t.daemon = True
         t.start()
         subprocess.Popen(["/usr/bin/calamares_polkit", "-d"], shell=False)

@@ -84,7 +84,6 @@ def GUI(self, Gtk, GdkPixbuf):
     if username == user:
 
         label2.set_markup(
-            "We advise to clean the computer with <b>Gparted</b> before installing.\n" +
             "During the Calamares installation many options will be open to you. You have the freedom of choice.\n" +  # noqa
             "We communicate with our community via a diversity of social media.\n" +  # noqa
             "Join us to learn the latest news, ask questions or for casual talk.\n" +  # noqa
@@ -204,12 +203,19 @@ def GUI(self, Gtk, GdkPixbuf):
     #button2.connect("clicked", self.on_ai_clicked)
     #button2.set_size_request(0, 80)
 
-    buttonca = Gtk.Button(label="")
-    buttonca_label = buttonca.get_child()
-    buttonca_label.set_markup("<span size='large'><b>Install Athena!</b></span>")
+    btnonlinstall = Gtk.Button(label="")
+    btnonlinstall_label = btnonlinstall.get_child()
+    btnonlinstall_label.set_markup("<span size='large'><b>Online Install</b></span>")
 
-    buttonca.connect("clicked", self.on_aica_clicked)
-    buttonca.set_size_request(0, 50)
+    btnonlinstall.connect("clicked", self.on_aica_clicked)
+    btnonlinstall.set_size_request(0, 50)
+
+    btnofflinstall = Gtk.Button(label="")
+    btnofflinstall_label = btnofflinstall.get_child()
+    btnofflinstall_label.set_markup("<span size='large'><b>Offline Install</b></span>")
+
+    btnofflinstall.connect("clicked", self.on_offline_clicked)
+    btnofflinstall.set_size_request(0, 50)
 
     gridimg = Gtk.Grid ()
     pb = GdkPixbuf.Pixbuf.new_from_file_at_size('images/htb.png', 35, 35)
@@ -266,15 +272,16 @@ def GUI(self, Gtk, GdkPixbuf):
     #self.buttonpamac.set_size_request(420, 70)
 
     # grid.add(button1)
-    if username == user:
+    if username != user:
         grid = Gtk.Grid()
         grid.attach(self.button8, 3, 4, 2, 2)
         #grid.attach(button13, 2, 0, 2, 2)
         grid.attach(button1, 2, 0, 2, 2)
         grid.attach(buttonkeys, 1, 4, 2, 2)
         #grid.attach(button2, 1, 4, 2, 2)
-        #grid.attach(buttonca, 3, 4, 2, 2)
-        grid.attach(buttonca, 2, 2, 2, 2)
+        #grid.attach(btnonlinstall, 3, 4, 2, 2)
+        grid.attach(btnofflinstall, 1, 2, 2, 2)
+        grid.attach(btnonlinstall, 3, 2, 2, 2)
         grid.set_column_homogeneous(True)
         grid.set_row_homogeneous(True)
 
