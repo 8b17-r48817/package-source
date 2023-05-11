@@ -75,9 +75,6 @@ if [ $result = "oracle" ];
 			pacman -Rns qemu-guest-agent --noconfirm
 			echo "Removed qemu-guest-agent"
 		fi
-
-		#installing virtualbox packages
-		pacman -S --noconfirm --needed virtualbox-guest-utils
 fi
 
 if [ $result = "kvm" ];
@@ -182,11 +179,7 @@ if [ $result = "qemu" ];
 			echo "Removed mnt-hgfs.mount if still exists"
 			rm /etc/modules-load.d/open-vm-tools.conf
 			echo "Removed open-vm-tools.conf if still exists"
-		fi
-
-		#installing virtualbox packages
-		pacman -S --noconfirm --needed qemu-guest-agent
-		
+		fi		
 fi
 
 if [ $result = "vmware" ];
@@ -213,9 +206,6 @@ if [ $result = "vmware" ];
 			pacman -Rns qemu-guest-agent --noconfirm
 			echo "Removed qemu-guest-agent"
 		fi
-
-		#installing vmware packages
-		pacman -S --noconfirm --needed open-vm-tools xf86-video-vmware
 
 		#setting shared folders service
 		mkdir -p /etc/modules-load.d
