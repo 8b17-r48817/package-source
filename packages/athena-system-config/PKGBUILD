@@ -22,6 +22,7 @@ package() {
   cp -rf "${srcdir}"/etc/pacman.d/hooks/* "${pkgdir}/etc/pacman.d/hooks/"
   cp -rf "${srcdir}/etc/profile.d" "${pkgdir}/etc/"
   cp -rf "${srcdir}/etc/skel/.bash_aliases" "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}/etc/skel/.blerc" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.face" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.flag-work-once" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.local" "${pkgdir}/etc/skel/"
@@ -35,4 +36,4 @@ package() {
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
 
-sha512sums=('d03357a18ab2272a5697688bbd35b6a4b0c262a91d1fdd0cae0d02d13e3c4d848a07b00456b4012c65df2b2d7887e6037add719062c4bb4f7c23c27dcefce70f')
+sha512sums=('0f3a7280f53a77d353a12421f5f4e92aebe8e8570b849cf0892128df7b26d0436540dc89920206b93351541adcd00a1b378789c7aadc00c49b82ccdf36e7daf3')
