@@ -1,2 +1,3 @@
 # Set proper background color on the autocomplete
 ble-face auto_complete='fg=242,bg=235'
+ble-face region_insert=''
