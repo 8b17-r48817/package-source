@@ -25,7 +25,8 @@ alias l.="lsd -A | egrep '^\.'"
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
 
-
+# alias to copy file content to clipboard
+alias cpc='xclip < '
 
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=auto'
