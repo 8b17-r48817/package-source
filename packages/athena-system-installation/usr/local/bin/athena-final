@@ -5,11 +5,6 @@ echo "Start athena-final"
 echo "#################################"
 echo
 echo "#################################"
-echo "Install Grub Theme"
-echo "#################################"
-pacman -S --noconfirm athena-logo-grub-theme
-echo
-echo "#################################"
 echo "Permissions of important folders"
 echo "#################################"
 chmod 750 /etc/sudoers.d

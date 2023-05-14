@@ -19,4 +19,4 @@ package() {
   
   install -Dm755 "$srcdir/usr/local/bin/athena-snapper" "$pkgdir/usr/local/bin/"
 }
-sha512sums=('d4f855090e1c3f84823de5eaa5fa8648c58f2cd316415949f60150e36cb5f2fa0483af0d7ef760394654caa70e9690f70dfcedaa28131b0e49b0766ac7fb1fc4')
+sha512sums=('d6eb9d70a156a08d42e03af0dfb27992ce8711528eadd88fd990bbaeebbb5d3a6973d07bd0be64507c6d3ae6861f008c6baa9e4a6f5ebf9d58a4ebcea0adc445')
