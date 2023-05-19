@@ -1,5 +1,5 @@
 pkgname=athena-gruvbox-theme
-pkgver=46.44e81d82
+pkgver=50.c7a85272
 pkgrel=1
 pkgdesc="Gruvbox theme with Material Black Mango Suru icons for Athena"
 arch=('any')
@@ -10,6 +10,11 @@ source=("git+https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme.git"
         "https://github.com/ful1e5/fuchsia-cursor/releases/latest/download/Fuchsia-Pop.tar.gz"
         "cyborg_gruv.png"
         "$pkgname.tar.gz")
+sha512sums=('SKIP'
+            'SKIP'
+            '6007a5db701981997719a38ae99181b6269a58332f245b31b6756a5fcad6b9f8bb991c5820c16b16419005cf5631ffa3410c9c9068b16d09e69042734aa99eb0'
+            'bbd4a82c1dda3dc26271e36c2ff7c362d513e720696fa9912e7d025f049337f551a6f1e1969cb087303c2dd02344ac27523e1a6662d16daca9c616bbd7c80445'
+            '4ce3048a9278a2eddab5e025b82fd72818cb394c6eef701dd560d8512e7c65d2b7e3f130f6b9109ecfd846fbfead707ae4a20f6a132a57ab54deac27ed7c5ecf')
 
 pkgver() {
   cd Gruvbox-GTK-Theme
@@ -32,8 +37,3 @@ package() {
   cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/256x256/"
 
 }
-sha512sums=('SKIP'
-            'SKIP'
-            '6007a5db701981997719a38ae99181b6269a58332f245b31b6756a5fcad6b9f8bb991c5820c16b16419005cf5631ffa3410c9c9068b16d09e69042734aa99eb0'
-            'bbd4a82c1dda3dc26271e36c2ff7c362d513e720696fa9912e7d025f049337f551a6f1e1969cb087303c2dd02344ac27523e1a6662d16daca9c616bbd7c80445'
-            '46ef483cbebba4b02f1fa5b2e6116090f679dfb539cfacf1b796a716c1216c7a61fc206fb6b2ab2c15fa1fbfa24554254de5e9561403bf004b0f37d404a8fc2e')
