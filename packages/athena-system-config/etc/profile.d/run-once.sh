@@ -90,8 +90,8 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
          package=athena-akame-theme
          if pacman -Qq $package > /dev/null ; then
-              theme_name="Quartz-Dark-Red"
-              gnome_shell="Quartz-Red"
+              theme_name="Nightfox-Dusk-B"
+              gnome_shell="Nightfox-Dusk-B"
 
               color_scheme="prefer-dark"
               icon_theme="Material-Black-Cherry-Suru"

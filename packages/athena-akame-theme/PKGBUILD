@@ -1,19 +1,25 @@
 pkgname=athena-akame-theme
-pkgver=1.0.r160.g3864d851aa
+pkgver=17.4fac0847
 pkgrel=1
 pkgdesc="Akame theme with Material Black Cherry Suru icons for Athena"
 arch=('any')
 license=("GPL3")
 makedepends=('git')
-source=("git+https://github.com/rtlewis88/rtl88-Themes#branch=material-black-COLORS"
+source=("git+https://github.com/Fausto-Korpsvart/Nightfox-GTK-Theme.git"
+        "git+https://github.com/rtlewis88/rtl88-Themes#branch=material-black-COLORS"
         "https://github.com/ful1e5/Bibata_Extra_Cursor/releases/latest/download/Bibata-Modern-DarkRed.tar.gz"
         "akame.jpg"
         "$pkgname.tar.gz")
+sha512sums=('SKIP'
+            'SKIP'
+            '3a1360ba5541598ec6c4dfa6cd261e49ec849dafbe21e5a047820412b093486a975bbb97c1fac616f510f1e878e19afacbfd9e82baa21664b022af25347ecc2d'
+            '5b9e921ef2345f3134c55c2e8f675df492c7e8f28097384f3172fbc912fcc14fc857466f9ba231c4d67688062f4a03f809b2d3d2f9c232992eb113fa703b405b'
+            'ecb1377eea2723eb003d282e239aa5143e3e1f409f83c87bf5dedd94841b54c619e53eb71a51faa7fd447e1eaa1955bd224c9c682597332c1c0914c8d63a1bc8')
 
 pkgver() {
-  cd rtl88-Themes
+  cd Nightfox-GTK-Theme
 
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
@@ -21,17 +27,13 @@ package() {
   install -dm 755 "$pkgdir/usr/share/icons/hicolor/256x256"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
+  cp -a Nightfox-GTK-Theme/themes/Nightfox-Dusk-B "$pkgdir/usr/share/themes/"
+  cp -a Nightfox-GTK-Theme/themes/Nightfox-Dusk-BL "$pkgdir/usr/share/themes/"
   cp -a rtl88-Themes/Material-Black-Cherry-Suru "$pkgdir/usr/share/icons/"
   cp -a Bibata-Modern-DarkRed "$pkgdir/usr/share/icons/"
   install -Dm 644 "akame.jpg" "$pkgdir/usr/share/backgrounds/default/"
 
-  cp -a "$srcdir/Quartz-Red" "$pkgdir/usr/share/themes/"
-  cp -a "$srcdir/Quartz-Dark-Red" "$pkgdir/usr/share/themes/"
   cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/256x256/"
   cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/256x256/"
 
 }
-sha512sums=('SKIP'
-            '3a1360ba5541598ec6c4dfa6cd261e49ec849dafbe21e5a047820412b093486a975bbb97c1fac616f510f1e878e19afacbfd9e82baa21664b022af25347ecc2d'
-            'a31f009dbaff153513a552da000bc86307ab248aba5c84965594239794e1c8fd94a4c3f06b64538aa8956b5a732efd17a4197bcd7f89c2ca1d02a7e0dbbfae05'
-            '2aa8468ece1d3f27f9bae6f09bf217b36df283cf1a530e2d63f0d48edd0c2782a04ccd15f4cf4786c3356f820df0e7c6edfeae5334cb14328ba35f30f9f6ad02')

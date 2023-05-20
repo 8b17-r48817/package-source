@@ -206,8 +206,8 @@ if args.theme:
     subprocess.call("mkdir -p "+home+"/.config/gtk-4.0", shell=True)
     
     if chosen_theme == "AkameGaKill":
-        theme_name = "Quartz-Dark-Red"
-        gnome_shell = "Quartz-Red"
+        theme_name = "Nightfox-Dusk-B"
+        gnome_shell = "Nightfox-Dusk-B"
 
         color_scheme = "prefer-dark"
         icon_theme = "Material-Black-Cherry-Suru"
