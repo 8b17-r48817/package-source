@@ -1,5 +1,5 @@
 pkgname=athena-gruvbox-theme
-pkgver=50.c7a85272
+pkgver=55.4bb3a070
 pkgrel=1
 pkgdesc="Gruvbox theme with Material Black Mango Suru icons for Athena"
 arch=('any')

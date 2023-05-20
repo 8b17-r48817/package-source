@@ -1,5 +1,5 @@
 pkgname=athena-blue-eyes-theme
-pkgver=53.a25fd5e8
+pkgver=54.d28c0d19
 pkgrel=1
 pkgdesc="Blue Eyes samurai theme with Tokyo Night Dark icons for Athena"
 arch=('any')
