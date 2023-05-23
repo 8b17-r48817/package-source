@@ -12,7 +12,7 @@ source=("git+https://github.com/EliverLara/Sweet-folders.git"
 sha512sums=('SKIP'
             'SKIP'
             '8dc1636380142b71c9c2af783784161c7663d410437b1fdab4139aeca7f2e611750d9eb1233a75b5d19d9a82985ee4fde1581ef1a952ab24b7ced5b12c54b395'
-            '3112367f06dfa4e4a59a52595312fa6a842a3f9341e50a483a5bdded3bc44715b32426c62677331ec400e04dab252420a833fb686c37fbe1302639afbd1991c5')
+            '83af83430dd292dd33fa6564287fd8cfcb1deec0ba98ae95904cfe7536b4cee4f531389290df8cd96f9311ecdb76fcb148ed1d42e8fd7f9f23ef79d8fb420012')
 
 pkgver() {
   cd Sweet-folders
