@@ -18,6 +18,7 @@ variable_list = [
     ("code", "Core engine of Visual Studio Code."),
     ("convert", "Convert between image formats as well as resize an image, blur, crop, despeckle, dither, draw on, flip, join, re-sample, and much more."),
     ("cowsay", "Print messages, warnings, or character strings with various animals and other creatures."),
+    ("cpc", "Copy the entire content of the input file to the clipboard."),
     ("devil", "Quotes by devil eyes."),
     ("discord", "Cross-platform, all-in-one voice and text chat application."),
     ("downgrade", "Downgrade one (or multiple) packages, by using the pacman cache or the Arch Rollback Machine."),
