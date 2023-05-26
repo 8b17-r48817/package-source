@@ -41,7 +41,7 @@ do
   
   if pacman -Qq $pkg > /dev/null ; then
 
-    sed -i -e "s/gnome-terminal/$bin/g" /etc/profile.d/run-once.sh
+    sed -i -e "s/gnome-terminal/$bin/g" /etc/profile.d/gnome-config.sh
 
     # In the following commands I don't use the terminals like terminator, terminology and so on because they have different syntax
 
@@ -64,7 +64,7 @@ do
   
   if pacman -Qq $bin > /dev/null ; then
 
-    sed -i -e "s/gnome-terminal/$bin/g" /etc/profile.d/run-once.sh
+    sed -i -e "s/gnome-terminal/$bin/g" /etc/profile.d/gnome-config.sh
 
     sed -i -e "s/alacritty/$bin/g" -e "s/cool-retro-term/$bin/g" -e "s/gnome-terminal/$bin/g" -e "s/kitty/$bin/g" -e "s/konsole/$bin/g" -e "s/urxvt/$bin/g" -e "s/xterm/$bin/g" -e "s/terminator/$bin/g" -e "s/terminology/$bin/g" -e "s/xfce4-terminal/$bin/g" /etc/skel/.local/share/applications/bash.desktop
     

@@ -207,5 +207,5 @@ done
 #    esac
 #done
 
-# At the end, run run-once
-source /etc/profile.d/run-once.sh > /dev/null 2>&1
+# At the end, run gnome-config
+source /etc/profile.d/gnome-config.sh > /dev/null 2>&1
