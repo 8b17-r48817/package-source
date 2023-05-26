@@ -9,6 +9,15 @@
     - cherrytree
     - notion-app-enhanced
     - obsidian
+- name: "Music apps"
+  description: "Select your favourite music application"
+  critical: false
+  hidden: false
+  selected: false
+  immutable: false
+  expanded: true
+  packages:
+    - spotify
 - name: "Screenshot apps"
   description: "Select your favourite screenshot application"
   critical: false

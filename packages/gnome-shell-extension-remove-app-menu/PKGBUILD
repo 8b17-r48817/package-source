@@ -1,0 +1,33 @@
+pkgname=gnome-shell-extension-remove-app-menu-git
+pkgver=11.0.r1.gc7e5445
+pkgrel=1
+pkgdesc="Remove the app menu from the GNOME panel."
+arch=('any')
+url="https://github.com/stuarthayhurst/remove-app-menu-extension"
+license=('GPL')
+depends=('gnome-shell')
+makedepends=('git' 'zip')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=(${pkgname%-git}::git+$url.git)
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%-git}"
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "${pkgname%-git}"
+
+  make build
+}
+
+package() {
+  cd "${pkgname%-git}"
+
+  _uuid='RemoveAppMenu@Dragon8oy.com'
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+  bsdtar -xvf build/$_uuid.shell-extension.zip -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+}

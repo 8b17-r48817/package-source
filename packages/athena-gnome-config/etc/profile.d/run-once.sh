@@ -40,7 +40,11 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
          xdg-mime default org.gnome.Nautilus.desktop inode/directory
          gsettings set org.gnome.desktop.default-applications.terminal exec gnome-terminal
-     
+
+         gsettings set org.gnome.desktop.interface enable-hot-corners false
+         gsettings set org.gnome.mutter dynamic-workspaces false
+         gsettings set org.gnome.desktop.wm.preferences num-workspaces 6
+         
          ############################################################
      
          cat $DCONF_IF | dconf load /org/gnome/desktop/interface/

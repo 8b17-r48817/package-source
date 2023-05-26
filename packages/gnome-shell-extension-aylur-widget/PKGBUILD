@@ -1,0 +1,47 @@
+pkgname=gnome-shell-extension-aylur-widgets-git
+pkgver=76.9b0b8d2
+pkgrel=1
+pkgdesc="Set of extensions: Battery Bar, Dash Board, DateMenu Mod, Media Player, Power Menu, Workspace Indicator, Notification Indicator, Modified Quick Settings, Background Clock."
+arch=('any')
+url="https://github.com/Aylur/gnome-extensions"
+license=('custom')
+depends=('gnome-shell')
+makedepends=('git' 'zip')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=(${pkgname%-git}::git+$url.git)
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%-git}"
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd "${pkgname%-git}/widgets@aylur"
+  
+  NAME="aylurs-widgets"
+  # Some of the recipes below depend on some of these files.
+  JS_FILES=$(find -type f -and \( -name "*.js" \))
+  UI_FILES=$(find -type f -and \( -name "*.ui" \))
+  
+  # These files will be included in the extension zip file.
+  ZIP_CONTENT="$JS_FILES schemas/org.gnome.shell.extensions.$NAME.gschema.xml schemas/gschemas.compiled metadata.json config media stylesheet.css"
+
+  sed -i -e "s/const MEDIA_CACHE =.*/const MEDIA_CACHE = '\/usr\/share\/gnome-shell\/extensions\/widgets@aylur\/media';/g" pref/pages.js
+  sed -i -e "s/const CACHE_PATH =.*/const CACHE_PATH = '\/usr\/share\/gnome-shell\/extensions\/widgets@aylur';/g" shared/media.js
+
+  sed -i -e "s/\/var\/lib\/AccountsService\/icons\/'+ GLib.get_user_name() +'/\/home\/'+ GLib.get_user_name() +'\/.face/g" extensions/dateMenuTweaks.js
+  sed -i -e "s/\/var\/lib\/AccountsService\/icons\/\${GLib.get_user_name()}/\/home\/\${GLib.get_user_name()}\/.face/g" extensions/quickSettingsTweaks.js shared/dashWidgets.js
+
+  zip -r widgets@aylur.zip -- $ZIP_CONTENT
+}
+
+package() {
+  cd "${pkgname%-git}/widgets@aylur"
+  
+  _uuid='widgets@aylur'
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+  bsdtar -xvf $_uuid.zip -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+}

@@ -20,11 +20,9 @@ package() {
   cp -rf "${srcdir}"/etc/modprobe.d/* "${pkgdir}/etc/modprobe.d/"
   cp -rf "${srcdir}/etc/pacman.d/gnupg/gpg.conf" "${pkgdir}/etc/pacman.d/gnupg/"
   cp -rf "${srcdir}"/etc/pacman.d/hooks/* "${pkgdir}/etc/pacman.d/hooks/"
-  cp -rf "${srcdir}/etc/profile.d" "${pkgdir}/etc/"
   cp -rf "${srcdir}/etc/skel/.bash_aliases" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.blerc" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.face" "${pkgdir}/etc/skel/"
-  cp -rf "${srcdir}/etc/skel/.flag-work-once" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.local" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/sudoers.d" "${pkgdir}/etc/"
   cp -rf "${srcdir}/etc/vconsole.conf" "${pkgdir}/etc/"
@@ -36,4 +34,4 @@ package() {
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
 
-sha512sums=('86bbe00f82f733d266f2053286a1fb216ebc77293ca23fd6b8fa721e45b9cd7950c215fe116c2705e322534d6faddf405c350fd976c815019caf05d790744781')
+sha512sums=('3c8ae8d3ee61c67fc1fe6dcbb1fa95d001395297b3c043d86e6cc8237f2124921674343f60362eae36b13f0243c0f08bfeacc34e45e9082722685d9a565f3d87')

@@ -63,6 +63,7 @@ alias svi='sudo vi'
 alias train='sl | lolcat'
 alias vis='vim "+set si"'
 alias devil='fortune | cowsay -f eyes | lolcat'
+alias spotify='spotify --no-zygote'
 
 # Alias's to user support
 alias tb='nc termbin.com 9999'

@@ -12,10 +12,12 @@ package() {
   mkdir -p "${pkgdir}/usr/share/athena-gnome-config"
   mkdir -p "${pkgdir}/usr/share/gnome-shell"
 
+  cp -rf "${srcdir}/etc/profile.d" "${pkgdir}/etc/"
+  cp -rf "${srcdir}/etc/skel/.flag-work-once" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.local" "${pkgdir}/etc/skel/"
   
   cp -rf "${srcdir}"/usr/share/athena-gnome-config/* "${pkgdir}/usr/share/athena-gnome-config/"
   cp -rf "${srcdir}/usr/share/gnome-shell/gnome-shell-theme.gresource.new" "${pkgdir}/usr/share/gnome-shell/"
   
 }
-sha512sums=('b0a798f67181fff6f82a52b94fcc1ae423f70dc4bc3e6e484d083ac0f5c0ab9c74452e0357f7b19481833ab8d4cd6d0cca407f92f37c31afa6299e15744184b7')
+sha512sums=('6b43d66983fcd7401e4c089610358b62bf49282ae1463fea286679970102d36ed5739f802dabc345b4cdfc08b07c89eafffe0c5224cd9ae91506f8345045ad8b')
