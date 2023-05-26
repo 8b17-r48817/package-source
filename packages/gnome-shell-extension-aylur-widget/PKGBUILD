@@ -32,9 +32,6 @@ prepare() {
   sed -i -e "s/const MEDIA_CACHE =.*/const MEDIA_CACHE = '\/usr\/share\/gnome-shell\/extensions\/widgets@aylur\/media';/g" pref/pages.js
   sed -i -e "s/const CACHE_PATH =.*/const CACHE_PATH = '\/usr\/share\/gnome-shell\/extensions\/widgets@aylur';/g" shared/media.js
 
-  sed -i -e "s/\/var\/lib\/AccountsService\/icons\/'+ GLib.get_user_name() +'/\/home\/'+ GLib.get_user_name() +'\/.face/g" extensions/dateMenuTweaks.js
-  sed -i -e "s/\/var\/lib\/AccountsService\/icons\/\${GLib.get_user_name()}/\/home\/\${GLib.get_user_name()}\/.face/g" extensions/quickSettingsTweaks.js shared/dashWidgets.js
-
   zip -r widgets@aylur.zip -- $ZIP_CONTENT
 }
 
