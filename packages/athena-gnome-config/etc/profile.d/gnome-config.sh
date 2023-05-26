@@ -7,49 +7,25 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
      FLAGFILE="$HOME/.flag-work-once"
      #FLAGNET="$HOME/.flag-net-once"
 
-     DCONF_IF="/usr/share/athena-gnome-config/dconf-interface.ini"
-     DCONF_PR="/usr/share/athena-gnome-config/dconf-preferences.ini"
+     DCONF_CK="/usr/share/athena-gnome-config/dconf-custom-keybindings.ini"
+     DCONF_DS="/usr/share/athena-gnome-config/dconf-desktop.ini"
+     DCONF_MT="/usr/share/athena-gnome-config/dconf-mutter.ini"
      DCONF_SH="/usr/share/athena-gnome-config/dconf-shell.ini"
 
      if [ -f "$FLAGFILE" ]; then
 
          ############################################################
-         #                                                          #
-         #               SETTING LOCK SCREEN SHORTCUT               #
-         #                                                          #
-         ############################################################
-     
-         BEGINNING="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
-
-         KEY_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
-
-         gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['$KEY_PATH/custom0/', '$KEY_PATH/custom1/']"
-
-         $BEGINNING/custom0/ name "Lock Screen"
-         $BEGINNING/custom0/ command "dm-tool lock"
-         $BEGINNING/custom0/ binding "<Super>L"
-
-         $BEGINNING/custom1/ name "Terminal"
-         $BEGINNING/custom1/ command "gnome-terminal"
-         $BEGINNING/custom1/ binding "<CTRL><ALT>T"
-
-         gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>E']"
-         gsettings set org.gnome.desktop.wm.keybindings show-desktop "['<Super>D']"
-
-         ############################################################
 
          xdg-mime default org.gnome.Nautilus.desktop inode/directory
-         gsettings set org.gnome.desktop.default-applications.terminal exec gnome-terminal
-
-         gsettings set org.gnome.desktop.interface enable-hot-corners false
-         gsettings set org.gnome.mutter dynamic-workspaces false
-         gsettings set org.gnome.desktop.wm.preferences num-workspaces 6
          
          ############################################################
      
-         cat $DCONF_IF | dconf load /org/gnome/desktop/interface/
-         cat $DCONF_PR | dconf load /org/gnome/desktop/wm/preferences/
+         cat $DCONF_CK | dconf load /org/gnome/settings-daemon/plugins/media-keys/
+         cat $DCONF_DS | dconf load /org/gnome/desktop/
+         cat $DCONF_MT | dconf load /org/gnome/mutter/
          cat $DCONF_SH | dconf load /org/gnome/shell/
+
+         ############################################################
 
          sh ~/.vim_runtime/install_awesome_parameterized.sh ~/.vim_runtime $USER
 
