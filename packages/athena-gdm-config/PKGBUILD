@@ -1,0 +1,17 @@
+pkgname=athena-gdm-config
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="GDM configuration for Athena"
+arch=('any')
+depends=('gdm')
+license=("custom")
+install=gresource.install
+source=("$pkgname.tar.gz")
+
+package() {
+  mkdir -p "${pkgdir}/usr/share/gnome-shell"
+
+  cp -rf "${srcdir}/usr/share/gnome-shell/gnome-shell-theme.gresource.new" "${pkgdir}/usr/share/gnome-shell/"
+  
+}
+sha512sums=('7ec89e85a38547e48d01353c60eae7cdbbf39189234a433e7a43e9a03cd43007d395349517fb3ba0288163779474eaeee7e0b52538131ce7a02672d62b4a4759')
