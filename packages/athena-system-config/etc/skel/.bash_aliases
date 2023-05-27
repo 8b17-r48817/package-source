@@ -25,7 +25,7 @@ elif [[ $(tty) == */dev/tty* ]]; then
     alias lc='exa -lhs changed' # sort by change time
     alias lu='exa -lhs accessed' # sort by access time
     alias lr='exa -lRh' # recursive ls
-    alias lt='exa -lhs modified' # sort by modify date
+    alias lt='exa -lhs modified' # sort by modification date
     alias lz='exa -lhs created' # sort by creation date
     alias lm='exa -alh | more' # pipe through 'more'
     alias lw='exa -xGah' # wide listing format
