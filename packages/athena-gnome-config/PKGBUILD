@@ -18,4 +18,4 @@ package() {
   cp -rf "${srcdir}"/usr/share/athena-gnome-config/* "${pkgdir}/usr/share/athena-gnome-config/"
 
 }
-sha512sums=('d4d4dc65a9168f52255ef61f126471679dbf56ee2bcb1a04dc1e2bf73ef70868ba4bef1b8f05b5fbfa1377742575173b883f1c2af8a2e7fa2f8c258d4f2e92d7')
+sha512sums=('a64916504a93ef6928f5b8cad155f4b031aa01d969770cc8eb1c11222915bf9b084b7c887e0d853d95c78c8245417b57278515de848ebce093b575d20de56361')
