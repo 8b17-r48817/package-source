@@ -1,5 +1,5 @@
 pkgname=athena-blue-eyes-theme
-pkgver=55.c18ca977
+pkgver=56.bb755e4c
 pkgrel=1
 pkgdesc="Blue Eyes samurai theme with Tokyo Night Dark icons for Athena"
 arch=('any')
@@ -10,7 +10,7 @@ source=("git+https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme.git"
         "$pkgname.tar.gz")
 sha512sums=('SKIP'
             'c4575e024afbec6cf5624957c1102a866a468f90c1c3f0e7368cbb6905b4f559649f96ee4321036d3c23042b87777f07020e78b423922aa3f38ad6b9f8396495'
-            'dcb97fd9d6e8c14ba1219eda6af9e89162b9601b9e6a8b5cb5f0596165345d8717311b0ab396920f3bd5080a38f77a3001a857452d11d8a53c0b6ce941e90fcb')
+            '5c2a01bbfb4f44ef6c29cfd3c62cfb9938bb25c433ed7a1810b1ae3ea0d805ba0732fdac830c2e88523ae3e1a2d432abc64ded6c61c38b5bd7c324f017a0dfd6')
 
 pkgver() {
   cd Tokyo-Night-GTK-Theme

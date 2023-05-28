@@ -1,5 +1,5 @@
 pkgname=athena-graphite-theme
-pkgver=2023.05.17.r0.g9b35807
+pkgver=2023.05.17.r4.gac8cfc4
 pkgrel=1
 pkgdesc="Graphite Dark theme with Tela Circle Black Dark icons for Athena"
 arch=('any')
@@ -14,7 +14,7 @@ sha512sums=('SKIP'
             'SKIP'
             'bb11cc73a15b26ad98818a70e22547fb1be0984e0f92250e1c5a8f42a537552a1193d53136d91290ca6fb2e52b6cee217c9c66551b7308195d2da8ee37dfe554'
             '180debc64a86b577ca3f465157ccf853f87d74ba9f101559ddda74a32169910d7b0fef829fa7672bfb306c58131ab27300154557e36bc402c833f097244dd18e'
-            'b9d1fdf17c6de12bd4b0f07a6187e142e944ba4178f68ee13d97129e19cd99f5d15923b49fc7cd845f57be7b0cd25b2cf522ace8585acda54bf692bef1c50575')
+            'b542968d6473b1f03b4506ebc7227525a0dde0e29aec800abfc32ee3414fe690bcf0ab6657ddd4817017531254dd59f28e9d334dd6c8d849261e566ed27ae566')
 
 pkgver() {
   cd Graphite-gtk-theme

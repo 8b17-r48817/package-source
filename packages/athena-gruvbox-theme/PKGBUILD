@@ -1,5 +1,5 @@
 pkgname=athena-gruvbox-theme
-pkgver=56.de19d2bb
+pkgver=57.c0b7fb50
 pkgrel=1
 pkgdesc="Gruvbox theme with Material Black Mango Suru icons for Athena"
 arch=('any')
@@ -14,7 +14,7 @@ sha512sums=('SKIP'
             'SKIP'
             '6007a5db701981997719a38ae99181b6269a58332f245b31b6756a5fcad6b9f8bb991c5820c16b16419005cf5631ffa3410c9c9068b16d09e69042734aa99eb0'
             'bbd4a82c1dda3dc26271e36c2ff7c362d513e720696fa9912e7d025f049337f551a6f1e1969cb087303c2dd02344ac27523e1a6662d16daca9c616bbd7c80445'
-            '814fd3fbbeeea293985c18f953fabf03e858748f7b43751dff83b1e6047555414b3a801ffe7fba325e90166e90966cdf488fb17668ea3d982d55f63bdc857539')
+            '374d9c600c68bcc8fc90a3194f83c171af0b6d8f8d40e9aac869a1bc8c1aa90163f2a3da018ecdb1d07aa9a8f87097d18eb4ac92de39b699d4424e8cbd7d5584')
 
 pkgver() {
   cd Gruvbox-GTK-Theme
