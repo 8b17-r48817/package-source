@@ -4,38 +4,36 @@
 alias tmux='tmux -u'
 
 # Alias's for multiple directory listing commands
-if [[ $(tty) == */dev/pts* ]]; then
-    alias ls='lsd --color=auto'
-    alias la='lsd -a'
-    alias lx='lsd -lXh' # sort by extension
-    alias lk='lsd -lSrh' # sort by size
-    alias lr='lsd -lRh' # recursive ls
-    alias lt='lsd -ltrh' # sort by date
-    alias lm='lsd -alh | more' # pipe through 'more'
-    alias ll='lsd -alFh' # long listing format
-    alias lf="lsd -l | grep -E -v '^d'" # files only
-    alias ldir="lsd -l | grep -E '^d' --color=never" # directories only
-    alias l='lsd'
-    alias l.="lsd -A | grep -E '^\.' --color=never"
-elif [[ $(tty) == */dev/tty* ]]; then
-    alias ls='exa --color=auto'
-    alias la='exa -a'
-    alias lx='exa -lhs extension' # sort by extension
-    alias lk='exa -lhs size' # sort by size
-    alias lc='exa -lhs changed' # sort by change time
-    alias lu='exa -lhs accessed' # sort by access time
-    alias lr='exa -lRh' # recursive ls
-    alias lt='exa -lhs modified' # sort by modification date
-    alias lz='exa -lhs created' # sort by creation date
-    alias lm='exa -alh | more' # pipe through 'more'
-    alias lw='exa -xGah' # wide listing format
-    alias ll='exa -alFh' # long listing format
-    alias labc='exa -lhs name' #alphabetical sort
-    alias lf="exa -l | grep -E -v '^d'" # files only
-    alias ldir="exa -l | grep -E '^d' --color=never" # directories only
-    alias l='exa'
-    alias l.="exa -a | grep -E '^\.' --color=never"
-fi
+alias ls='lsd --color=auto'
+alias la='lsd -a'
+alias lx='lsd -lXh' # sort by extension
+alias lk='lsd -lSrh' # sort by size
+alias lr='lsd -lRh' # recursive ls
+alias lt='lsd -ltrh' # sort by date
+alias lm='lsd -alh | more' # pipe through 'more'
+alias ll='lsd -alFh' # long listing format
+alias lf="lsd -l | grep -E -v '^d'" # files only
+alias ldir="lsd -l | grep -E '^d' --color=never" # directories only
+alias l='lsd'
+alias l.="lsd -A | grep -E '^\.' --color=never"
+
+# alias ls='exa --color=auto'
+# alias la='exa -a'
+# alias lx='exa -lhs extension' # sort by extension
+# alias lk='exa -lhs size' # sort by size
+# alias lc='exa -lhs changed' # sort by change time
+# alias lu='exa -lhs accessed' # sort by access time
+# alias lr='exa -lRh' # recursive ls
+# alias lt='exa -lhs modified' # sort by modification date
+# alias lz='exa -lhs created' # sort by creation date
+# alias lm='exa -alh | more' # pipe through 'more'
+# alias lw='exa -xGah' # wide listing format
+# alias ll='exa -alFh' # long listing format
+# alias labc='exa -lhs name' #alphabetical sort
+# alias lf="exa -l | grep -E -v '^d'" # files only
+# alias ldir="exa -l | grep -E '^d' --color=never" # directories only
+# alias l='exa'
+# alias l.="exa -a | grep -E '^\.' --color=never"
 
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
