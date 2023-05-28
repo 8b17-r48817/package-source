@@ -14,4 +14,4 @@ package() {
   cp -rf "${srcdir}/usr/share/gnome-shell/gnome-shell-theme.gresource.new" "${pkgdir}/usr/share/gnome-shell/"
   
 }
-sha512sums=('7ec89e85a38547e48d01353c60eae7cdbbf39189234a433e7a43e9a03cd43007d395349517fb3ba0288163779474eaeee7e0b52538131ce7a02672d62b4a4759')
+sha512sums=('6aa461ceac1e66f3cd34fe19e745b36c32f75a8ecb331decee281b25f692ec0356629aeeeffd3b4a9905a0bdb63a9ff218360240c304a65f979f7c2790fdf97c')
