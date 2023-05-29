@@ -26,7 +26,8 @@ echo "#################################"
 echo
 
 package=gdm
-if pacman -Qq $package > /dev/null ; then
+package_alt=gdm-prime
+if pacman -Qq $package > /dev/null || pacman -Qq $package_alt > /dev/null ; then
   ln -sf /usr/lib/systemd/system/gdm.service /etc/systemd/system/display-manager.service
 
   if grep -Rq "WaylandEnable" /etc/gdm/custom.conf
