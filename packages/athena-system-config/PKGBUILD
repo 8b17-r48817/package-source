@@ -34,4 +34,4 @@ package() {
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
 
-sha512sums=('734ec67ac43d1bc392ea3242469cb11adee73ec5f2c65a3aaafe7b5332e129792d6b84bda5af2a05eea36c072c5feb88e7addb3f646b3a959db8cb92d3e8c030')
+sha512sums=('c53d1a00f9bfa5f65e2467daddd4f04f739b73f6bcb117a2eceeb066f70428f769ac669b5fd19361afb6407345d985d309a44fd55342ca8cdbdb549533a5a7d8')
