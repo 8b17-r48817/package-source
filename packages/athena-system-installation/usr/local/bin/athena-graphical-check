@@ -37,11 +37,11 @@ flag_gpu_found=0
 
 if [[ $gpudetect =~ "AMD" ]]; then
    echo "AMD GPU detected."
-   pacman -S --noconfirm opencl-amd
+   pacman -S --noconfirm xf86-video-amdgpu opencl-amd
 fi
 
-if [[ $gpudetect =~ "ATI" ]]; then
-   echo "AMD GPU detected."
+if [[ $gpudetect =~ "ATI" ]] && [[ ! $gpudetect =~ "AMD" ]]; then
+   echo "ATI GPU detected."
    pacman -S --noconfirm opencl-mesa
 fi
 
