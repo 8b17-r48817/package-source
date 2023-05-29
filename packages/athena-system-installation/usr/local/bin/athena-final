@@ -78,7 +78,7 @@ echo "#########################################"
 echo "      Setting Athena Plymouth theme      "
 echo "#########################################"
 echo
-plymouth-set-default-theme -R vortex-athena
+#plymouth-set-default-theme -R vortex-athena
 echo
 
 echo "#################################"
