@@ -247,7 +247,7 @@ alias fix-keyserver="[ -d ~/.gnupg ] || mkdir ~/.gnupg ; cp /etc/pacman.d/gnupg/
 
 #fixes
 alias fix-permissions="sudo chown -R $USER:$USER ~/.config ~/.local"
-alias lockreset='faillock --user $USER --reset'
+alias lockreset="faillock --user $USER --reset"
 
 #maintenance
 alias big="expac -H M '%m\t%n' | sort -h | nl"
