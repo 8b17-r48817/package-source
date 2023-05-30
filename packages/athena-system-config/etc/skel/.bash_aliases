@@ -247,6 +247,7 @@ alias fix-keyserver="[ -d ~/.gnupg ] || mkdir ~/.gnupg ; cp /etc/pacman.d/gnupg/
 
 #fixes
 alias fix-permissions="sudo chown -R $USER:$USER ~/.config ~/.local"
+alias lockreset='faillock --user $USER --reset'
 
 #maintenance
 alias big="expac -H M '%m\t%n' | sort -h | nl"
@@ -287,17 +288,12 @@ alias ltupg="leftwm-theme upgrade"
 #remove
 alias rmgitcache="rm -r ~/.cache/git"
 
-#moving your personal files and folders from /personal to ~
-alias personal='cp -Rf /personal/* ~'
-
 # Search running processes
 alias p="ps aux | grep "
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 
-
 # Count all files (recursively) in the current folder
 alias countfiles="bash -c \"for t in files links directories; do echo \\\$(find . -type \\\${t:0:1} | wc -l) \\\$t; done 2> /dev/null\""
-
 
 # Show current network connections to the server
 alias ipview="netstat -anpl | grep :80 | awk {'print \$5'} | cut -d\":\" -f1 | sort | uniq -c | sort -n | sed -e 's/^ *//' -e 's/ *\$//'"
