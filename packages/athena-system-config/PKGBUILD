@@ -8,7 +8,6 @@ source=("$pkgname.tar.gz")
 
 package() {
   mkdir -p "${pkgdir}/etc/modprobe.d"
-  mkdir -p "${pkgdir}/etc/pacman.d/gnupg"
   mkdir -p "${pkgdir}/etc/pacman.d/hooks"
   mkdir -p "${pkgdir}/etc/skel"
   mkdir -p "${pkgdir}/usr/lib"
@@ -18,7 +17,6 @@ package() {
   mkdir -p "${pkgdir}/usr/share/pixmaps"
 
   cp -rf "${srcdir}"/etc/modprobe.d/* "${pkgdir}/etc/modprobe.d/"
-  cp -rf "${srcdir}/etc/pacman.d/gnupg/gpg.conf" "${pkgdir}/etc/pacman.d/gnupg/"
   cp -rf "${srcdir}"/etc/pacman.d/hooks/* "${pkgdir}/etc/pacman.d/hooks/"
   cp -rf "${srcdir}/etc/skel/.bash_aliases" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.blerc" "${pkgdir}/etc/skel/"
@@ -34,4 +32,4 @@ package() {
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
 
-sha512sums=('a2db5e99496968d80865f979bc0eed44a3987444dfc8a5640e1ff52787d4041867049b454d2ebcfb597ebd00c9b10d05df570ee02b537b0b6a40d0a6ee29a858')
+sha512sums=('a91355e67d84995b4296d527ccb662df4c3a9a971f5d63675a152c00e2aeea1771868e9bedbd35f0dd16d8bee556544d981840ae50b8de4db14f5039d4108c56')
