@@ -72,4 +72,4 @@ package() {
   install -Dm755 "$srcdir/etc/skel/.tmux/plugins/tmux-yank/scripts/helpers.sh" "$pkgdir/etc/skel/.tmux/plugins/tmux-yank/scripts/"
 
 }
-sha512sums=('3b454f35471d2790f84b7ab25837e656ce976f9d27d727eccaa765abc59687eb700ff85f7dc2b91556c0e653654acf5acd766b95f6fcad02c73d7d7ea38a697b')
+sha512sums=('edbfdfee4643b05e5c5790549580364b3b2cd5269bc4c3ebb2ca60459e49cb186ccfd350c7ed535b46e5118f997cf9f13d9215555b5386f7dbe53d2f34cb4ae8')
