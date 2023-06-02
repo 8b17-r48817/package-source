@@ -1,10 +1,10 @@
 pkgname=athena-zsh
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Zsh for Athena"
 arch=('any')
 license=("custom")
-depends=('zsh' 'powerline-fonts')
+depends=('zsh' 'zsh-autosuggestions' 'powerline-fonts')
 source=("$pkgname.tar.gz")
 
 package() {
@@ -14,4 +14,4 @@ package() {
   cp -rf "${srcdir}/etc/skel/.zshrc" "${pkgdir}/etc/skel/"
   install -Dm 755 "${srcdir}/usr/bin/shopt" "${pkgdir}/usr/bin/"
 }
-sha512sums=('00dfe9830d8cf735908e5f9ad3337cc67fd0c44bf5f6be62869c265bec317f32db64734121e518857c9c6c8c561e4989d94b183b3b6cec83c2fd747874c5ff4e')
+sha512sums=('a4382705e35adcabc8943b2ca0f46700dcd6c623e6ef8e85fab55c6ec5917fd53949fbfeff7fbc5bb1e0c3eb5706b642bd4d1b1dba37266417becb76253b4ccc')
