@@ -6,12 +6,11 @@ arch=('any')
 license=("custom")
 install=gresource.install
 depends=('gdm-prime')
-source=("$pkgname.tar.gz")
+source=("gnome-shell-theme.gresource.new")
+sha512sums=('f645b3327739856c1e93953dc5974a2b982a74a6cf4f5c82b79d92fe25f1a63b96a633f2b46b837852decc1410ed47068cbf8cc1ea2242b1166c7958a400e06b')
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/gnome-shell"
+  install -dm 755 "$pkgdir/usr/share/gnome-shell"
 
-  cp -rf "${srcdir}/usr/share/gnome-shell/gnome-shell-theme.gresource.new" "${pkgdir}/usr/share/gnome-shell/"
-  
+  cp -rf "gnome-shell-theme.gresource.new" "$pkgdir/usr/share/gnome-shell/"
 }
-sha512sums=('91825f65b782fb453d91c47f7988b523ece94cafe291dc0508fc215a9cdeffb8d8761197f8a0634423a7cb808bbd1400503c71b48e691da3f96117a9360a9987')

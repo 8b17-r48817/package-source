@@ -45,3 +45,4 @@ set -x WEBPARAM "$SECLISTS/Discovery/Web-Content/burp-parameter-names.txt"
 
 
 set -gx TERM xterm-256color
+neofetch

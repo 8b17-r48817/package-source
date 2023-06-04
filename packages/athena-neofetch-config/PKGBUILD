@@ -1,15 +1,30 @@
 pkgname=athena-neofetch-config
-pkgver=1.0.0
+pkgver=197.f20b385
 pkgrel=1
 pkgdesc="Neofetch configuration for Athena"
 arch=('any')
 license=("custom")
-depends=('neofetch')
-source=("$pkgname.tar.gz")
+install=neofetch.install
+depends=('neofetch' 'ttf-jetbrains-mono-nerd' 'ttf-nerd-fonts-symbols' 'ttf-sharetech-mono-nerd')
+source=("git+https://github.com/Chick2D/neofetch-themes"
+        "config.conf"
+        "neofetch.new")
+sha512sums=('SKIP'
+            '0e728e9222e586e402184759defc8c9f52c875f5a1a4713a50f234268d35a60ab10da9930c26fd1f9720c58daa2e2e997e68dade2b82e21039d04b414350b29f'
+            '19c8efcaab0fed17295b03ca8d8c7188e4c505339c63c376d2da6876d60c17943ed0fef4150f2b9f670e541df26c72187c13fb28547c275d816d06c2eb6fafe1')
+
+pkgver() {
+  cd neofetch-themes
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 package() {
-  mkdir -p "${pkgdir}/etc/skel"
+  install -dm 755 "$pkgdir/etc/skel/.config/neofetch"
+  install -dm 755 "$pkgdir/usr/bin"
 
-  cp -rf "${srcdir}/etc/skel/.config" "${pkgdir}/etc/skel/"
+  install -Dm 644 "config.conf" "$pkgdir/etc/skel/.config/neofetch/"
+  install -Dm 755 "neofetch.new" "$pkgdir/usr/bin/"
+  cp -a "neofetch-themes" "$pkgdir/etc/skel/.config/neofetch/"
 }
-sha512sums=('d221a6ca80983a7f71d7519cd64d938378fff341affd69bcff708a5184dd0fe1570006ab5db1231fd60d4a9f8337f0cbcbcc428062e4a025f7dad8ac87f7e307')
+

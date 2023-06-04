@@ -43,4 +43,7 @@ else
 fi
 
 precmd() { eval "$PROMPT_COMMAND" }
-export PROMPT_COMMAND='source ~/.zshrc'
+export PROMPT_COMMAND='source ~/.zshrc no-repeat-flag'
+if [[ $1 != no-repeat-flag ]]; then
+  neofetch
+fi
