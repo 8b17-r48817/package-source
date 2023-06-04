@@ -10,7 +10,7 @@ source=("git+https://github.com/Chick2D/neofetch-themes"
         "config.conf"
         "neofetch.new")
 sha512sums=('SKIP'
-            '0e728e9222e586e402184759defc8c9f52c875f5a1a4713a50f234268d35a60ab10da9930c26fd1f9720c58daa2e2e997e68dade2b82e21039d04b414350b29f'
+            '6b1a40d1fcff710c00a3d2ed76818a7a50f4f9a0b844d1f563f95d6e98e205196f6d6ca2de007215cf4cff3879b839778711c6f25547f5ceca03509eee3d0e0e'
             '19c8efcaab0fed17295b03ca8d8c7188e4c505339c63c376d2da6876d60c17943ed0fef4150f2b9f670e541df26c72187c13fb28547c275d816d06c2eb6fafe1')
 
 pkgver() {
