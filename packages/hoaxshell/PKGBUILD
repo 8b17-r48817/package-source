@@ -1,5 +1,5 @@
 pkgname=hoaxshell
-pkgver=135.268241a
+pkgver=138.7ea0b27
 pkgrel=1
 pkgdesc='A Windows reverse shell payload generator and handler that abuses the http(s) protocol to establish a beacon-like reverse shell.'
 arch=('any')

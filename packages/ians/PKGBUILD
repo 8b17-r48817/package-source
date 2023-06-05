@@ -1,5 +1,5 @@
 pkgname=ians
-pkgver=63.244e8f2
+pkgver=65.eb15373
 pkgrel=1
 pkgdesc='A Python-based hacking toolset.'
 arch=('any')

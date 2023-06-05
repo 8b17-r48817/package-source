@@ -1,6 +1,6 @@
 pkgname=redneuron
 _pkgname=RedNeuron
-pkgver=20.09c69f3
+pkgver=50.b7924af
 pkgrel=1
 pkgdesc='Framework Creator of Malware focused in attacking Windows but created to execute framework in Linux.'
 arch=('any')

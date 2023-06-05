@@ -9,7 +9,7 @@ makepkg -f -scr --sign
 
 pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
 pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
-rm -rf $pkgname
+rm -rf $pkgname $pkgname.zip
 rm -rf ../../$pkgfile ../../$pkgfile.sig
 
 mv $pkgfile $pkgfile.sig ../../
