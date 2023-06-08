@@ -1,5 +1,5 @@
 pkgname=gnome-shell-extension-aylur-widgets-git
-pkgver=78.69d51b3
+pkgver=85.b3419a3
 pkgrel=1
 pkgdesc="Set of extensions: Battery Bar, Dash Board, DateMenu Mod, Media Player, Power Menu, Workspace Indicator, Notification Indicator, Modified Quick Settings, Background Clock."
 arch=('any')
