@@ -1,0 +1,24 @@
+pkgname=hyprland-titus
+pkgver=56.74244d8
+pkgrel=1
+pkgdesc="Hyprland Titus configuration."
+arch=('any')
+url='https://github.com/ChrisTitusTech/hyprland-titus'
+license=("custom:none")
+depends=('adobe-source-code-pro-fonts' 'brightnessctl' 'dunst' 'ffmpeg' 'ffmpegthumbnailer' 'grimblast-git' 'hyprland' 'hyprpicker-git' 'inter-font' 'kitty' 'neovim' 'noise-suppression-for-voice' 'nordic-theme' 'noto-fonts-emoji' 'noto-fonts' 'nwg-look-bin' 'otf-firamono-nerd' 'otf-sora' 'pamixer' 'papirus-icon-theme' 'pavucontrol' 'playerctl' 'polkit-gnome' 'rofi' 'sddm-git' 'starship' 'sway' 'swaybg' 'swaylock-effects' 'thunar-archive-plugin' 'thunar' 'ttf-comfortaa' 'ttf-fantasque-nerd' 'ttf-icomoon-feather' 'ttf-iosevka-nerd' 'ttf-jetbrains-mono-nerd' 'ttf-nerd-fonts-symbols-common' 'tumbler' 'viewnior' 'waybar-hyprland-git' 'wf-recorder' 'wl-clipboard' 'wlogout' 'wlsunset' 'xdg-desktop-portal-hyprland-git')
+makedepends=('git')
+source=("git+https://github.com/ChrisTitusTech/$pkgname")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/etc/skel"
+  rsync -av --progress dotconfig/ "$pkgdir/etc/skel/.config/"
+}

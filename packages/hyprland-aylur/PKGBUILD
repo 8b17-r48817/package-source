@@ -1,0 +1,32 @@
+pkgname=hyprland-aylur
+_pkgname=dotfiles
+pkgver=135.00b6102
+pkgrel=1
+pkgdesc="Hyprland Aylur configuration."
+arch=('any')
+url='https://github.com/Aylur/dotfiles'
+license=("custom:none")
+depends=('acpi' 'blueberry' 'bluez' 'brightnessctl' 'eww-wayland' 'gjs' 'gnome-bluetooth-3.0' 'gtk3' 'hyprland' 'hyprpicker' 'hyprshot' 'imagemagick' 'inotify-tools' 'jq' 'networkmanager' 'nm-connection-editor' 'pavucontrol' 'playerctl' 'polkit-gnome' 'socat' 'ttf-ubuntu-nerd' 'upower' 'wezterm' 'wl-clipboard' 'wl-gammactl' 'wlsunset')
+makedepends=('git')
+source=("git+https://github.com/Aylur/$_pkgname")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $_pkgname
+
+  install -dm 755 "$pkgdir/etc/skel/.config"
+  install -dm 755 "$pkgdir/etc/skel/.local"
+  install -dm 755 "$pkgdir/etc/skel/.themes"
+
+  rsync -av --progress "./.config/eww" "$pkgdir/etc/skel/.config/"
+  rsync -av --progress "./.config/hypr" "$pkgdir/etc/skel/.config/"
+  rsync -av --progress "./.config/hypr/_hyprland.conf" "$pkgdir/etc/skel/.config/hypr/hyprland.conf"
+  
+  rsync -av --progress ./.local/ "$pkgdir/etc/skel/.local/"
+}

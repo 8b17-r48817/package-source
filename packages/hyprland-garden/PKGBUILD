@@ -1,0 +1,31 @@
+pkgname=hyprland-garden
+_pkgname=hyprland-dotfiles
+pkgver=88.ab429dd
+pkgrel=1
+pkgdesc="Hyprland Garden configuration."
+arch=('any')
+url='https://github.com/taylor85345/hyprland-dotfiles'
+license=("GPL")
+depends=('dunst' 'eww' 'fuzzel' 'geticons' 'hyprland' 'macchina' 'mpvpaper' 'nerd-fonts-inter' 'nitch' 'rofi' 'socat' 'trayer')
+makedepends=('git')
+source=("git+https://github.com/taylor85345/hyprland-dotfiles")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+    cd $_pkgname
+
+    git submodule update --init
+}
+
+package() {
+  cd $_pkgname
+
+  install -dm 755 "$pkgdir/etc/skel/.config"
+  rsync -av --progress "./" "$pkgdir/etc/skel/.config/"
+}
