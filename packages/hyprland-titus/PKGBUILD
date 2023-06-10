@@ -19,6 +19,6 @@ pkgver() {
 package() {
   cd $pkgname
 
-  install -dm 755 "$pkgdir/etc/skel"
+  install -dm 755 "$pkgdir/etc/skel/.config"
   rsync -av --progress dotconfig/ "$pkgdir/etc/skel/.config/"
 }

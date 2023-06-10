@@ -287,4 +287,10 @@ if [ $result = "none" ];
 			rm /etc/systemd/system/multi-user.target.wants/virtual-machine-check.service
 			echo "Removed avm-check script"
 		fi
+
+		#remove xf86-input-vmmouse
+		if pacman -Qi xf86-input-vmmouse &> /dev/null; then
+                        pacman -Rns xf86-input-vmmouse --noconfirm
+                        echo "Removed xf86-input-vmmouse"
+                fi
 fi

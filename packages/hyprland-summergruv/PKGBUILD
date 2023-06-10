@@ -24,6 +24,7 @@ package() {
   install -dm 755 "$pkgdir/etc/skel/.local"
   install -dm 755 "$pkgdir/etc/skel/.themes"
   install -dm 755 "$pkgdir/usr/share/gnome-text-editor/styles"
+
   rsync -av --progress ./.config/ "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.local/ "$pkgdir/etc/skel/.local/"
   rsync -av --progress ./.themes/ "$pkgdir/etc/skel/.themes/"

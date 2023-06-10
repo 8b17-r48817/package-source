@@ -56,6 +56,7 @@ variable_list = [
     ("tmux", "Terminal multiplexer that allow you switch easily between several programs in one terminal, detach them and reattach them to a different terminal."),
     ("toilet", "Display large colourful characters."),
     ("tree", "Recursive directory listing program that produces a depth indented listing of files."),
+    ("troubleshoot", "Generate logs links about your system in order to investigate any issue."),
     ("vim", "Highly configurable text editor built to make creating and changing any kind of text very efficient."),
     ("vnstat", "Console-based network traffic monitor."),
     ("xcp", "An extended cp command."),

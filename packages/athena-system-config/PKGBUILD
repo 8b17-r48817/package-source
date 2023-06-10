@@ -1,9 +1,10 @@
 pkgname=athena-system-config
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="System configuration for Athena"
 arch=('any')
 license=("custom")
+depends=('terminus-font')
 source=("$pkgname.tar.gz")
 
 package() {
@@ -32,4 +33,4 @@ package() {
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
 
-sha512sums=('a91355e67d84995b4296d527ccb662df4c3a9a971f5d63675a152c00e2aeea1771868e9bedbd35f0dd16d8bee556544d981840ae50b8de4db14f5039d4108c56')
+sha512sums=('dcb70bcd1b1279413063cb6be1858d044be67f2484d322a27404cded6c255dca57bde99c10559357d971ba1ef04d8c13053a231b752b710957c94ae6d0e9db64')

@@ -61,9 +61,9 @@ alias follow="tail -f -n +1"
 alias df='df -h'
 
 # Alias's to modified commands
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -iv'
+#alias cp='cp -i'
+#alias mv='mv -i'
+#alias rm='rm -iv'
 alias mkdir='mkdir -p'
 alias ping='ping -c 10'
 alias less='less -R'

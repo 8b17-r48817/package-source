@@ -1,0 +1,27 @@
+pkgname=hyprland-config
+pkgver=56.74244d8
+pkgrel=1
+pkgdesc="Hyprland basic configuration."
+arch=('any')
+url='https://github.com/D3vil0p3r/hyprland-config'
+license=("GPL")
+depends=('brightnessctl' 'egl-wayland' 'ffmpeg' 'ffmpegthumbnailer' 'grimblast-git' 'hyprland' 'hyprpicker-git' 'kitty' 'lib32-libva' 'noise-suppression-for-voice' 'pamixer' 'pavucontrol' 'pipewire' 'playerctl' 'polkit-gnome' 'rofi' 'sway' 'swaybg' 'swaylock-effects' 'thunar-archive-plugin' 'thunar' 'viewnior' 'waybar-hyprland-git' 'wl-clipboard' 'wlogout' 'wlsunset' 'xdg-desktop-portal-hyprland-git')
+makedepends=('git')
+source=("git+https://github.com/D3vil0p3r/$pkgname")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $pkgname
+
+  install -dm 755 "$pkgdir/etc/skel/.config"
+  install -dm 755 "$pkgdir/etc/skel/.local"
+
+  rsync -av --progress .config/ "$pkgdir/etc/skel/.config/"
+  rsync -av --progress .local/ "$pkgdir/etc/skel/.local/"
+}
