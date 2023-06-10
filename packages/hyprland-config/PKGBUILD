@@ -19,9 +19,9 @@ pkgver() {
 package() {
   cd $pkgname
 
-  install -dm 755 "$pkgdir/etc/skel/.config"
-  install -dm 755 "$pkgdir/etc/skel/.local"
+  install -dm 755 "$pkgdir/etc/skel/.config/hypr"
+  install -dm 755 "$pkgdir/etc/skel/.local/bin"
 
-  rsync -av --progress .config/ "$pkgdir/etc/skel/.config/"
-  rsync -av --progress .local/ "$pkgdir/etc/skel/.local/"
+  install -Dm 644 .config/hypr/hyprland.conf "$pkgdir/etc/skel/.config/hypr/"
+  install -Dm 755 .local/bin/wrappedhl "$pkgdir/etc/skel/.local/bin/"
 }
