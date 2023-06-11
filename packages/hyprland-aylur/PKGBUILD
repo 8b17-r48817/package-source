@@ -6,7 +6,7 @@ pkgdesc="Hyprland Aylur configuration."
 arch=('any')
 url='https://github.com/Aylur/dotfiles'
 license=("custom:none")
-depends=('acpi' 'blueberry' 'bluez' 'brightnessctl' 'eww-wayland' 'gjs' 'gnome-bluetooth-3.0' 'gtk3' 'hyprland' 'hyprpicker-git' 'hyprshot' 'imagemagick' 'inotify-tools' 'jq' 'networkmanager' 'nm-connection-editor' 'pavucontrol' 'pipewire' 'playerctl' 'polkit-gnome' 'socat' 'sway' 'ttf-ubuntu-nerd' 'upower' 'wezterm' 'wl-clipboard' 'wl-gammactl' 'wlsunset')
+depends=('acpi' 'blueberry' 'bluez' 'brightnessctl' 'eww-wayland' 'foot' 'gjs' 'gnome-bluetooth-3.0' 'gtk3' 'hyprland' 'hyprpicker-git' 'hyprshot' 'imagemagick' 'inotify-tools' 'jq' 'nerd-fonts-noto-sans-mono-extended' 'networkmanager' 'nm-connection-editor' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'socat' 'sway' 'ttf-mononoki-nerd' 'ttf-ubuntu-nerd' 'upower' 'wireplumber' 'wl-clipboard' 'wl-gammactl' 'wlsunset')
 makedepends=('git')
 source=("git+https://github.com/Aylur/$_pkgname")
 sha512sums=('SKIP')
@@ -22,10 +22,8 @@ package() {
 
   install -dm 755 "$pkgdir/etc/skel/.config"
   install -dm 755 "$pkgdir/etc/skel/.local"
-  install -dm 755 "$pkgdir/etc/skel/.themes"
 
-  rsync -av --progress "./.config/eww" "$pkgdir/etc/skel/.config/"
-  rsync -av --progress "./.config/hypr" "$pkgdir/etc/skel/.config/"
+  rsync -av --progress "./.config/" "$pkgdir/etc/skel/.config/"
   rsync -av --progress "./.config/hypr/_hyprland.conf" "$pkgdir/etc/skel/.config/hypr/hyprland.conf"
   
   rsync -av --progress ./.local/ "$pkgdir/etc/skel/.local/"
