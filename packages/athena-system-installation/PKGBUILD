@@ -1,6 +1,6 @@
 pkgname=athena-system-installation
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Installation files for Athena"
 arch=('any')
 license=("custom")
@@ -19,4 +19,4 @@ package() {
   
   install -Dm755 "$srcdir/usr/local/bin/athena-snapper" "$pkgdir/usr/local/bin/"
 }
-sha512sums=('f12ac4223f027f6496d65095897cc282d16feb555ec2c8fea165cc0d8bfb7ed4dee7691768091f4f2075c2adb7c0d55e89fe612b5f14c00536f635a33be3bb95')
+sha512sums=('2b160ec5740af255354644500ec4bff2b480f98deddee44543be0632cc71e8c6f1d489ee78904855ca95a9f09cf2cff15269a3b857276ff11bf3a38113e95072')

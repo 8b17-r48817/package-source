@@ -1,6 +1,60 @@
 #!/bin/sh
 
+RESTORE='\033[0m'
+
+RED='\033[00;31m'
+GREEN='\033[00;32m'
+YELLOW='\033[00;33m'
+BLUE='\033[00;34m'
+PURPLE='\033[00;35m'
+CYAN='\033[00;36m'
+LIGHTGRAY='\033[00;37m'
+
+LRED='\033[01;31m'
+LGREEN='\033[01;32m'
+LYELLOW='\033[01;33m'
+LBLUE='\033[01;34m'
+LPURPLE='\033[01;35m'
+LCYAN='\033[01;36m'
+WHITE='\033[01;37m'
+
 ###########################
+print_info() {
+
+    machine_name=$1
+    machine_os=$2
+    machine_ip=$3
+    machine_points=$4
+    machine_difficulty=$5
+    machine_userflag=$6
+    machine_rootflag=$7
+    htb_user=$8
+    htb_user_ip=$(ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p')
+
+    recipe_file="$HOME/target_info.txt"
+
+    [ $machine_userflag != "null" ] && machine_userflag="Pwned" || machine_userflag="No"
+    [ $machine_rootflag != "null" ] && machine_rootflag="Pwned" || machine_rootflag="No"
+    
+    echo
+    echo -e "${LYELLOW}Our secret agent gathered some information about the target:${RESTORE}"
+    echo -e "${LGREEN}┌────────────────────────────────────────────────────┐${RESTORE}" | tee $recipe_file
+    echo -e "${LGREEN}| Target Name       : ${LCYAN}$machine_name${RESTORE}" | tee -a $recipe_file
+    echo -e "${LGREEN}| Target OS         : ${LCYAN}$(echo $machine_os | tr -d \")${RESTORE}" | tee -a $recipe_file
+    echo -e "${LGREEN}| Target IP         : ${LCYAN}$machine_ip${RESTORE}" | tee -a $recipe_file
+    echo -e "${LGREEN}| Points            : ${LCYAN}$machine_points${RESTORE}" | tee -a $recipe_file
+    echo -e "${LGREEN}| Difficulty        : ${LCYAN}$(echo $machine_difficulty | tr -d \")${RESTORE}" | tee -a $recipe_file
+    echo -e "${LGREEN}| User Flag         : ${LCYAN}$machine_userflag${RESTORE}" | tee -a $recipe_file
+    echo -e "${LGREEN}| Root Flag         : ${LCYAN}$machine_rootflag${RESTORE}" | tee -a $recipe_file
+    echo -e "${LGREEN}|────────────────────────────────────────────────────|${RESTORE}" | tee -a $recipe_file
+    echo -e "${LGREEN}| Attacker          : ${LRED}$(echo $htb_user | tr -d \")${RESTORE}" | tee -a $recipe_file
+    echo -e "${LGREEN}| Attacker IP       : ${LRED}$htb_user_ip${RESTORE}" | tee -a $recipe_file
+    echo -e "${LGREEN}└────────────────────────────────────────────────────┘${RESTORE}" | tee -a $recipe_file
+    echo
+    echo -e "${LYELLOW}The agent left this information in ${recipe_file}.${RESTORE}"
+    echo
+}
+
 change_shell() {
 
     result=$(basename -- "$SHELL")
@@ -109,6 +163,12 @@ machine_json_file="$HOME/.machine.json"
 echo "Stopping any active machine..."
 htb-stop
 
+machine_os=$(cat $machine_json_file | jq '.info.os')
+machine_points=$(cat $machine_json_file | jq '.info.points')
+machine_userflag=$(cat $machine_json_file | jq '.info.authUserInUserOwns')
+machine_rootflag=$(cat $machine_json_file | jq '.info.authUserInRootOwns')
+machine_difficulty=$(cat $machine_json_file | jq '.info.difficultyText')
+
 vpn_type=$(curl -s --location --request GET https://www.hackthebox.com/api/v4/connection/status -H "Authorization: Bearer $appkey" | jq '.[0].type' | tr -d '"')
 
 if cat $machine_json_file | grep -q "Starting Point Machine"; then
@@ -185,6 +245,7 @@ if cat $machine_json_file | grep -q "Starting Point Machine"; then
             esac
         done
 
+        print_info $machine_name $machine_os $machine_ip $machine_points $machine_difficulty $machine_userflag $machine_userflag $htb_user
         #echo -e "Remember to activate the VPN for HTB Starting Point Machines."
         echo -e "\e[33mFor submitting the answers of the task questions, visit Hack The Box website: https://app.hackthebox.com/starting-point\e[0m"
         echo -e "\e[32mPlaying $machine_name. Good luck!\e[0m"
@@ -223,10 +284,6 @@ else
     fi
 
     machine_id=$(curl -s --location --request GET "https://www.hackthebox.com/api/v4/machine/profile/$machine_name" -H "Authorization: Bearer $appkey" | jq .info.id)
-
-    machine_userflag=$(cat $machine_json_file | jq '.info.authUserInUserOwns')
-    machine_rootflag=$(cat $machine_json_file | jq '.info.authUserInRootOwns')
-    machine_points=$(cat $machine_json_file | jq '.info.points')
 
     rm -rf $machine_json_file
 
@@ -271,6 +328,7 @@ else
             esac
         done
 
+        print_info $machine_name $machine_os $machine_ip $machine_points $machine_difficulty $machine_userflag $machine_userflag $htb_user
         #echo -e "Remember to activate the VPN for HTB Machines."
         echo -e "\e[32mPlaying $machine_name. Good luck!\e[0m"
         echo
@@ -320,6 +378,7 @@ else
             esac
         done
 
+        print_info $machine_name $machine_os $machine_ip $machine_points $machine_difficulty $machine_userflag $machine_userflag $htb_user
         #echo -e "Remember to activate the VPN for HTB Machines."
         echo -e "\e[32mPlaying $machine_name. Good luck!\e[0m"
         echo 
