@@ -94,7 +94,7 @@ package() {
 
   ###############################
 
-  sed -i '15i source ~/.bash_aliases' /etc/skel/.config/fish/config.fish
+  sed -i '15i source ~/.bash_aliases' "$pkgdir/etc/skel/.config/fish/config.fish"
 
     cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/bin/sh
