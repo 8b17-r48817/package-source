@@ -90,8 +90,8 @@ if [[ $gpudetect =~ "NVIDIA" ]]; then
    grub-mkconfig -o /boot/grub/grub.cfg
 
    if [[ $gpudetect =~ "Intel" ]] || [[ $gpudetect =~ "AMD" ]] || [[ $gpudetect =~ "ATI" ]]; then
-      pacman -S --noconfirm optimus-manager-qt
-      #pacman -S --noconfirm nvidia-exec
+      pacman -S --noconfirm envycontrol
+      pacman -S --noconfirm nvidia-exec
       #nvx on
       #sed -i '$a__VK_LAYER_NV_optimus=NVIDIA_only\n__GLX_VENDOR_LIBRARY_NAME=nvidia' /etc/environment
    fi
