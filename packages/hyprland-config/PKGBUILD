@@ -1,11 +1,11 @@
 pkgname=hyprland-config
-pkgver=56.74244d8
+pkgver=8.7433107
 pkgrel=1
 pkgdesc="Hyprland basic configuration."
 arch=('any')
 url='https://github.com/D3vil0p3r/hyprland-config'
 license=("GPL")
-depends=('brightnessctl' 'egl-wayland' 'ffmpeg' 'ffmpegthumbnailer' 'grimblast-git' 'hyprland' 'hyprpicker-git' 'kitty' 'lib32-libva' 'noise-suppression-for-voice' 'pamixer' 'pavucontrol' 'pipewire' 'playerctl' 'polkit-gnome' 'rofi' 'sway' 'swaybg' 'swaylock-effects' 'thunar-archive-plugin' 'thunar' 'viewnior' 'waybar-hyprland-git' 'wl-clipboard' 'wlogout' 'wlsunset' 'xdg-desktop-portal-hyprland-git')
+depends=('brightnessctl' 'egl-wayland' 'ffmpeg' 'ffmpegthumbnailer' 'foot' 'grimblast-git' 'hyprland-nvidia' 'hyprpicker-git' 'lib32-libva' 'noise-suppression-for-voice' 'pamixer' 'pavucontrol' 'pipewire' 'playerctl' 'polkit-gnome' 'rofi-lbonn-wayland' 'sway' 'swaybg' 'swaylock-effects' 'thunar-archive-plugin' 'thunar' 'viewnior' 'waybar' 'wl-clipboard' 'wlogout' 'wlsunset' 'xdg-desktop-portal-hyprland-git')
 makedepends=('git')
 source=("git+https://github.com/D3vil0p3r/$pkgname")
 sha512sums=('SKIP')

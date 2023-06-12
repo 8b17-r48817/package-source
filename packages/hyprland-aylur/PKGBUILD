@@ -1,12 +1,12 @@
 pkgname=hyprland-aylur
 _pkgname=dotfiles
-pkgver=135.00b6102
+pkgver=136.797b512
 pkgrel=1
 pkgdesc="Hyprland Aylur configuration."
 arch=('any')
 url='https://github.com/Aylur/dotfiles'
 license=("custom:none")
-depends=('acpi' 'blueberry' 'bluez' 'brightnessctl' 'eww-wayland' 'foot' 'gjs' 'gnome-bluetooth-3.0' 'gtk3' 'hyprland' 'hyprpicker-git' 'hyprshot' 'imagemagick' 'inotify-tools' 'jq' 'nerd-fonts-noto-sans-mono-extended' 'networkmanager' 'nm-connection-editor' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'socat' 'sway' 'ttf-mononoki-nerd' 'ttf-ubuntu-nerd' 'upower' 'wireplumber' 'wl-clipboard' 'wl-gammactl' 'wlsunset')
+depends=('acpi' 'blueberry' 'bluez' 'brightnessctl' 'distrobox' 'eww-wayland' 'foot' 'gjs' 'gnome-bluetooth-3.0' 'gtk3' 'hyprland-nvidia' 'hyprpicker-git' 'hyprshot' 'imagemagick' 'inotify-tools' 'jq' 'nerd-fonts-noto-sans-mono-extended' 'networkmanager' 'nm-connection-editor' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'socat' 'sway' 'ttf-mononoki-nerd' 'ttf-ubuntu-nerd' 'upower' 'wireplumber' 'wl-clipboard' 'wl-gammactl' 'wlsunset')
 makedepends=('git')
 source=("git+https://github.com/Aylur/$_pkgname")
 sha512sums=('SKIP')
@@ -22,9 +22,97 @@ package() {
 
   install -dm 755 "$pkgdir/etc/skel/.config"
   install -dm 755 "$pkgdir/etc/skel/.local"
+  install -dm 755 "$pkgdir/usr/bin"
 
   rsync -av --progress "./.config/" "$pkgdir/etc/skel/.config/"
   rsync -av --progress "./.config/hypr/_hyprland.conf" "$pkgdir/etc/skel/.config/hypr/hyprland.conf"
   
   rsync -av --progress ./.local/ "$pkgdir/etc/skel/.local/"
+  
+  ###### TERMINAL CHECK ######
+
+  binterm="foot" #fallback
+  if pacman -Qq alacritty &> /dev/null; then
+    binterm="alacritty"
+  elif pacman -Qq cool-retro-term &> /dev/null; then
+    binterm="cool-retro-term"
+  elif pacman -Qq kitty &> /dev/null; then
+    binterm="kitty"
+  elif pacman -Qq konsole &> /dev/null; then
+    binterm="konsole"
+  elif pacman -Qq terminator &> /dev/null; then
+    binterm="terminator"
+  elif pacman -Qq terminology &> /dev/null; then
+    binterm="terminology"
+  elif pacman -Qq xfce4-terminal &> /dev/null; then
+    binterm="xfce4-terminal"
+  elif pacman -Qq xterm &> /dev/null; then
+    binterm="xterm"
+  elif pacman -Qq foot &> /dev/null; then # Fallback Wayland
+    binterm="foot"
+  elif pacman -Qq gnome-terminal &> /dev/null; then # Fallback generic
+    binterm="gnome-terminal"
+  fi
+  sed -i "s/bind = SUPER, Return, exec, nixGL wezterm/bind = SUPER, Return, exec, $binterm/g" "$pkgdir/etc/skel/.config/hypr/binds.conf"
+
+  ###########################
+
+  ###### BROWSER CHECK ######
+
+  binbrowser="firefox-esr" #fallback
+  if pacman -Qq brave &> /dev/null; then
+    binbrowser="brave"
+  elif pacman -Qq mullvad-browser &> /dev/null; then
+    binbrowser="mullvad-browser"
+  elif pacman -Qq firefox-esr &> /dev/null; then # Fallback at the end of if statement
+    binbrowser="firefox-esr"
+  fi
+  sed -i "s/bind = SUPER, W, exec, flatpak run org.mozilla.firefox/bind = SUPER, W, exec, $binbrowser/g" "$pkgdir/etc/skel/.config/hypr/binds.conf"
+
+  ###########################
+
+  ###### FILE MANAGER CHECK ######
+
+  binfilemg="nautilus" #fallback
+  if pacman -Qq dolphin &> /dev/null; then
+    binfilemg="dolphin"
+  elif pacman -Qq thunar &> /dev/null; then
+    binfilemg="thunar"
+  elif pacman -Qq nautilus &> /dev/null; then # Fallback at the end of if statement
+    binfilemg="nautilus"
+  fi
+  sed -i "s/bind = SUPER, E, exec, nautilus/bind = SUPER, E, exec, $binfilemg/g" "$pkgdir/etc/skel/.config/hypr/binds.conf"
+
+  ################################
+
+  sed -i "s/kb_layout = hu/kb_layout =/g" "$pkgdir/etc/skel/.config/hypr/settings.conf"
+  sed -i "s/kb_model = pc104/kb_model =/g" "$pkgdir/etc/skel/.config/hypr/settings.conf"
+
+  ###########################
+
+    cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+echo "Creation of backup directory of $HOME/.config/hypr folder..."
+
+DIR=$HOME/.config/hypr
+if [[ -d "$DIR" ]]; then
+  rm -rf $HOME/.config/hypr.bak
+  mv $HOME/.config/hypr $HOME/.config/hypr.bak
+fi
+
+echo "Saved as $HOME/.config/hypr.bak."
+echo
+echo "Copying configuration files to user's home folder..."
+
+cp -rf /etc/skel/.config/eww /etc/skel/.config/gtklock /etc/skel/.config/home-manager /etc/skel/.config/hypr /etc/skel/.config/nvim /etc/skel/.config/wezterm $HOME/.config/
+cp -rf /etc/skel/.local/bin/blocks $HOME/.local/bin/
+
+mkdir -p $HOME/.local/share/gnome-shell/extensions
+cp -rf /etc/skel/.local/share/gnome-shell/extensions
+/theme-reloader@aylur $HOME/.local/share/gnome-shell/extensions/
+
+echo "Done. Reboot the system for applying the theme."
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
 }

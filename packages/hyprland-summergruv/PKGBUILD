@@ -6,7 +6,7 @@ pkgdesc="Hyprland Summer Gruv configuration."
 arch=('any')
 url='https://github.com/end-4/dots-hyprland'
 license=("GPL")
-depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'findutils' 'gawk' 'geticons-git' 'gojq' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'imagemagick' 'libqalculate' 'light' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'plasma-browser-integration' 'playerctl' 'procps' 'pulseaudio' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'socat' 'sox' 'sway' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wlogout' 'wofi')
+depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'eww-wayland' 'findutils' 'foot' 'gawk' 'geticons-git' 'gnome-keyring' 'gojq' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-config' 'ibus' 'imagemagick' 'libinput-gestures' 'libqalculate' 'light' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'plasma-browser-integration' 'playerctl' 'polkit-gnome' 'procps' 'pulseaudio' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'socat' 'sox' 'sway' 'swaybg' 'swayidle' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi')
 makedepends=('git')
 source=("git+https://github.com/end-4/$_pkgname#branch=summer-gruv")
 sha512sums=('SKIP')
@@ -23,6 +23,7 @@ package() {
   install -dm 755 "$pkgdir/etc/skel/.config"
   install -dm 755 "$pkgdir/etc/skel/.local"
   install -dm 755 "$pkgdir/etc/skel/.themes"
+  install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/gnome-text-editor/styles"
 
   rsync -av --progress ./.config/ "$pkgdir/etc/skel/.config/"
@@ -30,4 +31,95 @@ package() {
   rsync -av --progress ./.themes/ "$pkgdir/etc/skel/.themes/"
   rsync -av --progress "./Import Manually/execs (add to path)/" "$pkgdir/etc/skel/.local/bin/"
   rsync -av --progress "./Import Manually/gnome-text-editor themes (Paste to root)/usr/share/gnome-text-editor/styles/" "$pkgdir/usr/share/gnome-text-editor/styles/"
+
+  ###### TERMINAL CHECK ######
+
+  binterm="foot" #fallback
+  if pacman -Qq alacritty &> /dev/null; then
+    binterm="alacritty"
+  elif pacman -Qq cool-retro-term &> /dev/null; then
+    binterm="cool-retro-term"
+  elif pacman -Qq kitty &> /dev/null; then
+    binterm="kitty"
+  elif pacman -Qq konsole &> /dev/null; then
+    binterm="konsole"
+  elif pacman -Qq terminator &> /dev/null; then
+    binterm="terminator"
+  elif pacman -Qq terminology &> /dev/null; then
+    binterm="terminology"
+  elif pacman -Qq xfce4-terminal &> /dev/null; then
+    binterm="xfce4-terminal"
+  elif pacman -Qq xterm &> /dev/null; then
+    binterm="xterm"
+  elif pacman -Qq foot &> /dev/null; then # Fallback Wayland
+    binterm="foot"
+  elif pacman -Qq gnome-terminal &> /dev/null; then # Fallback generic
+    binterm="gnome-terminal"
+  fi
+  sed -i "s/bind=SUPER,Return,exec,kitty -e fish/bind=SUPER,Return,exec,$binterm/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
+
+  ###########################
+
+  ###### BROWSER CHECK ######
+
+  binbrowser="firefox-esr" #fallback
+  if pacman -Qq brave &> /dev/null; then
+    binbrowser="brave"
+  elif pacman -Qq mullvad-browser &> /dev/null; then
+    binbrowser="mullvad-browser"
+  elif pacman -Qq firefox-esr &> /dev/null; then # Fallback at the end of if statement
+    binbrowser="firefox-esr"
+  fi
+  sed -i "s/bind = SUPER, W, exec, firefox/bind = SUPER, W, exec, $binbrowser/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
+
+  ###########################
+
+  ###### FILE MANAGER CHECK ######
+
+  binfilemg="nautilus" #fallback
+  if pacman -Qq dolphin &> /dev/null; then
+    binfilemg="dolphin"
+  elif pacman -Qq thunar &> /dev/null; then
+    binfilemg="thunar"
+  elif pacman -Qq nautilus &> /dev/null; then # Fallback at the end of if statement
+    binfilemg="nautilus"
+  fi
+  sed -i "s/bind = SUPER, E, exec, nautilus --new-window/bind = SUPER, E, exec, $binfilemg/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
+
+  ################################
+  
+  ####### SET KEYBINSINGS ########
+
+  sed -i "s/bind = SUPER, Q, killactive,/bind = ALT, Q, killactive,/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
+
+  ###############################
+
+  sed -i '15i source ~/.bash_aliases' /etc/skel/.config/fish/config.fish
+
+    cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+echo "Creation of backup directory of $HOME/.config/hypr folder..."
+
+DIR=$HOME/.config/hypr
+if [[ -d "$DIR" ]]; then
+  rm -rf $HOME/.config/hypr.bak
+  mv $HOME/.config/hypr $HOME/.config/hypr.bak
+fi
+
+echo "Saved as $HOME/.config/hypr.bak."
+echo
+echo "Copying configuration files to user's home folder..."
+
+cp -rf /etc/skel/.config/btop /etc/skel/.config/dunst /etc/skel/.config/eww /etc/skel/.config/fish /etc/skel/.config/foot /etc/skel/.config/gtk-3.0 /etc/skel/.config/gtk-4.0 /etc/skel/.config/hypr /etc/skel/.config/mpv /etc/skel/.config/starship.toml $HOME/.config/
+
+cp -rf /etc/skel/.local/bin $HOME/.local/
+
+cp -rf /etc/skel/.local/share/fonts /etc/skel/.local/share/icons $HOME/.local/share/
+
+cp -rf /etc/skel/.themes/Tokyonight-Dark-BL-LB $HOME/.themes/
+
+echo "Done. Reboot the system for applying the theme."
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
 }
