@@ -1,6 +1,6 @@
 pkgname=hyprland-aylur
 _pkgname=dotfiles
-pkgver=136.797b512
+pkgver=137.5fa70bc
 pkgrel=1
 pkgdesc="Hyprland Aylur configuration."
 arch=('any')

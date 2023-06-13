@@ -1,6 +1,6 @@
 pkgname=hyprland-summergruv
 _pkgname=dots-hyprland
-pkgver=185.60fa5e80
+pkgver=272.d5725b99
 pkgrel=1
 pkgdesc="Hyprland Summer Gruv configuration."
 arch=('any')
@@ -8,7 +8,7 @@ url='https://github.com/end-4/dots-hyprland'
 license=("GPL")
 depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'eww-wayland' 'findutils' 'foot' 'gawk' 'geticons-git' 'gnome-keyring' 'gojq' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-config' 'ibus' 'imagemagick' 'libinput-gestures' 'libqalculate' 'light' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'plasma-browser-integration' 'playerctl' 'polkit-gnome' 'procps' 'pulseaudio' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'socat' 'sox' 'sway' 'swaybg' 'swayidle' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi')
 makedepends=('git')
-source=("git+https://github.com/end-4/$_pkgname#branch=summer-gruv")
+source=("git+https://github.com/end-4/$_pkgname")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -110,7 +110,7 @@ echo "Saved as $HOME/.config/hypr.bak."
 echo
 echo "Copying configuration files to user's home folder..."
 
-cp -rf /etc/skel/.config/btop /etc/skel/.config/dunst /etc/skel/.config/eww /etc/skel/.config/fish /etc/skel/.config/foot /etc/skel/.config/gtk-3.0 /etc/skel/.config/gtk-4.0 /etc/skel/.config/hypr /etc/skel/.config/mpv /etc/skel/.config/starship.toml $HOME/.config/
+cp -rf /etc/skel/.config/dunst /etc/skel/.config/eww /etc/skel/.config/fish /etc/skel/.config/foot /etc/skel/.config/gtk-3.0 /etc/skel/.config/gtk-4.0 /etc/skel/.config/gtklock /etc/skel/.config/hypr /etc/skel/.config/kitty /etc/skel/.config/mpv /etc/skel/.config/waybar /etc/skel/.config/wlogout /etc/skel/.config/starship.toml $HOME/.config/
 
 cp -rf /etc/skel/.local/bin $HOME/.local/
 
