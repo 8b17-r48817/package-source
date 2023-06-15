@@ -14,7 +14,7 @@ makepkg -f -scr --sign
 
 pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
 pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
-rm -rf src pkg $pkgname
+rm -rf src pkg $pkgname* dots_summergruv dots_hyprland 
 rm -rf ../../$pkgfile ../../$pkgfile.sig
 
 mv $pkgfile $pkgfile.sig ../../
