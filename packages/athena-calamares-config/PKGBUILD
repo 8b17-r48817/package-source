@@ -1,6 +1,6 @@
 pkgname=athena-calamares-config
-pkgver=1.0.1
-pkgrel=4
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Calamares Configuration for Athena"
 arch=('any')
 license=("custom")
@@ -13,4 +13,4 @@ package() {
   cp -rf "${srcdir}/etc/calamares" "${pkgdir}/etc/"
   cp -rf "${srcdir}"/usr/lib/calamares/modules/* "${pkgdir}/usr/lib/calamares/modules/"
 }
-sha512sums=('860a27a73f10176013ee10dfc35e0f199650163f7a7d6b32ed2f0ba864354d544510d181f677ac5f41199e5c880344da39180517d16eee706fcf903830f08256')
+sha512sums=('a4843671b8ca6073cd9cdbcb429842e56eb95d3998e9850dd96f07a364fca409f00efc4b98cb53d6f1d192cb8e5dfdabd6ed61edeaefbb260352916a8ca35ef3')
