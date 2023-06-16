@@ -1,7 +1,7 @@
 pkgname=hyprland-summergruv
 _pkgname=dots-hyprland
 _theme=dots_summergruv
-pkgver=274.fd60111f
+pkgver=284.a783ab7e
 pkgrel=1
 pkgdesc="Hyprland Summer Gruv configuration."
 arch=('any')
@@ -32,13 +32,13 @@ package() {
 
   rsync -av --progress ./.config/ "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.local/ "$pkgdir/etc/skel/.local/"
-  rsync -av --progress ./.themes/ "$pkgdir/etc/skel/.themes/"
+  #rsync -av --progress ./.themes/ "$pkgdir/etc/skel/.themes/"
   rsync -av --progress "./Import Manually/execs (add to path)/" "$pkgdir/etc/skel/.local/bin/"
   rsync -av --progress "./Import Manually/gnome-text-editor themes (Paste to root)/usr/share/gnome-text-editor/styles/" "$pkgdir/usr/share/gnome-text-editor/styles/"
 
   cd $srcdir/$_theme
   
-  rsync -av --progress ./.themes/ "$pkgdir/etc/skel/.themes/"
+  rsync -av --progress ./.themes/Gruvbox-Dark-BL-LB "$pkgdir/etc/skel/.themes/"
   rsync -av --progress .config/hypr/colors.conf "$pkgdir/etc/skel/.config/hypr/" #Apply window border colors
   rsync -av --progress .config/eww/css "$pkgdir/etc/skel/.config/eww/" #Apply Gruvbox top bar colors
   rsync -av --progress .config/eww/images "$pkgdir/etc/skel/.config/eww/" #Apply Gruvbox top bar icon colors and wallpaper
@@ -107,9 +107,9 @@ package() {
 
   ###############################
 
-  sed -i -e "8d;9d;12d;16d;20d" "$pkgdir/etc/skel/.config/eww/scripts/colormanage" # Remove lines that causing freezing on some buttons of the top bar
+  #sed -i -e "8d;9d;12d;16d;20d" "$pkgdir/etc/skel/.config/eww/scripts/colormanage" # Remove lines that causing freezing on some buttons of the top bar
 
-  sed -i "/^map/d" "$pkgdir/etc/skel/.config/kitty/kitty.conf" #Removing ctrl+c mapping
+  #sed -i "/^map/d" "$pkgdir/etc/skel/.config/kitty/kitty.conf" #Removing ctrl+c mapping
 
   sed -i '15i source ~/.bash_aliases' "$pkgdir/etc/skel/.config/fish/config.fish"
 
@@ -162,7 +162,6 @@ cp -rf /etc/skel/.config/kitty \$HOME/.config/
 cp -rf /etc/skel/.config/gtk-3.0 \$HOME/.config/
 cp -rf /etc/skel/.config/gtk-4.0 \$HOME/.config/
 
-cp -rf /etc/skel/.themes/Tokyonight-Dark-BL-LB \$HOME/.themes/
 cp -rf /etc/skel/.themes/Gruvbox-Dark-BL-LB \$HOME/.themes/
 
 gsettings set org.gnome.desktop.interface gtk-theme \$theme_name
