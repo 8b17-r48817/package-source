@@ -30,7 +30,7 @@ package() {
   
   cd $_pkgname
 
-  rsync -av --progress ./.config/ "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/ "$pkgdir/etc/skel/.config/" --exclude ./.config/fish
   rsync -av --progress ./.local/ "$pkgdir/etc/skel/.local/"
   #rsync -av --progress ./.themes/ "$pkgdir/etc/skel/.themes/"
   rsync -av --progress "./Import Manually/execs (add to path)/" "$pkgdir/etc/skel/.local/bin/"
@@ -111,7 +111,7 @@ package() {
 
   #sed -i "/^map/d" "$pkgdir/etc/skel/.config/kitty/kitty.conf" #Removing ctrl+c mapping
 
-  sed -i '15i source ~/.bash_aliases' "$pkgdir/etc/skel/.config/fish/config.fish"
+  #sed -i '15i source ~/.bash_aliases' "$pkgdir/etc/skel/.config/fish/config.fish"
 
     cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/bin/sh
@@ -148,14 +148,13 @@ echo "Saved as \$HOME/.config/<dirname>.bak."
 echo
 echo "Copying configuration files to user's home folder..."
 
-cp -rf /etc/skel/.config/dunst /etc/skel/.config/eww /etc/skel/.config/fish /etc/skel/.config/foot /etc/skel/.config/gtk-3.0 /etc/skel/.config/gtk-4.0 /etc/skel/.config/gtklock /etc/skel/.config/hypr /etc/skel/.config/kitty /etc/skel/.config/mpv /etc/skel/.config/waybar /etc/skel/.config/wlogout /etc/skel/.config/starship.toml \$HOME/.config/
+cp -rf /etc/skel/.config/dunst /etc/skel/.config/eww /etc/skel/.config/foot /etc/skel/.config/gtk-3.0 /etc/skel/.config/gtk-4.0 /etc/skel/.config/gtklock /etc/skel/.config/hypr /etc/skel/.config/kitty /etc/skel/.config/mpv /etc/skel/.config/waybar /etc/skel/.config/wlogout /etc/skel/.config/starship.toml \$HOME/.config/
 
 cp -rf /etc/skel/.local/bin \$HOME/.local/
 
 cp -rf /etc/skel/.local/share/fonts /etc/skel/.local/share/icons \$HOME/.local/share/
 
 cp -rf /etc/skel/.config/dunst \$HOME/.config/
-cp -rf /etc/skel/.config/fish \$HOME/.config/
 cp -rf /etc/skel/.config/foot \$HOME/.config/
 cp -rf /etc/skel/.config/kitty \$HOME/.config/
 
