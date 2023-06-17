@@ -1,7 +1,7 @@
 pkgname=hyprland-summergruv
 _pkgname=dots-hyprland
 _theme=dots-summergruv
-pkgver=284.a783ab7e
+pkgver=286.8e2b52d2
 pkgrel=1
 pkgdesc="Hyprland Summer Gruv configuration."
 arch=('any')
