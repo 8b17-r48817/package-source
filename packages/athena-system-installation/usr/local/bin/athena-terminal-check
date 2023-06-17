@@ -47,11 +47,15 @@ do
 
     find /etc/skel/.local/share/applications -type f -name '*.desktop' -exec sed -i -e "s/alacritty -e/$bin $arg_cmd/g" -e "s/cool-retro-term -e/$bin $arg_cmd/g" -e "s/gnome-terminal --/$bin $arg_cmd/g" -e "s/kitty -e/$bin $arg_cmd/g" -e "s/konsole -e/$bin $arg_cmd/g" -e "s/urxvt -e/$bin $arg_cmd/g" -e "s/xterm -e/$bin $arg_cmd/g" {} +
 
-    sed -i -e "s/alacritty -e/$bin $arg_cmd/g" -e "s/cool-retro-term -e/$bin $arg_cmd/g" -e "s/gnome-terminal --/$bin $arg_cmd/g" -e "s/kitty -e/$bin $arg_cmd/g" -e "s/konsole -e/$bin $arg_cmd/g" -e "s/urxvt -e/$bin $arg_cmd/g" -e "s/xterm -e/$bin $arg_cmd/g" /usr/share/athena-gnome-config/dconf-shell.ini /usr/share/htb-tools/htb-update.py
+    if pacman -Qq athena-gnome-config > /dev/null ; then
+        sed -i -e "s/alacritty -e/$bin $arg_cmd/g" -e "s/cool-retro-term -e/$bin $arg_cmd/g" -e "s/gnome-terminal --/$bin $arg_cmd/g" -e "s/kitty -e/$bin $arg_cmd/g" -e "s/konsole -e/$bin $arg_cmd/g" -e "s/urxvt -e/$bin $arg_cmd/g" -e "s/xterm -e/$bin $arg_cmd/g" /usr/share/athena-gnome-config/dconf-shell.ini
+
+        sed -i -e "s/alacritty\\\\\"}/$bin\\\\\"}/g" -e "s/cool-retro-term\\\\\"}/$bin\\\\\"}/g" -e "s/gnome-terminal\\\\\"}/$bin\\\\\"}/g" -e "s/kitty\\\\\"}/$bin\\\\\"}/g" -e "s/konsole\\\\\"}/$bin\\\\\"}/g" -e "s/urxvt\\\\\"}/$bin\\\\\"}/g" -e "s/xterm\\\\\"}/$bin\\\\\"}/g" -e "s/terminator\\\\\"}/$bin\\\\\"}/g" -e "s/terminology\\\\\"}/$bin\\\\\"}/g" -e "s/xfce4-terminal\\\\\"}/$bin\\\\\"}/g" /usr/share/athena-gnome-config/dconf-shell.ini
+    fi
+
+    sed -i -e "s/alacritty -e/$bin $arg_cmd/g" -e "s/cool-retro-term -e/$bin $arg_cmd/g" -e "s/gnome-terminal --/$bin $arg_cmd/g" -e "s/kitty -e/$bin $arg_cmd/g" -e "s/konsole -e/$bin $arg_cmd/g" -e "s/urxvt -e/$bin $arg_cmd/g" -e "s/xterm -e/$bin $arg_cmd/g" /usr/share/htb-tools/htb-update.py
 
     sed -i -e "s/alacritty/$bin/g" -e "s/cool-retro-term/$bin/g" -e "s/gnome-terminal/$bin/g" -e "s/kitty/$bin/g" -e "s/konsole/$bin/g" -e "s/urxvt/$bin/g" -e "s/xterm/$bin/g" /etc/skel/.local/share/applications/shell.desktop
-
-    sed -i -e "s/alacritty\\\\\"}/$bin\\\\\"}/g" -e "s/cool-retro-term\\\\\"}/$bin\\\\\"}/g" -e "s/gnome-terminal\\\\\"}/$bin\\\\\"}/g" -e "s/kitty\\\\\"}/$bin\\\\\"}/g" -e "s/konsole\\\\\"}/$bin\\\\\"}/g" -e "s/urxvt\\\\\"}/$bin\\\\\"}/g" -e "s/xterm\\\\\"}/$bin\\\\\"}/g" -e "s/terminator\\\\\"}/$bin\\\\\"}/g" -e "s/terminology\\\\\"}/$bin\\\\\"}/g" -e "s/xfce4-terminal\\\\\"}/$bin\\\\\"}/g" /usr/share/athena-gnome-config/dconf-shell.ini
 
     sed -i -e "s/\"alacritty\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"cool-retro-term\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"gnome-terminal\", \"--\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"kitty\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"konsole\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"urxvt\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"xterm\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" /usr/share/athena-welcome/athena-welcome.py
     
@@ -68,7 +72,9 @@ do
 
     sed -i -e "s/alacritty/$bin/g" -e "s/cool-retro-term/$bin/g" -e "s/gnome-terminal/$bin/g" -e "s/kitty/$bin/g" -e "s/konsole/$bin/g" -e "s/urxvt/$bin/g" -e "s/xterm/$bin/g" -e "s/terminator/$bin/g" -e "s/terminology/$bin/g" -e "s/xfce4-terminal/$bin/g" /etc/skel/.local/share/applications/shell.desktop
     
-    sed -i -e "s/alacritty\\\\\"}/$bin\\\\\"}/g" -e "s/cool-retro-term\\\\\"}/$bin\\\\\"}/g" -e "s/gnome-terminal\\\\\"}/$bin\\\\\"}/g" -e "s/kitty\\\\\"}/$bin\\\\\"}/g" -e "s/konsole\\\\\"}/$bin\\\\\"}/g" -e "s/urxvt\\\\\"}/$bin\\\\\"}/g" -e "s/xterm\\\\\"}/$bin\\\\\"}/g" -e "s/terminator\\\\\"}/$bin\\\\\"}/g" -e "s/terminology\\\\\"}/$bin\\\\\"}/g" -e "s/xfce4-terminal\\\\\"}/$bin\\\\\"}/g" /usr/share/athena-gnome-config/dconf-shell.ini #It changes only the Terminal button of Red Team menu
+    if pacman -Qq athena-gnome-config > /dev/null ; then
+        sed -i -e "s/alacritty\\\\\"}/$bin\\\\\"}/g" -e "s/cool-retro-term\\\\\"}/$bin\\\\\"}/g" -e "s/gnome-terminal\\\\\"}/$bin\\\\\"}/g" -e "s/kitty\\\\\"}/$bin\\\\\"}/g" -e "s/konsole\\\\\"}/$bin\\\\\"}/g" -e "s/urxvt\\\\\"}/$bin\\\\\"}/g" -e "s/xterm\\\\\"}/$bin\\\\\"}/g" -e "s/terminator\\\\\"}/$bin\\\\\"}/g" -e "s/terminology\\\\\"}/$bin\\\\\"}/g" -e "s/xfce4-terminal\\\\\"}/$bin\\\\\"}/g" /usr/share/athena-gnome-config/dconf-shell.ini #It changes only the Terminal button of Red Team menu
+    fi
   fi
 done
 
