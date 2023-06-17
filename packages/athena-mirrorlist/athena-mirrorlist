@@ -1,5 +1,5 @@
 # Global
-https://athena-os.github.io/$repo/$arch
+Server = https://athena-os.github.io/$repo/$arch
 
 # South Korea
-https://mirror.pardesicat.xyz/athena-repository/$repo/$arch
+Server = https://mirror.pardesicat.xyz/athena-repository/$repo/$arch
