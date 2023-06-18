@@ -7,7 +7,7 @@ pkgdesc="Hyprland Summer Gruv configuration."
 arch=('any')
 url='https://github.com/end-4/dots-hyprland'
 license=("GPL")
-depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'eww-wayland' 'findutils' 'foot' 'gawk' 'geticons-git' 'gnome-keyring' 'gojq' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia' 'ibus' 'imagemagick' 'libinput-gestures' 'libqalculate' 'light' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'socat' 'sox' 'swaybg' 'swayidle' 'udev' 'upower' 'util-linux' 'wget' 'wl-clipboard' 'wlogout' 'wofi')
+depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'eww-wayland' 'findutils' 'foot' 'gawk' 'geticons-git' 'gnome-keyring' 'gojq' 'grim' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia' 'ibus' 'imagemagick' 'libinput-gestures' 'libqalculate' 'light' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swaybg' 'swayidle' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi')
 makedepends=('git')
 source=("git+https://github.com/end-4/$_pkgname"
         "$_theme::git+https://github.com/end-4/$_pkgname#branch=summer-gruv")
@@ -79,14 +79,14 @@ package() {
   elif pacman -Qq gnome-terminal &> /dev/null; then # Fallback generic
     binterm="gnome-terminal"
   fi
-  sed -i "s/bind=SUPER,Return,exec,kitty -e fish/bind=SUPER,Return,exec,$binterm/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
+  sed -i "s/bind=SUPER,Return,exec,kitty/bind=SUPER,Return,exec,$binterm/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
 
   ###########################
 
   ###### BROWSER CHECK ######
 
   binbrowser="firefox-esr" #fallback
-  if pacman -Qq brave &> /dev/null; then
+  if pacman -Qq brave-bin &> /dev/null; then
     binbrowser="brave"
   elif pacman -Qq mullvad-browser &> /dev/null; then
     binbrowser="mullvad-browser"
@@ -120,6 +120,9 @@ package() {
   #sed -i -e "8d;9d;12d;16d;20d" "$pkgdir/etc/skel/.config/eww/scripts/colormanage" # Remove lines that causing freezing on some buttons of the top bar
 
   #sed -i "/^map/d" "$pkgdir/etc/skel/.config/kitty/kitty.conf" #Removing ctrl+c mapping
+
+  sed -i "/^clipboard-copy/d" "$pkgdir/etc/skel/.config/foot/foot.ini" #Removing ctrl+c mapping
+  sed -i "/^clipboard-paste/d" "$pkgdir/etc/skel/.config/foot/foot.ini" #Removing ctrl+v mapping
 
   #sed -i '15i source ~/.bash_aliases' "$pkgdir/etc/skel/.config/fish/config.fish"
 
