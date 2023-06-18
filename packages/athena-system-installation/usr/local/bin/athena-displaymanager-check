@@ -45,12 +45,6 @@ package=sddm
 if pacman -Qq $package > /dev/null ; then
   ln -sf /usr/lib/systemd/system/sddm.service /etc/systemd/system/display-manager.service
   echo -e "[Theme]\nCurrent=astronaut" | tee -a /etc/sddm.conf
-
-  if pacman -Qq athena-gnome-config > /dev/null ; then
-    sed -i "s/^\[Autologin\]/\[Autologin\]\nSession=gnome-xorg/g" /etc/sddm.conf
-  elif pacman -Qq hyprland-nvidia > /dev/null ; then
-    sed -i "s/^\[Autologin\]/\[Autologin\]\nSession=Hyprland/g" /etc/sddm.conf
-  fi
 fi
 
 package=lightdm
