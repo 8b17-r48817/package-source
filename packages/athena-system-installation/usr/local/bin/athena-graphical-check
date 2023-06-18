@@ -81,7 +81,6 @@ if [[ $gpudetect =~ "NVIDIA" ]]; then
    fi
 
    pacman -S --noconfirm nvidia-settings nvidia-utils gwe nvtop
-   pacman -S --noconfirm cuda
    pacman -S --noconfirm opencl-nvidia
 
    sed -in '/^MODULES*/ s/"$/ nvidia nvidia_modeset nvidia_uvm nvidia_drm"/g' /etc/mkinitcpio.conf

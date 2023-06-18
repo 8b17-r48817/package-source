@@ -29,20 +29,28 @@ package=gdm
 package_alt=gdm-prime
 if pacman -Qq $package > /dev/null || pacman -Qq $package_alt > /dev/null ; then
   ln -sf /usr/lib/systemd/system/gdm.service /etc/systemd/system/display-manager.service
+  mkdir -p /etc/accountsservice/user-templates
+  cp -rf /usr/share/accountsservice/user-templates/* /etc/accountsservice/user-templates/
 
-  if grep -Rq "WaylandEnable" /etc/gdm/custom.conf
-  then
-      sed -i 's/.*WaylandEnable=.*/WaylandEnable=false/g' /etc/gdm/custom.conf
-  else
-      echo "WaylandEnable=false" >> /etc/gdm/custom.conf
-  fi
+  if pacman -Qq athena-gnome-config > /dev/null ; then
+    sed -i "s/^Session=.*/Session=gnome-xorg/g" /etc/accountsservice/user-templates/administrator
+    sed -i "s/^Session=.*/Session=gnome-xorg/g" /etc/accountsservice/user-templates/standard
+  elif pacman -Qq hyprland-nvidia > /dev/null ; then
+    sed -i "s/^Session=.*/Session=Hyprland/g" /etc/accountsservice/user-templates/administrator
+    sed -i "s/^Session=.*/Session=Hyprland/g" /etc/accountsservice/user-templates/standard
+  fi  
 fi
 
 package=sddm
 if pacman -Qq $package > /dev/null ; then
   ln -sf /usr/lib/systemd/system/sddm.service /etc/systemd/system/display-manager.service
+  echo -e "[Theme]\nCurrent=astronaut" | tee -a /etc/sddm.conf
 
-  echo -e "[Theme]\nCurrent=sddm-astronaut-theme" | tee -a /etc/sddm.conf
+  if pacman -Qq athena-gnome-config > /dev/null ; then
+    sed -i "s/^\[Autologin\]/\[Autologin\]\nSession=gnome-xorg/g" /etc/sddm.conf
+  elif pacman -Qq hyprland-nvidia > /dev/null ; then
+    sed -i "s/^\[Autologin\]/\[Autologin\]\nSession=Hyprland/g" /etc/sddm.conf
+  fi
 fi
 
 package=lightdm
@@ -51,7 +59,12 @@ if pacman -Qq $package > /dev/null ; then
   #lighdm user must have exec permission to user home folder for retrieving .face avatar
   chmod 711 /home/*
   sed -i "/^webkit_theme .*/c\webkit_theme = lightdm-webkit-theme-aether" /etc/lightdm/lightdm-webkit2-greeter.conf
-  sed -i 's/^#user-session=.*/user-session=gnome-xorg/g' /etc/lightdm/lightdm.conf
+
+  if pacman -Qq athena-gnome-config > /dev/null ; then
+    sed -i 's/^#user-session=.*/user-session=gnome-xorg/g' /etc/lightdm/lightdm.conf
+  elif pacman -Qq hyprland-nvidia > /dev/null ; then
+    sed -i 's/^#user-session=.*/user-session=Hyprland/g' /etc/lightdm/lightdm.conf
+  fi
 fi
 
 package=lxdm
