@@ -13,7 +13,7 @@ install=nano-syntax-highlighting.install
 provides=('nano-syntax-highlighting')
 conflicts=('nano-syntax-highlighting')
 source=('nano-syntax-highlighting::git+https://github.com/scopatz/nanorc.git')
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-git}"

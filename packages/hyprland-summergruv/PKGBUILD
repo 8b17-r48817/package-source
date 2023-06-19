@@ -79,7 +79,7 @@ package() {
   elif pacman -Qq gnome-terminal &> /dev/null; then # Fallback generic
     binterm="gnome-terminal"
   fi
-  sed -i "s/bind = SUPER, Return, exec, kitty/bind = SUPER , Return, exec, $binterm/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
+  sed -i "s/bind = SUPER, Return, exec, kitty/bind = SUPER, Return, exec, $binterm/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
 
   ###########################
 
