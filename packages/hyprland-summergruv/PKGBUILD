@@ -79,7 +79,7 @@ package() {
   elif pacman -Qq gnome-terminal &> /dev/null; then # Fallback generic
     binterm="gnome-terminal"
   fi
-  sed -i "s/bind=SUPER,Return,exec,kitty/bind=SUPER,Return,exec,$binterm/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
+  sed -i "s/bind = SUPER, Return, exec, kitty/bind = SUPER , Return, exec, $binterm/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
 
   ###########################
 
@@ -119,8 +119,6 @@ package() {
 
   #sed -i -e "8d;9d;12d;16d;20d" "$pkgdir/etc/skel/.config/eww/scripts/colormanage" # Remove lines that causing freezing on some buttons of the top bar
 
-  #sed -i "/^map/d" "$pkgdir/etc/skel/.config/kitty/kitty.conf" #Removing ctrl+c mapping
-
   sed -i "/^clipboard-copy/d" "$pkgdir/etc/skel/.config/foot/foot.ini" #Removing ctrl+c mapping
   sed -i "/^clipboard-paste/d" "$pkgdir/etc/skel/.config/foot/foot.ini" #Removing ctrl+v mapping
 
@@ -139,29 +137,17 @@ if [[ -d "\$DIR" ]]; then
   mv \$HOME/.config/hypr \$HOME/.config/hypr.bak
 fi
 
-DIR=\$HOME/.config/fish
-if [[ -d "\$DIR" ]]; then
-  rm -rf \$HOME/.config/fish.bak
-  mv \$HOME/.config/fish \$HOME/.config/fish.bak
-fi
-
 DIR=\$HOME/.config/foot
 if [[ -d "\$DIR" ]]; then
   rm -rf \$HOME/.config/foot.bak
   mv \$HOME/.config/foot \$HOME/.config/foot.bak
 fi
 
-DIR=\$HOME/.config/kitty
-if [[ -d "\$DIR" ]]; then
-  rm -rf \$HOME/.config/kitty.bak
-  mv \$HOME/.config/kitty \$HOME/.config/kitty.bak
-fi
-
 echo "Saved as \$HOME/.config/<dirname>.bak."
 echo
 echo "Copying configuration files to user's home folder..."
 
-cp -rf /etc/skel/.config/dunst /etc/skel/.config/eww /etc/skel/.config/foot /etc/skel/.config/gtk-3.0 /etc/skel/.config/gtk-4.0 /etc/skel/.config/gtklock /etc/skel/.config/hypr /etc/skel/.config/kitty /etc/skel/.config/mpv /etc/skel/.config/waybar /etc/skel/.config/wlogout /etc/skel/.config/starship.toml \$HOME/.config/
+cp -rf /etc/skel/.config/dunst /etc/skel/.config/eww /etc/skel/.config/foot /etc/skel/.config/gtk-3.0 /etc/skel/.config/gtk-4.0 /etc/skel/.config/gtklock /etc/skel/.config/hypr /etc/skel/.config/mpv /etc/skel/.config/waybar /etc/skel/.config/wlogout /etc/skel/.config/starship.toml \$HOME/.config/
 
 cp -rf /etc/skel/.local/bin \$HOME/.local/
 
@@ -169,7 +155,6 @@ cp -rf /etc/skel/.local/share/fonts /etc/skel/.local/share/icons \$HOME/.local/s
 
 cp -rf /etc/skel/.config/dunst \$HOME/.config/
 cp -rf /etc/skel/.config/foot \$HOME/.config/
-cp -rf /etc/skel/.config/kitty \$HOME/.config/
 
 cp -rf /etc/skel/.config/gtk-3.0 \$HOME/.config/
 cp -rf /etc/skel/.config/gtk-4.0 \$HOME/.config/
