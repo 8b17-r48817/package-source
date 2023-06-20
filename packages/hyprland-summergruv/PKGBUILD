@@ -7,12 +7,18 @@ pkgdesc="Hyprland Summer Gruv configuration."
 arch=('any')
 url='https://github.com/end-4/dots-hyprland'
 license=("GPL")
-depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'eww-wayland' 'findutils' 'foot' 'gawk' 'geticons-git' 'gnome-keyring' 'gojq' 'grim' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia' 'ibus' 'imagemagick' 'libinput-gestures' 'libqalculate' 'light' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swaybg' 'swayidle' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi')
+depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'eww-wayland' 'findutils' 'foot' 'gawk' 'geticons-git' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia' 'ibus' 'imagemagick' 'libinput-gestures' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swaybg' 'swayidle' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi')
 makedepends=('git')
 source=("git+https://github.com/end-4/$_pkgname"
-        "$_theme::git+https://github.com/end-4/$_pkgname#branch=summer-gruv")
+        "$_theme::git+https://github.com/end-4/$_pkgname#branch=summer-gruv"
+        "keybinds.conf"
+        "hyprland-config.sh"
+        ".flag-work-once")
 sha512sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '74c0bef6265cc218eb88dca9069f9ebe96c359e61ae1b214ff203da451eafd2a1c6b7390ee8465326ef363436402ebb2af1e2eaadc9e6895112ddd6bfa216b69'
+            '8845c9e7892cf147994d8d421ad4c1b09e84de765c5cfc6f163ebab9b40cdc4b9af79a107b9d05233d2cd9c0da84e25cf62843b576e3fb03b3354950712bb697'
+            'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e')
 
 pkgver() {
   cd $_pkgname
@@ -22,6 +28,7 @@ pkgver() {
 
 package() {
 
+  install -dm 755 "$pkgdir/etc/profile.d/"
   install -dm 755 "$pkgdir/etc/skel/.config"
   install -dm 755 "$pkgdir/etc/skel/.local"
   install -dm 755 "$pkgdir/etc/skel/.themes"
@@ -41,10 +48,14 @@ package() {
   rsync -av --progress ./.config/waybar "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/wlogout "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/starship.toml "$pkgdir/etc/skel/.config/"
-  rsync -av --progress ./.local/ "$pkgdir/etc/skel/.local/"
+  rsync -av --progress ./.local/bin "$pkgdir/etc/skel/.local/"
   #rsync -av --progress ./.themes/ "$pkgdir/etc/skel/.themes/"
   rsync -av --progress "./Import Manually/execs (add to path)/" "$pkgdir/etc/skel/.local/bin/"
   rsync -av --progress "./Import Manually/gnome-text-editor themes (Paste to root)/usr/share/gnome-text-editor/styles/" "$pkgdir/usr/share/gnome-text-editor/styles/"
+
+  install -Dm 755 $srcdir/hyprland-config.sh "$pkgdir/etc/profile.d/"
+  install -Dm 644 $srcdir/keybinds.conf "$pkgdir/etc/skel/.config/hypr/"
+  install -Dm 644 $srcdir/.flag-work-once "$pkgdir/etc/skel/"
 
   cd $srcdir/$_theme
   
@@ -55,76 +66,11 @@ package() {
   rsync -av --progress .config/foot "$pkgdir/etc/skel/.config/" #Apply Gruvbox theme to foot
   rsync -av --progress .config/dunst "$pkgdir/etc/skel/.config/" #Apply Gruvbox theme to dunst
 
-  ###### TERMINAL CHECK ######
-
-  binterm="foot" #fallback
-  if pacman -Qq alacritty &> /dev/null; then
-    binterm="alacritty"
-  elif pacman -Qq cool-retro-term &> /dev/null; then
-    binterm="cool-retro-term"
-  elif pacman -Qq kitty &> /dev/null; then
-    binterm="kitty"
-  elif pacman -Qq konsole &> /dev/null; then
-    binterm="konsole"
-  elif pacman -Qq terminator &> /dev/null; then
-    binterm="terminator"
-  elif pacman -Qq terminology &> /dev/null; then
-    binterm="terminology"
-  elif pacman -Qq xfce4-terminal &> /dev/null; then
-    binterm="xfce4-terminal"
-  elif pacman -Qq xterm &> /dev/null; then
-    binterm="xterm"
-  elif pacman -Qq foot &> /dev/null; then # Fallback Wayland
-    binterm="foot"
-  elif pacman -Qq gnome-terminal &> /dev/null; then # Fallback generic
-    binterm="gnome-terminal"
-  fi
-  sed -i "s/bind = SUPER, Return, exec, kitty/bind = SUPER, Return, exec, $binterm/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
-
-  ###########################
-
-  ###### BROWSER CHECK ######
-
-  binbrowser="firefox-esr" #fallback
-  if pacman -Qq brave-bin &> /dev/null; then
-    binbrowser="brave"
-  elif pacman -Qq mullvad-browser &> /dev/null; then
-    binbrowser="mullvad-browser"
-  elif pacman -Qq firefox-esr &> /dev/null; then # Fallback at the end of if statement
-    binbrowser="firefox-esr"
-  fi
-  sed -i "s/bind = SUPER, W, exec, firefox/bind = SUPER, W, exec, $binbrowser/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
-
-  ###########################
-
-  ###### FILE MANAGER CHECK ######
-
-  binfilemg="nautilus" #fallback
-  if pacman -Qq dolphin &> /dev/null; then
-    binfilemg="dolphin"
-  elif pacman -Qq thunar &> /dev/null; then
-    binfilemg="thunar"
-  elif pacman -Qq nautilus &> /dev/null; then # Fallback at the end of if statement
-    binfilemg="nautilus"
-  fi
-  sed -i "s/bind = SUPER, E, exec, nautilus --new-window/bind = SUPER, E, exec, $binfilemg/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
-
-  ################################
-  
-  ####### SET KEYBINSINGS ########
-
-  sed -i "s/bind = SUPER, Q, killactive,/bind = ALT, Q, killactive,/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
-
-  ###############################
-
-  #sed -i -e "8d;9d;12d;16d;20d" "$pkgdir/etc/skel/.config/eww/scripts/colormanage" # Remove lines that causing freezing on some buttons of the top bar
 
   sed -i "/^clipboard-copy/d" "$pkgdir/etc/skel/.config/foot/foot.ini" #Removing ctrl+c mapping
   sed -i "/^clipboard-paste/d" "$pkgdir/etc/skel/.config/foot/foot.ini" #Removing ctrl+v mapping
 
-  #sed -i '15i source ~/.bash_aliases' "$pkgdir/etc/skel/.config/fish/config.fish"
-
-    cat > "$pkgdir/usr/bin/$pkgname" << EOF
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/bin/sh
 echo "Creation of backup directory of configuration folders..."
 
