@@ -46,13 +46,13 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
         package=athena-gruvbox-theme
         if pacman -Qq $package > /dev/null ; then
-            theme_name="Gruvbox-Dark-B"
-            gnome_shell="Gruvbox-Dark-B"
+            theme_name="Gruvbox-Dark-BL"
+            gnome_shell="Gruvbox-Dark-BL"
 
             color_scheme="prefer-dark"
             icon_theme="Material-Black-Mango-Suru"
             cursor_theme="Fuchsia-Pop"
-            background_theme="file:///usr/share/backgrounds/default/cyborg_gruv.png"
+            #background_theme="file:///usr/share/backgrounds/default/cyborg_gruv.png"
             picture_options="stretched"
         fi
 
@@ -119,7 +119,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
         elif pacman -Qq gnome-terminal &> /dev/null; then # Fallback generic
           binterm="gnome-terminal"
         fi
-        sed -i "s/bind = SUPER, Return, exec, kitty/bind = SUPER, Return, exec, $binterm/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
+        sed -i "s/bind = SUPER, Return, exec, foot/bind = SUPER, Return, exec, $binterm/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
 
         ###########################
 
@@ -133,7 +133,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
         elif pacman -Qq firefox-esr &> /dev/null; then # Fallback at the end of if statement
           binbrowser="firefox-esr"
         fi
-        sed -i "s/bind = SUPER, W, exec, firefox/bind = SUPER, W, exec, $binbrowser/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
+        sed -i "s/bind = SUPER, W, exec, brave/bind = SUPER, W, exec, $binbrowser/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
 
         ###########################
 

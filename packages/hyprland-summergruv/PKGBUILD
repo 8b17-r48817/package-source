@@ -7,7 +7,7 @@ pkgdesc="Hyprland Summer Gruv configuration."
 arch=('any')
 url='https://github.com/end-4/dots-hyprland'
 license=("GPL")
-depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'eww-wayland' 'findutils' 'foot' 'gawk' 'geticons-git' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia' 'ibus' 'imagemagick' 'libinput-gestures' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swaybg' 'swayidle' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi')
+depends=('athena-gruvbox-theme' 'bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'eww-wayland' 'findutils' 'foot' 'gawk' 'geticons-git' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia' 'ibus' 'imagemagick' 'libinput-gestures' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swaybg' 'swayidle' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi')
 makedepends=('git')
 source=("git+https://github.com/end-4/$_pkgname"
         "$_theme::git+https://github.com/end-4/$_pkgname#branch=summer-gruv"
@@ -17,7 +17,7 @@ source=("git+https://github.com/end-4/$_pkgname"
 sha512sums=('SKIP'
             'SKIP'
             '74c0bef6265cc218eb88dca9069f9ebe96c359e61ae1b214ff203da451eafd2a1c6b7390ee8465326ef363436402ebb2af1e2eaadc9e6895112ddd6bfa216b69'
-            '8845c9e7892cf147994d8d421ad4c1b09e84de765c5cfc6f163ebab9b40cdc4b9af79a107b9d05233d2cd9c0da84e25cf62843b576e3fb03b3354950712bb697'
+            '3ae580435927c88bc22c683c531307ac2fcf2bdfd510faf7c9bec503ccc84a20894cabbca59efd0a6dd4d586a56598ce135684ca897701979da17477f6f4dcd4'
             'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e')
 
 pkgver() {
@@ -30,7 +30,7 @@ package() {
 
   install -dm 755 "$pkgdir/etc/profile.d/"
   install -dm 755 "$pkgdir/etc/skel/.config"
-  install -dm 755 "$pkgdir/etc/skel/.local"
+  install -dm 755 "$pkgdir/etc/skel/.local/share"
   install -dm 755 "$pkgdir/etc/skel/.themes"
   install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/gnome-text-editor/styles"
@@ -49,6 +49,7 @@ package() {
   rsync -av --progress ./.config/wlogout "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/starship.toml "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.local/bin "$pkgdir/etc/skel/.local/"
+  rsync -av --progress ./.local/share/fonts "$pkgdir/etc/skel/.local/share/"
   #rsync -av --progress ./.themes/ "$pkgdir/etc/skel/.themes/"
   rsync -av --progress "./Import Manually/execs (add to path)/" "$pkgdir/etc/skel/.local/bin/"
   rsync -av --progress "./Import Manually/gnome-text-editor themes (Paste to root)/usr/share/gnome-text-editor/styles/" "$pkgdir/usr/share/gnome-text-editor/styles/"
@@ -59,7 +60,7 @@ package() {
 
   cd $srcdir/$_theme
   
-  rsync -av --progress ./.themes/Gruvbox-Dark-BL-LB "$pkgdir/etc/skel/.themes/"
+  #rsync -av --progress ./.themes/Gruvbox-Dark-BL-LB "$pkgdir/etc/skel/.themes/"
   rsync -av --progress .config/hypr/colors.conf "$pkgdir/etc/skel/.config/hypr/" #Apply window border colors
   rsync -av --progress .config/eww/css "$pkgdir/etc/skel/.config/eww/" #Apply Gruvbox top bar colors
   rsync -av --progress .config/eww/images "$pkgdir/etc/skel/.config/eww/" #Apply Gruvbox top bar icon colors and wallpaper
@@ -74,8 +75,8 @@ package() {
 #!/bin/sh
 echo "Creation of backup directory of configuration folders..."
 
-theme_name="Gruvbox-Dark-BL-LB"
-cursor_theme="Bibata-Modern-Classic"
+theme_name="Gruvbox-Dark-BL"
+cursor_theme="Fuchsia-Pop"
 
 DIR=\$HOME/.config/hypr
 if [[ -d "\$DIR" ]]; then
