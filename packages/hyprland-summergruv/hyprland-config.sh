@@ -119,7 +119,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
         elif pacman -Qq gnome-terminal &> /dev/null; then # Fallback generic
           binterm="gnome-terminal"
         fi
-        sed -i "s/bind = SUPER, Return, exec, foot/bind = SUPER, Return, exec, $binterm/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
+        sed -i "s/bind = SUPER, Return, exec, foot/bind = SUPER, Return, exec, $binterm/g" "$HOME/.config/hypr/keybinds.conf"
 
         ###########################
 
@@ -133,7 +133,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
         elif pacman -Qq firefox-esr &> /dev/null; then # Fallback at the end of if statement
           binbrowser="firefox-esr"
         fi
-        sed -i "s/bind = SUPER, W, exec, brave/bind = SUPER, W, exec, $binbrowser/g" "$pkgdir/etc/skel/.config/hypr/keybinds.conf"
+        sed -i "s/bind = SUPER, W, exec, brave/bind = SUPER, W, exec, $binbrowser/g" "$HOME/.config/hypr/keybinds.conf"
 
         ###########################
 
