@@ -52,7 +52,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
             color_scheme="prefer-dark"
             icon_theme="Material-Black-Mango-Suru"
             cursor_theme="Fuchsia-Pop"
-            #background_theme="file:///usr/share/backgrounds/default/cyborg_gruv.png"
+            background_theme="file:///usr/share/backgrounds/default/cyborg_gruv.png"
             picture_options="stretched"
         fi
 

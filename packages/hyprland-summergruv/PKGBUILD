@@ -7,7 +7,7 @@ pkgdesc="Hyprland Summer Gruv configuration."
 arch=('any')
 url='https://github.com/end-4/dots-hyprland'
 license=("GPL")
-depends=('athena-gruvbox-theme' 'bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'eww-wayland' 'findutils' 'foot' 'gawk' 'geticons-git' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia' 'ibus' 'imagemagick' 'libinput-gestures' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swaybg' 'swayidle' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi')
+depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'eww-wayland' 'findutils' 'foot' 'gawk' 'geticons-git' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia' 'ibus' 'imagemagick' 'libinput-gestures' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swaybg' 'swayidle' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi')
 makedepends=('git')
 source=("git+https://github.com/end-4/$_pkgname"
         "$_theme::git+https://github.com/end-4/$_pkgname#branch=summer-gruv"
@@ -17,7 +17,7 @@ source=("git+https://github.com/end-4/$_pkgname"
 sha512sums=('SKIP'
             'SKIP'
             '74c0bef6265cc218eb88dca9069f9ebe96c359e61ae1b214ff203da451eafd2a1c6b7390ee8465326ef363436402ebb2af1e2eaadc9e6895112ddd6bfa216b69'
-            '975d76f3cd0cad2050a0c2410fc3abfa396983a242ed1f834e0e4c91cd80c106de03177b4a5f59289a5428feb3f67388d4e6b7e160030becb559aa18410050b6'
+            'fdef0a5f8705eacd9a8fc1c5883a0c48338e47d3f6f8d3efe235dc073a1fe58adc0c91ce35b064ecbe831d79acfb1b5f69ad16fcb0616c2d8d470cc205d0632a'
             'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e')
 
 pkgver() {
