@@ -217,11 +217,15 @@ if args.theme:
         color_scheme = "prefer-dark"
         icon_theme = "Material-Black-Cherry-Suru"
         cursor_theme = "Bibata-Modern-DarkRed"
-        background_theme = "file:///usr/share/backgrounds/default/akame.jpg"
+        background_theme = "/usr/share/backgrounds/default/akame.jpg"
         picture_options = "stretched"
         vscode_theme = "red-blood"
         kitty_theme = "CrayonPonyFish.conf"
         tmux_theme = "redwine"
+
+        topbarcolorscheme = "finale"
+        topbarmaterialscheme = "finale"
+        topbariconscheme = "light"
 
     elif chosen_theme == "BlueEyesSamurai":
         b = menu()
@@ -235,11 +239,15 @@ if args.theme:
         color_scheme = "prefer-dark"
         icon_theme = "Tokyonight-Dark"
         cursor_theme = "oreo_blue_cursors"
-        background_theme = "file:///usr/share/backgrounds/default/blue-eyes.jpg"
+        background_theme = "/usr/share/backgrounds/default/blue-eyes.jpg"
         picture_options = "stretched"
         vscode_theme = "Tokyo Night Storm"
         kitty_theme = "Tokyo_Night_Storm.conf"
         tmux_theme = "sky"
+
+        topbarcolorscheme = "ripples"
+        topbarmaterialscheme = "default"
+        topbariconscheme = "light"
 
     elif chosen_theme == "CyborgGruvbox":
         b = menu()
@@ -253,11 +261,15 @@ if args.theme:
         color_scheme = "prefer-dark"
         icon_theme = "Material-Black-Mango-Suru"
         cursor_theme = "Fuchsia-Pop"
-        background_theme = "file:///usr/share/backgrounds/default/cyborg_gruv.png"
+        background_theme = "/usr/share/backgrounds/default/cyborg_gruv.png"
         picture_options = "stretched"
         vscode_theme = "Gruvbox Material Dark"
         kitty_theme = "gruvbox_dark.conf"
         tmux_theme = "gold"
+
+        topbarcolorscheme = "valhalla"
+        topbarmaterialscheme = "virtuality_yellow"
+        topbariconscheme = "gruv"
 
     elif chosen_theme == "Graphite":
         b = menu()
@@ -271,11 +283,15 @@ if args.theme:
         color_scheme = "prefer-dark"
         icon_theme = "Tela-circle-black-dark"
         cursor_theme = "Bibata-Modern-Ice"
-        background_theme = "file:///usr/share/backgrounds/default/arch-ascii.png"
+        background_theme = "/usr/share/backgrounds/default/arch-ascii.png"
         picture_options = "stretched"
         vscode_theme = "Just Black"
         kitty_theme = "Atom.conf"
         tmux_theme = "snow"
+
+        topbarcolorscheme = "nowthatitstrue"
+        topbarmaterialscheme = "default"
+        topbariconscheme = "light"
 
     elif chosen_theme == "SweetDark":
         theme_name = "Sweet-Dark-v40"
@@ -284,11 +300,15 @@ if args.theme:
         color_scheme = "prefer-dark"
         icon_theme = "Sweet-Purple"
         cursor_theme = "oreo_spark_purple_cursors"
-        background_theme = "file:///usr/share/backgrounds/default/neon_circle.jpg"
+        background_theme = "/usr/share/backgrounds/default/neon_circle.jpg"
         picture_options = "stretched"
         vscode_theme = "Radical"
         kitty_theme = "AdventureTime.conf"
         tmux_theme = "violet"
+
+        topbarcolorscheme = "something"
+        topbarmaterialscheme = "amaryllis"
+        topbariconscheme = "light"
 
     #Reinitialize gsettings for applying the changes correctly when we change between border and borderless in the same theme
     subprocess.call("gsettings set org.gnome.desktop.interface gtk-theme \"\"", shell=True)
@@ -308,14 +328,27 @@ if args.theme:
     subprocess.call("gsettings set org.gnome.desktop.interface icon-theme "+icon_theme, shell=True)
     subprocess.call("gsettings set org.gnome.desktop.interface cursor-theme "+cursor_theme, shell=True)
     subprocess.call("gsettings set org.gnome.desktop.background picture-uri-dark \"\"", shell=True)
-    subprocess.call("gsettings set org.gnome.desktop.background picture-uri-dark "+background_theme, shell=True)
+    subprocess.call("gsettings set org.gnome.desktop.background picture-uri-dark file://"+background_theme, shell=True)
     subprocess.call("gsettings set org.gnome.desktop.background picture-uri \"\"", shell=True)
-    subprocess.call("gsettings set org.gnome.desktop.background picture-uri "+background_theme, shell=True)
+    subprocess.call("gsettings set org.gnome.desktop.background picture-uri file://"+background_theme, shell=True)
     subprocess.call("gsettings set org.gnome.desktop.background picture-options "+picture_options, shell=True)
 
     subprocess.call("sed -i 's/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \""+vscode_theme+"\",/g' \""+home+"/.config/VSCodium/User/settings.json\"", shell=True)
     subprocess.call("cp -rf "+home+"/.config/kitty/kitty-themes/themes/"+kitty_theme+" "+home+"/.config/kitty/current-theme.conf", shell=True)
     subprocess.call("sed -i 's/set -g @tmux_power_theme.*/set -g @tmux_power_theme \'"+tmux_theme+"\'/g' "+home+"/.tmux.conf", shell=True)
+
+    # Top-right resource statistics color
+    subprocess.call("cp -rf "+home+"/.config/eww/css/savedcolors/_colorscheme_"+topbarcolorscheme+".scss "+home+"/.config/eww/css/_colorscheme.scss 2>/dev/null", shell=True)
+    subprocess.call("cp -rf "+home+"/.config/eww/css/savedcolors/_iconcolor_"+topbarcolorscheme+".txt "+home+"/.config/eww/css/_iconcolor.txt 2>/dev/null", shell=True)
+
+    # Top bar color
+    subprocess.call("cp -rf "+home+"/.config/eww/css/savedcolors/_material_"+topbarmaterialscheme+".scss "+home+"/.config/eww/css/_material.scss 2>/dev/null", shell=True)
+
+    # Top bar icon color
+    subprocess.call("cp -rf "+home+"/.config/eww/images/svg/"+topbariconscheme+"/* "+home+"/.config/eww/images/svg/ 2>/dev/null", shell=True)
+
+    # Hyprland wallpaper
+    subprocess.call("cp -rf "+background_theme+" "+home+"/.config/eww/images/wallpaper/wallpaper 2>/dev/null", shell=True)
 
     exit()
 
