@@ -12,4 +12,4 @@ package() {
 
   cp -rf "${srcdir}/etc/skel/.config" "${pkgdir}/etc/skel/"
 }
-sha512sums=('1b38972456fcbbdf8e6f9072cf6dba70135fc14856f52c944561c7fbf56f34ad87a7b4c1ba9f29df9c641ff5797c379bfe56ce04b5aabc9d2ce8b37dfa6ef549')
+sha512sums=('16922a2af86416c8a09e5badec348a05850e2ebb2368a7af671bb0e43bc9f147170f085dade5574985c112801f1a2f86e35a6094d591cd55a18668a0d35712e3')
