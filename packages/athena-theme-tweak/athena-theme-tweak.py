@@ -209,10 +209,10 @@ if args.theme:
         b = menu()
         if b == 1:
             theme_name = "Nightfox-Dusk-B"
-            gnome_shell = "Nightfox-Dusk-B"
+            #gnome_shell = "Nightfox-Dusk-B"
         else:
             theme_name = "Nightfox-Dusk-BL"
-            gnome_shell = "Nightfox-Dusk-BL"
+            #gnome_shell = "Nightfox-Dusk-BL"
 
         color_scheme = "prefer-dark"
         icon_theme = "Material-Black-Cherry-Suru"
@@ -225,16 +225,17 @@ if args.theme:
 
         topbarcolorscheme = "finale"
         topbarmaterialscheme = "finale"
-        topbariconscheme = "light"
+        topbariconscheme = "dark"
+        musicbarscheme = "#F98D89"
 
     elif chosen_theme == "BlueEyesSamurai":
         b = menu()
         if b == 1:
             theme_name = "Tokyonight-Dark-B"
-            gnome_shell = "Tokyonight-Dark-B"
+            #gnome_shell = "Tokyonight-Dark-B"
         else:
             theme_name = "Tokyonight-Dark-BL"
-            gnome_shell = "Tokyonight-Dark-BL"
+            #gnome_shell = "Tokyonight-Dark-BL"
 
         color_scheme = "prefer-dark"
         icon_theme = "Tokyonight-Dark"
@@ -247,16 +248,17 @@ if args.theme:
 
         topbarcolorscheme = "ripples"
         topbarmaterialscheme = "default"
-        topbariconscheme = "light"
+        topbariconscheme = "dark"
+        musicbarscheme = "#6FE7FB"
 
     elif chosen_theme == "CyborgGruvbox":
         b = menu()
         if b == 1:
             theme_name = "Gruvbox-Dark-B"
-            gnome_shell = "Gruvbox-Dark-B"
+            #gnome_shell = "Gruvbox-Dark-B"
         else:
             theme_name = "Gruvbox-Dark-BL"
-            gnome_shell = "Gruvbox-Dark-BL"
+            #gnome_shell = "Gruvbox-Dark-BL"
 
         color_scheme = "prefer-dark"
         icon_theme = "Material-Black-Mango-Suru"
@@ -270,15 +272,16 @@ if args.theme:
         topbarcolorscheme = "valhalla"
         topbarmaterialscheme = "virtuality_yellow"
         topbariconscheme = "gruv"
+        musicbarscheme = "#EFD69C"
 
     elif chosen_theme == "Graphite":
         b = menu()
         if b == 1:
             theme_name = "Graphite-Dark"
-            gnome_shell = "Graphite-Dark"
+            #gnome_shell = "Graphite-Dark"
         else:
             theme_name = "Graphite-Rimless-Dark"
-            gnome_shell = "Graphite-Rimless-Dark"
+            #gnome_shell = "Graphite-Rimless-Dark"
 
         color_scheme = "prefer-dark"
         icon_theme = "Tela-circle-black-dark"
@@ -291,11 +294,12 @@ if args.theme:
 
         topbarcolorscheme = "nowthatitstrue"
         topbarmaterialscheme = "default"
-        topbariconscheme = "light"
+        topbariconscheme = "dark"
+        musicbarscheme = "#197FAF"
 
     elif chosen_theme == "SweetDark":
         theme_name = "Sweet-Dark-v40"
-        gnome_shell = "Sweet-Dark-v40"
+        #gnome_shell = "Sweet-Dark-v40"
 
         color_scheme = "prefer-dark"
         icon_theme = "Sweet-Purple"
@@ -308,16 +312,17 @@ if args.theme:
 
         topbarcolorscheme = "something"
         topbarmaterialscheme = "amaryllis"
-        topbariconscheme = "light"
+        topbariconscheme = "dark"
+        musicbarscheme = "#FE3DAF"
 
     #Reinitialize gsettings for applying the changes correctly when we change between border and borderless in the same theme
     subprocess.call("gsettings set org.gnome.desktop.interface gtk-theme \"\"", shell=True)
     subprocess.call("gsettings set org.gnome.desktop.wm.preferences theme \"\"", shell=True)
-    subprocess.call("gsettings set org.gnome.shell.extensions.user-theme name \"\"", shell=True)
+    #subprocess.call("gsettings set org.gnome.shell.extensions.user-theme name \"\"", shell=True)
     subprocess.call("sleep 1", shell=True)
     subprocess.call("gsettings set org.gnome.desktop.interface gtk-theme "+theme_name, shell=True)
     subprocess.call("gsettings set org.gnome.desktop.wm.preferences theme "+theme_name, shell=True)
-    subprocess.call("gsettings set org.gnome.shell.extensions.user-theme name "+gnome_shell, shell=True)
+    #subprocess.call("gsettings set org.gnome.shell.extensions.user-theme name "+gnome_shell, shell=True)
 
     subprocess.call("ln -sf \"/usr/share/themes/"+theme_name+"/gtk-4.0/assets\" \""+home+"/.config/gtk-4.0/assets\"", shell=True)
     subprocess.call("ln -sf \"/usr/share/themes/"+theme_name+"/gtk-4.0/gtk.css\" \""+home+"/.config/gtk-4.0/gtk.css\"", shell=True)
@@ -334,7 +339,7 @@ if args.theme:
     subprocess.call("gsettings set org.gnome.desktop.background picture-options "+picture_options, shell=True)
 
     subprocess.call("sed -i 's/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \""+vscode_theme+"\",/g' \""+home+"/.config/VSCodium/User/settings.json\"", shell=True)
-    subprocess.call("cp -rf "+home+"/.config/kitty/kitty-themes/themes/"+kitty_theme+" "+home+"/.config/kitty/current-theme.conf", shell=True)
+    subprocess.call("cp -rf "+home+"/.config/kitty/kitty-themes/themes/"+kitty_theme+" "+home+"/.config/kitty/current-theme.conf 2>/dev/null", shell=True)
     subprocess.call("sed -i 's/set -g @tmux_power_theme.*/set -g @tmux_power_theme \'"+tmux_theme+"\'/g' "+home+"/.tmux.conf", shell=True)
 
     # Top-right resource statistics color
@@ -347,8 +352,16 @@ if args.theme:
     # Top bar icon color
     subprocess.call("cp -rf "+home+"/.config/eww/images/svg/"+topbariconscheme+"/* "+home+"/.config/eww/images/svg/ 2>/dev/null", shell=True)
 
+    # Hyprland border colors
+    subprocess.call("cp -rf "+home+"/.config/hypr/savedcolors/colors_"+topbarcolorscheme+".conf "+home+"/.config/hypr/colors.conf 2>/dev/null", shell=True)
+
     # Hyprland wallpaper
     subprocess.call("cp -rf "+background_theme+" "+home+"/.config/eww/images/wallpaper/wallpaper 2>/dev/null", shell=True)
+    subprocess.call("pkill swaybg 2>/dev/null", shell=True)
+    subprocess.call("swaybg -i "+home+"/.config/eww/images/wallpaper/wallpaper & 2>/dev/null", shell=True)
+
+    # Hyprland music color bars
+    subprocess.call("sed -r -i \"s/\\\"color4\\\":\\\"#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\\\"/\\\"color4\\\":\\\""+musicbarscheme+"\\\"/g\" "+home+"/.config/eww/scripts/music 2>/dev/null", shell=True) # Don't use -e sed argument
 
     exit()
 

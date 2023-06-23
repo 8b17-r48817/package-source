@@ -33,7 +33,8 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
             topbarcolorscheme="finale"
             topbarmaterialscheme="finale"
-            topbariconscheme="light"
+            topbariconscheme="dark"
+            musicbarscheme="#F98D89"
         fi
 
         package=athena-blue-eyes-theme
@@ -49,7 +50,8 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
             topbarcolorscheme="ripples"
             topbarmaterialscheme="default"
-            topbariconscheme="light"
+            topbariconscheme="dark"
+            musicbarscheme="#6FE7FB"
         fi
 
         package=athena-graphite-theme
@@ -65,7 +67,8 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
             topbarcolorscheme="nowthatitstrue"
             topbarmaterialscheme="default"
-            topbariconscheme="light"
+            topbariconscheme="dark"
+            musicbarscheme="#197FAF"
         fi
 
         package=athena-gruvbox-theme
@@ -82,6 +85,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
             topbarcolorscheme="valhalla"
             topbarmaterialscheme="virtuality_yellow"
             topbariconscheme="gruv"
+            musicbarscheme="#EFD69C"
         fi
 
         package=athena-sweet-dark-theme
@@ -97,7 +101,8 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
             topbarcolorscheme="something"
             topbarmaterialscheme="amaryllis"
-            topbariconscheme="light"
+            topbariconscheme="dark"
+            musicbarscheme="#FE3DAF"
         fi
 
         gsettings set org.gnome.desktop.interface gtk-theme $theme_name
@@ -125,8 +130,16 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
         # Top bar icon colors
         cp -rf $HOME/.config/eww/images/svg/$topbariconscheme/* $HOME/.config/eww/images/svg/
 
+        # Hyprland border colors
+        cp -rf $HOME/.config/hypr/savedcolors/colors_$topbarcolorscheme.conf $HOME/.config/hypr/colors.conf
+
         # Hyprland wallpaper
         cp -rf $background_theme $HOME/.config/eww/images/wallpaper/wallpaper
+        pkill swaybg
+        swaybg -i $HOME/.config/eww/images/wallpaper/wallpaper &
+
+        # Music bar color
+        sed -ir "s/\"color4\":\"#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\"/\"color4\":\"$musicbarscheme\"/g" $HOME/.config/eww/scripts/music
      
         ###### TERMINAL CHECK ######
 
