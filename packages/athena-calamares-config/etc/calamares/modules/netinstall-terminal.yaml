@@ -16,6 +16,15 @@
   expanded: false
   packages:
     - cool-retro-term
+- name: "Foot"
+  description: "A fast, lightweight and minimalistic Wayland terminal emulator."
+  critical: false
+  hidden: false
+  selected: false
+  immutable: false
+  expanded: false
+  packages:
+    - foot
 - name: "GNOME Terminal"
   description: "Default terminal for GNOME."
   critical: false

@@ -57,7 +57,7 @@ def arg_parse():
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument("-b", "--browser", action='store_true', help="set the current browser logo in Red Team menu")
     parser.add_argument("-c", "--colored", action='store_true', help="let's give some random colored output")
-    parser.add_argument("-e", "--emulator", choices=["alacritty", "cool-retro-term", "gnome-terminal", "kitty", "konsole", "terminator", "terminology", "urxvt", "xfce4-terminal", "xterm"], help="specify a terminal emulator to be set [alacritty|cool-retro-term|gnome-terminal|kitty|konsole|terminator|terminology|urxvt|xfce4-terminal|xterm]")
+    parser.add_argument("-e", "--emulator", choices=["alacritty", "cool-retro-term", "foot", "gnome-terminal", "kitty", "konsole", "terminator", "terminology", "urxvt", "xfce4-terminal", "xterm"], help="specify a terminal emulator to be set [alacritty|cool-retro-term|foot|gnome-terminal|kitty|konsole|terminator|terminology|urxvt|xfce4-terminal|xterm]")
     parser.add_argument("-h", "--help", action='store_true', help="show this help message and exit")
     parser.add_argument("-l", "--list", action='store_true', help="list all available Athena themes")
     parser.add_argument("-t", "--theme", choices=["AkameGaKill", "BlueEyesSamurai", "Graphite", "CyborgGruvbox", "SweetDark"], help="specify an Athena theme to be set [AkameGaKill|BlueEyesSamurai|Graphite|CyborgGruvbox|SweetDark]")
@@ -74,7 +74,7 @@ def help():
    
    print("-b, --browser                 set the current browser logo in Red Team menu")
    print("-c, --colored                 let's give some random colored output")
-   print("-e, --emulator                specify a terminal emulator to be set [alacritty|cool-retro-term|gnome-terminal|kitty|konsole|urxvt|xterm]")
+   print("-e, --emulator                specify a terminal emulator to be set [alacritty|cool-retro-term|foot|gnome-terminal|kitty|konsole|urxvt|xterm]")
    print("-h, --help                    show this help message and exit")
    print("-l, --list                    list all available Athena themes")
    print("-t, --theme <theme-name>      specify an Athena theme to be set [AkameGaKill|BlueEyesSamurai|Graphite|CyborgGruvbox|SweetDark]")
@@ -368,6 +368,7 @@ if args.theme:
 terminal_map = {
     "alacritty": "alacritty",
     "cool-retro-term": "cool-retro-term",
+    "foot": "foot",
     "gnome-terminal": "gnome-terminal",
     "kitty": "kitty",
     "konsole": "konsole",
@@ -378,6 +379,7 @@ terminal_map = {
 terminal_command = {
     "alacritty": "-e",
     "cool-retro-term": "-e",
+    "foot": "-e",
     "gnome-terminal": "--",
     "kitty": "-e",
     "konsole": "-e",
@@ -411,18 +413,18 @@ if args.emulator:
             subprocess.call(keybind + " command \""+terminal_bin+"\"", shell=True)
             subprocess.call("gsettings set org.gnome.desktop.default-applications.terminal exec "+terminal_bin, shell=True)
 
-            subprocess.call("find "+home+"/.local/share/applications -type f -name '*.desktop' -exec sed -i -e 's/alacritty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/cool-retro-term -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/gnome-terminal --/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/kitty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/konsole -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/urxvt -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/xterm -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' {} +", shell=True)
+            subprocess.call("find "+home+"/.local/share/applications -type f -name '*.desktop' -exec sed -i -e 's/alacritty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/cool-retro-term -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/foot -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/gnome-terminal --/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/kitty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/konsole -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/urxvt -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/xterm -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' {} +", shell=True)
 
             if check_file:
-                subprocess.call("sudo sed -i -e 's/alacritty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/cool-retro-term -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/gnome-terminal --/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/kitty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/konsole -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/urxvt -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/xterm -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' /usr/share/athena-gnome-config/dconf-shell.ini", shell=True)
+                subprocess.call("sudo sed -i -e 's/alacritty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/cool-retro-term -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/foot -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/gnome-terminal --/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/kitty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/konsole -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/urxvt -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/xterm -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' /usr/share/athena-gnome-config/dconf-shell.ini", shell=True)
 
-                subprocess.call("sudo sed -i -e 's/alacritty\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/cool-retro-term\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/gnome-terminal\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/kitty\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/konsole\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/urxvt\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/xterm\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/terminator\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/terminology\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/xfce4-terminal\\\\\"}/"+terminal_bin+"\\\\\"}/g' /usr/share/athena-gnome-config/dconf-shell.ini", shell=True) #Used only for Terminal button in Red Team menu
+                subprocess.call("sudo sed -i -e 's/alacritty\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/cool-retro-term\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/foot\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/gnome-terminal\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/kitty\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/konsole\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/urxvt\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/xterm\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/terminator\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/terminology\\\\\"}/"+terminal_bin+"\\\\\"}/g' -e 's/xfce4-terminal\\\\\"}/"+terminal_bin+"\\\\\"}/g' /usr/share/athena-gnome-config/dconf-shell.ini", shell=True) #Used only for Terminal button in Red Team menu
 
-            subprocess.call("sudo sed -i -e 's/alacritty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/cool-retro-term -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/gnome-terminal --/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/kitty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/konsole -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/urxvt -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/xterm -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' /usr/share/htb-tools/htb-update.py", shell=True)
+            subprocess.call("sudo sed -i -e 's/alacritty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/cool-retro-term -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/foot -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/gnome-terminal --/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/kitty -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/konsole -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/urxvt -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' -e 's/xterm -e/"+terminal_bin+" "+terminal_arg_cmd+"/g' /usr/share/htb-tools/htb-update.py", shell=True)
 
-            subprocess.call("sudo sed -i -e 's/alacritty/"+terminal_bin+"/g' -e 's/cool-retro-term/"+terminal_bin+"/g' -e 's/gnome-terminal/"+terminal_bin+"/g' -e 's/kitty/"+terminal_bin+"/g' -e 's/konsole/"+terminal_bin+"/g' -e 's/urxvt/"+terminal_bin+"/g' -e 's/xterm/"+terminal_bin+"/g' -e 's/terminator/"+terminal_bin+"/g' -e 's/terminology/"+terminal_bin+"/g' -e 's/xfce4-terminal/"+terminal_bin+"/g' "+home+"/.local/share/applications/shell.desktop", shell=True)
+            subprocess.call("sudo sed -i -e 's/alacritty/"+terminal_bin+"/g' -e 's/cool-retro-term/"+terminal_bin+"/g' -e 's/foot/"+terminal_bin+"/g' -e 's/gnome-terminal/"+terminal_bin+"/g' -e 's/kitty/"+terminal_bin+"/g' -e 's/konsole/"+terminal_bin+"/g' -e 's/urxvt/"+terminal_bin+"/g' -e 's/xterm/"+terminal_bin+"/g' -e 's/terminator/"+terminal_bin+"/g' -e 's/terminology/"+terminal_bin+"/g' -e 's/xfce4-terminal/"+terminal_bin+"/g' "+home+"/.local/share/applications/shell.desktop", shell=True)
 
-            subprocess.call("sudo sed -i -e 's/\"alacritty\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"cool-retro-term\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"gnome-terminal\", \"--\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"kitty\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"konsole\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"urxvt\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"xterm\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' /usr/share/athena-welcome/athena-welcome.py", shell=True)
+            subprocess.call("sudo sed -i -e 's/\"alacritty\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"cool-retro-term\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"foot\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"gnome-terminal\", \"--\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"kitty\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"konsole\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"urxvt\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' -e 's/\"xterm\", \"-e\"/\""+terminal_bin+"\", \""+terminal_arg_cmd+"\"/g' /usr/share/athena-welcome/athena-welcome.py", shell=True)
 
             
         
@@ -437,10 +439,10 @@ if args.emulator:
                 print("The package "+non_std_terminal_bin+" is not installed. Installing...")
                 subprocess.call("sudo pacman -S "+non_std_terminal_bin, shell=True)
 
-            subprocess.call("sudo sed -i -e 's/alacritty/"+non_std_terminal_bin+"/g' -e 's/cool-retro-term/"+non_std_terminal_bin+"/g' -e 's/gnome-terminal/"+non_std_terminal_bin+"/g' -e 's/kitty/"+non_std_terminal_bin+"/g' -e 's/konsole/"+non_std_terminal_bin+"/g' -e 's/urxvt/"+non_std_terminal_bin+"/g' -e 's/xterm/"+non_std_terminal_bin+"/g' -e 's/terminator/"+non_std_terminal_bin+"/g' -e 's/terminology/"+non_std_terminal_bin+"/g' -e 's/xfce4-terminal/"+non_std_terminal_bin+"/g' "+home+"/.local/share/applications/shell.desktop", shell=True)
+            subprocess.call("sudo sed -i -e 's/alacritty/"+non_std_terminal_bin+"/g' -e 's/cool-retro-term/"+non_std_terminal_bin+"/g' -e 's/foot/"+non_std_terminal_bin+"/g' -e 's/gnome-terminal/"+non_std_terminal_bin+"/g' -e 's/kitty/"+non_std_terminal_bin+"/g' -e 's/konsole/"+non_std_terminal_bin+"/g' -e 's/urxvt/"+non_std_terminal_bin+"/g' -e 's/xterm/"+non_std_terminal_bin+"/g' -e 's/terminator/"+non_std_terminal_bin+"/g' -e 's/terminology/"+non_std_terminal_bin+"/g' -e 's/xfce4-terminal/"+non_std_terminal_bin+"/g' "+home+"/.local/share/applications/shell.desktop", shell=True)
             
             if check_file:
-                subprocess.call("sudo sed -i -e 's/alacritty\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/cool-retro-term\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/gnome-terminal\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/kitty\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/konsole\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/urxvt\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/xterm\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/terminator\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/terminology\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/xfce4-terminal\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' /usr/share/athena-gnome-config/dconf-shell.ini", shell=True) #Used only for Terminal button in Red Team menu
+                subprocess.call("sudo sed -i -e 's/alacritty\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/cool-retro-term\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/foot\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/gnome-terminal\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/kitty\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/konsole\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/urxvt\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/xterm\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/terminator\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/terminology\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' -e 's/xfce4-terminal\\\\\"}/"+non_std_terminal_bin+"\\\\\"}/g' /usr/share/athena-gnome-config/dconf-shell.ini", shell=True) #Used only for Terminal button in Red Team menu
     
     if check_file:
         subprocess.call("dconf load /org/gnome/shell/ < /usr/share/athena-gnome-config/dconf-shell.ini", shell=True)

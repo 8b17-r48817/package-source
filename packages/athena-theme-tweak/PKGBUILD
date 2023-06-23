@@ -1,6 +1,6 @@
 pkgname=athena-theme-tweak
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Athena Theme Tweak Tool"
 arch=('any')
 license=("custom")
@@ -22,4 +22,4 @@ EOF
   chmod +x "$pkgdir/usr/bin/$pkgname"
 }
 
-sha512sums=('9809b37fb2fdaeef7d5be18e9ab296d208829b0c2dd87a24a6ed96b7d997cd7f26d26768ecfca0311aab6a9d35bbf6d76ad3504c12b6f3ea0a0824987512f40a')
+sha512sums=('e28157f2fed054d3474ebd451d0d59f890cf486fc29a7ed477e5154b9ba463e3c78468eb58143c344060455ff544a2d16e479a4c8fc49fd7b0b67f1fb33a5f8c')

@@ -148,6 +148,8 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
           binterm="alacritty"
         elif pacman -Qq cool-retro-term &> /dev/null; then
           binterm="cool-retro-term"
+        elif pacman -Qq foot &> /dev/null; then
+          binterm="foot"
         elif pacman -Qq kitty &> /dev/null; then
           binterm="kitty"
         elif pacman -Qq konsole &> /dev/null; then
