@@ -4,7 +4,7 @@ HISTSIZE=10000
 SAVEHIST=1000
 setopt INC_APPEND_HISTORY
 bindkey -e
-ZSH_AUTOSUGGEST_STRATEGY=(completion history)
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '$HOME/.zshrc'

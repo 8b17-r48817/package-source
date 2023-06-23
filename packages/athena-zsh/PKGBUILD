@@ -1,6 +1,6 @@
 pkgname=athena-zsh
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Zsh for Athena"
 arch=('any')
 license=("custom")
@@ -14,4 +14,4 @@ package() {
   cp -rf "${srcdir}/etc/skel/.zshrc" "${pkgdir}/etc/skel/"
   install -Dm 755 "${srcdir}/usr/bin/shopt" "${pkgdir}/usr/bin/"
 }
-sha512sums=('467fc60a54b0b6199efb8a8f0996497190ac40a6bc9d0a51952a89d8cbba6f431a59010106228d71debbb9e8aa11a3bafce8f2524d95dad7be927a3b9b3264bb')
+sha512sums=('6b9e98317014aa88e3a6947c1d446368b238fd7baa0898a342c2d02532be5fe93596efc4739d2dbe27c00a5552056d24237a4aa7393270db3610d1c84e020180')
