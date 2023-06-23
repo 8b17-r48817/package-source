@@ -23,7 +23,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
         package=athena-akame-theme
         if pacman -Qq $package > /dev/null ; then
             theme_name="Nightfox-Dusk-B"
-            gnome_shell="Nightfox-Dusk-B"
+            #gnome_shell="Nightfox-Dusk-B"
 
             color_scheme="prefer-dark"
             icon_theme="Material-Black-Cherry-Suru"
@@ -40,7 +40,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
         package=athena-blue-eyes-theme
         if pacman -Qq $package > /dev/null ; then
             theme_name="Tokyonight-Dark-B"
-            gnome_shell="Tokyonight-Dark-B"
+            #gnome_shell="Tokyonight-Dark-B"
 
             color_scheme="prefer-dark"
             icon_theme="Tokyonight-Dark"
@@ -57,7 +57,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
         package=athena-graphite-theme
         if pacman -Qq $package > /dev/null ; then
             theme_name="Graphite-Dark"
-            gnome_shell="Graphite-Dark"
+            #gnome_shell="Graphite-Dark"
 
             color_scheme="prefer-dark"
             icon_theme="Tela-circle-black-dark"
@@ -74,7 +74,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
         package=athena-gruvbox-theme
         if pacman -Qq $package > /dev/null ; then
             theme_name="Gruvbox-Dark-BL"
-            gnome_shell="Gruvbox-Dark-BL"
+            #gnome_shell="Gruvbox-Dark-BL"
 
             color_scheme="prefer-dark"
             icon_theme="Material-Black-Mango-Suru"
@@ -91,7 +91,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
         package=athena-sweet-dark-theme
         if pacman -Qq $package > /dev/null ; then
             theme_name="Sweet-Dark-v40"
-            gnome_shell="Sweet-Dark-v40"
+            #gnome_shell="Sweet-Dark-v40"
 
             color_scheme="prefer-dark"
             icon_theme="Sweet-Purple"
@@ -107,7 +107,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
         gsettings set org.gnome.desktop.interface gtk-theme $theme_name
         gsettings set org.gnome.desktop.wm.preferences theme $theme_name
-        gsettings set org.gnome.shell.extensions.user-theme name $gnome_shell
+        #gsettings set org.gnome.shell.extensions.user-theme name $gnome_shell
 
         gsettings set org.gnome.desktop.interface color-scheme $color_scheme
         gsettings set org.gnome.desktop.interface icon-theme $icon_theme

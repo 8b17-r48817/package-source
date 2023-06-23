@@ -1,6 +1,5 @@
 pkgname=hyprland-summergruv
 _pkgname=dots-hyprland
-_theme=dots-summergruv
 pkgver=289.ee8b7727
 pkgrel=1
 pkgdesc="Hyprland Summer Gruv configuration."
@@ -10,14 +9,12 @@ license=("GPL")
 depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'eww-wayland' 'findutils' 'foot' 'gawk' 'geticons-git' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia' 'ibus' 'imagemagick' 'libinput-gestures' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swaybg' 'swayidle' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi')
 makedepends=('git')
 source=("git+https://github.com/end-4/$_pkgname"
-        "$_theme::git+https://github.com/end-4/$_pkgname#branch=summer-gruv"
         "keybinds.conf"
         "hyprland-config.sh"
         ".flag-work-once")
 sha512sums=('SKIP'
-            'SKIP'
             '3c0f019d55aa911b9c918fdaeac2f30ca9335b1443cbec1cd73c5bf1b0d291bd60cf8c6caa4820c3ccd9bdb5c21a2a5e90fa39f878533df9bc8a2968aa7f1ed6'
-            'e4a10d10ebc973237f01ffcb58666b48cf11bed5d71fe69ba6b791bc2b63adffe57d65b621b2e459277de88bfab8181c1cd754c46e606bbb400231d30608f7dc'
+            '77701b0c0dfb971d3ca6f1c3af5add119618f2edc309366019e363e11c96af322cbc39c585e7ba529af0362dcdf37fe4491b0951c7eb60d9ce20531b6e33952d'
             'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e')
 
 pkgver() {
@@ -58,62 +55,6 @@ package() {
   install -Dm 644 $srcdir/keybinds.conf "$pkgdir/etc/skel/.config/hypr/"
   install -Dm 644 $srcdir/.flag-work-once "$pkgdir/etc/skel/"
 
-  cd $srcdir/$_theme
-  
-  #rsync -av --progress ./.themes/Gruvbox-Dark-BL-LB "$pkgdir/etc/skel/.themes/"
-  rsync -av --progress .config/hypr/colors.conf "$pkgdir/etc/skel/.config/hypr/" #Apply window border colors
-  rsync -av --progress .config/eww/css "$pkgdir/etc/skel/.config/eww/" #Apply Gruvbox top bar colors
-  rsync -av --progress .config/eww/images "$pkgdir/etc/skel/.config/eww/" #Apply Gruvbox top bar icon colors and wallpaper
-  rsync -av --progress .config/foot "$pkgdir/etc/skel/.config/" #Apply Gruvbox theme to foot
-  rsync -av --progress .config/dunst "$pkgdir/etc/skel/.config/" #Apply Gruvbox theme to dunst
-
-
   sed -i "/^clipboard-copy/d" "$pkgdir/etc/skel/.config/foot/foot.ini" #Removing ctrl+c mapping
   sed -i "/^clipboard-paste/d" "$pkgdir/etc/skel/.config/foot/foot.ini" #Removing ctrl+v mapping
-
-  cat > "$pkgdir/usr/bin/$pkgname" << EOF
-#!/bin/sh
-echo "Creation of backup directory of configuration folders..."
-
-theme_name="Gruvbox-Dark-BL"
-cursor_theme="Fuchsia-Pop"
-
-DIR=\$HOME/.config/hypr
-if [[ -d "\$DIR" ]]; then
-  rm -rf \$HOME/.config/hypr.bak
-  mv \$HOME/.config/hypr \$HOME/.config/hypr.bak
-fi
-
-DIR=\$HOME/.config/foot
-if [[ -d "\$DIR" ]]; then
-  rm -rf \$HOME/.config/foot.bak
-  mv \$HOME/.config/foot \$HOME/.config/foot.bak
-fi
-
-echo "Saved as \$HOME/.config/<dirname>.bak."
-echo
-echo "Copying configuration files to user's home folder..."
-
-cp -rf /etc/skel/.config/dunst /etc/skel/.config/eww /etc/skel/.config/foot /etc/skel/.config/gtk-3.0 /etc/skel/.config/gtk-4.0 /etc/skel/.config/gtklock /etc/skel/.config/hypr /etc/skel/.config/mpv /etc/skel/.config/waybar /etc/skel/.config/wlogout /etc/skel/.config/starship.toml \$HOME/.config/
-
-cp -rf /etc/skel/.local/bin \$HOME/.local/
-
-cp -rf /etc/skel/.local/share/fonts /etc/skel/.local/share/icons \$HOME/.local/share/
-
-cp -rf /etc/skel/.config/dunst \$HOME/.config/
-cp -rf /etc/skel/.config/foot \$HOME/.config/
-
-cp -rf /etc/skel/.config/gtk-3.0 \$HOME/.config/
-cp -rf /etc/skel/.config/gtk-4.0 \$HOME/.config/
-
-cp -rf /etc/skel/.themes/Gruvbox-Dark-BL-LB \$HOME/.themes/
-
-gsettings set org.gnome.desktop.interface gtk-theme \$theme_name
-gsettings set org.gnome.desktop.wm.preferences theme \$theme_name
-gsettings set org.gnome.desktop.interface cursor-theme \$cursor_theme
-
-echo "Done. Reboot the system for applying the theme."
-EOF
-
-  chmod +x "$pkgdir/usr/bin/$pkgname"
 }
