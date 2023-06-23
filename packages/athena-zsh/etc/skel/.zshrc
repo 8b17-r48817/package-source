@@ -1,8 +1,10 @@
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
 SAVEHIST=1000
+setopt INC_APPEND_HISTORY
 bindkey -e
+ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '$HOME/.zshrc'
