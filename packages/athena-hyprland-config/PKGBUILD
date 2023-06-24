@@ -64,4 +64,5 @@ package() {
 
   sed -i "/^clipboard-copy/d" "$pkgdir/etc/skel/.config/foot/foot.ini" #Removing ctrl+c mapping
   sed -i "/^clipboard-paste/d" "$pkgdir/etc/skel/.config/foot/foot.ini" #Removing ctrl+v mapping
+  sed -i "/shell=fish/d" "$pkgdir/etc/skel/.config/foot/foot.ini" #Removing shell=fish enforce
 }

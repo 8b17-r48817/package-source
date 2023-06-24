@@ -12,7 +12,7 @@ install='lightdm-webkit-theme-aether.install'
 changelog='changelog.txt'
 #source=("https://github.com/NoiSek/Aether/archive/v$pkgver.tar.gz")
 source=("$pkgname.tar.gz"
-        "watermark.png")
+        "watermark-athena.png")
 sha512sums=('03c8b64efd86e85603b5820398e975f90e4725c36455340a09e17507b5e255874d6ed7c325d07578867fac952fcde3ffb7f4b392800c2c26265ca50bbfbbe214'
             'da75e735195e7831af7f482a04a89c20bb84b432dad08ea182214e536c560b7da6436313843f0c4a1f8a3d446660e18ff1a5126f3faa297fe370f0e8c9e503c9')
 
@@ -20,5 +20,5 @@ package() {
   mkdir -p "${pkgdir}/usr/share/lightdm-webkit/themes"
 
   cp -rf "${srcdir}/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether" "${pkgdir}/usr/share/lightdm-webkit/themes/"
-  cp -rf "${srcdir}/watermark.png" "${pkgdir}/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/"
+  install -Dm 644 "${srcdir}/watermark-athena.png" "${pkgdir}/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/"
 }
