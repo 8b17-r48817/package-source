@@ -385,7 +385,7 @@ def GUI(self, Gtk, GdkPixbuf):
 
     button4 = Gtk.Button(label="Athena OS project")
     button4.connect("clicked", self.on_link_clicked,
-                    "https://github.com/Athena-OS/athena-iso")
+                    "https://github.com/Athena-OS")
     button4.set_size_request(200, 50)
 
     button5 = Gtk.Button(label="Open a ticket")
