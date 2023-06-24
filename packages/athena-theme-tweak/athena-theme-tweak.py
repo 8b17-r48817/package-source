@@ -319,20 +319,20 @@ if args.theme:
     elif chosen_theme == "XXE":
         b = menu()
         if b == 1:
-            theme_name = "Graphite-Dark"
-            gnome_shell = "Graphite-Dark"
+            theme_name = "Gruvbox-Dark-B"
+            gnome_shell = "Gruvbox-Dark-B"
         else:
-            theme_name = "Graphite-Rimless-Dark"
-            gnome_shell = "Graphite-Rimless-Dark"
+            theme_name = "Gruvbox-Dark-BL"
+            gnome_shell = "Gruvbox-Dark-BL"
 
         color_scheme = "prefer-dark"
-        icon_theme = "Tela-circle-black-dark"
-        cursor_theme = "Bibata-Modern-Ice"
+        icon_theme = "Material-Black-Mango-Suru"
+        cursor_theme = "Fuchsia-Pop"
         background_theme = "/usr/share/backgrounds/default/xxe.png"
         picture_options = "stretched"
-        vscode_theme = "Just Black"
-        kitty_theme = "Atom.conf"
-        tmux_theme = "snow"
+        vscode_theme = "Gruvbox Material Dark"
+        kitty_theme = "gruvbox_dark.conf"
+        tmux_theme = "gold"
 
         topbarcolorscheme = "valhalla"
         topbarmaterialscheme = "virtuality_yellow"

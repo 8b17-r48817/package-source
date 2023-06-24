@@ -107,12 +107,12 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
         package=athena-xxe-theme
         if pacman -Qq $package > /dev/null ; then
-            theme_name="Graphite-Dark"
-            #gnome_shell="Graphite-Dark"
+            theme_name="Gruvbox-Dark-BL"
+            #gnome_shell="Gruvbox-Dark-BL"
 
             color_scheme="prefer-dark"
-            icon_theme="Tela-circle-black-dark"
-            cursor_theme="Bibata-Modern-Ice"
+            icon_theme="Material-Black-Mango-Suru"
+            cursor_theme="Fuchsia-Pop"
             background_theme="/usr/share/backgrounds/default/xxe.png"
             picture_options="stretched"
 
@@ -156,7 +156,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
         swaybg -i $HOME/.config/eww/images/wallpaper/wallpaper &
 
         # Music bar color
-        sed -ir "s/\"color4\":\"#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\"/\"color4\":\"$musicbarscheme\"/g" $HOME/.config/eww/scripts/music
+        sed -r -i "s/\"color4\":\"#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\"/\"color4\":\"$musicbarscheme\"/g" $HOME/.config/eww/scripts/music
      
         ###### TERMINAL CHECK ######
 
