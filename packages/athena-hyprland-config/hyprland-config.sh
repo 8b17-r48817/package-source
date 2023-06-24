@@ -116,10 +116,10 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
             background_theme="/usr/share/backgrounds/default/xxe.png"
             picture_options="stretched"
 
-            topbarcolorscheme = "valhalla"
-            topbarmaterialscheme = "virtuality_yellow"
+            topbarcolorscheme = "nowthatitstrue"
+            topbarmaterialscheme = "default"
             topbariconscheme = "dark"
-            musicbarscheme = "#EFD69C"
+            musicbarscheme = "#FEFF00"
         fi
 
         gsettings set org.gnome.desktop.interface gtk-theme $theme_name

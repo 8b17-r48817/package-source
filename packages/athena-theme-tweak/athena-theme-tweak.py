@@ -176,7 +176,7 @@ theme_map = {
     "BlueEyesSamurai": "athena-blue-eyes-theme",
     "CyborgGruvbox": "athena-gruvbox-theme",
     "Graphite": "athena-graphite-theme",
-    "SweetDark": "athena-sweet-dark-theme"
+    "SweetDark": "athena-sweet-dark-theme",
     "XXE": "athena-xxe-theme"
 }
 
@@ -337,7 +337,7 @@ if args.theme:
         topbarcolorscheme = "valhalla"
         topbarmaterialscheme = "virtuality_yellow"
         topbariconscheme = "dark"
-        musicbarscheme = "#EFD69C"
+        musicbarscheme = "#FEFF00"
 
     #Reinitialize gsettings for applying the changes correctly when we change between border and borderless in the same theme
     subprocess.call("gsettings set org.gnome.desktop.interface gtk-theme \"\"", shell=True)
