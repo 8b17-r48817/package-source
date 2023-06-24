@@ -8,14 +8,17 @@ url='https://github.com/end-4/dots-hyprland'
 license=("GPL")
 depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'eww-wayland' 'findutils' 'foot' 'gawk' 'geticons-git' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia' 'ibus' 'imagemagick' 'libinput-gestures' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swaybg' 'swayidle' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi' 'xdg-desktop-portal-hyprland-git')
 makedepends=('git')
+install='hyprland.install'
 source=("git+https://github.com/end-4/$_pkgname"
         "hyprland-config.sh"
+        "hyprland-shell"
         "hyprland.conf"
         "keybinds.conf"
         ".flag-work-once")
 sha512sums=('SKIP'
             'ceffb22320be096cf377b1e11da3e5fd823132749b5849071ffcc3cf3bf941e77a300cc01f3e13826772a6256d175b610b7fc4c269eff45a6f267cf250085377'
-            'f4941f648e47c69cada6e80978c93907bbbfac2dcb1dc3903353392082f5f6cbbb3f3b0182c5cc5cc8e287f86d437a88cbf6c5166191da4f7858ad33ca756787'
+            'da4b315b631f612a46fc1e7e510b193efbc25a60f0699099a4bc1bf475d87747fe3e1557a1b70bd7a84a5f9406ada3191c9a635fc6adffd35cf4791f6fcb406a'
+            '6c4a423d72174d09e08313df1dc6d8b6167e7c9b92faaf9569102a9b1ae4231c373811934ba7d12e13922c715ac037c2594127bb157f0e610d16c84e7c5a2d9a'
             '3c0f019d55aa911b9c918fdaeac2f30ca9335b1443cbec1cd73c5bf1b0d291bd60cf8c6caa4820c3ccd9bdb5c21a2a5e90fa39f878533df9bc8a2968aa7f1ed6'
             'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e')
 
@@ -57,6 +60,7 @@ package() {
   install -Dm 644 $srcdir/hyprland.conf "$pkgdir/etc/skel/.config/hypr/"
   install -Dm 644 $srcdir/keybinds.conf "$pkgdir/etc/skel/.config/hypr/"
   install -Dm 644 $srcdir/.flag-work-once "$pkgdir/etc/skel/"
+  install -Dm 755 $srcdir/hyprland-shell "$pkgdir/usr/bin/"
 
   sed -i "/^clipboard-copy/d" "$pkgdir/etc/skel/.config/foot/foot.ini" #Removing ctrl+c mapping
   sed -i "/^clipboard-paste/d" "$pkgdir/etc/skel/.config/foot/foot.ini" #Removing ctrl+v mapping

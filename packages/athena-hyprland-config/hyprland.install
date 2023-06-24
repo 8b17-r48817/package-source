@@ -1,0 +1,8 @@
+post_install() {
+    echo "Setting Hyprland starting as login shell."
+    sed -i "s/^Exec=Hyprland/Exec=hyprland-shell/g" /usr/share/wayland-sessions/hyprland.desktop
+}
+
+post_upgrade() {
+    post_install $1
+}

@@ -1,0 +1,16 @@
+[/]
+apply-custom-theme=false
+autohide-in-fullscreen=false
+background-opacity=0.90000000000000002
+dash-max-icon-size=48
+dock-position='BOTTOM'
+height-fraction=0.90000000000000002
+intellihide=true
+intellihide-mode='FOCUS_APPLICATION_WINDOWS'
+multi-monitor=false
+preferred-monitor=-2
+preferred-monitor-by-connector='Virtual1'
+preview-size-scale=0.20000000000000001
+require-pressure-to-show=false
+show-trash=false
+transparency-mode='FIXED'
