@@ -94,12 +94,12 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
          package=athena-xxe-theme
          if pacman -Qq $package > /dev/null ; then
-              theme_name="Graphite-Dark"
-              gnome_shell="Graphite-Dark"
+              theme_name="Gruvbox-Dark-B"
+              gnome_shell="Gruvbox-Dark-B"
 
               color_scheme="prefer-dark"
-              icon_theme="Tela-circle-black-dark"
-              cursor_theme="Bibata-Modern-Ice"
+              icon_theme="Material-Black-Mango-Suru"
+              cursor_theme="Fuchsia-Pop"
               background_theme="file:///usr/share/backgrounds/default/xxe.png"
               picture_options="stretched"
          fi
