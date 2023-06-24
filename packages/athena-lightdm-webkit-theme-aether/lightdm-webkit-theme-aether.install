@@ -3,7 +3,8 @@ post_install() {
 
   sed -i 's/^webkit_theme\s*=\s*\(.*\)/webkit_theme = lightdm-webkit-theme-aether/g' /etc/lightdm/lightdm-webkit2-greeter.conf
   sed -i 's/^\(#\?greeter\)-session\s*=\s*\(.*\)/greeter-session = lightdm-webkit2-greeter/g' /etc/lightdm/lightdm.conf
-  cp -rf watermark.png /usr/share/plymouth/themes/spinner/watermark.png  
+  rm -rf /usr/share/plymouth/themes/spinner/watermark.png
+  cp -rf /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/watermark.png /usr/share/plymouth/themes/spinner/
 }
 
 post_upgrade() {
