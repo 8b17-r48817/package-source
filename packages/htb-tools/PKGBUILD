@@ -1,7 +1,7 @@
 pkgname=htb-tools
 pkgver=1.0.7
 pkgrel=1
-pkgdesc="Hack The Box tools"
+pkgdesc="Hack The Box tools."
 arch=('any')
 license=("custom")
 depends=('python-requests')

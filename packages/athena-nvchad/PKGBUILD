@@ -1,7 +1,7 @@
 pkgname=athena-nvchad
 pkgver=1.0.0
 pkgrel=2
-pkgdesc="Neovim config written in lua aiming to provide a base configuration with very beautiful UI and blazing fast startuptime for Athena"
+pkgdesc="Neovim config written in lua aiming to provide a base configuration with very beautiful UI and blazing fast startuptime for Athena."
 arch=('any')
 license=("custom")
 depends=('neovim')

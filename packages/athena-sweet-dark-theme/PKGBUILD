@@ -1,7 +1,7 @@
 pkgname=athena-sweet-dark-theme
 pkgver=14.b2192ff
 pkgrel=2
-pkgdesc="Sweet Dark theme with Sweet Purple icons for Athena"
+pkgdesc="Sweet Dark theme with Sweet Purple icons for Athena."
 arch=('any')
 license=("GPL3")
 makedepends=('git')

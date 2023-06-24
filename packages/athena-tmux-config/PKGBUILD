@@ -1,7 +1,7 @@
 pkgname=athena-tmux-config
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Tmux configuration for Athena"
+pkgdesc="Tmux configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('python-libtmux' 'python-pip' 'sassc' 'tmux')

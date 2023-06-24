@@ -1,7 +1,7 @@
 pkgname=athena-kitty-config
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Kitty configuration for Athena"
+pkgdesc="Kitty configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('kitty')

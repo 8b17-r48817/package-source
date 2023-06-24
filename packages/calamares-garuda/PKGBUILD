@@ -5,7 +5,7 @@
 pkgname=calamares-garuda
 pkgver=3.2.61
 pkgrel=1
-pkgdesc='Distribution-independent installer framework'
+pkgdesc='Distribution-independent installer framework.'
 arch=('any')
 license=(GPL)
 url="https://github.com/calamares/calamares"

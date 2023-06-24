@@ -1,7 +1,7 @@
 pkgname=athena-alacritty-config
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Alacritty configuration for Athena"
+pkgdesc="Alacritty configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('alacritty')

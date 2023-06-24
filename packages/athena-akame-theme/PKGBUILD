@@ -1,7 +1,7 @@
 pkgname=athena-akame-theme
 pkgver=19.a8b01a28
 pkgrel=1
-pkgdesc="Akame theme with Material Black Cherry Suru icons for Athena"
+pkgdesc="Akame theme with Material Black Cherry Suru icons for Athena."
 arch=('any')
 license=("GPL3")
 makedepends=('git')

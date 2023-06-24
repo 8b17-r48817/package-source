@@ -1,7 +1,7 @@
 pkgname=textart
 pkgver=1.0.0
 pkgrel=2
-pkgdesc="Text Art collection"
+pkgdesc="Text Art collection."
 arch=('any')
 license=("custom")
 source=("$pkgname.tar.gz")

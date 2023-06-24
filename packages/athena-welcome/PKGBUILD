@@ -1,7 +1,7 @@
 pkgname=athena-welcome
 pkgver=2.0.2
 pkgrel=5
-pkgdesc="Welcome App for Athena"
+pkgdesc="Welcome App for Athena."
 arch=('any')
 license=("custom")
 depends=('libwnck3' 'parallel' 'reflector' 'rsync')

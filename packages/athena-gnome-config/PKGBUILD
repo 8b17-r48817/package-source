@@ -1,12 +1,12 @@
 pkgname=athena-gnome-config
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="GNOME configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('gnome-characters' 'gnome-control-center' 'gnome-gesture-improvements' 'gnome-keyring' 'gnome-menus' 'gnome-shell-extensions' 'gnome-system-monitor' 'gnome-terminal' 'gnome-themes-extra' 'gnome-tweaks' 'malcontent' 'noto-fonts-emoji' 'polkit-gnome' 'qgnomeplatform-qt5' 'qgnomeplatform-qt6' 'qqc2-desktop-style' 'wayland' 'xdg-desktop-portal' 'xdg-desktop-portal-gnome' 'gnome-shell-extension-appindicator-git' 'gnome-shell-extension-aylur-widgets-git' 'gnome-shell-extension-compiz-windows-effect-git' 'gnome-shell-extension-desktop-icons-ng-git' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-hide-activities-git' 'gnome-shell-extension-logo-menu-git' 'gnome-shell-extension-pop-shell-git' 'gnome-shell-extension-remove-app-menu-git' 'gnome-shell-extension-top-bar-organizer' 'gnome-shell-extension-ubuntu-dock-git' 'gnome-shell-extension-vitals-git')
 source=("$pkgname.tar.gz")
-sha512sums=('396dbb14ac8f8df90204d3edd879a91e24cc9b55e1404eb072165c9a95116cc4ceee087f16962ecd787642ec64be68738c2f5e93a420a37ab53da53901e7d914')
+sha512sums=('b5a66b765d6798e14bf2128871aebffdc1086cb31de1b6e29ab91b077494fd6bf66e1ac737b4aea5a454e350890e2f670cc7bd497a496f92c34a73eb32001f20')
 
 package() {
   mkdir -p "${pkgdir}/etc/skel"

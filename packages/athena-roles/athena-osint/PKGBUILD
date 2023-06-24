@@ -1,7 +1,7 @@
 pkgname=athena-osint
 pkgver=1.0.0
 pkgrel=2
-pkgdesc="OSINT Specialist Role tools"
+pkgdesc="OSINT Specialist Role tools."
 arch=('any')
 license=("custom")
 

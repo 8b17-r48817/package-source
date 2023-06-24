@@ -92,6 +92,18 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
               picture_options="stretched"
          fi
 
+         package=athena-xxe-theme
+         if pacman -Qq $package > /dev/null ; then
+              theme_name="Graphite-Dark"
+              gnome_shell="Graphite-Dark"
+
+              color_scheme="prefer-dark"
+              icon_theme="Tela-circle-black-dark"
+              cursor_theme="Bibata-Modern-Ice"
+              background_theme="file:///usr/share/backgrounds/default/xxe.png"
+              picture_options="stretched"
+         fi
+
          gsettings set org.gnome.desktop.interface gtk-theme $theme_name
          gsettings set org.gnome.desktop.wm.preferences theme $theme_name
          gsettings set org.gnome.shell.extensions.user-theme name $gnome_shell

@@ -1,7 +1,7 @@
 pkgname=athena-powershell-config
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="PowerShell configuration for Athena"
+pkgdesc="PowerShell configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('powershell-bin')

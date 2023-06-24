@@ -1,7 +1,7 @@
 pkgname=athena-graphite-theme
 pkgver=2023.05.17.r4.gac8cfc4
 pkgrel=1
-pkgdesc="Graphite Dark theme with Tela Circle Black Dark icons for Athena"
+pkgdesc="Graphite Dark theme with Tela Circle Black Dark icons for Athena."
 arch=('any')
 license=("GPL3")
 makedepends=('git' 'sassc')

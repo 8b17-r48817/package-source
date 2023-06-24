@@ -60,7 +60,7 @@ def arg_parse():
     parser.add_argument("-e", "--emulator", choices=["alacritty", "cool-retro-term", "foot", "gnome-terminal", "kitty", "konsole", "terminator", "terminology", "urxvt", "xfce4-terminal", "xterm"], help="specify a terminal emulator to be set [alacritty|cool-retro-term|foot|gnome-terminal|kitty|konsole|terminator|terminology|urxvt|xfce4-terminal|xterm]")
     parser.add_argument("-h", "--help", action='store_true', help="show this help message and exit")
     parser.add_argument("-l", "--list", action='store_true', help="list all available Athena themes")
-    parser.add_argument("-t", "--theme", choices=["AkameGaKill", "BlueEyesSamurai", "Graphite", "CyborgGruvbox", "SweetDark"], help="specify an Athena theme to be set [AkameGaKill|BlueEyesSamurai|Graphite|CyborgGruvbox|SweetDark]")
+    parser.add_argument("-t", "--theme", choices=["AkameGaKill", "BlueEyesSamurai", "Graphite", "CyborgGruvbox", "SweetDark", "XXE"], help="specify an Athena theme to be set [AkameGaKill|BlueEyesSamurai|Graphite|CyborgGruvbox|SweetDark|XXE]")
     
 
     args = parser.parse_args()
@@ -77,7 +77,7 @@ def help():
    print("-e, --emulator                specify a terminal emulator to be set [alacritty|cool-retro-term|foot|gnome-terminal|kitty|konsole|urxvt|xterm]")
    print("-h, --help                    show this help message and exit")
    print("-l, --list                    list all available Athena themes")
-   print("-t, --theme <theme-name>      specify an Athena theme to be set [AkameGaKill|BlueEyesSamurai|Graphite|CyborgGruvbox|SweetDark]")
+   print("-t, --theme <theme-name>      specify an Athena theme to be set [AkameGaKill|BlueEyesSamurai|Graphite|CyborgGruvbox|SweetDark|XXE]")
    print("\n")
    print("Usage Examples:")
    print("athena-theme-tweak -l")
@@ -177,6 +177,7 @@ theme_map = {
     "CyborgGruvbox": "athena-gruvbox-theme",
     "Graphite": "athena-graphite-theme",
     "SweetDark": "athena-sweet-dark-theme"
+    "XXE": "athena-xxe-theme"
 }
 
 if args.list:
@@ -314,6 +315,29 @@ if args.theme:
         topbarmaterialscheme = "amaryllis"
         topbariconscheme = "dark"
         musicbarscheme = "#FE3DAF"
+
+    elif chosen_theme == "XXE":
+        b = menu()
+        if b == 1:
+            theme_name = "Graphite-Dark"
+            gnome_shell = "Graphite-Dark"
+        else:
+            theme_name = "Graphite-Rimless-Dark"
+            gnome_shell = "Graphite-Rimless-Dark"
+
+        color_scheme = "prefer-dark"
+        icon_theme = "Tela-circle-black-dark"
+        cursor_theme = "Bibata-Modern-Ice"
+        background_theme = "/usr/share/backgrounds/default/xxe.png"
+        picture_options = "stretched"
+        vscode_theme = "Just Black"
+        kitty_theme = "Atom.conf"
+        tmux_theme = "snow"
+
+        topbarcolorscheme = "valhalla"
+        topbarmaterialscheme = "virtuality_yellow"
+        topbariconscheme = "dark"
+        musicbarscheme = "#EFD69C"
 
     #Reinitialize gsettings for applying the changes correctly when we change between border and borderless in the same theme
     subprocess.call("gsettings set org.gnome.desktop.interface gtk-theme \"\"", shell=True)

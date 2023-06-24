@@ -1,7 +1,7 @@
 pkgname=athena-neofetch-config
 pkgver=197.f20b385
 pkgrel=1
-pkgdesc="Neofetch configuration for Athena"
+pkgdesc="Neofetch configuration for Athena."
 arch=('any')
 license=("custom")
 install=neofetch.install

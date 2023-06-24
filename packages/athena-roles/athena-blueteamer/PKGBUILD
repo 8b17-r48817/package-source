@@ -1,7 +1,7 @@
 pkgname=athena-blueteamer
 pkgver=1.0.0
 pkgrel=2
-pkgdesc="Blue Teamer Role tools"
+pkgdesc="Blue Teamer Role tools."
 arch=('any')
 license=("custom")
 depends=(

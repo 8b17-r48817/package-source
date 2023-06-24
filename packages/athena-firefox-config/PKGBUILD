@@ -1,7 +1,7 @@
 pkgname=athena-firefox-config
 pkgver=1.0.0
 pkgrel=3
-pkgdesc="Mozilla Firefox configuration for Athena"
+pkgdesc="Mozilla Firefox configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('athena-nighttab' 'firefox-esr' 'profile-sync-daemon')

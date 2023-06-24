@@ -1,7 +1,7 @@
 pkgname=athena-gruvbox-theme
 pkgver=57.c0b7fb50
 pkgrel=1
-pkgdesc="Gruvbox theme with Material Black Mango Suru icons for Athena"
+pkgdesc="Gruvbox theme with Material Black Mango Suru icons for Athena."
 arch=('any')
 license=("GPL3")
 makedepends=('git')

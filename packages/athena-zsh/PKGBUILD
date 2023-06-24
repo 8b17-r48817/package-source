@@ -1,7 +1,7 @@
 pkgname=athena-zsh
 pkgver=1.0.1
 pkgrel=2
-pkgdesc="Zsh for Athena"
+pkgdesc="Zsh for Athena."
 arch=('any')
 license=("custom")
 depends=('zsh' 'zsh-autosuggestions' 'powerline-fonts')

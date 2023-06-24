@@ -1,7 +1,7 @@
 pkgname=athena-dos
 pkgver=1.0.0
 pkgrel=2
-pkgdesc="DoS Attacker Role tools"
+pkgdesc="DoS Attacker Role tools."
 arch=('any')
 license=("custom")
 

@@ -105,6 +105,23 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
             musicbarscheme="#FE3DAF"
         fi
 
+        package=athena-xxe-theme
+        if pacman -Qq $package > /dev/null ; then
+            theme_name="Graphite-Dark"
+            #gnome_shell="Graphite-Dark"
+
+            color_scheme="prefer-dark"
+            icon_theme="Tela-circle-black-dark"
+            cursor_theme="Bibata-Modern-Ice"
+            background_theme="/usr/share/backgrounds/default/xxe.png"
+            picture_options="stretched"
+
+            topbarcolorscheme = "valhalla"
+            topbarmaterialscheme = "virtuality_yellow"
+            topbariconscheme = "dark"
+            musicbarscheme = "#EFD69C"
+        fi
+
         gsettings set org.gnome.desktop.interface gtk-theme $theme_name
         gsettings set org.gnome.desktop.wm.preferences theme $theme_name
         #gsettings set org.gnome.shell.extensions.user-theme name $gnome_shell

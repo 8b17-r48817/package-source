@@ -1,7 +1,7 @@
 pkgname=athena-blue-eyes-theme
 pkgver=56.bb755e4c
 pkgrel=1
-pkgdesc="Blue Eyes samurai theme with Tokyo Night Dark icons for Athena"
+pkgdesc="Blue Eyes samurai theme with Tokyo Night Dark icons for Athena."
 arch=('any')
 license=("GPL3")
 makedepends=('git')

@@ -1,7 +1,7 @@
 # Maintainer: <dr460nf1r3 at garudalinux dot org>
 
 pkgname=calamares-branding-garuda
-pkgdesc="Garuda branding for the Calamares installer"
+pkgdesc="Garuda branding for the Calamares installer."
 pkgver=r62.8bcde4e
 pkgrel=1
 arch=('any')

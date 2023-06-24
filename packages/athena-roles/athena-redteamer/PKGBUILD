@@ -1,7 +1,7 @@
 pkgname=athena-redteamer
 pkgver=1.0.0
 pkgrel=4
-pkgdesc="Red Teamer Role tools"
+pkgdesc="Red Teamer Role tools."
 arch=('any')
 license=("custom")
 

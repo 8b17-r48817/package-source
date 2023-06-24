@@ -1,7 +1,7 @@
 pkgname=cyberchef-electron
 pkgver=10.4.0
 pkgrel=1
-pkgdesc="The Cyber Swiss Army Knife (unofficial Electron wrapper)"
+pkgdesc="The Cyber Swiss Army Knife (unofficial Electron wrapper)."
 arch=('any')
 url="https://github.com/gchq/CyberChef"
 license=('Apache')

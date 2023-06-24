@@ -1,7 +1,7 @@
 pkgname=athena-cracker
 pkgver=1.0.0
 pkgrel=2
-pkgdesc="Cracker Specialist Role tools"
+pkgdesc="Cracker Specialist Role tools."
 arch=('any')
 license=("custom")
 

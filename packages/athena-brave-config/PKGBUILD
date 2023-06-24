@@ -1,7 +1,7 @@
 pkgname=athena-brave-config
 pkgver=1.0.0
 pkgrel=3
-pkgdesc="Brave configuration for Athena"
+pkgdesc="Brave configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('athena-nighttab' 'brave-bin' 'profile-sync-daemon-brave')

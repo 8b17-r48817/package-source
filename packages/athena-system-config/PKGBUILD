@@ -1,7 +1,7 @@
 pkgname=athena-system-config
 pkgver=1.0.0
 pkgrel=5
-pkgdesc="System configuration for Athena"
+pkgdesc="System configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('terminus-font')

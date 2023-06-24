@@ -1,7 +1,7 @@
 pkgname=athena-gdm-config
 pkgver=1.0.0
 pkgrel=2
-pkgdesc="GDM configuration for Athena"
+pkgdesc="GDM configuration for Athena."
 arch=('any')
 license=("custom")
 install=gresource.install
