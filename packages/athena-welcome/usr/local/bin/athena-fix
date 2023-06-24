@@ -8,6 +8,7 @@ sudo sed -i "/mirror.leaseweb.net/d" /etc/pacman.d/mirrorlist
 sudo sed -i "s/#Server/Server/g" /etc/pacman.d/blackarch-mirrorlist
 sudo sed -i "/mirrors.fosshost.org/d" /etc/pacman.d/blackarch-mirrorlist
 sudo sed -i "/mirrors.fossho.st/d" /etc/pacman.d/blackarch-mirrorlist
+sudo sed -i "/blackarch.pi3rrot.net/d" /etc/pacman.d/blackarch-mirrorlist
 sudo sed -i "/cdn-mirror.chaotic.cx/d" /etc/pacman.d/chaotic-mirrorlist
 
 sudo pacman -Syy
