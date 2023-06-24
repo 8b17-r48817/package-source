@@ -336,7 +336,7 @@ if args.theme:
 
         topbarcolorscheme = "valhalla"
         topbarmaterialscheme = "virtuality_yellow"
-        topbariconscheme = "dark"
+        topbariconscheme = "gruv"
         musicbarscheme = "#FEFF00"
 
     #Reinitialize gsettings for applying the changes correctly when we change between border and borderless in the same theme

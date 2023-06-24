@@ -60,7 +60,7 @@ if pacman -Qq $package > /dev/null ; then
   if pacman -Qq athena-gnome-config > /dev/null ; then
     sed -i 's/^#user-session=.*/user-session=gnome-xorg/g' /etc/lightdm/lightdm.conf
   elif pacman -Qq hyprland-nvidia > /dev/null ; then
-    sed -i 's/^#user-session=.*/user-session=Hyprland/g' /etc/lightdm/lightdm.conf
+    sed -i 's/^#user-session=.*/user-session=hyprland/g' /etc/lightdm/lightdm.conf
   fi
 fi
 
