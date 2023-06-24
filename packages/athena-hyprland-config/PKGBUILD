@@ -1,8 +1,8 @@
-pkgname=hyprland-summergruv
+pkgname=athena-hyprland-config
 _pkgname=dots-hyprland
-pkgver=289.ee8b7727
+pkgver=292.3dd2dac6
 pkgrel=1
-pkgdesc="Hyprland Summer Gruv configuration."
+pkgdesc="Hyprland configuration for Athena."
 arch=('any')
 url='https://github.com/end-4/dots-hyprland'
 license=("GPL")
