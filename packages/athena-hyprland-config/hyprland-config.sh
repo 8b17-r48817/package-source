@@ -157,6 +157,9 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
         # Music bar color
         sed -r -i "s/\"color4\":\"#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\"/\"color4\":\"$musicbarscheme\"/g" $HOME/.config/eww/scripts/music
+
+        # Set kitty terminal for Wayland
+        sed -i "s/^linux_display_server x11/#linux_display_server x11/g" $HOME/.config/kitty/kitty.conf
      
         ###### TERMINAL CHECK ######
 
