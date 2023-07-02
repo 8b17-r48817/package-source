@@ -1,5 +1,5 @@
 pkgname=athena-cyber-hub
-pkgver=12.9bce5db
+pkgver=13.36e16da
 pkgrel=1
 pkgdesc="Running vulnerable labs and Cyber Security platforms."
 arch=('any')
