@@ -5,7 +5,9 @@ from gi.repository import Gtk
 
 # list of tuples for each variable, containing the environment variable name, its path, and the security category
 variable_list = [
+    ("armcord", "Cross-platform, all-in-one voice and text chat application."),
     ("asciinema", "Record and share your terminal sessions."),
+    ("athena-cyber-hub", "Running vulnerable labs and Cyber Security platforms."),
     ("athena-theme-tweak", "Switch to different Athena themes."),
     ("athena-welcome", "Welcome application that allows main security tools installation and mirrorlist update."),
     ("bashtop", "Resource monitor that shows usage and stats for processor, memory, disks, network and processes."),
@@ -20,7 +22,6 @@ variable_list = [
     ("cowsay", "Print messages, warnings, or character strings with various animals and other creatures."),
     ("cpc", "Copy the entire content of the input file to the clipboard."),
     ("devil", "Quotes by devil eyes."),
-    ("discord", "Cross-platform, all-in-one voice and text chat application."),
     ("downgrade", "Downgrade one (or multiple) packages, by using the pacman cache or the Arch Rollback Machine."),
     ("eog", "Image viewer."),
     ("figlet", "Create ASCII text banners from terminal."),
