@@ -105,7 +105,6 @@ echo -e "
 echo -e
 echo -e "🔥Choose your ${G}Hacking Role$W🔥"
 echo -e
-echo -e "🖤 ${R}Black Hat Omniscient: ${W}sudo pacman -Syu athena-blackhat$W"
 echo -e "💙 ${B}Blue Teamer:          ${W}sudo pacman -Syu athena-blueteamer$W"
 echo -e "🐞 ${G}Bug Bounty Hunter:    ${W}sudo pacman -Syu athena-bountyhunter$W"
 echo -e "🍘 ${Y}Cracker Specialist:   ${W}sudo pacman -Syu athena-cracker$W"
