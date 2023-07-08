@@ -51,12 +51,10 @@ class Main(Gtk.Window):
             model = combo.get_model()
             GUI.role_name = model[tree_iter][0]
             print("Selected: role=%s" % GUI.role_name)
-            if "Black Hat Omniscient" in GUI.role_name:
-                self.role_id = "BH"
+            if "Blue Teamer" in GUI.role_name:
+                self.role_id = "BT"
             elif "Bug Bounty Hunter" in GUI.role_name:
                 self.role_id = "BBH"
-            elif "Blue Teamer" in GUI.role_name:
-                self.role_id = "BT"
             elif "Cracker Specialist" in GUI.role_name:
                 self.role_id = "CR"
             elif "DoS Tester" in GUI.role_name:

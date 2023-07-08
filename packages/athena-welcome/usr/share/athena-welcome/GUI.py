@@ -114,7 +114,6 @@ def GUI(self, Gtk, GdkPixbuf):
     role_store = Gtk.ListStore(str)
     roles = [
         "🔥 Choose your Role 🔥",
-        "🖤 Black Hat Omniscient 🖤",
         "💙 Blue Teamer 💙",
         "🐞 Bug Bounty Hunter 🐞",
         "🍘 Cracker Specialist 🍘",
@@ -149,32 +148,30 @@ def GUI(self, Gtk, GdkPixbuf):
     else:
         strout = "none"
 
-    if "BH" == strout:
+    if "BT" == strout:
         role_combo.set_active(1)
-    elif "BT" == strout:
-        role_combo.set_active(2)
     elif "BBH" == strout:
-        role_combo.set_active(3)
+        role_combo.set_active(2)
     elif "CR" == strout:
-        role_combo.set_active(4)
+        role_combo.set_active(3)
     elif "DT" == strout:
-        role_combo.set_active(5)
+        role_combo.set_active(4)
     elif "ES" == strout:
-        role_combo.set_active(6)
+        role_combo.set_active(5)
     elif "FA" == strout:
-        role_combo.set_active(7)
+        role_combo.set_active(6)
     elif "MA" == strout:
-        role_combo.set_active(8)
+        role_combo.set_active(7)
     elif "MO" == strout:
-        role_combo.set_active(9)
+        role_combo.set_active(8)
     elif "NA" == strout:
-        role_combo.set_active(10)
+        role_combo.set_active(9)
     elif "OS" == strout:
-        role_combo.set_active(11)
+        role_combo.set_active(10)
     elif "RT" == strout:
-        role_combo.set_active(12)
+        role_combo.set_active(11)
     elif "WP" == strout:
-        role_combo.set_active(13)
+        role_combo.set_active(12)
     else:
         role_combo.set_active(0)
 

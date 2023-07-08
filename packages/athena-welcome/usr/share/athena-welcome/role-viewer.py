@@ -5,7 +5,6 @@ from gi.repository import Gtk
 
 # list of tuples for each variable, containing the environment variable name, its path, and the security category
 variable_list = [
-("Black Hat Omniscient", "blackarch", "All the hacking weapons in your machine."),
 ("Blue Teamer", "amass", "In-depth subdomain enumeration written in Go."),
 ("Blue Teamer", "assetfinder", "Find domains and subdomains potentially related to a given domain."),
 ("Blue Teamer", "cisco-auditing-tool", "Perl script which scans cisco routers for common vulnerabilities. Checks for default passwords, easily guessable community names, and the IOS history bug. Includes support for plugins and scanning multiple hosts."),
@@ -4886,13 +4885,13 @@ class TreeViewFilterWindow(Gtk.Window):
 
         # creating buttons to filter by Category, and setting up their events
         self.buttons = list()
-        for var_category in ["Black Hat Omniscient", "Blue Teamer", "Bug Bounty Hunter", "Cracker Specialist", "DoS Tester"]:
+        for var_category in ["Blue Teamer", "Bug Bounty Hunter", "Cracker Specialist", "DoS Tester", "Enthusiast Student"]:
             button = Gtk.Button(label=var_category)
             self.buttons.append(button)
             button.connect("clicked", self.on_selection_button_clicked)
 
         self.buttons_bottom = list()
-        for var_category in ["Enthusiast Student", "Forensic Analyst", "Malware Analyst", "Mobile Analyst", "Network Analyst"]:
+        for var_category in ["Forensic Analyst", "Malware Analyst", "Mobile Analyst", "Network Analyst"]:
             button_bottom = Gtk.Button(label=var_category)
             self.buttons_bottom.append(button_bottom)
             button_bottom.connect("clicked", self.on_selection_button_clicked)
