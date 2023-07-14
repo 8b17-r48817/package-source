@@ -13,4 +13,4 @@ package() {
   cp -rf "${srcdir}/etc/calamares" "${pkgdir}/etc/"
   cp -rf "${srcdir}"/usr/lib/calamares/modules/* "${pkgdir}/usr/lib/calamares/modules/"
 }
-sha512sums=('24490093f85d40ed095dfb827246796e50b5cd6c248aad87fee4d84a25f0d324956dad36ca39fdb69bb7e2fcc38740317f54a018fa96c1f85100c4ef9c659a59')
+sha512sums=('25aac8b4ef8725647440dc43afa197b450445dd8b801d90eb1d6c4fd24652909a59c7fce94596d6dd22f429ce6098b53b36d17fa47dccc7c7b8b16d6a8820086')

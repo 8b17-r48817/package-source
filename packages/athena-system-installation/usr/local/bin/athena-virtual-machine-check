@@ -316,9 +316,12 @@ if [ $result = "microsoft" ];
 			pacman -Rns qemu-guest-agent --noconfirm
 			echo "Removed qemu-guest-agent"
 		fi
-
-		sed -in '/^GRUB_CMDLINE_LINUX_DEFAULT*/ s/"$/ video=hyperv_fb:1920x1080"/g' /etc/default/grub
-		grub-mkconfig -o /boot/grub/grub.cfg
+                
+		if ! grep -Fq "video=hyperv_fb" /etc/default/grub
+		then
+   		    sed -in '/^GRUB_CMDLINE_LINUX_DEFAULT*/ s/"$/ video=hyperv_fb:3840x2160"/g' /etc/default/grub
+   		    grub-mkconfig -o /boot/grub/grub.cfg
+		fi
 fi
 
 if [ $result = "none" ];
