@@ -54,34 +54,49 @@ if [[ $gpudetect =~ "NVIDIA" ]]; then
    if [[ $gpudetect =~ "GM107" ]] || [[ $gpudetect =~ "GM108" ]]  || [[ $gpudetect =~ "GM200" ]]  || [[ $gpudetect =~ "GM204" ]]  || [[ $gpudetect =~ "GM206" ]]  || [[ $gpudetect =~ "GM20B" ]]; then # NV110 family (Maxwell)
       echo "NV110 family (Maxwell)"
       flag_gpu_found=1
-      pacman -S --noconfirm nvidia-dkms
+      if pacman -Qq linux > /dev/null ; then
+         pacman -S --noconfirm nvidia
+      elif pacman -Qq linux-lts > /dev/null ; then
+         pacman -S --noconfirm nvidia-lts
+      else
+         pacman -S --noconfirm nvidia-dkms
+      fi
+      pacman -S --noconfirm nvidia-settings
    fi
    if [[ $gpudetect =~ "TU102" ]] || [[ $gpudetect =~ "TU104" ]]  || [[ $gpudetect =~ "TU106" ]]  || [[ $gpudetect =~ "TU116" ]]  || [[ $gpudetect =~ "TU117" ]]; then # NV160 family (Turing)
       echo "NV160 family (Turing)"
       flag_gpu_found=1
-      pacman -S --noconfirm nvidia-open-dkms
+      if pacman -Qq linux > /dev/null ; then
+         pacman -S --noconfirm nvidia-open
+      else
+         pacman -S --noconfirm nvidia-open-dkms
+      fi
+      pacman -S --noconfirm nvidia-settings
    fi
    if [[ $gpudetect =~ "GK104" ]] || [[ $gpudetect =~ "GK107" ]]  || [[ $gpudetect =~ "GK106" ]]  || [[ $gpudetect =~ "GK110" ]]  || [[ $gpudetect =~ "GK110B" ]] || [[ $gpudetect =~ "GK208B" ]] || [[ $gpudetect =~ "GK208" ]] || [[ $gpudetect =~ "GK20A" ]] || [[ $gpudetect =~ "GK210" ]]; then # NVE0 family (Kepler)
       echo "NVE0 family (Kepler)"
       flag_gpu_found=1
       pacman -S --noconfirm nvidia-470xx-dkms
+      pacman -S --noconfirm nvidia-470xx-settings
    fi
    if [[ $gpudetect =~ "GF100" ]] || [[ $gpudetect =~ "GF108" ]]  || [[ $gpudetect =~ "GF106" ]]  || [[ $gpudetect =~ "GF104" ]]  || [[ $gpudetect =~ "GF110" ]] || [[ $gpudetect =~ "GF114" ]] || [[ $gpudetect =~ "GF116" ]] || [[ $gpudetect =~ "GF117" ]] || [[ $gpudetect =~ "GF119" ]]; then # NVC0 family (Fermi)
       echo "NVC0 family (Fermi)"
       flag_gpu_found=1
       pacman -S --noconfirm nvidia-390xx-dkms
+      pacman -S --noconfirm nvidia-390xx-settings
    fi
    if [[ $gpudetect =~ "G80" ]] || [[ $gpudetect =~ "G84" ]]  || [[ $gpudetect =~ "G86" ]]  || [[ $gpudetect =~ "G92" ]]  || [[ $gpudetect =~ "G94" ]] || [[ $gpudetect =~ "G96" ]] || [[ $gpudetect =~ "G98" ]] || [[ $gpudetect =~ "GT200" ]] || [[ $gpudetect =~ "GT215" ]] || [[ $gpudetect =~ "GT216" ]] || [[ $gpudetect =~ "GT218" ]] || [[ $gpudetect =~ "MCP77" ]] || [[ $gpudetect =~ "MCP78" ]] || [[ $gpudetect =~ "MCP79" ]] || [[ $gpudetect =~ "MCP7A" ]] || [[ $gpudetect =~ "MCP89" ]]; then # NV50 family (Tesla)
       echo "NV50 family (Tesla)"
       flag_gpu_found=1
       pacman -S --noconfirm nvidia-340xx-dkms
+      pacman -S --noconfirm nvidia-340xx-settings
    fi
    if [[ $flag_gpu_found == 0 ]]; then # In case I didn't find any NVIDIA GPU family
       pacman -S --noconfirm nvidia-open-dkms
+      pacman -S --noconfirm nvidia-settings
    fi
-
-   pacman -S --noconfirm nvidia-settings nvidia-utils gwe nvtop
-   pacman -S --noconfirm opencl-nvidia
+   
+   pacman -S --noconfirm opencl-nvidia gwe nvtop
 
    sed -in '/^MODULES*/ s/"$/ nvidia nvidia_modeset nvidia_uvm nvidia_drm"/g' /etc/mkinitcpio.conf
    mkinitcpio -P
