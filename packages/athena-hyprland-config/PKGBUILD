@@ -1,12 +1,12 @@
 pkgname=athena-hyprland-config
 _pkgname=dots-hyprland
-pkgver=307.08b65080
+pkgver=319.63a45de2
 pkgrel=1
 pkgdesc="Hyprland configuration for Athena."
 arch=('any')
 url='https://github.com/end-4/dots-hyprland'
 license=("GPL")
-depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'eww-wayland' 'findutils' 'foot' 'gawk' 'geticons-git' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia' 'ibus' 'imagemagick' 'libinput-gestures' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swaybg' 'swayidle' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi' 'xdg-desktop-portal-hyprland-git')
+depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'eww-wayland' 'findutils' 'foot' 'gawk' 'geticons-git' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia' 'ibus' 'imagemagick' 'libinput-gestures' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swappy' 'swaybg' 'swayidle' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi' 'xdg-desktop-portal-hyprland-git')
 makedepends=('git')
 install='hyprland.install'
 source=("git+https://github.com/end-4/$_pkgname"
