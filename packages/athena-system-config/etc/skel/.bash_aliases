@@ -53,7 +53,6 @@ alias v="vagrant"
 alias d="sudo docker"
 alias biggest="du -h --max-depth=1 | sort -h"
 alias :q="exit"
-alias norg="gron --ungron"
 alias ungron="gron --ungron"
 alias j="jobs"
 alias follow="tail -f -n +1"
@@ -71,7 +70,6 @@ alias cls='clear'
 alias apt-get='sudo apt-get'
 alias multitail='multitail --no-repeat -c'
 alias freshclam='sudo freshclam'
-alias vi='vim'
 alias svi='sudo vi'
 alias train='sl | lolcat'
 alias vis='vim "+set si"'
@@ -88,7 +86,6 @@ alias give-me-qwerty-us="sudo localectl set-x11-keymap us"
 
 #pacman unlock
 alias unlock="sudo rm /var/lib/pacman/db.lck"
-alias rmpacmanlock="sudo rm /var/lib/pacman/db.lck"
 
 #free
 #alias free="free -mt"
@@ -111,7 +108,6 @@ alias pacman='pacman --color auto'
 alias update='sudo pacman -Syyu'
 
 # paru as aur helper - updates everything
-alias pksyua="paru -Syu --noconfirm"
 alias upall="paru -Syu --noconfirm"
 
 #ps
@@ -239,10 +235,8 @@ alias lxorgo="bat /var/log/Xorg.0.log.old"
 #gpg
 #verify signature for isos
 alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
-alias fix-gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 #receive the key of a developer
 alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
-alias fix-gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
 alias fix-keyserver="[ -d ~/.gnupg ] || mkdir ~/.gnupg ; cp /etc/pacman.d/gnupg/gpg.conf ~/.gnupg/ ; echo 'done'"
 
 #fixes
@@ -323,7 +317,6 @@ alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' 
 
 # SHA1
 alias sha1='openssl sha1'
-
 
 alias open='xdg-open'
 
