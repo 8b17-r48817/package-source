@@ -28,8 +28,11 @@ done
 fsdetect=$(lsblk -o FSTYPE)
 
 if [[ $fsdetect =~ "btrfs" ]]; then
-   echo "BTRFS file system detected."
-   pacman -S --noconfirm btrfs-assistant btrfs-progs btrfsmaintenance grub-btrfs
+    echo "BTRFS file system detected."
+    pacman -S --noconfirm btrfs-assistant btrfs-progs btrfsmaintenance grub-btrfs inotify-tools
+    systemctl enable grub-btrfsd.service
+    sed -in '/^HOOKS*/ s/"$/ grub-btrfs-overlayfs"/g' /etc/mkinitcpio.conf
+    mkinitcpio -P
 fi
 
 echo
