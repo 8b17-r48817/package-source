@@ -10,14 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: athenaos/base-devel:latest
-      options: --privileged 
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Install expect
-      run: pacman -Syyu --noconfirm python expect
+    - name: Install dependencies
+      run: sudo pacman -Syyu --noconfirm python expect
 
     - name: Build and sign packages
       run: python build_and_sign_packages.py
