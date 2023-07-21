@@ -1,11 +1,11 @@
 pkgname=mirroars
-pkgver=4.ace9df8
+pkgver=5.58cc895
 pkgrel=1
 pkgdesc="Get the fastest mirrors from all mirrorlists."
 arch=('any')
 url='https://github.com/D3vil0p3r/mirroars'
 license=("GPL3")
-depends=()
+depends=('parallel')
 makedepends=('git')
 source=("git+https://github.com/D3vil0p3r/$pkgname.git")
 sha512sums=('SKIP')
