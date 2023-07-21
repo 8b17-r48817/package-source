@@ -13,7 +13,7 @@ sourcefiles="icons oreo_spark_purple_cursors Sweet-Dark-v40"
 tar -zcvf $pkgname.tar.gz $sourcefiles 
 updpkgsums
 #makepkg -g >> PKGBUILD
-makepkg -f -scr --sign
+makepkg -f -scr --noconfirm
 
 pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
 pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst

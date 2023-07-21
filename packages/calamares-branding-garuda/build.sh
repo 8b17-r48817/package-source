@@ -7,7 +7,7 @@ arch=$(grep "^arch=" PKGBUILD | awk -F"'" '{print $2}')
 #NEED ONLY TO EDIT sourcefiles VARIABLE
 
 updpkgsums
-makepkg -f -scr --sign
+makepkg -f -scr --noconfirm
 
 pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
 pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
