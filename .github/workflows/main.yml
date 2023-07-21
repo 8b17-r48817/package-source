@@ -25,9 +25,14 @@ jobs:
         sudo chmod -R a+rw .
         sudo chown -R builder .
 
+    - uses: oNaiPs/secrets-to-env-action@v1
+      with:
+        secrets: ${{ toJSON(secrets) }}
+        
     - name: Build and sign packages
       run: |
-        export PASSPHRASE=${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
+        echo $PACKAGE_SIGNING_PASSPHRASE
+        export PASSPHRASE="ciao"
         sudo -u builder python build_and_sign_packages.py
 
     - name: Push packages to another repository
