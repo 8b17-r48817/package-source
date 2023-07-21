@@ -34,7 +34,6 @@ jobs:
     
     - name: Install packages
       run: |
-        pacman -Syyu metasploit
         pacman -Syyu mingw-w64-gcc
         pacman -Syyu openssl-1.1
         pacman -Syyu python2
