@@ -34,7 +34,11 @@ jobs:
     
     - name: Install packages
       run: |
-        pacman -Syyu metasploit mingw-w64-gcc openssl-1.1
+        pacman -Syyu metasploit
+        pacman -Syyu mingw-w64-gcc
+        pacman -Syyu openssl-1.1
+        pacman -Syyu python2
+        pacman -Syyu python2-pycryptodome
         
     - name: Set fastest mirrors
       run: |
