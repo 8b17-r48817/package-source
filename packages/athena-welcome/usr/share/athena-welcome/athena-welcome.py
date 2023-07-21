@@ -296,9 +296,9 @@ Do you want to install it?")
         GLib.idle_add(self.button8.set_sensitive, False)
         subprocess.run(["pkexec", "/usr/bin/reflector", "--age", "6", "--connection-timeout", "15", "--download-timeout", "15", "--latest", "21", "--fastest", "21", "--threads", "21", "--sort", "rate", "--protocol", "https", "--save", "/etc/pacman.d/mirrorlist"], shell=False)
         GLib.idle_add(self.cc.set_markup, "<span foreground='orange'><b><i>Updating BlackArch mirrorlist</i></b> \nThis may take around 2 minutes, please wait...</span>")  # noqa
-        subprocess.run(["pkexec", "/usr/local/bin/mirroars", "-n", "21", "-m", "15", "-p", "-t", "-r", "blackarch", "/etc/pacman.d/blackarch-mirrorlist", "-w"], shell=False)
+        subprocess.run(["pkexec", "/usr/local/bin/mirroars", "-n", "21", "-m", "15", "-p", "w", "-t", "-r", "blackarch", "/etc/pacman.d/blackarch-mirrorlist", "-w"], shell=False)
         GLib.idle_add(self.cc.set_markup, "<span foreground='orange'><b><i>Updating Chaotic AUR mirrorlist</i></b> \nThis may take some time, please wait...</span>")  # noqa
-        subprocess.run(["pkexec", "/usr/local/bin/mirroars", "-n", "21", "-m", "15", "-p", "-t", "-r", "chaotic-aur", "/etc/pacman.d/chaotic-mirrorlist", "-w"], shell=False)
+        subprocess.run(["pkexec", "/usr/local/bin/mirroars", "-n", "21", "-m", "15", "-p", "w", "-t", "-r", "chaotic-aur", "/etc/pacman.d/chaotic-mirrorlist", "-w"], shell=False)
         GLib.idle_add(self.cc.set_markup, "<span foreground='orange'><b><i>Running pacman sync...</i></b></span>")  # noqa
         subprocess.run(["pkexec", "/usr/bin/pacman", "-Syy"], shell=False)
         print("FINISHED!!!")

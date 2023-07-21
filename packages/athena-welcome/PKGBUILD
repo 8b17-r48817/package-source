@@ -20,7 +20,6 @@ package() {
   install -Dm755 "${srcdir}/usr/local/bin/hacking-variables" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/role-viewer" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/tool-recipe" "${pkgdir}/usr/local/bin/"
-  install -Dm755 "${srcdir}/usr/local/bin/mirroars" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/athena-upgrade" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/athena-fix" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/calamares-update" "${pkgdir}/usr/local/bin/"
@@ -30,4 +29,4 @@ package() {
   chmod 755 "${pkgdir}/usr/share/athena-welcome/role-tools"
 
 }
-sha512sums=('ec13b5372e38e22bfde479bfe4eaaefc71db4b195d8d3f45058dda7cc63060f9b7a5177387c3458141a23652b814bf1ee408c31ff6e457cf428a9c54c467e48d')
+sha512sums=('1b8d9ba17a83601a65d143944c7ed89a297e35b3e92969ccb408cae5b24111e44970dc981952620be2ce4bc2104bcd8055c81121ed6f6f939499b830aee8453f')
