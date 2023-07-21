@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Install dependencies
-      run: sudo pacman -Syyu --noconfirm pacman-contrib git athena-welcome
+      run: sudo pacman -Syyu --noconfirm pacman-contrib git reflector mirroars
       
     - name: Setting builder user
       run: |
@@ -35,8 +35,8 @@ jobs:
     - name: Build and sign packages
       run: |
         reflector --age 6 --connection-timeout 15 --download-timeout 15 --latest 21 --fastest 21 --threads 21 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
-        mirroars -n 21 -m 15 -p -t -r blackarch /etc/pacman.d/blackarch-mirrorlist
-        mirroars -n 21 -m 15 -p -t -r chaotic-aur /etc/pacman.d/chaotic-mirrorlist
+        mirroars -n 21 -m 15 -p -w -t -r blackarch /etc/pacman.d/blackarch-mirrorlist
+        mirroars -n 21 -m 15 -p -w -t -r chaotic-aur /etc/pacman.d/chaotic-mirrorlist
         export PASSPHRASE=${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
         chmod +x build_and_sign_packages.sh
         chown -R builder ~/.gnupg/
