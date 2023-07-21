@@ -25,19 +25,10 @@ jobs:
         sudo chmod -R a+rw .
         sudo chown -R builder .
 
-    - uses: oNaiPs/secrets-to-env-action@v1
-      with:
-        secrets: ${{ toJSON(secrets) }}
-        
     - name: Build and sign packages
       run: |
-        echo $PACKAGE_SIGNING_PASSPHRASE
-        export PASSPHRASE="ciao"
-        python -c "import os;print(os.getenv('PASSPHRASE'))"
-        python -c "import os;print(os.getenv('HOME'))"
-        sudo -E -u builder python -c "import os;print(os.getenv('PASSPHRASE'))"
-        sudo -u builder python -c "import os;print(os.getenv('HOME'))"
-        sudo -u builder python build_and_sign_packages.py
+        echo "PASSPHRASE=${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}" >> $GITHUB_ENV
+        sudo -E -u builder python build_and_sign_packages.py
 
     - name: Push packages to another repository
       run: |
