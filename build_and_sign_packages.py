@@ -22,7 +22,7 @@ def build_and_sign_packages(pkg_dirs):
         if passphrase:
             # Use 'expect' to automate passphrase entry for makepkg
             expect_script = f'''
-                spawn makepkg -sri --skippgpcheck
+                spawn makepkg -sr --sign
                 expect "Enter passphrase for key" {{ send "{passphrase}\\n" }}
                 expect eof
             '''
