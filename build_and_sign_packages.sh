@@ -29,7 +29,8 @@ build_and_sign_packages() {
         passphrase="$PASSPHRASE"
         if [ -n "$passphrase" ]; then
             # Use 'expect' to automate passphrase entry for makepkg
-            echo $passphrase | gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $pkgfile.sig $pkgfile
+            echo "$(whoami)"
+            echo $passphrase | sudo -E -u builder gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $pkgfile.sig $pkgfile
         else
             echo "Error: 'PASSPHRASE' environment variable not set."
             break
