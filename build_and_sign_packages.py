@@ -17,24 +17,10 @@ def find_pkgbuild_dirs(root_path):
 def build_and_sign_packages(pkg_dirs):
     for pkg_dir in pkg_dirs:
         print(f"\nBuilding and signing packages in {pkg_dir}...")
-
-        passphrase = os.getenv("PASSPHRASE")
-        if passphrase:
-            # Use 'expect' to automate passphrase entry for makepkg
-            expect_script = f'''
-                spawn makepkg -sr --sign
-                expect "Enter passphrase for key" {{ send "{passphrase}\\n" }}
-                expect eof
-            '''
-
-            try:
-                subprocess.run(["expect", "-c", expect_script], cwd=pkg_dir, check=True)
-            except subprocess.CalledProcessError as e:
-                print(f"Error building packages in {pkg_dir}: {e}")
-                continue
-        else:
-            print("Error: 'PASSPHRASE' environment variable not set.")
-            break
+        
+        subprocess.run(["updpkgsums"], cwd=pkg_dir, check=True)
+        subprocess.run(["makepkg", "-f", "-scr", "--sign"], cwd=pkg_dir, check=True)
+        
 
         # Move the generated files to the script's directory
         for file in pkg_dir.glob("*.pkg.tar.zst"):
