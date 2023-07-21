@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Install dependencies
-      run: sudo pacman -Syyu --noconfirm pacman-contrib python expect git
+      run: sudo pacman -Syyu --noconfirm pacman-contrib expect git
       
     - name: Setting builder user
       run: |
@@ -34,7 +34,8 @@ jobs:
 
     - name: Build and sign packages
       run: |
-        sudo -E -u builder python build_and_sign_packages.py
+        export PASSPHRASE=${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
+        sudo -E -u builder ./build_and_sign_packages.sh
 
     - name: Push packages to another repository
       run: |
