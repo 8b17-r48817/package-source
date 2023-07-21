@@ -28,7 +28,9 @@ jobs:
     - name: Build and sign packages
       env:
         PASSPHRASE: ${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
-      run: sudo -u builder python build_and_sign_packages.py
+      run: |
+        PASSPHRASE=${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
+        sudo -u builder python build_and_sign_packages.py
 
     - name: Push packages to another repository
       run: |
