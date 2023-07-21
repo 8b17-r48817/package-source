@@ -56,7 +56,7 @@ echo
 echo "Finding fastest Arch mirrors. Don't be scared of any WARNING message here. I'm just finding the fastest mirrors for you..."
 echo
 sudo reflector --age 6 --latest 21 --fastest 21 --threads 21 --sort rate --protocol https --save /etc/pacman.d/mirrorlist 2> /dev/null
-sudo pacman -Syyu
+sudo pacman -Syyu archlinux-keyring blackarch-mirrorlist blackarch-keyring chaotic-keyring athena-keyring athena-mirrorlist
 
 echo "Directories containing PKGBUILD found:"
 printf '%s\n' "${pkg_dirs[@]}"
