@@ -28,7 +28,7 @@ build_and_sign_packages() {
         pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
         pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
 
-        makepkg -f -scr
+        makepkg -f -scr --noconfirm
         passphrase="$PASSPHRASE"
         if [ -n "$passphrase" ]; then
             echo $passphrase | sudo -E -u builder gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $pkgfile.sig $pkgfile
