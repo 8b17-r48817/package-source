@@ -37,4 +37,4 @@ jobs:
         ./update-database.sh
         git add --all
         git commit -m "Add built packages"
-        git push https://$GITHUB_ACTOR:${{ secrets.DESTINATION_REPO_TOKEN }}@github.com/yourusername/destination-repo.git main
+        git push https://D3vil0p3r:${{ secrets.DESTINATION_REPO_TOKEN }}@github.com/Athena-OS/athena-repository-dev.git main
