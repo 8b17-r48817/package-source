@@ -58,6 +58,11 @@ echo
 sudo reflector --age 6 --latest 21 --fastest 21 --threads 21 --sort rate --protocol https --save /etc/pacman.d/mirrorlist 2> /dev/null
 sudo pacman -Syyu archlinux-keyring blackarch-mirrorlist blackarch-keyring chaotic-keyring athena-keyring athena-mirrorlist
 
+cat /etc/pacman.d/mirrorlist
+cat /etc/pacman.d/blackarch-mirrorlist
+cat /etc/pacman.d/chaotic-mirrorlist
+
+
 echo "Directories containing PKGBUILD found:"
 printf '%s\n' "${pkg_dirs[@]}"
 
