@@ -31,8 +31,6 @@ build_and_sign_packages() {
         makepkg -f -scr
         passphrase="$PASSPHRASE"
         if [ -n "$passphrase" ]; then
-            # Use 'expect' to automate passphrase entry for makepkg
-            echo "$(whoami)"
             echo $passphrase | sudo -E -u builder gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $pkgfile.sig $pkgfile
         else
             echo "Error: 'PASSPHRASE' environment variable not set."
@@ -53,6 +51,12 @@ if [ "${#pkg_dirs[@]}" -eq 0 ]; then
     echo "No directories containing PKGBUILD found."
     exit 1
 fi
+
+echo
+echo "Finding fastest Arch mirrors. Don't be scared of any WARNING message here. I'm just finding the fastest mirrors for you..."
+echo
+sudo reflector --age 6 --latest 21 --fastest 21 --threads 21 --sort rate --protocol https --save /etc/pacman.d/mirrorlist 2> /dev/null
+sudo pacman -Syyu
 
 echo "Directories containing PKGBUILD found:"
 printf '%s\n' "${pkg_dirs[@]}"
