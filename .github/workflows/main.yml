@@ -21,7 +21,7 @@ jobs:
       
     - name: Install packages
       run: |
-        sudo pacman -Syyu metasploit
+        pacman -Syyu metasploit
       
     - name: Setting builder user
       run: |
