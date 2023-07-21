@@ -15,7 +15,6 @@ find_pkgbuild_dirs() {
 
 # Function to build and sign packages
 build_and_sign_packages() {
-    src_dir=$(pwd)
     for pkg_dir in "${pkg_dirs[@]}"; do
         echo -e "\nBuilding and signing packages in $pkg_dir..."
         current_dir=$(dirname $pkg_dir)
@@ -37,12 +36,16 @@ build_and_sign_packages() {
             break
         fi
 
-        cd $src_dir
+        mv $pkgfile.sig $pkgfile $src_dir
+        
+        cd $root_path
     done
 }
 
 # Set the root path from which to start the search
-root_path="./"
+root_path="./packages/redneuron/"
+# src_dir is package_source dir
+src_dir="$(pwd)" 
 
 # Find directories containing PKGBUILD files
 pkg_dirs=($(find_pkgbuild_dirs "$root_path"))
@@ -51,11 +54,6 @@ if [ "${#pkg_dirs[@]}" -eq 0 ]; then
     echo "No directories containing PKGBUILD found."
     exit 1
 fi
-
-cat /etc/pacman.d/mirrorlist
-cat /etc/pacman.d/blackarch-mirrorlist
-cat /etc/pacman.d/chaotic-mirrorlist
-
 
 echo "Directories containing PKGBUILD found:"
 printf '%s\n' "${pkg_dirs[@]}"
