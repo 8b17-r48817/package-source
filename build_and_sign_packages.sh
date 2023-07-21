@@ -17,8 +17,8 @@ find_pkgbuild_dirs() {
 build_and_sign_packages() {
     for pkg_dir in "${pkg_dirs[@]}"; do
         echo -e "\nBuilding and signing packages in $pkg_dir..."
-        ls
-        echo $(ls)
+        pwd
+        echo $(pwd)
         updpkgsums
         pkgname=$(grep "^pkgname=" $pkg_dir | awk -F"=" '{print $2}')
         pkgrel=$(grep "^pkgrel=" $pkg_dir | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}')
