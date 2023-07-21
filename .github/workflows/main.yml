@@ -8,18 +8,16 @@ on:
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
+    container:
+      image: athenaos/base-devel:latest
+      options: --privileged 
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Install Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
+      uses: actions/checkout@v3
 
     - name: Install expect
-      run: sudo apt-get install -y expect
+      run: pacman -Syyu --noconfirm python expect
 
     - name: Build and sign packages
       run: python build_and_sign_packages.py
