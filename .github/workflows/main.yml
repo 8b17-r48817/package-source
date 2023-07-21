@@ -10,7 +10,7 @@ jobs:
   build_and_push:
     runs-on: ubuntu-latest
     container:
-      image: athenaos/base-devel:latest
+      image: athenaos/core:latest
 
     steps:
     - name: Checkout repository
