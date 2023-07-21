@@ -19,7 +19,7 @@ jobs:
         python-version: '3.x'
 
     - name: Install expect
-      run: pacman -Syyu --noconfirm expect
+      run: apt-get install -y expect
 
     - name: Build and sign packages
       run: python build_and_sign_packages.py
