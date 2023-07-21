@@ -25,5 +25,9 @@ jobs:
     - name: Build and sign packages
       run: |
         echo "PASSPHRASE=${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}" >> $GITHUB_ENV
+        echo "WE=1" >> $GITHUB_ENV
     - name: Test
-      run: echo $PASSPHRASE
+      run: |
+        echo $WE
+        echo $PASSPHRASE
+        echo $GITHUB_ENV
