@@ -42,10 +42,11 @@ build_and_sign_packages() {
     done
 }
 
-# Set the root path from which to start the search
-root_path="./packages/redneuron/"
 # src_dir is package_source dir
 src_dir="$(pwd)" 
+
+# Set the root path from which to start the search
+root_path="$src_dir/packages/redneuron/"
 
 # Find directories containing PKGBUILD files
 pkg_dirs=($(find_pkgbuild_dirs "$root_path"))
