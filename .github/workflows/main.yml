@@ -31,16 +31,16 @@ jobs:
       with:
         gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
         passphrase: ${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
-
+    
+    - name: Install packages
+      run: |
+        pacman -Syyu metasploit mingw-w64-gcc openssl-1.1
+        
     - name: Set fastest mirrors
       run: |
         reflector --age 6 --connection-timeout 15 --download-timeout 15 --latest 21 --fastest 21 --threads 21 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
         mirroars -n 21 -m 15 -p -w -t -r blackarch /etc/pacman.d/blackarch-mirrorlist
         mirroars -n 21 -m 15 -p -w -t -r chaotic-aur /etc/pacman.d/chaotic-mirrorlist
-    
-    - name: Install packages
-      run: |
-        pacman -Syyu metasploit mingw-w64-gcc openssl-1.1 python2 python2-pycryptodome
         
     - name: Build and sign packages
       run: |
