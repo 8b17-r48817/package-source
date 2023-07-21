@@ -4,7 +4,7 @@ pkgrel=6
 pkgdesc="Welcome App for Athena."
 arch=('any')
 license=("custom")
-depends=('libwnck3' 'parallel' 'reflector' 'rsync')
+depends=('libwnck3' 'mirroars' 'parallel' 'reflector' 'rsync')
 source=("$pkgname.tar.gz")
 
 package() {

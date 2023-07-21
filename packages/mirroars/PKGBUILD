@@ -1,12 +1,11 @@
-pkgname=nist-feed
-pkgver=11.f481d2f
+pkgname=mirroars
+pkgver=4.ace9df8
 pkgrel=1
-pkgdesc="NIST NVD feed and popup notifications."
+pkgdesc="Get the fastest mirrors from all mirrorlists."
 arch=('any')
-url='https://github.com/D3vil0p3r/NIST-Feed'
+url='https://github.com/D3vil0p3r/mirroars'
 license=("GPL3")
-install=nist-feed.install
-depends=('cron' 'dunst')
+depends=()
 makedepends=('git')
 source=("git+https://github.com/D3vil0p3r/$pkgname.git")
 sha512sums=('SKIP')
@@ -21,10 +20,8 @@ package() {
   cd $pkgname
 
   install -dm 755 "$pkgdir/usr/bin"
-  install -dm 755 "$pkgdir/usr/share/pixmaps"
   install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
 
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm 644 icons/cve.png "$pkgdir/usr/share/pixmaps/"
-  install -Dm 755 "nist-feed" "$pkgdir/usr/bin/"
+  install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
 }
