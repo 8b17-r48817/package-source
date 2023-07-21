@@ -14,21 +14,22 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Install dependencies
-      run: sudo pacman -Syyu --noconfirm pacman-contrib git reflector mirroars
-      
-    - name: Install packages
-      run: |
-        pacman -Syyu metasploit
+      run: pacman -Syyu --noconfirm pacman-contrib git reflector mirroars
       
     - name: Setting builder user
       run: |
-        sudo useradd builder
-        echo "builder ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
-        sudo chmod -R a+rw .
-        sudo chown -R builder .
+        useradd -m -d /src -G wheel -g users builder -s /bin/bash
+        echo "builder ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
+        echo "root ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
+        chmod -R a+rw .
+        chown -R builder .
+        
+    - name: Install packages
+      run: |
+        pacman -Syyu metasploit
         
     - name: Import GPG key
       uses: crazy-max/ghaction-import-gpg@v5
