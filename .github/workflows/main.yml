@@ -27,10 +27,6 @@ jobs:
         chmod -R a+rw .
         chown -R builder .
         
-    - name: Install packages
-      run: |
-        pacman -Syyu metasploit
-        
     - name: Import GPG key
       uses: crazy-max/ghaction-import-gpg@v5
       with:
