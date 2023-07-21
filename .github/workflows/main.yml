@@ -23,8 +23,6 @@ jobs:
       run: |
         sudo useradd builder
         echo "builder ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
-        sudo chmod -R a+rw .
-        sudo chown -R builder .
         
     - name: Install packages
       run: |
