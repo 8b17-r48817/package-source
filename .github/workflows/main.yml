@@ -26,11 +26,9 @@ jobs:
         sudo chown -R builder .
 
     - name: Build and sign packages
-      run: |
-        echo "PASSPHRASE=${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}" >> $GITHUB_ENV
-        sudo -u builder echo $PASSPHRASE
-        echo $PASSPHRASE
-        sudo -u builder python build_and_sign_packages.py
+      run: sudo -u builder python build_and_sign_packages.py
+      env:
+        PASSPHRASE: ${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
 
     - name: Push packages to another repository
       run: |
