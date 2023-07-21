@@ -52,10 +52,6 @@ if [ "${#pkg_dirs[@]}" -eq 0 ]; then
     exit 1
 fi
 
-echo
-echo "Finding fastest Arch mirrors. Don't be scared of any WARNING message here. I'm just finding the fastest mirrors for you..."
-echo
-
 cat /etc/pacman.d/mirrorlist
 cat /etc/pacman.d/blackarch-mirrorlist
 cat /etc/pacman.d/chaotic-mirrorlist
