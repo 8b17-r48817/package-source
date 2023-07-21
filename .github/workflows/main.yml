@@ -24,10 +24,15 @@ jobs:
         echo "builder ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
         sudo chmod -R a+rw .
         sudo chown -R builder .
+        
+    - name: Import GPG key
+      uses: crazy-max/ghaction-import-gpg@v5
+      with:
+        gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+        passphrase: ${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
 
     - name: Build and sign packages
       run: |
-        export PASSPHRASE=${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
         sudo -E -u builder python build_and_sign_packages.py
 
     - name: Push packages to another repository
