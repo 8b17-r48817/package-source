@@ -27,7 +27,8 @@ jobs:
 
     - name: Build and sign packages
       run: |
-        echo "PASSPHRASE=${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}" >> $GITHUB_ENV
+        export PASSPHRASE=${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
+        sudo -u builder python -c "import os;print(os.getenv('PASSPHRASE'))"
         sudo -E -u builder python build_and_sign_packages.py
 
     - name: Push packages to another repository
