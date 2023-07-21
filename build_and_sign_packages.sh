@@ -22,10 +22,10 @@ build_and_sign_packages() {
         cd $current_dir
 
         updpkgsums
-        pkgname=$(grep "^pkgname=" $pkg_dir | awk -F"=" '{print $2}')
-        pkgrel=$(grep "^pkgrel=" $pkg_dir | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}')
-        arch=$(grep "^arch=" $pkg_dir | awk -F"'" '{print $2}')
-        pkgver=$(grep "^pkgver=" $pkg_dir | awk -F"=" '{print $2}')
+        pkgname=$(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}')
+        pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}')
+        arch=$(grep "^arch=" PKGBUILD | awk -F"'" '{print $2}')
+        pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
         pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
 
         makepkg -f -scr
