@@ -14,9 +14,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-
-    - name: Install dependencies
-      run: sudo pacman -Syyu --noconfirm python expect git
       
     - name: Setting builder user
       run: |
@@ -28,17 +25,5 @@ jobs:
     - name: Build and sign packages
       run: |
         echo "PASSPHRASE=${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}" >> $GITHUB_ENV
-        sudo -u builder python build_and_sign_packages.py
-
-    - name: Push packages to another repository
-      run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-        git clone https://github.com/Athena-OS/athena-repository-dev.git
-        cd athena-repository-dev
-        cp -rf ../*.pkg.tar.zst* ./x86_64/
-        cp -rf ../*.pkg.tar.zst* ./aarch64/
-        ./update-database.sh
-        git add --all
-        git commit -m "Add built packages"
-        git push https://D3vil0p3r:${{ secrets.DESTINATION_REPO_TOKEN }}@github.com/Athena-OS/athena-repository-dev.git main
+    - name: Test
+      run: echo $PASSPHRASE
