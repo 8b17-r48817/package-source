@@ -32,7 +32,7 @@ jobs:
     - name: Build and sign packages
       run: |
         echo $PACKAGE_SIGNING_PASSPHRASE
-        export PASSPHRASE="ciao"
+        sudo -u builder export PASSPHRASE="ciao"
         python -c "import os;print(os.getenv('PASSPHRASE'))"
         python -c "import os;print(os.getenv('HOME'))"
         sudo -u builder python -c "import os;print(os.getenv('PASSPHRASE'))"
