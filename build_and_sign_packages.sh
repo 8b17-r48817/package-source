@@ -7,7 +7,9 @@ find_pkgbuild_dirs() {
 
     # Recursively traverse the root path and look for "PKGBUILD" files in each directory.
     while IFS= read -r -d '' path; do
-        pkg_dirs+=("$path")
+        if [[ ! $path == *"metapackages"* ]]; then
+            pkg_dirs+=("$path")
+        fi
     done < <(find "$root_path" -type f -name "PKGBUILD" -print0)
 
     echo "${pkg_dirs[@]}"
@@ -46,7 +48,7 @@ build_and_sign_packages() {
 src_dir="$(pwd)" 
 
 # Set the root path from which to start the search
-root_path="$src_dir/packages/redneuron/"
+root_path="$src_dir/packages/athena-fish/"
 
 # Find directories containing PKGBUILD files
 pkg_dirs=($(find_pkgbuild_dirs "$root_path"))
