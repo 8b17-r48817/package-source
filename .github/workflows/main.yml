@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Install dependencies
-      run: sudo pacman -Syyu --noconfirm pacman-contrib git reflector mirroars
+      run: sudo pacman -Syyu --noconfirm pacman-contrib git reflector mirroars metasploit
       
     - name: Setting builder user
       run: |
@@ -34,7 +34,7 @@ jobs:
     
     - name: Install packages
       run: |
-        pacman -Syyu mingw-w64-gcc
+        pacman -Syyu metasploit
         
     - name: Set fastest mirrors
       run: |
