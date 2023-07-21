@@ -1,0 +1,40 @@
+name: Build and Push Packages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install expect
+      run: pacman -Syyu --noconfirm expect
+
+    - name: Build and sign packages
+      run: python build_and_sign_packages.py
+      env:
+        PASSPHRASE: ${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
+
+    - name: Push packages to another repository
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git clone https://github.com/Athena-OS/athena-repository-dev.git
+        cd athena-repository-dev
+        cp -rf ../*.pkg.tar.zst* ./x86_64/
+        cp -rf ../*.pkg.tar.zst* ./aarch64/
+        ./update-database.sh
+        git add --all
+        git commit -m "Add built packages"
+        git push https://$GITHUB_ACTOR:${{ secrets.DESTINATION_REPO_TOKEN }}@github.com/yourusername/destination-repo.git main
