@@ -15,10 +15,12 @@ find_pkgbuild_dirs() {
 
 # Function to build and sign packages
 build_and_sign_packages() {
+    src_dir=$(pwd)
     for pkg_dir in "${pkg_dirs[@]}"; do
         echo -e "\nBuilding and signing packages in $pkg_dir..."
-        pwd
-        echo $(pwd)
+        current_dir=$(dirname $pkg_dir)
+        cd $current_dir
+
         updpkgsums
         pkgname=$(grep "^pkgname=" $pkg_dir | awk -F"=" '{print $2}')
         pkgrel=$(grep "^pkgrel=" $pkg_dir | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}')
@@ -36,6 +38,8 @@ build_and_sign_packages() {
             echo "Error: 'PASSPHRASE' environment variable not set."
             break
         fi
+
+        cd $src_dir
     done
 }
 
