@@ -11,4 +11,3 @@ pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
 pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
 rm -rf $pkgname.zip src $pkgname
 
-mv $pkgfile $pkgfile.sig ../../

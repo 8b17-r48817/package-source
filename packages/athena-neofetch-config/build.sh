@@ -14,4 +14,3 @@ pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
 pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
 rm -rf src pkg neofetch-themes
 
-mv $pkgfile $pkgfile.sig ../../

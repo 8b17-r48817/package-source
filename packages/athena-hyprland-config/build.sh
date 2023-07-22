@@ -16,4 +16,3 @@ pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
 pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
 rm -rf src pkg $pkgname dots-hyprland 
 
-mv $pkgfile $pkgfile.sig ../../

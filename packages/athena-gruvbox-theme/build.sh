@@ -19,4 +19,3 @@ pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
 pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
 rm -rf src pkg $pkgname.tar.gz Gruvbox-GTK-Theme Fuchsia-Pop.tar.gz rtl88-Themes
 
-mv $pkgfile $pkgfile.sig ../../

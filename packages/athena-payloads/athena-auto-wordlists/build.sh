@@ -12,6 +12,5 @@ makepkg -f -scr --noconfirm
 
 pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
 pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
-rm -rf $_pkgname ../../../$pkgfile ../../../$pkgfile.sig
+rm -rf $_pkgname
 
-mv $pkgfile $pkgfile.sig ../../../

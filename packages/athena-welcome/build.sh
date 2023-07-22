@@ -19,4 +19,3 @@ pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
 pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
 rm -rf src pkg $pkgname.tar.gz usr/share/athena-welcome/__pycache__
 
-mv $pkgfile $pkgfile.sig ../../

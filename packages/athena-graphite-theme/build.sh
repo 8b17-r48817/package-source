@@ -19,4 +19,3 @@ pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
 pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
 rm -rf src pkg $pkgname.tar.gz Bibata-Modern-Ice.tar.gz Graphite-gtk-theme Tela-circle-icon-theme
 
-mv $pkgfile $pkgfile.sig ../../
