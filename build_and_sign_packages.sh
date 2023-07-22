@@ -39,7 +39,7 @@ build_and_sign_packages() {
             break
         fi
 
-        mv $pkgfile ../../$pkgfile.sig $src_dir
+        mv $pkgfile $pkgfile.sig $src_dir
         cd $root_path
     done
 }
