@@ -39,7 +39,10 @@ build_and_sign_packages() {
             break
         fi
 
+        echo -e "Moving $pkgfile $pkgfile.sig to $src_dir"
+        ls -la
         mv $pkgfile $pkgfile.sig $src_dir
+        ls -la $src_dir
         cd $root_path
     done
 }
