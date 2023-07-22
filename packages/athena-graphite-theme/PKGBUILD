@@ -4,7 +4,8 @@ pkgrel=1
 pkgdesc="Graphite Dark theme with Tela Circle Black Dark icons for Athena."
 arch=('any')
 license=("GPL3")
-makedepends=('git' 'sassc')
+depends=('gtk-update-icon-cache')
+makedepends=('git' 'gnome-shell' 'sassc')
 source=("git+https://github.com/vinceliuice/Graphite-gtk-theme.git"
         "git+https://github.com/vinceliuice/Tela-circle-icon-theme.git"
         "https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Ice.tar.gz"
