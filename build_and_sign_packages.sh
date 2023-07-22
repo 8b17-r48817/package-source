@@ -22,16 +22,15 @@ build_and_sign_packages() {
         current_dir=$(dirname $pkg_dir)
         cd $current_dir
 
-        #updpkgsums
+        #makepkg -f -scr --noconfirm
+
+        ./build.sh
         pkgname=$(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}')
         pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}')
         arch=$(grep "^arch=" PKGBUILD | awk -F"'" '{print $2}')
         pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
         pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
-
-        #makepkg -f -scr --noconfirm
-
-        ./build.sh
+        
         passphrase="$PASSPHRASE"
         if [ -n "$passphrase" ]; then
             echo $passphrase | sudo -E -u builder gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $pkgfile.sig $pkgfile
