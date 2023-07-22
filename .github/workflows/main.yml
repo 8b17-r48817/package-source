@@ -32,11 +32,11 @@ jobs:
         gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
         passphrase: ${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
         
-    - name: Set fastest mirrors
-      run: |
-        reflector --age 6 --connection-timeout 15 --download-timeout 15 --latest 21 --fastest 21 --threads 21 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
-        mirroars -n 21 -m 15 -p -w -t -r blackarch /etc/pacman.d/blackarch-mirrorlist
-        mirroars -n 21 -m 15 -p -w -t -r chaotic-aur /etc/pacman.d/chaotic-mirrorlist
+    #- name: Set fastest mirrors
+      #run: |
+        #reflector --age 6 --connection-timeout 15 --download-timeout 15 --latest 21 --fastest 21 --threads 21 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
+        #mirroars -n 21 -m 15 -p -w -t -r blackarch /etc/pacman.d/blackarch-mirrorlist
+        #mirroars -n 21 -m 15 -p -w -t -r chaotic-aur /etc/pacman.d/chaotic-mirrorlist
         
     - name: Build and sign packages
       run: |
