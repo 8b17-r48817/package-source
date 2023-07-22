@@ -6,7 +6,7 @@ arch=$(grep "^arch=" PKGBUILD | awk -F"'" '{print $2}')
 
 #NEED ONLY TO EDIT  sourcefiles VARIABLE
 
-sourcefiles="usr"
+sourcefiles="wallpapers logos"
 
 #sed -i -e '/^sha256/d' -e '/^sha512/d' PKGBUILD
 
@@ -17,7 +17,5 @@ makepkg -f -scr --noconfirm
 
 pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
 pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
-rm -rf src pkg *.tar.gz
-rm -rf ../../$pkgfile ../../$pkgfile.sig
+rm -rf src pkg *.tar.gz Aether
 
-mv $pkgfile $pkgfile.sig ../../

@@ -1,8 +1,8 @@
 # Maintainer: Noi Sek <noi.t.sek | gmail>
 
 pkgname=athena-lightdm-webkit-theme-aether
-pkgver=2.2.2
-pkgrel=3
+pkgver=156.7680230
+pkgrel=1
 pkgdesc="A sleek, customizable Archlinux theme for lightdm."
 arch=('any')
 url="https://github.com/NoiSek/Aether"
@@ -11,14 +11,23 @@ depends=('accountsservice' 'lightdm' 'lightdm-webkit2-greeter' 'plymouth' 'ttf-o
 install='lightdm-webkit-theme-aether.install'
 changelog='changelog.txt'
 #source=("https://github.com/NoiSek/Aether/archive/v$pkgver.tar.gz")
-source=("$pkgname.tar.gz"
+source=("git+https://github.com/NoiSek/Aether.git"
+        "$pkgname.tar.gz"
         "watermark-athena.png")
-sha512sums=('03c8b64efd86e85603b5820398e975f90e4725c36455340a09e17507b5e255874d6ed7c325d07578867fac952fcde3ffb7f4b392800c2c26265ca50bbfbbe214'
+sha512sums=('SKIP'
+            '7192b307131f4c09f47acbba3200645b578174331270ae4e6de57b58bed406f03efb00947b767905247ec54fc359f1d59f6211e8ea559a4bb9713f9b81570dfb'
             'da75e735195e7831af7f482a04a89c20bb84b432dad08ea182214e536c560b7da6436313843f0c4a1f8a3d446660e18ff1a5126f3faa297fe370f0e8c9e503c9')
 
-package() {
-  mkdir -p "${pkgdir}/usr/share/lightdm-webkit/themes"
+pkgver() {
+  cd Aether
 
-  cp -rf "${srcdir}/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether" "${pkgdir}/usr/share/lightdm-webkit/themes/"
-  install -Dm 644 "${srcdir}/watermark-athena.png" "${pkgdir}/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/"
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  mkdir -p "${pkgdir}/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether"
+
+  cp -rf "Aether/src" "${pkgdir}/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/"
+  cp -rf "wallpapers" "logos" "${pkgdir}/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/"
+  install -Dm 644 "watermark-athena.png" "${pkgdir}/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/"
 }
