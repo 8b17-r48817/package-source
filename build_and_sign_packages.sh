@@ -48,7 +48,7 @@ build_and_sign_packages() {
 src_dir="$(pwd)" 
 
 # Set the root path from which to start the search
-root_path="$src_dir/packages/athena-fish/"
+root_path="$src_dir/packages/"
 
 # Find directories containing PKGBUILD files
 pkg_dirs=($(find_pkgbuild_dirs "$root_path"))
