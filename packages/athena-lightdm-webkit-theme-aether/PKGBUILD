@@ -15,7 +15,7 @@ source=("git+https://github.com/NoiSek/Aether.git"
         "$pkgname.tar.gz"
         "watermark-athena.png")
 sha512sums=('SKIP'
-            '7192b307131f4c09f47acbba3200645b578174331270ae4e6de57b58bed406f03efb00947b767905247ec54fc359f1d59f6211e8ea559a4bb9713f9b81570dfb'
+            '5c192622712adf2ade251899de6336e97c1973d62b33c6b21b982254ac469e2c863d9b30a90182147b738fb3c3ea066aa19685ef3d45d3a72f204c09e0e7dff9'
             'da75e735195e7831af7f482a04a89c20bb84b432dad08ea182214e536c560b7da6436313843f0c4a1f8a3d446660e18ff1a5126f3faa297fe370f0e8c9e503c9')
 
 pkgver() {
@@ -25,9 +25,9 @@ pkgver() {
 }
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether"
+  mkdir -p "$pkgdir/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether"
 
-  cp -rf "Aether/src" "${pkgdir}/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/"
-  cp -rf "wallpapers" "logos" "${pkgdir}/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/"
-  install -Dm 644 "watermark-athena.png" "${pkgdir}/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/"
+  cp -rf Aether/* "$pkgdir/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/"
+  cp -rf "wallpapers" "logos" "$pkgdir/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/"
+  install -Dm 644 "watermark-athena.png" "$pkgdir/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/"
 }
