@@ -339,8 +339,14 @@ else
             exit 1
         fi
 
+        machine_ip=""
+        echo "Waiting for IP address to be assigned to the target machine. It will take around 1 minute..."
         sleep 5
-        machine_ip=$(curl -s --location --request GET "https://www.hackthebox.com/api/v4/machine/profile/$machine_name" -H "Authorization: Bearer $appkey" | jq '.info.ip' | tr -d '"') #Using the curl command instead of reading $machine_json_file because we get the IP address only AFTER the machine is run
+        
+        while [ -z "$machine_ip" ] || [ "$machine_ip" == "null" ]; do            
+            sleep 30 #Too many API requests could be blocked, so we sleep for 30 seconds.
+            machine_ip=$(curl -s --location --request GET "https://www.hackthebox.com/api/v4/machine/profile/$machine_name" -H "Authorization: Bearer $appkey" | jq '.info.ip' | tr -d '"') #Using the curl command instead of reading $machine_json_file because we get the IP address only AFTER the machine is run
+        done 
         
         printf '%b\n' "$(base64 -d <<<"H4sIAAAAAAAAA+1buw6DMAzc+xVZWlUoSlCZqn5K+wv8/9oHUgkQIEBCDtueqlOHi+/imICVihunsL+9yqp6lo/7rb42P+t1iB1CcVjqWAzxkW3ZCtJEkH0QvU5GtGWkQ8wnyG5tu0h5g0Y/XhqME2jsEno7RHmyxVkbT9Bdbl9sV2g0rnsiymeDf9At/cZjBTSSCXfDbHx9wSghXSsQOQTnVW6jQCO/RUdaMkbLTYgP0EiLnagjU7Yk239wtbXl1FQMEd00Vp1GC41jXiT3CZRva2g5gJ2bKNbbomhysOtlTHbjE3oKWYcwb3ecM5Gf8dmXfnyk17gx9aih/JJgiBSeh1K+ygNUqZHbAtFENBFNRBPRRDQRTUSTuJoc8jLKl0VhFN8bZzR66RAs8Tp2UnQvz6zuGu4XZJ/BC0R/oSUpHeJ+ET/4GJbR9bxCEL4hccjuY7v7vA48bDe2DjG5t5yhO9hlLx5rjc/8kD1wBVncoox5ZHpMUhyUsYxNRMAILtp6otXA0RG4BcnZ4O3J+cuWwxtaDodVdT0AAA==" | gunzip)" #User printf for colored output
         echo

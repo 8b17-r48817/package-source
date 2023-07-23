@@ -1,6 +1,6 @@
 pkgname=htb-tools
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Hack The Box tools."
 arch=('any')
 license=("custom")
@@ -47,4 +47,4 @@ EOF
   
   chmod a+x "${pkgdir}/usr/local/bin/htb-update"
 }
-sha512sums=('c98c6babd073d4c923fac79c91bb1579f2a2ae9132c73d61ecc097fb19e181cb7d3714b1886c79503012638f7879fb72b669ba3b6d3cdb6ea648e99f4e095ed1')
+sha512sums=('b62e658e87cda375ad174e23637e07f5f3db3868aa9d9088b35cf4aa2f0aa91b989dbb44bcd077bd04cf0583a2104e33e8cf11d750f6cd5f78af16c5149d9a10')
