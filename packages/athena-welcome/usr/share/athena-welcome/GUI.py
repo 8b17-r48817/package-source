@@ -202,14 +202,14 @@ def GUI(self, Gtk, GdkPixbuf):
 
     btnonlinstall = Gtk.Button(label="")
     btnonlinstall_label = btnonlinstall.get_child()
-    btnonlinstall_label.set_markup("<span size='large'><b>Online Install</b></span>")
+    btnonlinstall_label.set_markup("<span size='large'><b>Advanced Installation (Online)</b></span>")
 
     btnonlinstall.connect("clicked", self.on_aica_clicked)
     btnonlinstall.set_size_request(0, 50)
 
     btnofflinstall = Gtk.Button(label="")
     btnofflinstall_label = btnofflinstall.get_child()
-    btnofflinstall_label.set_markup("<span size='large'><b>Offline Install</b></span>")
+    btnofflinstall_label.set_markup("<span size='large'><b>Easy Installation (Offline)</b></span>")
 
     btnofflinstall.connect("clicked", self.on_offline_clicked)
     btnofflinstall.set_size_request(0, 50)
