@@ -5,6 +5,7 @@ sudo sed -i "/mirror.osbeck.com/d" /etc/pacman.d/mirrorlist
 sudo sed -i "/geo.mirror.pkgbuild.com/d" /etc/pacman.d/mirrorlist
 sudo sed -i "/mirror.rackspace.com/d" /etc/pacman.d/mirrorlist
 sudo sed -i "/mirror.leaseweb.net/d" /etc/pacman.d/mirrorlist
+sudo sed -i "/mirror.theo546.fr/d" /etc/pacman.d/mirrorlist
 sudo sed -i "s/#Server/Server/g" /etc/pacman.d/blackarch-mirrorlist
 sudo sed -i "/mirrors.fosshost.org/d" /etc/pacman.d/blackarch-mirrorlist
 sudo sed -i "/mirrors.fossho.st/d" /etc/pacman.d/blackarch-mirrorlist
