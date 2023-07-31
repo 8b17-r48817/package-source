@@ -400,7 +400,7 @@ def GUI(self, Gtk, GdkPixbuf):
 
     button8 = Gtk.Button(label="Discord")
     button8.connect("clicked", self.on_link_clicked,
-                    "https://discord.gg/DNjvQkb5Ad")
+                    "https://discord.gg/AHXqyJHhGc")
 
     button9 = Gtk.Button(label="Video Demo")
     button9.connect("clicked", self.on_link_clicked,
