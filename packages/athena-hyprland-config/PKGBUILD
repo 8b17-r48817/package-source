@@ -1,15 +1,15 @@
 pkgname=athena-hyprland-config
 _pkgname=dots-hyprland
-pkgver=329.2fe0de2d
+pkgver=356.4a5fe68b
 pkgrel=1
 pkgdesc="Hyprland configuration for Athena."
 arch=('any')
 url='https://github.com/end-4/dots-hyprland'
 license=("GPL")
-depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'coreutils' 'dunst' 'eww-wayland-git' 'findutils' 'foot' 'gawk' 'geticons-git' 'gnome-control-center' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia' 'ibus' 'imagemagick' 'libinput-gestures' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swappy' 'swaybg' 'swayidle' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi' 'xdg-desktop-portal-hyprland-git')
+depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'cliphist' 'coreutils' 'curl' 'eww-wayland-git' 'findutils' 'foot' 'fuzzel' 'fzf' 'gawk' 'geticons-git' 'gnome-control-center' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia-git' 'ibus' 'imagemagick' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'plasma-browser-integration' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pillow' 'python-poetry' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swappy' 'swaybg' 'swayidle' 'swww' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi' 'xdg-desktop-portal-hyprland-git' 'xorg-xrandr' 'yad')
 makedepends=('git' 'rsync')
 install='hyprland.install'
-source=("git+https://github.com/end-4/$_pkgname"
+source=("git+https://github.com/end-4/$_pkgname#branch=m3ww"
         "hyprland-config.sh"
         "hyprland-shell"
         "hyprland.conf"
@@ -39,16 +39,18 @@ package() {
   
   cd $_pkgname
 
-  rsync -av --progress ./.config/dunst "$pkgdir/etc/skel/.config/"
+  #rsync -av --progress ./.config/dunst "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/eww "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/foot "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/fuzzel "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/gtk-3.0 "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/gtk-4.0 "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/gtklock "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/hypr "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/mpv "$pkgdir/etc/skel/.config/"
-  rsync -av --progress ./.config/waybar "$pkgdir/etc/skel/.config/"
+#  rsync -av --progress ./.config/waybar "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/wlogout "$pkgdir/etc/skel/.config/"
+  rsync -av --progress ./.config/code-flags.conf "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/starship.toml "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.local/bin "$pkgdir/etc/skel/.local/"
   rsync -av --progress ./.local/share/fonts "$pkgdir/etc/skel/.local/share/"
