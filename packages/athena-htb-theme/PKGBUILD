@@ -1,5 +1,5 @@
 pkgname=athena-htb-theme
-pkgver=19.a8b01a28
+pkgver=57.e9790345
 pkgrel=1
 pkgdesc="Hack The Box theme for Athena."
 arch=('any')
@@ -12,10 +12,9 @@ source=("git+https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme.git"
         "$pkgname.tar.gz")
 sha512sums=('SKIP'
             'SKIP'
-            '3a1360ba5541598ec6c4dfa6cd261e49ec849dafbe21e5a047820412b093486a975bbb97c1fac616f510f1e878e19afacbfd9e82baa21664b022af25347ecc2d'
-            '98a8722a310ca6ab1ea1b5bd2b004e17bace005e694e48cbf7d263bd9bda2fd305310da8c0e90b3ccd39c7a359806628a5b26f392faba66635f56c88b3767526'
-            'd3f73d2fb366265f28023e7e30c5391e7591cbd0b66ec0024b202e33bd03a403683519e623075f39267d4ff9f6d523b89d9752b282d5d61bda8ac25967637f8a'
-            '1e167dd9b112c21a7348a104da6d0bdce1fe65b0518360eec12ff41f75c16bf44d7910d3cd2017fa628b918e58e75780881ea215dc3de5f527ee1529909b453a')
+            'aad16c8b4ffffdf9fdf54d0bb4cdb8443ed4513332784365557b893c64206eedf99ad3cfafeb7fcc083a5d71b73da46c7a0dffe4c39c770c978c55ece79a8241'
+            'b96074aade5396df359335c5c164b1fdb8280eef354ae487c0cb55ec269d1cf17a4bce9e57e1b94a9622382e23b5f75150432b9ae53eff158ff15a09b8b7034b'
+            '033c75b3cd79ade67387f026623971c6ee6d1bc2d1664d99380a122dfb62406a7db662564ba4866e175eea0cecbaa3811b06b1fc6e8fc7fb892ca87d5c5ece1e')
 
 pkgver() {
   cd Tokyo-Night-GTK-Theme

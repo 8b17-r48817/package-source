@@ -6,7 +6,7 @@ arch=$(grep "^arch=" PKGBUILD | awk -F"'" '{print $2}')
 
 #NEED ONLY TO EDIT  sourcefiles VARIABLE
 
-sourcefiles="icons"
+sourcefiles="HackTheBox icons"
 
 #sed -i -e '/^sha256/d' -e '/^sha512/d' PKGBUILD
 
