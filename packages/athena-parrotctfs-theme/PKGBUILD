@@ -10,11 +10,13 @@ conflicts=('athena-fish')
 source=("git+https://github.com/rtlewis88/rtl88-Themes#branch=material-black-COLORS"
         "git+https://github.com/TeddyBearKilla/Afterglow-Cursors-Recolored"
         "git+https://github.com/parrotassassin15/ConfigFiles"
+        "$pkgname"
         "PCTFs.png"
         "$pkgname.tar.gz")
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
+            'f928e694e7c2c68c0897fd29ece888534c0f8b09614c9d8fa20e0382605fcb89f062cb916c3eb47a9438f356829f4fa3750f5457e67a0e5b305fb2f761ffbb01'
             '70bd0d55c90fcc0355528551596ec5a439d7c79c87b4c2aa8260d67e19e69283bceeb99cfc4a0d8912a6036bcd112186b275ec96a63e5a5cf16936474bf7c6c8'
             '11520dbb9fe0f94e7e6755218a5117d0e9ab35f16013494dc1dfb6c16279a23bfd16fa423b0a8da518dd33b5cdc372a8a64236697375cf20e0c99617ddbe39a5')
 
@@ -25,6 +27,7 @@ pkgver() {
 }
 
 package() {
+  install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/icons/hicolor/256x256"
   install -dm 755 "$pkgdir/usr/share/icons/Afterglow-Recolored-Purple"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
@@ -32,6 +35,7 @@ package() {
 
   cp -a rtl88-Themes/Material-Black-Cherry-Suru "$pkgdir/usr/share/icons/"
   cp -a Afterglow-Cursors-Recolored/colors/Original/Purple/dist/* "$pkgdir/usr/share/icons/Afterglow-Recolored-Purple/"
+  install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "PCTFs.png" "$pkgdir/usr/share/backgrounds/default/"
 
   cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/256x256/"

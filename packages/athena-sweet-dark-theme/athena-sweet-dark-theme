@@ -1,64 +1,25 @@
 #!/bin/bash
 
-menu_options=("Border" "Borderless" "Exit")
-
-function print_menu() {
-    echo ""
-    for ((i=0; i<${#menu_options[@]}; i++)); do
-        echo "$((i+1)) -- ${menu_options[i]}"
-    done
-}
-
-function menu() {
-    while true; do
-        print_menu
-        option=""
-        read -p "Would you like to have Border or Borderless theme? " option
-        case "$option" in
-            1)
-                border=1
-                return $border
-                ;;
-            2)
-                border=0
-                return $border
-                ;;
-            3)
-                echo "Exiting..."
-                exit
-                ;;
-            *)
-                echo "Invalid option. Please enter a number between 1 and 3."
-                ;;
-        esac
-    done
-}
-
 rm -rf "$HOME/.config/assets"
 rm -rf "$HOME/.config/gtk-4.0"
 mkdir -p "$HOME/.config/gtk-4.0"
 
-b=$(menu)
-if [ "$b" -eq 1 ]; then
-    theme_name="Nightfox-Dusk-B"
-    gnome_shell="Nightfox-Dusk-B"
-else
-    theme_name="Nightfox-Dusk-BL"
-    gnome_shell="Nightfox-Dusk-BL"
-fi
+theme_name="Sweet-Dark-v40"
+gnome_shell="Sweet-Dark-v40"
 
 color_scheme="prefer-dark"
-icon_theme="Material-Black-Cherry-Suru"
-cursor_theme="Bibata-Modern-DarkRed"
-background_theme="/usr/share/backgrounds/default/akame.jpg"
+icon_theme="Sweet-Purple"
+cursor_theme="oreo_spark_purple_cursors"
+background_theme="/usr/share/backgrounds/default/neon_circle.jpg"
 picture_options="stretched"
-vscode_theme="red-blood"
-kitty_theme="CrayonPonyFish.conf"
-tmux_theme="redwine"
-topbarcolorscheme="finale"
-topbarmaterialscheme="finale"
+vscode_theme="Radical"
+kitty_theme="AdventureTime.conf"
+tmux_theme="violet"
+
+topbarcolorscheme="something"
+topbarmaterialscheme="amaryllis"
 topbariconscheme="dark"
-musicbarscheme="#F98D89"
+musicbarscheme="#FE3DAF"
 
 gsettings set org.gnome.desktop.interface gtk-theme ""
 gsettings set org.gnome.desktop.wm.preferences theme ""

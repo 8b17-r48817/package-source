@@ -5,6 +5,7 @@ pkgdesc="Fish for Athena."
 arch=('any')
 license=("custom")
 depends=('fish')
+conflicts=('athena-parrotctfs-theme')
 source=("$pkgname.tar.gz")
 
 package() {
@@ -13,4 +14,4 @@ package() {
   cp -rf "${srcdir}/etc/skel/.config/fish" "${pkgdir}/etc/skel/.config/"  
 }
 
-sha256sums=('fa89abac9e76cb61120b3fcbc0e3a780b7706bd1b2bbbe832d7f5e12968ac210')
+sha256sums=('eb6a6c72cbe9d811eff36d46ad4df71dd51bd2c220f83eeb2342a51ff9ea9a1c')

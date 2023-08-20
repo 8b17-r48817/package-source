@@ -40,25 +40,26 @@ mkdir -p "$HOME/.config/gtk-4.0"
 
 b=$(menu)
 if [ "$b" -eq 1 ]; then
-    theme_name="Nightfox-Dusk-B"
-    gnome_shell="Nightfox-Dusk-B"
+    theme_name="Tokyonight-Dark-B"
+    gnome_shell="Tokyonight-Dark-B"
 else
-    theme_name="Nightfox-Dusk-BL"
-    gnome_shell="Nightfox-Dusk-BL"
+    theme_name="Tokyonight-Dark-BL"
+    gnome_shell="Tokyonight-Dark-BL"
 fi
 
 color_scheme="prefer-dark"
-icon_theme="Material-Black-Cherry-Suru"
-cursor_theme="Bibata-Modern-DarkRed"
-background_theme="/usr/share/backgrounds/default/akame.jpg"
+icon_theme="Tokyonight-Dark"
+cursor_theme="oreo_blue_cursors"
+background_theme="/usr/share/backgrounds/default/blue-eyes.jpg"
 picture_options="stretched"
-vscode_theme="red-blood"
-kitty_theme="CrayonPonyFish.conf"
-tmux_theme="redwine"
-topbarcolorscheme="finale"
-topbarmaterialscheme="finale"
+vscode_theme="Tokyo Night Storm"
+kitty_theme="Tokyo_Night_Storm.conf"
+tmux_theme="sky"
+
+topbarcolorscheme="ripples"
+topbarmaterialscheme="default"
 topbariconscheme="dark"
-musicbarscheme="#F98D89"
+musicbarscheme="#6FE7FB"
 
 gsettings set org.gnome.desktop.interface gtk-theme ""
 gsettings set org.gnome.desktop.wm.preferences theme ""

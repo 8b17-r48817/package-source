@@ -8,13 +8,15 @@ makedepends=('git')
 source=("git+https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme.git"
         "git+https://github.com/rtlewis88/rtl88-Themes#branch=material-black-COLORS"
         "https://github.com/ful1e5/fuchsia-cursor/releases/latest/download/Fuchsia-Pop.tar.gz"
+        "$pkgname"
         "xxe.png"
         "$pkgname.tar.gz")
 sha512sums=('SKIP'
             'SKIP'
             '6007a5db701981997719a38ae99181b6269a58332f245b31b6756a5fcad6b9f8bb991c5820c16b16419005cf5631ffa3410c9c9068b16d09e69042734aa99eb0'
+            '2b9ae541a074eb5eb6a0c09b897ad308fbe63b485b2a00de082d81ae133faab89154ee69bb1e153d2391578e569df43efa83f093bfa48ad335c7fab25eb6a7c1'
             '4493ea170f071e876460ae4be316df7f0f12c6aad741398b0b4469f0148963076b45da4fbbdb5600a5eae67c36e8e275b7fe0c813053d49f5fe731523b1fce7e'
-            'a4aa70e5142634b60dd169b653c71bc92323986fc848e717a212cff310469f75ac4712e096f89cb94447a5ef902ab110c5c1a7a6880f1f7c65752b741558a989')
+            '62961336c01841e3869e6ed29d1169872ed92c4398ced2316b7eae4a73e8d7205ca85426638f93ff5f03321b39dc4e3c0b8d328681f737405c776aadaf549826')
 
 pkgver() {
   cd Gruvbox-GTK-Theme
@@ -23,6 +25,7 @@ pkgver() {
 }
 
 package() {
+  install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/themes"
   install -dm 755 "$pkgdir/usr/share/icons/hicolor/256x256"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
@@ -31,6 +34,7 @@ package() {
   cp -a Gruvbox-GTK-Theme/themes/Gruvbox-Dark-BL "$pkgdir/usr/share/themes/"
   cp -a rtl88-Themes/Material-Black-Mango-Suru "$pkgdir/usr/share/icons/"
   cp -a Fuchsia-Pop "$pkgdir/usr/share/icons/"
+  install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "xxe.png" "$pkgdir/usr/share/backgrounds/default/"
 
   cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/256x256/"

@@ -6,7 +6,7 @@ arch=('any')
 license=("custom")
 depends=('gnome-characters' 'gnome-control-center' 'gnome-gesture-improvements' 'gnome-keyring' 'gnome-menus' 'gnome-shell-extensions' 'gnome-system-monitor' 'gnome-terminal' 'gnome-themes-extra' 'gnome-tweaks' 'malcontent' 'noto-fonts-emoji' 'polkit-gnome' 'qgnomeplatform-qt5' 'qgnomeplatform-qt6' 'qqc2-desktop-style' 'ttf-jetbrains-mono' 'wayland' 'xdg-desktop-portal' 'xdg-desktop-portal-gnome' 'gnome-shell-extension-appindicator-git' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-material-shell-git')
 source=("$pkgname.tar.gz")
-sha512sums=('db6d016b462a30bf21dfbe61aad1e31abc074378b268466b3c534955bf3e9b8a9651aa8d2a9053e43ec5d47d33dd0bf8ffa48b0f9e9037591e5fc43b47237b98')
+sha512sums=('7fb70a56060b741b69f7dda0aaa706f18c4c940be57b1936d144c3a7bf87fd21fc0143f699e5fe500c14857a0774d679120f4dbbde445b27ccdc46ae58783f3f')
 
 package() {
   mkdir -p "${pkgdir}/etc/skel"

@@ -4,11 +4,6 @@ import os
 import random
 import subprocess
 
-menu_options = {
-    1: 'Border',
-    2: 'Borderless',
-    3: 'Exit',
-}
 home = os.path.expandvars("$HOME")
 keybind = "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
 
@@ -90,32 +85,6 @@ def print_banner():
     encoded_data = "H4sIAAAAAAAAA7WWvY7rOAyF+zyF1d1KrgQBwmIJpAmgyq0AQ36RQM++51DyXyY/9myuMBPbMc3PJA+pdN3fX5fjptaG7L03xeRg/xLEluhuuobBpSimHEadiKTrggwg4D+55JxLScL3ITPmlkhI/Izl+5Cuy+k23BgGAMqRz0k7Dem6CAjKwgWOG+TbEFWYRMQAzuAGft4+Uk6oK+RcDARsDIXsvaThpjpw/xsC35BQKCalgh4hgxT9FNX01X2qyluIDYbevM1wG50v2aQhCVnEIJhBVWZ+C0EExYtINEWECfK+aCi6MnsfnFxNfwUJIZu2pBRBeyM1SL/kMlMKITkf6sYnEBtKKS3x8JQBSSmyCePC4H1BbPlIL/6EWEjItwU3YrKPGFpXMBKrINqCSXAPmFKOzK8HCBD6/qXq1GAMFo2j9kVrwuiGGFEfhnI6khYFu4EU9VLE6fAwKIpHVFRThMaisFf8oUG8g+SWKKSadVWGd5Spp5YBxNRKBqAbhMxQz0/hwCCaSmuDQL7uNkQlQ0pZEEFGvDKIZnONw74LaQPROMw+V1HnYERxBNshlB34z84hZROHNezR8Jy1QrKps8JoP0NWwLAYaHUXMRMhJR1ees9zSsZd1TPLVa0eWQskIIaSaxz0gyY02VBTQ910b9erbrwOHeOgLSps58pKUlUIXynKRtwLpAhCWcoh/LnQdai6Iq4Yt8prMkZw3jtnOkxmJJAjCI/RN/WuiK0kVojXNqYxZ5TRFwni5kDqLqU7O9IXhwE9aoQi43ATPpGlQnx5EN0CsVmHxQya041MD/NPlHXxx4R2Z+Lcyc3YalWeyHotfPCqKYO6ALJ+bYQS058py4Iq2D8Iy29kbFCq/ExeK6RoZ3C+oiOKtTXRDE/SJgRGxKkYmJhd6oO8GmSbSLJmqgQ8yFnOgoIUjE6SlNaaJM6EAKnufb5sx00vwh8aze5swW2ItqIuFBrT+fBP1U9bfEZHSvUcUwNoz5amv29AQhVc21x0XrXt9+Cm+Bli4Qnelu2wXuaif+E7EPXISu3zkjWO4yV5C5kZj95CPhPGewjHun06uu2JeryF2J8RbCkvNo6TkA/rDOPXkDOLjIlLj3hBPXu1pnW9N9xavjJo+B7nXTdOON6nOz+m9vx8WLyM9YCr/pnh5nJjOan/5ma24+M4v5DeTyMeUOtR7/BdYDTyJq7U16gvfZ8/7k8M18uN5diNPf/6eqv54uP47tIvpkrmWdLzFqJ6qE9OD/i9Ydpc7l60vnc/36q+9O4/3WVkMjSNPY5MKAvQj5qif+vVn5ower1P9aufhvft5dYSb6+VXV02GN5ikffYr7Jo508Pu/Vw643lC8+X/wAALQtT9hEAAA=="
     banner = zlib.decompress(base64.b64decode(encoded_data), 16 + zlib.MAX_WBITS).decode('utf-8')
     print(banner)
-
-def print_menu():
-    print("\r")
-    for key in menu_options.keys():
-        print (key, '--', menu_options[key] )
-
-def menu():
-    while(True):
-        print_menu()
-        option = ''
-        try:
-            option = int(input('Would you like to have Border or Borderless theme? '))
-        except:
-            print('Wrong input. Please enter a number ...')
-        #Check what choice was entered and act accordingly
-        if option == 1:
-            border = 1
-            return border
-        elif option == 2:
-            border = 0
-            return border
-        elif option == 3:
-            print('Exiting...')
-            exit()
-        else:
-            print('Invalid option. Please enter a number between 1 and 3.')
 
 args = arg_parse()
 #### Print help message if no arguments are supplied
@@ -202,190 +171,23 @@ if args.theme:
     
     subprocess.call("sudo pacman -S --noconfirm --overwrite \* "+theme_package, shell=True)
     
-    subprocess.call("rm -rf "+home+"/.config/assets", shell=True)
-    subprocess.call("rm -rf "+home+"/.config/gtk-4.0", shell=True)
-    subprocess.call("mkdir -p "+home+"/.config/gtk-4.0", shell=True)
-    
     if chosen_theme == "AkameGaKill":
-        b = menu()
-        if b == 1:
-            theme_name = "Nightfox-Dusk-B"
-            gnome_shell = "Nightfox-Dusk-B"
-        else:
-            theme_name = "Nightfox-Dusk-BL"
-            gnome_shell = "Nightfox-Dusk-BL"
-
-        color_scheme = "prefer-dark"
-        icon_theme = "Material-Black-Cherry-Suru"
-        cursor_theme = "Bibata-Modern-DarkRed"
-        background_theme = "/usr/share/backgrounds/default/akame.jpg"
-        picture_options = "stretched"
-        vscode_theme = "red-blood"
-        kitty_theme = "CrayonPonyFish.conf"
-        tmux_theme = "redwine"
-
-        topbarcolorscheme = "finale"
-        topbarmaterialscheme = "finale"
-        topbariconscheme = "dark"
-        musicbarscheme = "#F98D89"
+        subprocess.call("athena-akame-theme", shell=True)
 
     elif chosen_theme == "BlueEyesSamurai":
-        b = menu()
-        if b == 1:
-            theme_name = "Tokyonight-Dark-B"
-            gnome_shell = "Tokyonight-Dark-B"
-        else:
-            theme_name = "Tokyonight-Dark-BL"
-            gnome_shell = "Tokyonight-Dark-BL"
-
-        color_scheme = "prefer-dark"
-        icon_theme = "Tokyonight-Dark"
-        cursor_theme = "oreo_blue_cursors"
-        background_theme = "/usr/share/backgrounds/default/blue-eyes.jpg"
-        picture_options = "stretched"
-        vscode_theme = "Tokyo Night Storm"
-        kitty_theme = "Tokyo_Night_Storm.conf"
-        tmux_theme = "sky"
-
-        topbarcolorscheme = "ripples"
-        topbarmaterialscheme = "default"
-        topbariconscheme = "dark"
-        musicbarscheme = "#6FE7FB"
-
-    elif chosen_theme == "CyborgGruvbox":
-        b = menu()
-        if b == 1:
-            theme_name = "Gruvbox-Dark-B"
-            gnome_shell = "Gruvbox-Dark-B"
-        else:
-            theme_name = "Gruvbox-Dark-BL"
-            gnome_shell = "Gruvbox-Dark-BL"
-
-        color_scheme = "prefer-dark"
-        icon_theme = "Material-Black-Mango-Suru"
-        cursor_theme = "Fuchsia-Pop"
-        background_theme = "/usr/share/backgrounds/default/cyborg_gruv.png"
-        picture_options = "stretched"
-        vscode_theme = "Gruvbox Material Dark"
-        kitty_theme = "gruvbox_dark.conf"
-        tmux_theme = "gold"
-
-        topbarcolorscheme = "valhalla"
-        topbarmaterialscheme = "virtuality_yellow"
-        topbariconscheme = "gruv"
-        musicbarscheme = "#EFD69C"
+        subprocess.call("athena-blue-eyes-theme", shell=True)
 
     elif chosen_theme == "Graphite":
-        b = menu()
-        if b == 1:
-            theme_name = "Graphite-Dark"
-            gnome_shell = "Graphite-Dark"
-        else:
-            theme_name = "Graphite-Rimless-Dark"
-            gnome_shell = "Graphite-Rimless-Dark"
+        subprocess.call("athena-graphite-theme", shell=True)
 
-        color_scheme = "prefer-dark"
-        icon_theme = "Tela-circle-black-dark"
-        cursor_theme = "Bibata-Modern-Ice"
-        background_theme = "/usr/share/backgrounds/default/arch-ascii.png"
-        picture_options = "stretched"
-        vscode_theme = "Just Black"
-        kitty_theme = "Atom.conf"
-        tmux_theme = "snow"
-
-        topbarcolorscheme = "nowthatitstrue"
-        topbarmaterialscheme = "default"
-        topbariconscheme = "dark"
-        musicbarscheme = "#197FAF"
+    elif chosen_theme == "CyborgGruvbox":
+        subprocess.call("athena-gruvbox-theme", shell=True)
 
     elif chosen_theme == "SweetDark":
-        theme_name = "Sweet-Dark-v40"
-        gnome_shell = "Sweet-Dark-v40"
-
-        color_scheme = "prefer-dark"
-        icon_theme = "Sweet-Purple"
-        cursor_theme = "oreo_spark_purple_cursors"
-        background_theme = "/usr/share/backgrounds/default/neon_circle.jpg"
-        picture_options = "stretched"
-        vscode_theme = "Radical"
-        kitty_theme = "AdventureTime.conf"
-        tmux_theme = "violet"
-
-        topbarcolorscheme = "something"
-        topbarmaterialscheme = "amaryllis"
-        topbariconscheme = "dark"
-        musicbarscheme = "#FE3DAF"
+        subprocess.call("athena-sweet-dark-theme", shell=True)
 
     elif chosen_theme == "XXE":
-        b = menu()
-        if b == 1:
-            theme_name = "Gruvbox-Dark-B"
-            gnome_shell = "Gruvbox-Dark-B"
-        else:
-            theme_name = "Gruvbox-Dark-BL"
-            gnome_shell = "Gruvbox-Dark-BL"
-
-        color_scheme = "prefer-dark"
-        icon_theme = "Material-Black-Mango-Suru"
-        cursor_theme = "Fuchsia-Pop"
-        background_theme = "/usr/share/backgrounds/default/xxe.png"
-        picture_options = "stretched"
-        vscode_theme = "Gruvbox Material Dark"
-        kitty_theme = "gruvbox_dark.conf"
-        tmux_theme = "gold"
-
-        topbarcolorscheme = "valhalla"
-        topbarmaterialscheme = "virtuality_yellow"
-        topbariconscheme = "gruv"
-        musicbarscheme = "#FEFF00"
-
-    #Reinitialize gsettings for applying the changes correctly when we change between border and borderless in the same theme
-    subprocess.call("gsettings set org.gnome.desktop.interface gtk-theme \"\"", shell=True)
-    subprocess.call("gsettings set org.gnome.desktop.wm.preferences theme \"\"", shell=True)
-    subprocess.call("gsettings set org.gnome.shell.extensions.user-theme name \"\"", shell=True)
-    subprocess.call("sleep 1", shell=True)
-    subprocess.call("gsettings set org.gnome.desktop.interface gtk-theme "+theme_name, shell=True)
-    subprocess.call("gsettings set org.gnome.desktop.wm.preferences theme "+theme_name, shell=True)
-    subprocess.call("gsettings set org.gnome.shell.extensions.user-theme name "+gnome_shell+" 2>/dev/null", shell=True)
-
-    subprocess.call("ln -sf \"/usr/share/themes/"+theme_name+"/gtk-4.0/assets\" \""+home+"/.config/gtk-4.0/assets\"", shell=True)
-    subprocess.call("ln -sf \"/usr/share/themes/"+theme_name+"/gtk-4.0/gtk.css\" \""+home+"/.config/gtk-4.0/gtk.css\"", shell=True)
-    subprocess.call("ln -sf \"/usr/share/themes/"+theme_name+"/gtk-4.0/gtk-dark.css\" \""+home+"/.config/gtk-4.0/gtk-dark.css\"", shell=True)
-    subprocess.call("ln -sf \"/usr/share/themes/"+theme_name+"/assets\" \""+home+"/.config/assets\"", shell=True)
-
-    subprocess.call("gsettings set org.gnome.desktop.interface color-scheme "+color_scheme, shell=True)
-    subprocess.call("gsettings set org.gnome.desktop.interface icon-theme "+icon_theme, shell=True)
-    subprocess.call("gsettings set org.gnome.desktop.interface cursor-theme "+cursor_theme, shell=True)
-    subprocess.call("gsettings set org.gnome.desktop.background picture-uri-dark \"\"", shell=True)
-    subprocess.call("gsettings set org.gnome.desktop.background picture-uri-dark file://"+background_theme, shell=True)
-    subprocess.call("gsettings set org.gnome.desktop.background picture-uri \"\"", shell=True)
-    subprocess.call("gsettings set org.gnome.desktop.background picture-uri file://"+background_theme, shell=True)
-    subprocess.call("gsettings set org.gnome.desktop.background picture-options "+picture_options, shell=True)
-
-    subprocess.call("sed -i 's/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \""+vscode_theme+"\",/g' \""+home+"/.config/VSCodium/User/settings.json\"", shell=True)
-    subprocess.call("cp -rf "+home+"/.config/kitty/kitty-themes/themes/"+kitty_theme+" "+home+"/.config/kitty/current-theme.conf 2>/dev/null", shell=True)
-    subprocess.call("sed -i 's/set -g @tmux_power_theme.*/set -g @tmux_power_theme \'"+tmux_theme+"\'/g' "+home+"/.tmux.conf", shell=True)
-
-    # Top-right resource statistics color
-    subprocess.call("cp -rf "+home+"/.config/eww/css/savedcolors/_colorscheme_"+topbarcolorscheme+".scss "+home+"/.config/eww/css/_colorscheme.scss 2>/dev/null", shell=True)
-    subprocess.call("cp -rf "+home+"/.config/eww/css/savedcolors/_iconcolor_"+topbarcolorscheme+".txt "+home+"/.config/eww/css/_iconcolor.txt 2>/dev/null", shell=True)
-
-    # Top bar color
-    subprocess.call("cp -rf "+home+"/.config/eww/css/savedcolors/_material_"+topbarmaterialscheme+".scss "+home+"/.config/eww/css/_material.scss 2>/dev/null", shell=True)
-
-    # Top bar icon color
-    subprocess.call("cp -rf "+home+"/.config/eww/images/svg/"+topbariconscheme+"/* "+home+"/.config/eww/images/svg/ 2>/dev/null", shell=True)
-
-    # Hyprland border colors
-    subprocess.call("cp -rf "+home+"/.config/hypr/savedcolors/colors_"+topbarcolorscheme+".conf "+home+"/.config/hypr/colors.conf 2>/dev/null", shell=True)
-
-    # Hyprland wallpaper
-    subprocess.call("cp -rf "+background_theme+" "+home+"/.config/eww/images/wallpaper/wallpaper 2>/dev/null", shell=True)
-    subprocess.call("pkill swaybg 2>/dev/null", shell=True)
-    subprocess.call("swaybg -i "+home+"/.config/eww/images/wallpaper/wallpaper 2>/dev/null &", shell=True)
-
-    # Hyprland music color bars
-    subprocess.call("sed -r -i \"s/\\\"color4\\\":\\\"#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\\\"/\\\"color4\\\":\\\""+musicbarscheme+"\\\"/g\" "+home+"/.config/eww/scripts/music 2>/dev/null", shell=True) # Don't use -e sed argument
+        subprocess.call("athena-xxe-theme", shell=True)
 
     exit()
 

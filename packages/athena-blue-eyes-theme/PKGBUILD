@@ -1,16 +1,18 @@
 pkgname=athena-blue-eyes-theme
-pkgver=56.bb755e4c
+pkgver=57.e9790345
 pkgrel=1
 pkgdesc="Blue Eyes samurai theme with Tokyo Night Dark icons for Athena."
 arch=('any')
 license=("GPL3")
 makedepends=('git')
 source=("git+https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme.git"
+        "$pkgname"
         "blue-eyes.jpg"
         "$pkgname.tar.gz")
 sha512sums=('SKIP'
+            '1ba642fd51ff9cb8801073211d85e85ba0d481589d24fce78b94060d41b989c7e5976564992d49040e20687ea12550a264618dc8a1a0fc186252aa3826571ea6'
             'c4575e024afbec6cf5624957c1102a866a468f90c1c3f0e7368cbb6905b4f559649f96ee4321036d3c23042b87777f07020e78b423922aa3f38ad6b9f8396495'
-            '5c2a01bbfb4f44ef6c29cfd3c62cfb9938bb25c433ed7a1810b1ae3ea0d805ba0732fdac830c2e88523ae3e1a2d432abc64ded6c61c38b5bd7c324f017a0dfd6')
+            '69d92e24a714a25b52ca2ba387d2cf2d5a74686601afd5ffb3be4580558afd1f3c8927b6e7dcc99fd877bf8d99461214a274ee716ff74618d2b19eb561ea4e81')
 
 pkgver() {
   cd Tokyo-Night-GTK-Theme
@@ -19,6 +21,7 @@ pkgver() {
 }
 
 package() {
+  install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/themes"
   install -dm 755 "$pkgdir/usr/share/icons/hicolor/256x256"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
@@ -26,6 +29,7 @@ package() {
   cp -a Tokyo-Night-GTK-Theme/themes/Tokyonight-Dark-B "$pkgdir/usr/share/themes/"
   cp -a Tokyo-Night-GTK-Theme/themes/Tokyonight-Dark-BL "$pkgdir/usr/share/themes/"
   cp -a Tokyo-Night-GTK-Theme/icons/Tokyonight-Dark "$pkgdir/usr/share/icons/"
+  install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "blue-eyes.jpg" "$pkgdir/usr/share/backgrounds/default/"
 
   cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/256x256/"
