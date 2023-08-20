@@ -43,7 +43,7 @@ cp -rf "$HOME/.config/kitty/kitty-themes/themes/$kitty_theme" "$HOME/.config/kit
 sed -i "s/set -g @tmux_power_theme.*/set -g @tmux_power_theme '$tmux_theme'/g" "$HOME/.tmux.conf"
 
 while true; do
-    read -p $'\e[33m[11/15] Do you wish to apply ParrotCTFs FISH default config files? (y/n) \e[0m' yn
+    read -p $'\e[33mDo you wish to apply ParrotCTFs FISH default config files? (y/n) \e[0m' yn
     case $yn in
         [yY] ) rsync -a --delete "/etc/skel/.config/fish/" "$HOME/.config/fish/"; rsync "/etc/skel/.config/starship.toml" "$HOME/.config/starship.toml"; break;;
         [nN] ) break;;

@@ -6,7 +6,7 @@ arch=('any')
 license=("GPL3")
 depends=('fish' 'layan-gtk-theme-git' 'shell-color-scripts' 'starship')
 makedepends=('git')
-conflicts=('athena-fish')
+conflicts=('athena-akame-theme' 'athena-blue-eyes-theme' 'athena-graphite-theme' 'athena-gruvbox-theme' 'athena-sweet-dark-theme' 'athena-xxe-theme' 'athena-fish')
 source=("git+https://github.com/rtlewis88/rtl88-Themes#branch=material-black-COLORS"
         "git+https://github.com/TeddyBearKilla/Afterglow-Cursors-Recolored"
         "git+https://github.com/parrotassassin15/ConfigFiles"
