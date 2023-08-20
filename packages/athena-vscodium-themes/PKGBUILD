@@ -1,6 +1,6 @@
 pkgname=athena-vscodium-themes
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="VSCodium themes for Athena."
 arch=('any')
 license=("custom")

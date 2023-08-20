@@ -51,6 +51,11 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
          if pacman -Qq $package > /dev/null ; then
               athena-gruvbox-theme
          fi
+         
+         package=athena-htb-theme
+         if pacman -Qq $package > /dev/null ; then
+              athena-htb-theme
+         fi
 
          package=athena-sweet-dark-theme
          if pacman -Qq $package > /dev/null ; then

@@ -1,0 +1,43 @@
+pkgname=athena-htb-theme
+pkgver=19.a8b01a28
+pkgrel=1
+pkgdesc="Hack The Box theme for Athena."
+arch=('any')
+license=("GPL3")
+makedepends=('git')
+source=("git+https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme.git"
+        "git+https://github.com/TeddyBearKilla/Afterglow-Cursors-Recolored"
+        "$pkgname"
+        "hackthebox.png"
+        "$pkgname.tar.gz")
+sha512sums=('SKIP'
+            'SKIP'
+            '3a1360ba5541598ec6c4dfa6cd261e49ec849dafbe21e5a047820412b093486a975bbb97c1fac616f510f1e878e19afacbfd9e82baa21664b022af25347ecc2d'
+            '98a8722a310ca6ab1ea1b5bd2b004e17bace005e694e48cbf7d263bd9bda2fd305310da8c0e90b3ccd39c7a359806628a5b26f392faba66635f56c88b3767526'
+            'd3f73d2fb366265f28023e7e30c5391e7591cbd0b66ec0024b202e33bd03a403683519e623075f39267d4ff9f6d523b89d9752b282d5d61bda8ac25967637f8a'
+            '1e167dd9b112c21a7348a104da6d0bdce1fe65b0518360eec12ff41f75c16bf44d7910d3cd2017fa628b918e58e75780881ea215dc3de5f527ee1529909b453a')
+
+pkgver() {
+  cd Tokyo-Night-GTK-Theme
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/themes"
+  install -dm 755 "$pkgdir/usr/share/icons/hicolor/256x256"
+  install -dm 755 "$pkgdir/usr/share/backgrounds/default"
+  install -dm 755 "$pkgdir/usr/share/icons/Afterglow-Dracula-Green"
+
+  cp -a Tokyo-Night-GTK-Theme/themes/Tokyonight-Dark-B "$pkgdir/usr/share/themes/"
+  cp -a Tokyo-Night-GTK-Theme/themes/Tokyonight-Dark-BL "$pkgdir/usr/share/themes/"
+  cp -a HackTheBox "$pkgdir/usr/share/icons/"
+  cp -a Afterglow-Cursors-Recolored/colors/Dracula/Green/dist-dracula-green/* "$pkgdir/usr/share/icons/Afterglow-Dracula-Green/"
+  install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
+  install -Dm 644 "hackthebox.png" "$pkgdir/usr/share/backgrounds/default/"
+
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/256x256/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/256x256/"
+
+}
