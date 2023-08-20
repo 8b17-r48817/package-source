@@ -38,8 +38,9 @@ rm -rf "$HOME/.config/assets"
 rm -rf "$HOME/.config/gtk-4.0"
 mkdir -p "$HOME/.config/gtk-4.0"
 
-b=$(menu)
-if [ "$b" -eq 1 ]; then
+menu 
+
+if [ "$border" -eq 1 ]; then
     theme_name="Graphite-Dark"
     gnome_shell="Graphite-Dark"
 else
