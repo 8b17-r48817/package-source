@@ -1,52 +1,14 @@
 #!/bin/bash
 
-menu_options=("Border" "Borderless" "Exit")
-
-function print_menu() {
-    echo ""
-    for ((i=0; i<${#menu_options[@]}; i++)); do
-        echo "$((i+1)) -- ${menu_options[i]}"
-    done
-}
-
-function menu() {
-    while true; do
-        print_menu
-        option=""
-        read -p "Would you like to have Border or Borderless theme? " option
-        case "$option" in
-            1)
-                border=1
-                return $border
-                ;;
-            2)
-                border=0
-                return $border
-                ;;
-            3)
-                echo "Exiting..."
-                exit
-                ;;
-            *)
-                echo "Invalid option. Please enter a number between 1 and 3."
-                ;;
-        esac
-    done
-}
-
 rm -rf "$HOME/.config/assets"
 rm -rf "$HOME/.config/gtk-4.0"
 mkdir -p "$HOME/.config/gtk-4.0"
 
-menu 
+theme_name="Gruvbox-Dark-B"
+gnome_shell="Gruvbox-Dark-B"
 
-if [ "$border" -eq 1 ]; then
-    theme_name="Gruvbox-Dark-B"
-    gnome_shell="Gruvbox-Dark-B"
-else
-    theme_name="Gruvbox-Dark-BL"
-    gnome_shell="Gruvbox-Dark-BL"
-fi
+#theme_name="Gruvbox-Dark-BL"
+#gnome_shell="Gruvbox-Dark-BL"
 
 color_scheme="prefer-dark"
 icon_theme="Material-Black-Mango-Suru"

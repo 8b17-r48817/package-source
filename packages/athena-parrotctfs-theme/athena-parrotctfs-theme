@@ -14,7 +14,7 @@ background_theme="/usr/share/backgrounds/default/PCTFs.png"
 picture_options="stretched"
 vscode_theme="Radical"
 kitty_theme="AdventureTime.conf"
-tmux_theme="violet"
+tmux_theme="redwine"
 
 gsettings set org.gnome.desktop.interface gtk-theme ""
 gsettings set org.gnome.desktop.wm.preferences theme ""

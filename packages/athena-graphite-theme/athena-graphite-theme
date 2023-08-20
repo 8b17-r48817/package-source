@@ -1,52 +1,14 @@
 #!/bin/bash
 
-menu_options=("Border" "Borderless" "Exit")
-
-function print_menu() {
-    echo ""
-    for ((i=0; i<${#menu_options[@]}; i++)); do
-        echo "$((i+1)) -- ${menu_options[i]}"
-    done
-}
-
-function menu() {
-    while true; do
-        print_menu
-        option=""
-        read -p "Would you like to have Border or Borderless theme? " option
-        case "$option" in
-            1)
-                border=1
-                return $border
-                ;;
-            2)
-                border=0
-                return $border
-                ;;
-            3)
-                echo "Exiting..."
-                exit
-                ;;
-            *)
-                echo "Invalid option. Please enter a number between 1 and 3."
-                ;;
-        esac
-    done
-}
-
 rm -rf "$HOME/.config/assets"
 rm -rf "$HOME/.config/gtk-4.0"
 mkdir -p "$HOME/.config/gtk-4.0"
 
-menu 
+theme_name="Graphite-Dark"
+gnome_shell="Graphite-Dark"
 
-if [ "$border" -eq 1 ]; then
-    theme_name="Graphite-Dark"
-    gnome_shell="Graphite-Dark"
-else
-    theme_name="Graphite-Rimless-Dark"
-    gnome_shell="Graphite-Rimless-Dark"
-fi
+#theme_name="Graphite-Rimless-Dark"
+#gnome_shell="Graphite-Rimless-Dark"
 
 color_scheme="prefer-dark"
 icon_theme="Tela-circle-black-dark"
