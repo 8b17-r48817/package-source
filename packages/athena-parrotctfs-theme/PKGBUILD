@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Parrot CTFs theme for Athena."
 arch=('any')
 license=("GPL3")
-depends=('athena-gnome-material-shell-config' 'fish' 'layan-gtk-theme-git' 'shell-color-scripts' 'starship')
+depends=('fish' 'layan-gtk-theme-git' 'shell-color-scripts' 'starship')
 makedepends=('git')
 source=("git+https://github.com/rtlewis88/rtl88-Themes#branch=material-black-COLORS"
         "git+https://github.com/TeddyBearKilla/Afterglow-Cursors-Recolored"
