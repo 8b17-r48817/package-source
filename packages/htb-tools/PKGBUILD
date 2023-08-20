@@ -8,7 +8,7 @@ depends=('python-requests')
 source=("$pkgname.tar.gz")
 
 package() {
-  mkdir -p "${pkgdir}/etc/skel"
+  mkdir -p "${pkgdir}/etc/skel/.local/share/keyrings"
   mkdir -p "${pkgdir}/usr/local/bin"
   mkdir -p "${pkgdir}/usr/share/icons/htb-tools"
   mkdir -p "${pkgdir}/usr/share/htb-tools"
@@ -30,6 +30,7 @@ package() {
   cp -rf "${srcdir}/usr/share/icons/htb-tools/vpn-icon.png" "${pkgdir}/usr/share/icons/htb-tools/"
   cp -rf "${srcdir}/usr/share/icons/htb-tools/vpnfree.svg" "${pkgdir}/usr/share/icons/htb-tools/"
 
+  install -Dm644 "${srcdir}/etc/skel/.local/share/keyrings/default" "${pkgdir}/etc/skel/.local/share/keyrings/"
   install -Dm755 "${srcdir}/usr/local/bin/htb-flag" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/htb-play" "${pkgdir}/usr/local/bin/"
   install -Dm755 "${srcdir}/usr/local/bin/htb-reset" "${pkgdir}/usr/local/bin/"
@@ -47,4 +48,4 @@ EOF
   
   chmod a+x "${pkgdir}/usr/local/bin/htb-update"
 }
-sha512sums=('b62e658e87cda375ad174e23637e07f5f3db3868aa9d9088b35cf4aa2f0aa91b989dbb44bcd077bd04cf0583a2104e33e8cf11d750f6cd5f78af16c5149d9a10')
+sha512sums=('5cbcde928a3645b7f8320463a76e639361f264434b98d5cf8a8296854884c800429b5e210ba6d7695d6ff01882572955f2b298eb8eb1db886736e82f72abd164')

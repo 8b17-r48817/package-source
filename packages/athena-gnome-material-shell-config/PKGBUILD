@@ -6,7 +6,7 @@ arch=('any')
 license=("custom")
 depends=('gnome-characters' 'gnome-control-center' 'gnome-gesture-improvements' 'gnome-keyring' 'gnome-menus' 'gnome-shell-extensions' 'gnome-system-monitor' 'gnome-terminal' 'gnome-themes-extra' 'gnome-tweaks' 'malcontent' 'noto-fonts-emoji' 'polkit-gnome' 'qgnomeplatform-qt5' 'qgnomeplatform-qt6' 'qqc2-desktop-style' 'ttf-jetbrains-mono' 'wayland' 'xdg-desktop-portal' 'xdg-desktop-portal-gnome' 'gnome-shell-extension-appindicator-git' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-material-shell-git')
 source=("$pkgname.tar.gz")
-sha512sums=('a620d9acd1874912666cfee2942e197b22788ff1f520f2f4198aac040cc253e9322a0b1a66ac97fca0e2aafc5937b58ca586b185cd458639647c061a9fb90d98')
+sha512sums=('db6d016b462a30bf21dfbe61aad1e31abc074378b268466b3c534955bf3e9b8a9651aa8d2a9053e43ec5d47d33dd0bf8ffa48b0f9e9037591e5fc43b47237b98')
 
 package() {
   mkdir -p "${pkgdir}/etc/skel"
@@ -14,7 +14,6 @@ package() {
   mkdir -p "${pkgdir}/usr/share/athena-gnome-material-shell-config"
 
   cp -rf "${srcdir}/etc/profile.d" "${pkgdir}/etc/"
-  cp -rf "${srcdir}/etc/skel/.flag-work-once" "${pkgdir}/etc/skel/"
-  cp -rf "${srcdir}/etc/skel/.local" "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}/etc/skel/.flag-material-shell" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}"/usr/share/athena-gnome-material-shell-config/* "${pkgdir}/usr/share/athena-gnome-material-shell-config/"
 }
