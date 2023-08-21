@@ -10,9 +10,9 @@ source=("git+https://github.com/TeddyBearKilla/Afterglow-Cursors-Recolored"
         "hackthebox.png"
         "$pkgname.tar.gz")
 sha512sums=('SKIP'
-            '30650f30dfb53ca8378c3adba5919eb88d237821932b6cd2fae00412351cdfababe6666bf3777a30858d9fcc7b868f4e1f1306c6db09cdcdad515f5d3c4250e0'
+            'b862544077d9ad22c3b27ea9c417c386c569b337ae044088da91173df6f155782bb22d4b345833fdd052fb036988774307d62235746f735e907692f95728cdf9'
             'b96074aade5396df359335c5c164b1fdb8280eef354ae487c0cb55ec269d1cf17a4bce9e57e1b94a9622382e23b5f75150432b9ae53eff158ff15a09b8b7034b'
-            '4a7c20db61498983e73f4a3b7f7f4d31173034a0a5c71ca45e56fdf0ace2ea444483c1650c25ab9c653f3b04e331170e14b4770a02666c5b6341fff894881ef5')
+            '09ea2d8b547d5f68fca8ff027d444b0edafa9263d5bada93bea9e635ec24897be14caf4221c9dbea163b297005b83a4ce48fa5342ed20685f39042be66923778')
 
 pkgver() {
   cd Afterglow-Cursors-Recolored
@@ -23,7 +23,6 @@ pkgver() {
 package() {
   install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/themes"
-  install -dm 755 "$pkgdir/usr/share/icons/hicolor/256x256"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
   install -dm 755 "$pkgdir/usr/share/icons/Afterglow-Dracula-Green"
 
@@ -34,8 +33,4 @@ package() {
   cp -a Afterglow-Cursors-Recolored/colors/Dracula/Green/dist-dracula-green/* "$pkgdir/usr/share/icons/Afterglow-Dracula-Green/"
   install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "hackthebox.png" "$pkgdir/usr/share/backgrounds/default/"
-
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/256x256/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/256x256/"
-
 }

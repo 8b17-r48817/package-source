@@ -52,6 +52,88 @@ sed -i "s/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \"$vscode_theme\
 cp -rf "$HOME/.config/kitty/kitty-themes/themes/$kitty_theme" "$HOME/.config/kitty/current-theme.conf" 2>/dev/null
 sed -i "s/set -g @tmux_power_theme.*/set -g @tmux_power_theme '$tmux_theme'/g" "$HOME/.tmux.conf"
 
+# Create a for loop with one sed here:
+
+# Define arrays for strings to be replaced and their replacements
+declare -a original_strings=(
+  '\\\"\/usr\/share\/icons\/hicolor\/128x128\/categories\/redteam-128x128.png\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/128x128\/categories\/blueteam-128x128.png\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/128x128\/categories\/sociable-128x128.png\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/256x256\/apps\/terminal-256x256.png\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/256x256\/apps\/firefox_logo_arch-256x256.png\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/256x256\/apps\/vscode-256x256.png\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/256x256\/categories\/athena-info-gathering-trans-256x256.png\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/256x256\/categories\/athena-vuln-analysis-256x256.png\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/256x256\/categories\/athena-web-application-trans-256x256.png\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/256x256\/categories\/athena-password-attacks-trans-256x256.png\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/256x256\/categories\/athena-sniffing-spoofing-trans-256x256.png\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/256x256\/categories\/athena-wireless-attacks-trans-256x256.png\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/256x256\/categories\/athena-reverse-engineering-trans-256x256.png\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/256x256\/categories\/athena-exploitation-tools-trans-256x256.png\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/256x256\/categories\/athena-maintaining-access-trans-256x256.png\\\"'
+  # Blue
+  '\\\"\/usr\/share\/icons\/hicolor\/categories\/athena-identify-trans.svg\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/categories\/athena-protect-trans.svg\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/categories\/athena-detect-trans.svg\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/categories\/athena-respond-trans.svg\\\"'
+  '\\\"\/usr\/share\/icons\/hicolor\/categories\/athena-recover-trans.svg\\\"'
+)
+
+declare -a replacement_strings=(
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/redteam.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/blueteam.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/social.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/apps\/scalable\/terminal.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/apps\/scalable\/firefox_logo_arch.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/apps\/scalable\/vscode.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/athena-info-gathering-trans.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/athena-vuln-analysis.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/athena-web-application-trans.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/athena-password-attacks-trans.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/athena-sniffing-spoofing-trans.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/athena-wireless-attacks-trans.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/athena-reverse-engineering-trans.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/athena-exploitation-tools-trans.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/athena-maintaining-access-trans.svg\\\"'
+  # Blue
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/athena-identify-trans.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/athena-protect-trans.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/athena-detect-trans.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/athena-respond-trans.svg\\\"'
+  '\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/athena-recover-trans.svg\\\"'
+)
+
+# Define an array of file paths
+declare -a file_paths=(
+  '/usr/share/athena-gnome-config/dconf-shell.ini'
+  '/usr/share/athena-gnome-material-shell-config/dconf-shell.ini'
+)
+
+# Iterate through the array of file paths
+for ((i = 0; i < ${#file_paths[@]}; i++)); do
+  path="${file_paths[i]}"
+  
+  # Construct the sed command
+  sed_cmd="sudo sed -i"
+
+  # Iterate through the original_strings and replacement_strings arrays
+  for ((j = 0; j < ${#original_strings[@]}; j++)); do
+    original="${original_strings[j]}"
+    replacement="${replacement_strings[j]}"
+    sed_cmd+=" -e 's/$original/$replacement/g'"
+  done
+
+  sed_cmd+=" '$path"
+
+  # Execute the constructed sed command, redirecting stderr to null
+  eval "$sed_cmd" 2>/dev/null
+
+  # Additional sed because idk why it is not able to change the icon path if I put this in for loop above
+  sudo sed -i "s/\\\\\"\/usr\/share\/icons\/hicolor\/256x256\/categories\/athena-vuln-analysis-256x256.png\\\\\"/\\\\\"\/usr\/share\/icons\/HackTheBox\/categories\/scalable\/athena-vuln-analysis.svg\\\\\"/g" /usr/share/athena-gnome-config/dconf-shell.ini /usr/share/athena-gnome-material-shell-config/dconf-shell.ini 2>/dev/null
+done
+
+dconf load /org/gnome/shell/ < /usr/share/athena-gnome-config/dconf-shell.ini
+
 if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
     cp -rf "$HOME/.config/eww/css/savedcolors/_colorscheme_$topbarcolorscheme.scss" "$HOME/.config/eww/css/_colorscheme.scss" 2>/dev/null
     cp -rf "$HOME/.config/eww/css/savedcolors/_iconcolor_$topbarcolorscheme.txt" "$HOME/.config/eww/css/_iconcolor.txt" 2>/dev/null
