@@ -29,6 +29,7 @@ package() {
 
   cp -a HackTheBox-GTK-Theme/HackTheBox-B "$pkgdir/usr/share/themes/"
   cp -a HackTheBox-GTK-Theme/HackTheBox-BL "$pkgdir/usr/share/themes/"
+  cp -a HackTheBox-GTK-Theme/HackTheBox-BBL "$pkgdir/usr/share/themes/"
   cp -a HackTheBox "$pkgdir/usr/share/icons/"
   cp -a Afterglow-Cursors-Recolored/colors/Dracula/Green/dist-dracula-green/* "$pkgdir/usr/share/icons/Afterglow-Dracula-Green/"
   install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
