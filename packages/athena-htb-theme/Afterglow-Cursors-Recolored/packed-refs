@@ -1,8 +1,0 @@
-# pack-refs with: peeled fully-peeled sorted 
-4a73192b5f8d5d20fff644088495cc8fa0ebc870 refs/heads/main
-213d7d74f0d296651c1ecff77a3c970016bc57ed refs/tags/Catppuccin
-5b19d18981a24ac9c391157f944ed390ed7aaf11 refs/tags/Dracula
-304f8cca4a2e65563570b72aafdfabe1507a6b90 refs/tags/Latest-Release
-5b19d18981a24ac9c391157f944ed390ed7aaf11 refs/tags/Original
-0081a50900ea30200dff8338b2eb192c806770b0 refs/tags/Windows-Cursors
-af39597123292ebbd1835917d488c36abaeb0bc6 refs/tags/v1
