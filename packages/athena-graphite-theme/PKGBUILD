@@ -15,9 +15,9 @@ source=("git+https://github.com/vinceliuice/Graphite-gtk-theme.git"
 sha512sums=('SKIP'
             'SKIP'
             'bb11cc73a15b26ad98818a70e22547fb1be0984e0f92250e1c5a8f42a537552a1193d53136d91290ca6fb2e52b6cee217c9c66551b7308195d2da8ee37dfe554'
-            '2857c98db677cdb97af7222fa260890054bc777f406fe744d4ba5067330b701af58a2494007e5a47f3732c480bd10c2119b3867a8955f5bada239cf2a5681fa5'
+            '14feec93dc05b1a4c4d4dac9d2097a583502f047e4b668b8e260e6afd665e83cba81af476fd6faeaf86d38033cb6e70d4c26127e39dfb684b2fdef9f6e08ef04'
             '180debc64a86b577ca3f465157ccf853f87d74ba9f101559ddda74a32169910d7b0fef829fa7672bfb306c58131ab27300154557e36bc402c833f097244dd18e'
-            '3640aaec96819e655479d731a74cb3b69aae1514d64372e68a5dafa701be207719a5a6b116088d56a89badc7ff5b9b6f2c8865d7a308592a5bf39a92af444a7f')
+            'a14c46a4e52dd87843ca8600bcfe2531a242808616a1f07bedec90b16b464142e3dc946309ef808c64ecf7b43e9678413caaee95492fd730f8b2cc3b58e1b35d')
 
 pkgver() {
   cd Graphite-gtk-theme
@@ -29,12 +29,12 @@ package() {
 
   install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/themes"
-  install -dm 755 "$pkgdir/usr/share/icons/hicolor/256x256"
+  install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
   cp -a Bibata-Modern-Ice "$pkgdir/usr/share/icons/"
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/256x256/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/256x256/"
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"
   install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "arch-ascii.png" "$pkgdir/usr/share/backgrounds/default/"
 

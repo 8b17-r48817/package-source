@@ -10,9 +10,9 @@ source=("git+https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme.git"
         "blue-eyes.jpg"
         "$pkgname.tar.gz")
 sha512sums=('SKIP'
-            '1ba642fd51ff9cb8801073211d85e85ba0d481589d24fce78b94060d41b989c7e5976564992d49040e20687ea12550a264618dc8a1a0fc186252aa3826571ea6'
+            '715a657877ad8d9636ee2ba84751f73230a6136cee5491c4e3f2ad51426fa245ec81f545f2f25f2ca483df6e385a1aa74d523c558370b99993ead9e039eea274'
             'c4575e024afbec6cf5624957c1102a866a468f90c1c3f0e7368cbb6905b4f559649f96ee4321036d3c23042b87777f07020e78b423922aa3f38ad6b9f8396495'
-            '69d92e24a714a25b52ca2ba387d2cf2d5a74686601afd5ffb3be4580558afd1f3c8927b6e7dcc99fd877bf8d99461214a274ee716ff74618d2b19eb561ea4e81')
+            '8ad88f1615b164c1047b0a24a0314c4c40f749e4abd979a4ea9749e9369c7f94b881e8155d168e52a1ac0cc1c736362cc0339fd32a6dbd33cb130dbbc42e8e8b')
 
 pkgver() {
   cd Tokyo-Night-GTK-Theme
@@ -23,7 +23,7 @@ pkgver() {
 package() {
   install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/themes"
-  install -dm 755 "$pkgdir/usr/share/icons/hicolor/256x256"
+  install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
   cp -a Tokyo-Night-GTK-Theme/themes/Tokyonight-Dark-B "$pkgdir/usr/share/themes/"
@@ -32,8 +32,8 @@ package() {
   install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "blue-eyes.jpg" "$pkgdir/usr/share/backgrounds/default/"
 
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/256x256/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/256x256/"
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"
   cp -a "$srcdir/oreo_blue_cursors" "$pkgdir/usr/share/icons/"
 
 }

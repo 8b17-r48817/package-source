@@ -25,7 +25,7 @@ pkgver() {
 package() {
   install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/themes"
-  install -dm 755 "$pkgdir/usr/share/icons/hicolor/256x256"
+  install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
   cp -a Sweet-folders/Sweet-Purple "$pkgdir/usr/share/icons/"
@@ -34,8 +34,8 @@ package() {
   install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "neon_circle.jpg" "$pkgdir/usr/share/backgrounds/default/"
 
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/256x256/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/256x256/"
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"
   cp -rf "$srcdir/Sweet-Dark-v40" "$pkgdir/usr/share/themes/"
   cp -rf "$srcdir/oreo_spark_purple_cursors" "$pkgdir/usr/share/icons/"
 }

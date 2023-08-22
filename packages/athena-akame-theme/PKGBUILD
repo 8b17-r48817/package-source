@@ -14,9 +14,9 @@ source=("git+https://github.com/Fausto-Korpsvart/Nightfox-GTK-Theme.git"
 sha512sums=('SKIP'
             'SKIP'
             '3a1360ba5541598ec6c4dfa6cd261e49ec849dafbe21e5a047820412b093486a975bbb97c1fac616f510f1e878e19afacbfd9e82baa21664b022af25347ecc2d'
-            '98a8722a310ca6ab1ea1b5bd2b004e17bace005e694e48cbf7d263bd9bda2fd305310da8c0e90b3ccd39c7a359806628a5b26f392faba66635f56c88b3767526'
+            'e0cbc51dea1b0b7515b26c776a73336f5c56d806bcd99eb0c399975ea42444ec6d93e0abef479a3516fc29e4f16d8c8485ac515afc8c13ef979e1395fc7f4c14'
             'd3f73d2fb366265f28023e7e30c5391e7591cbd0b66ec0024b202e33bd03a403683519e623075f39267d4ff9f6d523b89d9752b282d5d61bda8ac25967637f8a'
-            '1e167dd9b112c21a7348a104da6d0bdce1fe65b0518360eec12ff41f75c16bf44d7910d3cd2017fa628b918e58e75780881ea215dc3de5f527ee1529909b453a')
+            '6d70c506ca2124989b835fc2bd95fad56141d8f79ed6f45dcd96b26e4377db48052881953f34d65c7b0450530af38d0bc028052ca5b93bd08ec2ad7af7d2b2f0')
 
 pkgver() {
   cd Nightfox-GTK-Theme
@@ -27,7 +27,7 @@ pkgver() {
 package() {
   install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/themes"
-  install -dm 755 "$pkgdir/usr/share/icons/hicolor/256x256"
+  install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
   cp -a Nightfox-GTK-Theme/themes/Nightfox-Dusk-B "$pkgdir/usr/share/themes/"
@@ -37,7 +37,7 @@ package() {
   install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "akame.jpg" "$pkgdir/usr/share/backgrounds/default/"
 
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/256x256/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/256x256/"
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"
 
 }
