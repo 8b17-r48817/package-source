@@ -12,7 +12,7 @@ source=("git+https://github.com/TeddyBearKilla/Afterglow-Cursors-Recolored"
 sha512sums=('SKIP'
             'f8074dd06a9694d726ecbded937e9fe1d3303db13793f7c8fbb3e30d8d3ff3216ee4d0d4a8dd072dfacc0536908c7002ade176abaad9184a98652547ea48b1d4'
             'b96074aade5396df359335c5c164b1fdb8280eef354ae487c0cb55ec269d1cf17a4bce9e57e1b94a9622382e23b5f75150432b9ae53eff158ff15a09b8b7034b'
-            '50da4fb1093fd97dcc3a7241a298a13ffc0a8fd74cc562e3298074144572d9149a139c1bba8680d07742d686267e9c057df98b21ddcb035a3a48326569cd10c6')
+            '87a74ccb38bc3c580b5e066457f01acc3f5bbebfc0f33d7d30443208a57fb1c43b703c43b2225ae045827600d689c9e739aca5972f6c0ae02751613758a41f33')
 
 pkgver() {
   cd Afterglow-Cursors-Recolored

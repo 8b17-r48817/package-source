@@ -6,7 +6,6 @@ arch=('any')
 license=("custom")
 depends=('gnome-characters' 'gnome-control-center' 'gnome-gesture-improvements' 'gnome-keyring' 'gnome-menus' 'gnome-shell-extensions' 'gnome-system-monitor' 'gnome-terminal' 'gnome-themes-extra' 'gnome-tweaks' 'malcontent' 'noto-fonts-emoji' 'polkit-gnome' 'qgnomeplatform-qt5' 'qgnomeplatform-qt6' 'qqc2-desktop-style' 'ttf-jetbrains-mono' 'wayland' 'xdg-desktop-portal' 'xdg-desktop-portal-gnome' 'gnome-shell-extension-appindicator-git' 'gnome-shell-extension-aylur-widgets-git' 'gnome-shell-extension-desktop-icons-ng-git' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-hide-activities-git' 'gnome-shell-extension-logo-menu-git' 'gnome-shell-extension-pop-shell-git' 'gnome-shell-extension-remove-app-menu-git' 'gnome-shell-extension-top-bar-organizer' 'gnome-shell-extension-ubuntu-dock-git' 'gnome-shell-extension-vitals-git')
 source=("$pkgname.tar.gz")
-sha512sums=('3df8d37b685377b8c6b18d324689c5e14bda07c4e74a4206b815d32022c3d0b98f5daff2a1669f56e4fef294be358abea70bb914f8abf9c83c9de3d75de723b2')
 
 package() {
   mkdir -p "${pkgdir}/etc/skel"
@@ -17,3 +16,4 @@ package() {
   cp -rf "${srcdir}/etc/skel/.flag-work-once" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}"/usr/share/athena-gnome-config/* "${pkgdir}/usr/share/athena-gnome-config/"
 }
+sha512sums=('bb7180dec0e2c473fa305b5c882131df233a456014f04ae2afcd7a367165246e3b31921e2b163d682a773733f91fe8e03003754216fe6ed142e3ab7966d0f404')

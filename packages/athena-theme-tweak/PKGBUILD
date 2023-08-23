@@ -22,4 +22,4 @@ EOF
   chmod +x "$pkgdir/usr/bin/$pkgname"
 }
 
-sha512sums=('253938f22caf05b6d95e7a37f5b583e936a4db926beba5d487be33d47c868542416fd8e3ff4e67f6a44715bc4cd1eaab7a67069f187e43182d3b6c57d5cc98d1')
+
