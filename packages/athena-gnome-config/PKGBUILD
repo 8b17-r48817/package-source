@@ -5,7 +5,9 @@ pkgdesc="GNOME configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('gnome-characters' 'gnome-control-center' 'gnome-gesture-improvements' 'gnome-keyring' 'gnome-menus' 'gnome-shell-extensions' 'gnome-system-monitor' 'gnome-terminal' 'gnome-themes-extra' 'gnome-tweaks' 'malcontent' 'noto-fonts-emoji' 'polkit-gnome' 'qqc2-desktop-style' 'ttf-jetbrains-mono' 'wayland' 'xdg-desktop-portal' 'xdg-desktop-portal-gnome' 'gnome-shell-extension-appindicator-git' 'gnome-shell-extension-aylur-widgets-git' 'gnome-shell-extension-desktop-icons-ng-git' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-hide-activities-git' 'gnome-shell-extension-logo-menu-git' 'gnome-shell-extension-pop-shell-git' 'gnome-shell-extension-remove-app-menu-git' 'gnome-shell-extension-top-bar-organizer' 'gnome-shell-extension-ubuntu-dock-git' 'gnome-shell-extension-vitals-git')
+conflicts=('athena-gnome-material-shell-config')
 source=("$pkgname.tar.gz")
+sha512sums=('bb7180dec0e2c473fa305b5c882131df233a456014f04ae2afcd7a367165246e3b31921e2b163d682a773733f91fe8e03003754216fe6ed142e3ab7966d0f404')
 
 package() {
   mkdir -p "${pkgdir}/etc/skel"
@@ -16,4 +18,3 @@ package() {
   cp -rf "${srcdir}/etc/skel/.flag-work-once" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}"/usr/share/athena-gnome-config/* "${pkgdir}/usr/share/athena-gnome-config/"
 }
-sha512sums=('bb7180dec0e2c473fa305b5c882131df233a456014f04ae2afcd7a367165246e3b31921e2b163d682a773733f91fe8e03003754216fe6ed142e3ab7966d0f404')

@@ -5,15 +5,16 @@ pkgdesc="GNOME Material Shell configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('gnome-characters' 'gnome-control-center' 'gnome-gesture-improvements' 'gnome-keyring' 'gnome-menus' 'gnome-shell-extensions' 'gnome-system-monitor' 'gnome-terminal' 'gnome-themes-extra' 'gnome-tweaks' 'malcontent' 'noto-fonts-emoji' 'polkit-gnome' 'qqc2-desktop-style' 'ttf-jetbrains-mono' 'wayland' 'xdg-desktop-portal' 'xdg-desktop-portal-gnome' 'gnome-shell-extension-appindicator-git' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-material-shell-git')
+conflicts=('athena-gnome-config')
 source=("$pkgname.tar.gz")
 sha512sums=('7fb70a56060b741b69f7dda0aaa706f18c4c940be57b1936d144c3a7bf87fd21fc0143f699e5fe500c14857a0774d679120f4dbbde445b27ccdc46ae58783f3f')
 
 package() {
   mkdir -p "${pkgdir}/etc/skel"
   mkdir -m 750 -p "${pkgdir}/etc/sudoers.d"
-  mkdir -p "${pkgdir}/usr/share/athena-gnome-material-shell-config"
+  mkdir -p "${pkgdir}/usr/share/athena-gnome-config"
 
   cp -rf "${srcdir}/etc/profile.d" "${pkgdir}/etc/"
   cp -rf "${srcdir}/etc/skel/.flag-material-shell" "${pkgdir}/etc/skel/"
-  cp -rf "${srcdir}"/usr/share/athena-gnome-material-shell-config/* "${pkgdir}/usr/share/athena-gnome-material-shell-config/"
+  cp -rf "${srcdir}"/usr/share/athena-gnome-config/* "${pkgdir}/usr/share/athena-gnome-config/"
 }
