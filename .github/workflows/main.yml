@@ -1,0 +1,59 @@
+name: Build and Push Packages
+
+on:
+  schedule:
+    - cron: '22 5 * * 0'
+  workflow_dispatch:
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    container:
+      image: athenaos/base-devel:latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: pacman -Syyu --noconfirm pacman-contrib git reflector mirroars
+      
+    - name: Setting builder user
+      run: |
+        useradd -m -d /src -G wheel -g users builder -s /bin/bash
+        echo "builder ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
+        echo "root ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
+        chmod -R a+rw .
+        chown -R builder .
+        
+    - name: Import GPG key
+      uses: crazy-max/ghaction-import-gpg@v5
+      with:
+        gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+        passphrase: ${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
+        
+    - name: Set fastest mirrors
+      run: |
+        reflector --age 6 --connection-timeout 15 --download-timeout 15 --latest 21 --fastest 21 --threads 21 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
+        mirroars -n 21 -m 15 -p -w -t -r blackarch /etc/pacman.d/blackarch-mirrorlist
+        mirroars -n 21 -m 15 -p -w -t -r chaotic-aur /etc/pacman.d/chaotic-mirrorlist
+        
+    - name: Build and sign packages
+      run: |
+        export PASSPHRASE=${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
+        chmod +x build_and_sign_packages.sh
+        chown -R builder ~/.gnupg/
+        sudo -E -u builder ./build_and_sign_packages.sh
+
+    - name: Push packages to another repository
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git clone https://github.com/Athena-OS/athena-repository.git
+        cd athena-repository
+        cp -rf ../*.pkg.tar.zst* ./x86_64/
+        cp -rf ../*.pkg.tar.zst* ./aarch64/
+        ./update-database.sh
+        git add --all
+        git commit -m "Add built packages"
+        git push https://D3vil0p3r:${{ secrets.DESTINATION_REPO_TOKEN }}@github.com/Athena-OS/athena-repository.git main
