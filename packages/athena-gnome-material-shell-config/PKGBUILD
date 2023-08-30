@@ -15,6 +15,6 @@ package() {
   mkdir -p "${pkgdir}/usr/share/athena-gnome-config"
 
   cp -rf "${srcdir}/etc/profile.d" "${pkgdir}/etc/"
-  cp -rf "${srcdir}/etc/skel/.flag-material-shell" "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}/etc/skel/.flag-work-once" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}"/usr/share/athena-gnome-config/* "${pkgdir}/usr/share/athena-gnome-config/"
 }

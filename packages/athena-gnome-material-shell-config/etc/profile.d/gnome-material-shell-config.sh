@@ -4,13 +4,13 @@ detect_virt=$(systemd-detect-virt)
 
 if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "docker" ] && [ "$detect_virt" != "podman" ] && [ "$detect_virt" != "wsl" ]); then
 
-     FLAGFILE="$HOME/.flag-material-shell"
-     #FLAGNET="$HOME/.flag-net-material-shell"
+     FLAGFILE="$HOME/.flag-work-once"
+     #FLAGNET="$HOME/.flag-net-once"
 
-     DCONF_CK="/usr/share/athena-gnome-material-shell-config/dconf-custom-keybindings.ini"
-     DCONF_DS="/usr/share/athena-gnome-material-shell-config/dconf-desktop.ini"
-     DCONF_MT="/usr/share/athena-gnome-material-shell-config/dconf-mutter.ini"
-     DCONF_SH="/usr/share/athena-gnome-material-shell-config/dconf-shell.ini"
+     DCONF_CK="/usr/share/athena-gnome-config/dconf-custom-keybindings.ini"
+     DCONF_DS="/usr/share/athena-gnome-config/dconf-desktop.ini"
+     DCONF_MT="/usr/share/athena-gnome-config/dconf-mutter.ini"
+     DCONF_SH="/usr/share/athena-gnome-config/dconf-shell.ini"
 
      if [ -f "$FLAGFILE" ]; then
 
