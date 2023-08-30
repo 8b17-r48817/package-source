@@ -4,8 +4,8 @@ detect_virt=$(systemd-detect-virt)
 
 if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "docker" ] && [ "$detect_virt" != "podman" ] && [ "$detect_virt" != "wsl" ]); then
 
-     FLAGFILE="$HOME/.flag-material-shell"
-     #FLAGNET="$HOME/.flag-net-material-shell"
+     FLAGFILE="$HOME/.flag-work-once"
+     #FLAGNET="$HOME/.flag-net-once"
 
      DCONF_CK="/usr/share/athena-gnome-material-shell-config/dconf-custom-keybindings.ini"
      DCONF_DS="/usr/share/athena-gnome-material-shell-config/dconf-desktop.ini"
