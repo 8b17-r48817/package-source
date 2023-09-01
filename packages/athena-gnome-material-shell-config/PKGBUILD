@@ -7,7 +7,7 @@ license=("custom")
 depends=('gnome-characters' 'gnome-control-center' 'gnome-gesture-improvements' 'gnome-keyring' 'gnome-menus' 'gnome-shell-extensions' 'gnome-system-monitor' 'gnome-terminal' 'gnome-themes-extra' 'gnome-tweaks' 'malcontent' 'noto-fonts-emoji' 'polkit-gnome' 'qqc2-desktop-style' 'ttf-jetbrains-mono' 'wayland' 'xdg-desktop-portal' 'xdg-desktop-portal-gnome' 'gnome-shell-extension-appindicator-git' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-material-shell-git')
 conflicts=('athena-gnome-config')
 source=("$pkgname.tar.gz")
-sha512sums=('7fb70a56060b741b69f7dda0aaa706f18c4c940be57b1936d144c3a7bf87fd21fc0143f699e5fe500c14857a0774d679120f4dbbde445b27ccdc46ae58783f3f')
+sha512sums=('fb4077b1abfccad69c0612b6fc1f1f61a16fab3e099fc5495b4b99a5f9d42add21764df661468803222950e951dba59e83e5dd46ae92e9821d53f22bceb30b30')
 
 package() {
   mkdir -p "${pkgdir}/etc/skel"
