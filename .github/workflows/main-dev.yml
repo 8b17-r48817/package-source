@@ -55,7 +55,6 @@ jobs:
         git clone https://github.com/Athena-OS/athena-repository-dev.git
         cd athena-repository-dev
         cp -rf ../*.pkg.tar.zst* ./x86_64/
-        cp -rf ../*.pkg.tar.zst* ./aarch64/
         ./update-database.sh
         git add --all
         git commit -m "Add built packages"
