@@ -19,7 +19,13 @@ package=athena-brave-config
 if pacman -Qq $package > /dev/null ; then
   if pacman -Qq athena-gnome-config > /dev/null || pacman -Qq athena-gnome-material-shell-config > /dev/null ; then
     #sed -i 's/{\\\\\"name\\\\\":\\\\\"Firefox ESR\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/hicolor\/scalable\/apps\/firefox-logo.svg\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"firefox-esr\\\\\"},\\\\\"angle\\\\\":-1}/{\\\\\"name\\\\\":\\\\\"Brave\\\\\",\\\\\"icon\\\\\":\\\\\"\/usr\/share\/icons\/hicolor\/scalable\/apps\/brave.svg\\\\\",\\\\\"type\\\\\":\\\\\"Command\\\\\",\\\\\"data\\\\\":{\\\\\"command\\\\\":\\\\\"brave\\\\\"},\\\\\"angle\\\\\":-1}/g' /usr/share/athena-gnome-config/dconf-shell.ini
-    sed -i 's/{\\\\\"Firefox ESR\\\\\"/\\\\\"CIAOOOO\\\\\"/g' /usr/share/athena-gnome-config/dconf-shell.ini
+    sed -i 's/\"Firefox ESR\"/\"WOOO1\"/g' /usr/share/athena-gnome-config/dconf-shell.ini
+    sed -i 's/\\\"Firefox ESR\\\"/\\\"WEWE3\\\"/g' /usr/share/athena-gnome-config/dconf-shell.ini
+    sed -i 's/\\\\\"Firefox ESR\\\\\"/\\\\\"CIAOOOO5\\\\\"/g' /usr/share/athena-gnome-config/dconf-shell.ini
+    sed -i 's/\\\\\\\"Firefox ESR\\\\\\\"/\\\\\\\"CIAOOOO7777\\\\\\\"/g' /usr/share/athena-gnome-config/dconf-shell.ini
+    sed -i 's/\/usr\/share\/icons\/hicolor\/scalable\/apps\/firefox-logo.svg/ICON1111/g' /usr/share/athena-gnome-config/dconf-shell.ini
+    sed -i 's/\\/usr\\/share\\/icons\\/hicolor\\/scalable\\/apps\\/firefox-logo.svg/ICON2222/g' /usr/share/athena-gnome-config/dconf-shell.ini
+    sed -i 's/\\\/usr\\\/share\\\/icons\\\/hicolor\\\/scalable\\\/apps\\\/firefox-logo.svg/ICON333333/g' /usr/share/athena-gnome-config/dconf-shell.ini
   fi
 fi
 
