@@ -1,6 +1,6 @@
 pkgname=athena-system-installation
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Installation files for Athena."
 arch=('any')
 license=("custom")
