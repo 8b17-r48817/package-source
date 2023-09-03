@@ -11,6 +11,8 @@ pacman -Syy
 pacman -S --noconfirm archlinux-keyring athena-keyring blackarch-keyring chaotic-keyring
 pacman-key --init
 pacman-key --populate
+pacman -Syy
+pacman -S --noconfirm pacman-mirrorlist athena-mirrorlist blackarch-mirrorlist chaotic-mirrorlist
 echo
 echo "#########################################"
 echo "Getting fastest mirrors for your location"
