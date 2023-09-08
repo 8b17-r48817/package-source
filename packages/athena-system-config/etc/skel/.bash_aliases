@@ -17,23 +17,23 @@ alias ldir="lsd -l | grep -E '^d' --color=never" # directories only
 alias l='lsd'
 alias l.="lsd -A | grep -E '^\.' --color=never"
 
-# alias ls='exa --color=auto'
-# alias la='exa -a'
-# alias lx='exa -lhs extension' # sort by extension
-# alias lk='exa -lhs size' # sort by size
-# alias lc='exa -lhs changed' # sort by change time
-# alias lu='exa -lhs accessed' # sort by access time
-# alias lr='exa -lRh' # recursive ls
-# alias lt='exa -lhs modified' # sort by modification date
-# alias lz='exa -lhs created' # sort by creation date
-# alias lm='exa -alh | more' # pipe through 'more'
-# alias lw='exa -xGah' # wide listing format
-# alias ll='exa -alFh' # long listing format
-# alias labc='exa -lhs name' #alphabetical sort
-# alias lf="exa -l | grep -E -v '^d'" # files only
-# alias ldir="exa -l | grep -E '^d' --color=never" # directories only
-# alias l='exa'
-# alias l.="exa -a | grep -E '^\.' --color=never"
+# alias ls='eza --color=auto'
+# alias la='eza -a'
+# alias lx='eza -lhs extension' # sort by extension
+# alias lk='eza -lhs size' # sort by size
+# alias lc='eza -lhs changed' # sort by change time
+# alias lu='eza -lhs accessed' # sort by access time
+# alias lr='eza -lRh' # recursive ls
+# alias lt='eza -lhs modified' # sort by modification date
+# alias lz='eza -lhs created' # sort by creation date
+# alias lm='eza -alh | more' # pipe through 'more'
+# alias lw='eza -xGah' # wide listing format
+# alias ll='eza -alFh' # long listing format
+# alias labc='eza -lhs name' #alphabetical sort
+# alias lf="eza -l | grep -E -v '^d'" # files only
+# alias ldir="eza -l | grep -E '^d' --color=never" # directories only
+# alias l='eza'
+# alias l.="eza -a | grep -E '^\.' --color=never"
 
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
