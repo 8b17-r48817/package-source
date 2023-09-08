@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Graphite Dark theme for Athena."
 arch=('any')
 license=("GPL3")
-depends=('bibata-modern-ice' 'graphite-gtk-theme' 'tela-circle-icon')
+depends=('bibata-modern-ice' 'graphite-gtk-theme' 'tela-circle-icon-theme-black')
 source=("$pkgname"
         "arch-ascii.png"
         "$pkgname.tar.gz")

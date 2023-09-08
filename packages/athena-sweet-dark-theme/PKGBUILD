@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Sweet Dark theme for Athena."
 arch=('any')
 license=("GPL3")
-depends=('candy-icons' 'oreo-spark-purple-cursors' 'sweet-dark-gtk-theme' 'sweet-folders')
+depends=('candy-icons-git' 'oreo-spark-purple-cursors' 'sweet-dark-gtk-theme' 'sweet-folders-icons-git')
 source=("$pkgname"
         "neon_circle.jpg"
         "$pkgname.tar.gz")
