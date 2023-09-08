@@ -1,27 +1,23 @@
 pkgname=athena-parrotctfs-theme
-pkgver=205.3864d851aa
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Parrot CTFs theme for Athena."
 arch=('any')
 license=("GPL3")
-depends=('fish' 'layan-gtk-theme-git' 'shell-color-scripts' 'starship')
+depends=('afterglow-recolored-purple' 'fish' 'layan-gtk-theme-git' 'material-black-cherry-suru' 'shell-color-scripts' 'starship')
 makedepends=('git')
 conflicts=('athena-akame-theme' 'athena-blue-eyes-theme' 'athena-graphite-theme' 'athena-gruvbox-theme' 'athena-sweet-dark-theme' 'athena-xxe-theme' 'athena-fish')
-source=("git+https://github.com/rtlewis88/rtl88-Themes#branch=material-black-COLORS"
-        "git+https://github.com/TeddyBearKilla/Afterglow-Cursors-Recolored"
-        "git+https://github.com/parrotassassin15/ConfigFiles"
+source=("git+https://github.com/parrotassassin15/ConfigFiles"
         "$pkgname"
         "PCTFs.png"
         "$pkgname.tar.gz")
 sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
             '6ca0e93783eea5c8c83a549155eb8b4e4dba3f77549a11eaa7cc37438f8b389d2594ecdfd3823d2391c24e5b4b74b9b76ec01411a9b22d61c4a18943b4002291'
             '70bd0d55c90fcc0355528551596ec5a439d7c79c87b4c2aa8260d67e19e69283bceeb99cfc4a0d8912a6036bcd112186b275ec96a63e5a5cf16936474bf7c6c8'
             'f2494a4b86c1cd023329726600333f5bf74cdf8aeafb9436d51ec1ec0a97f70d6dc38b01e7e5ae6320afadd18b434d54074e5a73c6b5e2cab287b8b8657b1acb')
 
 pkgver() {
-  cd rtl88-Themes
+  cd ConfigFiles
 
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
@@ -29,12 +25,9 @@ pkgver() {
 package() {
   install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
-  install -dm 755 "$pkgdir/usr/share/icons/Afterglow-Recolored-Purple"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
   install -dm 755 "$pkgdir/etc/skel/.config"
 
-  cp -a rtl88-Themes/Material-Black-Cherry-Suru "$pkgdir/usr/share/icons/"
-  cp -a Afterglow-Cursors-Recolored/colors/Original/Purple/dist-purple/* "$pkgdir/usr/share/icons/Afterglow-Recolored-Purple/"
   install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "PCTFs.png" "$pkgdir/usr/share/backgrounds/default/"
 

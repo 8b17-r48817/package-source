@@ -1,0 +1,25 @@
+pkgname=tela-circle-icon
+_pkgname=Tela-circle-icon-theme
+pkgver=2023.06.25.r11.gf4ef393b
+pkgrel=1
+pkgdesc="Tela Circle Black Dark icons."
+arch=('any')
+license=("custom:unknown")
+depends=('gtk-update-icon-cache')
+makedepends=('git')
+source=("git+https://github.com/vinceliuice/Tela-circle-icon-theme.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+package() {
+  cd $_pkgname
+
+  install -dm 755 "$pkgdir/usr/share/icons"
+
+  ./install.sh black -d "$pkgdir/usr/share/icons" -c
+}

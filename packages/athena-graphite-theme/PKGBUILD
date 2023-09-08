@@ -1,53 +1,25 @@
 pkgname=athena-graphite-theme
-pkgver=2023.05.17.r8.gb2e9ce2
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Graphite Dark theme with Tela Circle Black Dark icons for Athena."
+pkgdesc="Graphite Dark theme for Athena."
 arch=('any')
 license=("GPL3")
-depends=('gtk-update-icon-cache')
-makedepends=('git' 'gnome-shell' 'sassc')
-source=("git+https://github.com/vinceliuice/Graphite-gtk-theme.git"
-        "git+https://github.com/vinceliuice/Tela-circle-icon-theme.git"
-        "https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Ice.tar.gz"
-        "$pkgname"
+depends=('bibata-modern-ice' 'graphite-gtk-theme' 'tela-circle-icon')
+source=("$pkgname"
         "arch-ascii.png"
         "$pkgname.tar.gz")
-sha512sums=('SKIP'
-            'SKIP'
-            'bb11cc73a15b26ad98818a70e22547fb1be0984e0f92250e1c5a8f42a537552a1193d53136d91290ca6fb2e52b6cee217c9c66551b7308195d2da8ee37dfe554'
-            '14feec93dc05b1a4c4d4dac9d2097a583502f047e4b668b8e260e6afd665e83cba81af476fd6faeaf86d38033cb6e70d4c26127e39dfb684b2fdef9f6e08ef04'
+sha512sums=('14feec93dc05b1a4c4d4dac9d2097a583502f047e4b668b8e260e6afd665e83cba81af476fd6faeaf86d38033cb6e70d4c26127e39dfb684b2fdef9f6e08ef04'
             '180debc64a86b577ca3f465157ccf853f87d74ba9f101559ddda74a32169910d7b0fef829fa7672bfb306c58131ab27300154557e36bc402c833f097244dd18e'
             'a14c46a4e52dd87843ca8600bcfe2531a242808616a1f07bedec90b16b464142e3dc946309ef808c64ecf7b43e9678413caaee95492fd730f8b2cc3b58e1b35d')
-
-pkgver() {
-  cd Graphite-gtk-theme
-
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 package() {
 
   install -dm 755 "$pkgdir/usr/bin"
-  install -dm 755 "$pkgdir/usr/share/themes"
   install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
-  cp -a Bibata-Modern-Ice "$pkgdir/usr/share/icons/"
   cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
   cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"
   install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "arch-ascii.png" "$pkgdir/usr/share/backgrounds/default/"
-
-  cd Graphite-gtk-theme
-
-  ./install.sh -n Graphite -c dark -d $pkgdir/usr/share/themes
-  ./install.sh -n Graphite-Rimless -c dark --tweaks rimless -d $pkgdir/usr/share/themes
-
-  rm -rf $pkgdir/usr/share/themes/Graphite-Dark-hdpi $pkgdir/usr/share/themes/Graphite-Dark-xhdpi $pkgdir/usr/share/themes/Graphite-Rimless-Dark-hdpi $pkgdir/usr/share/themes/Graphite-Rimless-Dark-xhdpi
-
-
-  cd ../Tela-circle-icon-theme
-
-  ./install.sh black -d "$pkgdir/usr/share/icons" -c
-
 }

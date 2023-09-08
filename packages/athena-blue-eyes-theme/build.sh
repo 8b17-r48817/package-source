@@ -6,7 +6,7 @@ arch=$(grep "^arch=" PKGBUILD | awk -F"'" '{print $2}')
 
 #NEED ONLY TO EDIT  sourcefiles VARIABLE
 
-sourcefiles="icons oreo_blue_cursors"
+sourcefiles="icons"
 
 #sed -i -e '/^sha256/d' -e '/^sha512/d' PKGBUILD
 
@@ -17,5 +17,5 @@ makepkg -f -scr --noconfirm
 
 pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
 pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
-rm -rf src pkg $pkgname.tar.gz Tokyo-Night-GTK-Theme
+rm -rf src pkg $pkgname.tar.gz
 

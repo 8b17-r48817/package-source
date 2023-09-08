@@ -1,41 +1,25 @@
 pkgname=athena-sweet-dark-theme
-pkgver=14.b2192ff
-pkgrel=2
-pkgdesc="Sweet Dark theme with Sweet Purple icons for Athena."
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Sweet Dark theme for Athena."
 arch=('any')
 license=("GPL3")
-makedepends=('git')
-source=("git+https://github.com/EliverLara/Sweet-folders.git"
-        "git+https://github.com/EliverLara/candy-icons.git"
-        "$pkgname"
+depends=('candy-icons' 'oreo-spark-purple-cursors' 'sweet-dark-gtk-theme' 'sweet-folders')
+source=("$pkgname"
         "neon_circle.jpg"
         "$pkgname.tar.gz")
-sha512sums=('SKIP'
-            'SKIP'
-            '98a1071705a3fc88ed562ab0e0104adc9298eff55ee51a9b604b1afd8cf930b1abbe41b3b7256877257fe06e8d4eb6565175bfb4552ca3ca76a9761d861dcb5b'
+sha512sums=('98a1071705a3fc88ed562ab0e0104adc9298eff55ee51a9b604b1afd8cf930b1abbe41b3b7256877257fe06e8d4eb6565175bfb4552ca3ca76a9761d861dcb5b'
             '8dc1636380142b71c9c2af783784161c7663d410437b1fdab4139aeca7f2e611750d9eb1233a75b5d19d9a82985ee4fde1581ef1a952ab24b7ced5b12c54b395'
             'ebd9bc2812b6eecc983cbee4aabe213551589a427c56968db1e8806b543d2d79f80dcc18f844f0872ce40f10e1ad718f364f830a55270bd5e365de1577c8bbf2')
 
-pkgver() {
-  cd Sweet-folders
-
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
 package() {
   install -dm 755 "$pkgdir/usr/bin"
-  install -dm 755 "$pkgdir/usr/share/themes"
   install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
-  cp -a Sweet-folders/Sweet-Purple "$pkgdir/usr/share/icons/"
-  rm -rf candy-icons/.github candy-icons/LICENSE candy-icons/README.md
-  cp -a candy-icons "$pkgdir/usr/share/icons/"
   install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "neon_circle.jpg" "$pkgdir/usr/share/backgrounds/default/"
 
   cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
   cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"
-  cp -rf "$srcdir/Sweet-Dark-v40" "$pkgdir/usr/share/themes/"
-  cp -rf "$srcdir/oreo_spark_purple_cursors" "$pkgdir/usr/share/icons/"
 }

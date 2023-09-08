@@ -1,0 +1,23 @@
+pkgname=sweet-folders
+_pkgname=Sweet-folders
+pkgver=14.b2192ff
+pkgrel=2
+pkgdesc="Sweet Folders icons."
+arch=('any')
+license=("GPL3")
+makedepends=('git')
+source=("git+https://github.com/EliverLara/$_pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd $_pkgname
+
+  install -dm 755 "$pkgdir/usr/share/icons"
+  cp -a Sweet-Purple "$pkgdir/usr/share/icons/"
+}
