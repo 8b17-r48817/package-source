@@ -4,10 +4,6 @@ pkgname=$(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}')
 pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}')
 arch=$(grep "^arch=" PKGBUILD | awk -F"'" '{print $2}')
 
-#NEED ONLY TO EDIT  sourcefiles VARIABLE
-
-sourcefiles="icons"
-
 updpkgsums
 #makepkg -g >> PKGBUILD
 makepkg -f -scr --noconfirm

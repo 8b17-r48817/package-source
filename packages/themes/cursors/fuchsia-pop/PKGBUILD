@@ -1,5 +1,5 @@
 pkgname=fuchsia-pop
-pkgver=v2.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="First OpenSource port of FuchsiaOS's cursors for Linux and Windows."
 arch=('any')
