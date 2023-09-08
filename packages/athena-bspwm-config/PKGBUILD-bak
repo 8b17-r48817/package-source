@@ -22,6 +22,7 @@ pkgver() {
 }
 
 package() {
+  cd $_pkgname
 
   install -dm 755 "$pkgdir/etc/profile.d/"
   install -dm 755 "$pkgdir/etc/skel/.config/gtk-3.0"
@@ -31,8 +32,6 @@ package() {
   install -dm 755 "$pkgdir/etc/systemd/system/multi-user.target.wants"
   install -dm 755 "$pkgdir/etc/systemd/system/sockets.target.wants"
   
-  cd $_pkgname
-
   #rsync -av --progress ./.config/dunst "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.config/ "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./home/.p10k.zsh "$pkgdir/etc/skel/.p10k.zsh"

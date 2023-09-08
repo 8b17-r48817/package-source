@@ -29,9 +29,6 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
          sh ~/.vim_runtime/install_awesome_parameterized.sh ~/.vim_runtime $USER
 
-         rm -rf "${HOME}/.config/gtk-4.0"
-         mkdir -p "${HOME}/.config/gtk-4.0"
-
          package=athena-akame-theme
          if pacman -Qq $package > /dev/null ; then
               athena-akame-theme
@@ -39,7 +36,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
          package=athena-blue-eyes-theme
          if pacman -Qq $package > /dev/null ; then
-             athena-blue-eyes-theme
+              athena-blue-eyes-theme
          fi
 
          package=athena-graphite-theme
@@ -67,11 +64,6 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
               athena-xxe-theme
          fi
 
-         package=athena-parrotctfs-theme
-         if pacman -Qq $package > /dev/null ; then
-              athena-parrotctfs-theme
-         fi
-     
          rm -rf "$FLAGFILE"
 
          systemctl --user enable --now psd

@@ -1,0 +1,118 @@
+#!/bin/sh
+
+detect_virt=$(systemd-detect-virt)
+
+if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "docker" ] && [ "$detect_virt" != "podman" ] && [ "$detect_virt" != "wsl" ]); then
+
+    FLAGFILE="$HOME/.flag-work-once"
+    #FLAGNET="$HOME/.flag-net-once"
+
+    if [ -f "$FLAGFILE" ]; then
+
+        ############################################################
+
+        xdg-mime default org.gnome.Nautilus.desktop inode/directory
+
+        ############################################################
+
+        sh ~/.vim_runtime/install_awesome_parameterized.sh ~/.vim_runtime $USER
+
+        package=athena-akame-theme
+        if pacman -Qq $package > /dev/null ; then
+	    athena-akame-theme
+        fi
+
+        package=athena-blue-eyes-theme
+        if pacman -Qq $package > /dev/null ; then
+            athena-blue-eyes-theme
+        fi
+
+        package=athena-graphite-theme
+        if pacman -Qq $package > /dev/null ; then
+            athena-graphite-theme
+        fi
+
+        package=athena-gruvbox-theme
+        if pacman -Qq $package > /dev/null ; then
+            athena-gruvbox-theme
+        fi
+
+        package=athena-sweet-dark-theme
+        if pacman -Qq $package > /dev/null ; then
+            athena-sweet-dark-theme
+        fi
+
+        package=athena-xxe-theme
+        if pacman -Qq $package > /dev/null ; then
+            athena-xxe-theme
+        fi
+
+        # Set kitty terminal for Wayland
+        sed -i "s/^linux_display_server x11/#linux_display_server x11/g" $HOME/.config/kitty/kitty.conf
+
+        ###### TERMINAL CHECK ######
+
+        binterm="foot" #fallback
+        if pacman -Qq alacritty &> /dev/null; then
+          binterm="alacritty"
+        elif pacman -Qq cool-retro-term &> /dev/null; then
+          binterm="cool-retro-term"
+        elif pacman -Qq foot &> /dev/null; then
+          binterm="foot"
+        elif pacman -Qq kitty &> /dev/null; then
+          binterm="kitty"
+        elif pacman -Qq konsole &> /dev/null; then
+          binterm="konsole"
+        elif pacman -Qq terminator &> /dev/null; then
+          binterm="terminator"
+        elif pacman -Qq terminology &> /dev/null; then
+          binterm="terminology"
+        elif pacman -Qq xfce4-terminal &> /dev/null; then
+          binterm="xfce4-terminal"
+        elif pacman -Qq xterm &> /dev/null; then
+          binterm="xterm"
+        elif pacman -Qq foot &> /dev/null; then # Fallback Wayland
+          binterm="foot"
+        elif pacman -Qq gnome-terminal &> /dev/null; then # Fallback generic
+          binterm="gnome-terminal"
+        fi
+        sed -i "s/bind = SUPER, Return, exec, foot/bind = SUPER, Return, exec, $binterm/g" "$HOME/.config/hypr/keybinds.conf"
+
+        ###########################
+
+        ###### BROWSER CHECK ######
+
+        binbrowser="firefox-esr" #fallback
+        if pacman -Qq brave-bin &> /dev/null; then
+          binbrowser="brave"
+        elif pacman -Qq mullvad-browser &> /dev/null; then
+          binbrowser="mullvad-browser"
+        elif pacman -Qq firefox-esr &> /dev/null; then # Fallback at the end of if statement
+          binbrowser="firefox-esr"
+        fi
+        sed -i "s/bind = SUPER, W, exec, brave/bind = SUPER, W, exec, $binbrowser/g" "$HOME/.config/hypr/keybinds.conf"
+
+        ###########################
+
+        rm -rf "$FLAGFILE"
+
+        systemctl --user enable --now psd
+        ln -s "$HOME/.mozilla/firefox-esr" "$HOME/.mozilla/firefox"
+    fi
+
+    #if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+    #    if [ -f "$FLAGNET" ]; then
+    #    # Commented for keeping nist-feed disable. The user decides if enable it.
+    #    #	/usr/local/bin/nist-feed -n -l
+    #    	rm -rf "$FLAGNET"
+    #    fi
+    #    /usr/local/bin/htb-update
+    #fi
+
+    #If tun0 is down (i.e., after a reboot), the shell prompt must be updated with the running interfaces
+    if ! nmcli c show --active | grep -q tun ; then
+
+        /usr/local/bin/prompt-reset
+
+    fi
+fi

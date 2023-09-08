@@ -10,7 +10,7 @@ depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'cliphist' 'coreut
 makedepends=('git' 'rsync')
 install='hyprland.install'
 source=("git+https://github.com/end-4/$_pkgname#branch=m3ww"
-        "hyprland-config.sh"
+        "hyprland-init.sh"
         "hyprland-shell"
         "hyprland.conf"
         "keybinds.conf"
@@ -58,7 +58,7 @@ package() {
   rsync -av --progress "./Import Manually/execs (add to path)/" "$pkgdir/etc/skel/.local/bin/"
   rsync -av --progress "./Import Manually/gnome-text-editor themes (Paste to root)/usr/share/gnome-text-editor/styles/" "$pkgdir/usr/share/gnome-text-editor/styles/"
 
-  install -Dm 755 $srcdir/hyprland-config.sh "$pkgdir/etc/profile.d/"
+  install -Dm 755 $srcdir/hyprland-init.sh "$pkgdir/etc/profile.d/"
   install -Dm 644 $srcdir/hyprland.conf "$pkgdir/etc/skel/.config/hypr/"
   install -Dm 644 $srcdir/keybinds.conf "$pkgdir/etc/skel/.config/hypr/"
   install -Dm 644 $srcdir/.flag-work-once "$pkgdir/etc/skel/"
