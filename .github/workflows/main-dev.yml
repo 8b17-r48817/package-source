@@ -1,3 +1,4 @@
+# Note that the base container is athenaos/base-devel. Despite this workflow works for dev packages, base-devel will always refer to athena-repository stable when need to retrieve dependencies packages stored in Athena Repository to build packages.
 name: Build and Push Packages Dev
 
 on:
