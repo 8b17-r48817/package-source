@@ -7,9 +7,9 @@ find_pkgbuild_dirs() {
 
     # Recursively traverse the root path and look for "PKGBUILD" files in each directory.
     while IFS= read -r -d '' path; do
-        #if [[ ! $path == *"metapackages"* ]]; then
-        pkg_dirs+=("$path")
-        #fi
+        if [[ ! $path == *"metapackages"* ]]; then
+            pkg_dirs+=("$path")
+        fi
     done < <(find "$root_path" -type f -name "PKGBUILD" -print0)
 
     echo "${pkg_dirs[@]}"
