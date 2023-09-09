@@ -59,7 +59,8 @@ jobs:
           rm -rf ./athena-repository/x86_64/"$basefilename"*
           cp -rf "$newpkg" ./athena-repository/x86_64/
         done
-        ./athena-repository/update-database.sh
+        cd athena-repository
+        ./update-database.sh
         git add --all
         git commit -m "Add built packages"
         git push https://D3vil0p3r:${{ secrets.DESTINATION_REPO_TOKEN }}@github.com/Athena-OS/athena-repository.git main
