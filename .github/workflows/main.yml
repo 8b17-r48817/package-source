@@ -53,11 +53,17 @@ jobs:
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
         git clone https://github.com/Athena-OS/athena-repository.git
-        for newpkg in *.pkg.tar.zst*
+        for newpkg in *.pkg.tar.zst
         do
           basefilename=$(basename "$newpkg" | sed 's/-[0-9].*//')
-          rm -rf ./athena-repository/x86_64/"$basefilename"*
-          cp -rf "$newpkg" ./athena-repository/x86_64/
+          rm -rf ./athena-repository-dev/x86_64/"$basefilename"*.zst
+          cp -rf "$newpkg" ./athena-repository-dev/x86_64/
+        done
+        for newpkg in *.pkg.tar.zst.sig
+        do
+          basefilename=$(basename "$newpkg" | sed 's/-[0-9].*//')
+          rm -rf ./athena-repository-dev/x86_64/"$basefilename"*.zst.sig
+          cp -rf "$newpkg" ./athena-repository-dev/x86_64/
         done
         cd athena-repository
         ./update-database.sh
