@@ -7,7 +7,7 @@ license=("custom")
 depends=('gnome-characters' 'gnome-control-center' 'gnome-gesture-improvements' 'gnome-keyring' 'gnome-menus' 'gnome-shell-extensions' 'gnome-system-monitor' 'gnome-terminal' 'gnome-themes-extra' 'gnome-tweaks' 'malcontent' 'noto-fonts-emoji' 'polkit-gnome' 'qqc2-desktop-style' 'ttf-jetbrains-mono' 'wayland' 'xdg-desktop-portal' 'xdg-desktop-portal-gnome' 'gnome-shell-extension-appindicator-git' 'gnome-shell-extension-aylur-widgets-git' 'gnome-shell-extension-desktop-icons-ng-git' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-hide-activities-git' 'gnome-shell-extension-logo-menu-git' 'gnome-shell-extension-pop-shell-git' 'gnome-shell-extension-remove-app-menu-git' 'gnome-shell-extension-top-bar-organizer' 'gnome-shell-extension-ubuntu-dock-git' 'gnome-shell-extension-vitals-git')
 conflicts=('athena-gnome-material-shell-config')
 source=("$pkgname.tar.gz")
-sha512sums=('bb7180dec0e2c473fa305b5c882131df233a456014f04ae2afcd7a367165246e3b31921e2b163d682a773733f91fe8e03003754216fe6ed142e3ab7966d0f404')
+sha512sums=('07331617fc767d2ac17eea39c5a6a4e3f6e567a524dc4b8f67fcbb70e6d952757fb430548f72662ddac5130f2b31095fe149240fd7021b048b1f4b931e8cd85c')
 
 package() {
   mkdir -p "${pkgdir}/etc/skel"
