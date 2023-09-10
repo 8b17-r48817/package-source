@@ -1,17 +1,17 @@
 pkgname=athena-bspwm-config
-_pkgname=dotfiles
-pkgver=26.a6ce32b
+_pkgname=bspwm
+pkgver=2.a473035
 pkgrel=1
 pkgdesc="Bspwm configuration for Athena."
 arch=('any')
-url='https://codeberg.org/expansion/dotfiles'
+url='https://github.com/Athena-OS/bspwm'
 license=("GPL")
 depends=('alacritty' 'armcord-git' 'base-devel' 'bat' 'bluez-utils' 'bluez' 'boo-sddm-git' 'brightnessctl' 'bspwm' 'btop' 'dunst' 'eww-git' 'feh' 'ffcast' 'ffmpegthumbnailer' 'geany' 'git' 'glfw-wayland' 'gnome-keyring' 'i3lock' 'imagemagick' 'jq' 'libwebp' 'lsd' 'maim' 'mlocate' 'mpc' 'mpd' 'ncmpcpp' 'net-tools' 'networkmanager' 'ntfs-3g' 'oh-my-zsh-git' 'openvpn' 'otf-droid-nerd' 'pacman-contrib' 'pamixer' 'papirus-icon-theme' 'pavucontrol' 'physlock' 'picom' 'playerctl' 'polkit-gnome' 'polybar' 'powerline' 'qt5-graphicaleffects' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-wayland' 'ranger' 'rofi' 'scrot' 'sddm' 'sxhkd' 'tdrop' 'thunar' 'tokyonight-gtk-theme' 'ttf-hack-nerd' 'ttf-inconsolata' 'ttf-jetbrains-mono-nerd' 'ttf-jetbrains-mono' 'ttf-joypixels' 'ttf-terminus-nerd' 'ueberzug' 'vim-airline' 'vim-airline-themes' 'vundle' 'webp-pixbuf-loader' 'xclip' 'xdg-user-dirs' 'xdotool' 'xfce4-taskmanager' 'xorg-xinit' 'xorg-xkill' 'xorg-xlsclients' 'xorg-xprop' 'xorg-xrandr' 'xorg-xsetroot' 'xorg-xwayland' 'xorg-xwininfo' 'zoxide' 'zsh-autosuggestions' 'zsh-history-substring-search' 'zsh-syntax-highlighting' 'zsh-theme-powerlevel10k')
 makedepends=('git' 'rsync')
-source=("git+https://codeberg.org/expansion/$_pkgname"
+source=("git+https://github.com/Athena-OS/$_pkgname"
         "$pkgname.tar.gz")
 sha512sums=('SKIP'
-            'f5512b60a37600b0e606a7712e365bd03474afe319e3cb1a918bf3e854ca9e1bd0490c06e5ef5d1da853f9605508a96b1d7224406066561c68db27963d50152c')
+            '3a5dc74593c3fd10a945b61dafa1a4cb2634e2a40d693400abc0eae3ad86dc0ddf0832ce9205d3d1870bbec7d25f67689b1dbf66953ad8b2cf29e722d662ccf9')
 
 pkgver() {
   cd $_pkgname
@@ -30,15 +30,14 @@ package() {
   install -dm 755 "$pkgdir/etc/systemd/system/multi-user.target.wants"
   install -dm 755 "$pkgdir/etc/systemd/system/sockets.target.wants"
   
-  #rsync -av --progress ./.config/dunst "$pkgdir/etc/skel/.config/"
-  rsync -av --progress ./config/ "$pkgdir/etc/skel/.config/"
-  rsync -av --progress ./home/.p10k.zsh "$pkgdir/etc/skel/.p10k.zsh"
-  rsync -av --progress ./home/.vimrc "$pkgdir/etc/skel/.vimrc"
-  rsync -av --progress ./home/.zshrc "$pkgdir/etc/skel/.zshrc"
-  rsync -av --progress ./misc/applications/ "$pkgdir/etc/skel/.local/share/applications/"
-  rsync -av --progress ./misc/bin/ "$pkgdir/etc/skel/.local/bin/"
-  rsync -av --progress ./misc/fonts/ "$pkgdir/etc/skel/.local/share/fonts/"
-  rsync -av --progress ./misc/settings.ini "$pkgdir/etc/skel/.config/gtk-3.0/"
+  rsync -av --progress .config/ "$pkgdir/etc/skel/.config/"
+  rsync -av --progress .p10k.zsh "$pkgdir/etc/skel/.p10k.zsh"
+  rsync -av --progress .vimrc "$pkgdir/etc/skel/.vimrc"
+  rsync -av --progress .zshrc "$pkgdir/etc/skel/.zshrc"
+  rsync -av --progress .local/share/applications/ "$pkgdir/etc/skel/.local/share/applications/"
+  rsync -av --progress .local/share/asciiart/ "$pkgdir/etc/skel/.local/share/asciiart/"
+  rsync -av --progress .local/bin/ "$pkgdir/etc/skel/.local/bin/"
+  rsync -av --progress .local/share/fonts/ "$pkgdir/etc/skel/.local/share/fonts/"
 
   cp -P "$srcdir/mpd.service" "$pkgdir/etc/systemd/system/multi-user.target.wants/"
   cp -P "$srcdir/mpd.socket" "$pkgdir/etc/systemd/system/sockets.target.wants/"
