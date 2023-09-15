@@ -23,8 +23,9 @@ build_and_sign_packages() {
         cd $current_dir
 
         #makepkg -f -scr --noconfirm
-
+	ls -la /github/home
         ./build.sh
+        ls -la /github/home
         pkgname=$(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}')
         pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}')
         arch=$(grep "^arch=" PKGBUILD | awk -F"'" '{print $2}')
@@ -49,7 +50,8 @@ build_and_sign_packages() {
 src_dir="$(pwd)" 
 
 # Set the root path from which to start the search
-root_path="$src_dir/packages/"
+#root_path="$src_dir/packages/"
+root_path="$src_dir/packages/htb-toolkit/"
 
 # Find directories containing PKGBUILD files
 pkg_dirs=($(find_pkgbuild_dirs "$root_path"))
