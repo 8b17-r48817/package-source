@@ -28,6 +28,7 @@ jobs:
         echo "root ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
         chmod -R a+rw .
         chown -R builder .
+        chown -R builder /github/home
         
     - name: Import GPG key
       uses: crazy-max/ghaction-import-gpg@v5
