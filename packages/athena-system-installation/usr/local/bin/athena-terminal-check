@@ -53,8 +53,6 @@ do
         sed -i -e "s/alacritty\\\\\"}/$bin\\\\\"}/g" -e "s/cool-retro-term\\\\\"}/$bin\\\\\"}/g" -e "s/foot\\\\\"}/$bin\\\\\"}/g" -e "s/gnome-terminal\\\\\"}/$bin\\\\\"}/g" -e "s/kitty\\\\\"}/$bin\\\\\"}/g" -e "s/konsole\\\\\"}/$bin\\\\\"}/g" -e "s/urxvt\\\\\"}/$bin\\\\\"}/g" -e "s/xterm\\\\\"}/$bin\\\\\"}/g" -e "s/terminator\\\\\"}/$bin\\\\\"}/g" -e "s/terminology\\\\\"}/$bin\\\\\"}/g" -e "s/xfce4-terminal\\\\\"}/$bin\\\\\"}/g" /usr/share/athena-gnome-config/dconf-shell.ini
     fi
 
-    sed -i -e "s/alacritty -e/$bin $arg_cmd/g" -e "s/cool-retro-term -e/$bin $arg_cmd/g" -e "s/foot -e/$bin $arg_cmd/g" -e "s/gnome-terminal --/$bin $arg_cmd/g" -e "s/kitty -e/$bin $arg_cmd/g" -e "s/konsole -e/$bin $arg_cmd/g" -e "s/urxvt -e/$bin $arg_cmd/g" -e "s/xterm -e/$bin $arg_cmd/g" /usr/share/htb-tools/htb-update.py
-
     sed -i -e "s/alacritty/$bin/g" -e "s/cool-retro-term/$bin/g" -e "s/foot/$bin/g" -e "s/gnome-terminal/$bin/g" -e "s/kitty/$bin/g" -e "s/konsole/$bin/g" -e "s/urxvt/$bin/g" -e "s/xterm/$bin/g" /etc/skel/.local/share/applications/shell.desktop
 
     sed -i -e "s/\"alacritty\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"cool-retro-term\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"foot\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"gnome-terminal\", \"--\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"kitty\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"konsole\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"urxvt\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" -e "s/\"xterm\", \"-e\"/\"$bin\", \"$arg_cmd\"/g" /usr/share/athena-welcome/athena-welcome.py
