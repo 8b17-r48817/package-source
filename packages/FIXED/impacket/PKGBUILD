@@ -2,7 +2,7 @@
 # See COPYING for license details.
 
 pkgname=impacket
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Collection of Python classes for working with network protocols.'
 arch=('any')

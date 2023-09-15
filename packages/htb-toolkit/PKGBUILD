@@ -18,7 +18,8 @@ pkgver() {
 
 build() {
   cd $pkgname
-
+  
+  cargo clean
   cargo build --release --locked
 }
 
