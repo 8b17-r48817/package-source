@@ -23,9 +23,8 @@ build_and_sign_packages() {
         cd $current_dir
 
         #makepkg -f -scr --noconfirm
-	ls -la /github/home
-        ./build.sh
         ls -la /github/home
+        ./build.sh
         pkgname=$(grep "^pkgname=" PKGBUILD | awk -F"=" '{print $2}')
         pkgrel=$(grep "^pkgrel=" PKGBUILD | awk -F"=" '{split($2,a," ");gsub(/"/, "", a[1]);print a[1]}')
         arch=$(grep "^arch=" PKGBUILD | awk -F"'" '{print $2}')
