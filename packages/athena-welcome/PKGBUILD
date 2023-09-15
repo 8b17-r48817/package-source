@@ -1,10 +1,10 @@
 pkgname=athena-welcome
-pkgver=2.0.2
-pkgrel=6
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Welcome App for Athena."
 arch=('any')
 license=("custom")
-depends=('libwnck3' 'mirroars' 'reflector' 'rsync')
+depends=('gnome-terminal' 'htb-toolkit' 'libwnck3' 'mirroars' 'reflector' 'rsync')
 source=("$pkgname.tar.gz")
 
 package() {
@@ -29,4 +29,4 @@ package() {
   chmod 755 "${pkgdir}/usr/share/athena-welcome/role-tools"
 
 }
-sha512sums=('194b9f8b208a3e0e384e6e0f984d98211d02ca305166fa746f6fbf6a570da23adebd74616fd0567ba4eb6e294783dcbd886db9c44b1fc39ec069557bf3ae3eb9')
+sha512sums=('f06496334bf834b7aebe618b323a5e7abbc0d33dce8a2f8a03cdfa81dab462286edb5ba21fb40bbe36d93871d378291e6a6d154f0d1e97fd30894ea7ee4f91e2')

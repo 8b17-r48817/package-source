@@ -123,11 +123,9 @@ echo -e "Are you ready to ${B}Learn${W}, ${G}Play${W} and ${R}Hack${W}?"
 echo -e
 echo -e "${G}Hack The Box${W} commands:"
 echo -e
-echo -e "${G}htb-play${W}:           show or play Hack The Box machines!"
-echo -e "${B}htb-stop${W}:           stop the running machine."
-echo -e "${Y}htb-reset${W}:          reset the running machine."
-echo -e "${R}htb-flag${W}:           submit your flag!"
-echo -e "${W}sudo kill openvpn${W}:  interrupt OpenVPN."
+echo -e "${B}htb-toolkit -h${W}:          discover and play Hack The Box!"
+echo -e "${G}htb-toolkit -k reset${W}:    reset your Hack The Box App Token."
+echo -e "${R}sudo kill openvpn${W}:       terminate OpenVPN."
 echo -e
 echo -e "$G---------------------------------------------------------------"
 echo -e "$W            Run ${B}athena-motd$W for showing this message     "

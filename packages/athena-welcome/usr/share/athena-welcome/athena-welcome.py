@@ -125,7 +125,7 @@ class Main(Gtk.Window):
         #t.start()
 
     def on_buttonhtb_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["gnome-terminal", "--", os.path.expandvars('$SHELL'), "-c", "/usr/local/bin/htb-update"],))
+        t = threading.Thread(target=self.run_app, args=(["gnome-terminal", "--", "htb-toolkit", "-u"],))
         t.daemon = True
         t.start()
 
