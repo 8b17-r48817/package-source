@@ -1,25 +1,26 @@
 pkgname=athena-hyprland-config
 _pkgname=dots-hyprland
-pkgver=340.39b3f514
+pkgver=341.a23ec074
 pkgrel=1
 pkgdesc="Hyprland configuration for Athena."
 arch=('any')
 url='https://github.com/end-4/dots-hyprland'
 license=("GPL")
-depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'cliphist' 'coreutils' 'curl' 'eww-git' 'findutils' 'foot' 'fzf' 'gawk' 'geticons-git' 'gnome-control-center' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia-git' 'ibus' 'imagemagick' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'nwg-look' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'plasma-browser-integration' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pillow' 'python-poetry' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swappy' 'swaybg' 'swayidle' 'swww' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi' 'xdg-desktop-portal-hyprland-git' 'xorg-xrandr' 'yad')
+depends=('bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'cliphist' 'coreutils' 'curl' 'eww-git' 'findutils' 'foot' 'fzf' 'gawk' 'geticons-git' 'gnome-control-center' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia-git' 'ibus' 'imagemagick' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'nwg-look' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'plasma-browser-integration' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pillow' 'python-poetry' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swappy' 'swaybg' 'swayidle' 'swaylock' 'swww' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi' 'xdg-desktop-portal-hyprland-git' 'xorg-xrandr' 'yad')
 makedepends=('git' 'rsync')
 install='hyprland.install'
 source=("git+https://github.com/end-4/$_pkgname#branch=hybrid"
         "hyprland-init.sh"
         "hyprland-shell"
         "hyprland.conf"
-        "keybinds.conf")
+        "keybinds.conf"
+        "dconf-desktop.ini")
 sha512sums=('SKIP'
-            'f00692595fc8b41cb940d1929a65e5bd77be1255ded17a0fe582f5caac48e52476faf9b773f90cd73e051338ae2115190ae406892f48f4ccfdcec59f2a565b05'
+            'e7a97ad859ebf4a8d3d2d0bf47b3cc961fe686a407baea72a2d4b17c66ff29025c1b7a80afe69d625cc040378d1ce1b0911dc825dd3e435ba20021a41d5ea329'
             'da4b315b631f612a46fc1e7e510b193efbc25a60f0699099a4bc1bf475d87747fe3e1557a1b70bd7a84a5f9406ada3191c9a635fc6adffd35cf4791f6fcb406a'
             'a470ddcf9b57c766b87669cf33887dc7c67736f687e61e3b13496814ec60845349dfa6e5c3e2f57ec5381e18ac7dc55759bb59eb85478798ed6be121df19fc7a'
             'd60b9fb81fabec6115c009e501dc657e0bff67547b04b94eecadf6b5bbf67a4a7378bdf8961edfac1127c2341d78902f8adfac2d9c8adf46e820ef4bb6f0f37b'
-            'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e')
+            '1f56e27f72bdce41a7392c64cb37017ee0a16d22165de7dfdab4afa1f39eb15b0e3ac7f5d7d8c5bd8e837ee8fe73a5204fc9e152bf041544c7f29e217dba89e3')
 
 pkgver() {
   cd $_pkgname
@@ -35,6 +36,7 @@ package() {
   install -dm 755 "$pkgdir/etc/skel/.themes"
   install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/gnome-text-editor/styles"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
   
   cd $_pkgname
 
@@ -59,6 +61,7 @@ package() {
   install -Dm 644 $srcdir/hyprland.conf "$pkgdir/etc/skel/.config/hypr/"
   install -Dm 644 $srcdir/keybinds.conf "$pkgdir/etc/skel/.config/hypr/"
   install -Dm 755 $srcdir/hyprland-shell "$pkgdir/usr/bin/"
+  install -Dm 644 $srcdir/dconf-desktop.ini "$pkgdir/usr/share/$pkgname/"
 
   sed -i "/^clipboard-copy/d" "$pkgdir/etc/skel/.config/foot/foot.ini" #Removing ctrl+c mapping
   sed -i "/^clipboard-paste/d" "$pkgdir/etc/skel/.config/foot/foot.ini" #Removing ctrl+v mapping
