@@ -31,37 +31,37 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
 
          package=athena-akame-theme
          if pacman -Qq $package > /dev/null ; then
-              athena-akame-theme
+              theme-switcher AkameGaKill
          fi
 
          package=athena-blue-eyes-theme
          if pacman -Qq $package > /dev/null ; then
-              athena-blue-eyes-theme
+              theme-switcher BlueEyesSamurai
          fi
 
          package=athena-graphite-theme
          if pacman -Qq $package > /dev/null ; then
-              athena-graphite-theme
+              theme-switcher Graphite
          fi
 
          package=athena-gruvbox-theme
          if pacman -Qq $package > /dev/null ; then
-              athena-gruvbox-theme
+              theme-switcher CyborgGruvbox
          fi
          
          package=athena-htb-theme
          if pacman -Qq $package > /dev/null ; then
-              athena-htb-theme
+              theme-switcher HackTheBox
          fi
 
          package=athena-sweet-dark-theme
          if pacman -Qq $package > /dev/null ; then
-              athena-sweet-dark-theme
+              theme-switcher SweetDark
          fi
 
          package=athena-xxe-theme
          if pacman -Qq $package > /dev/null ; then
-              athena-xxe-theme
+              theme-switcher XXE
          fi
 
          rm -rf "$FLAGFILE"

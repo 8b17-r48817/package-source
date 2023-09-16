@@ -5,17 +5,14 @@ pkgdesc="Akame GTK theme for Athena."
 arch=('any')
 license=("GPL3")
 depends=('bibata-modern-darkred' 'material-black-cherry-suru' 'nightfox-gtk-theme')
-source=("$pkgname"
-        "akame.jpg"
+source=("akame.jpg"
         "$pkgname.tar.gz")
 sha512sums=('SKIP')
 
 package() {
-  install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
-  install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "akame.jpg" "$pkgdir/usr/share/backgrounds/default/"
 
   cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"

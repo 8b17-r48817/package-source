@@ -5,19 +5,16 @@ pkgdesc="Blue Eyes Samurai theme for Athena."
 arch=('any')
 license=("GPL3")
 depends=('tokyonight-gtk-theme' 'oreo-blue-cursors')
-source=("$pkgname"
-        "blue-eyes.jpg"
+source=("blue-eyes.jpg"
         "$pkgname.tar.gz")
 sha512sums=('715a657877ad8d9636ee2ba84751f73230a6136cee5491c4e3f2ad51426fa245ec81f545f2f25f2ca483df6e385a1aa74d523c558370b99993ead9e039eea274'
             'c4575e024afbec6cf5624957c1102a866a468f90c1c3f0e7368cbb6905b4f559649f96ee4321036d3c23042b87777f07020e78b423922aa3f38ad6b9f8396495'
             '31dbb65c0cea983b221af91440157492ce238c9613577dda4172fdf58f59c4e6542288b196960d4fe2c4603ca009314e5adccca4fd93c13a54eee229787274be')
 
 package() {
-  install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
-  install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "blue-eyes.jpg" "$pkgdir/usr/share/backgrounds/default/"
 
   cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"

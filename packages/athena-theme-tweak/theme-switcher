@@ -1,0 +1,150 @@
+#!/bin/bash
+
+# Check if the number of command-line arguments is correct
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <chosen_theme>"
+    exit 1
+fi
+
+chosen_theme="$1"
+
+# Remove directories
+rm -rf "$HOME/.config/assets"
+rm -rf "$HOME/.config/gtk-4.0"
+
+# Create the gtk-4.0 directory
+mkdir -p "$HOME/.config/gtk-4.0"
+
+if [ "$chosen_theme" == "AkameGaKill" ]; then
+    theme_name="Nightfox-Dusk-B"
+    gnome_shell="Nightfox-Dusk-B"
+    color_scheme="prefer-dark"
+    icon_theme="Material-Black-Cherry-Suru"
+    cursor_theme="Bibata-Modern-DarkRed"
+    background_theme="/usr/share/backgrounds/default/akame.jpg"
+    picture_options="stretched"
+    vscode_theme="red-blood"
+    kitty_theme="CrayonPonyFish.conf"
+    tmux_theme="redwine"
+    topbarcolorscheme="finale"
+    topbarmaterialscheme="finale"
+    topbariconscheme="dark"
+    musicbarscheme="#F98D89"
+elif [ "$chosen_theme" == "BlueEyesSamurai" ]; then
+    theme_name="Tokyonight-Dark-B"
+    gnome_shell="Tokyonight-Dark-B"
+    color_scheme="prefer-dark"
+    icon_theme="Tokyonight-Dark"
+    cursor_theme="oreo_blue_cursors"
+    background_theme="/usr/share/backgrounds/default/blue-eyes.jpg"
+    picture_options="stretched"
+    vscode_theme="Tokyo Night Storm"
+    kitty_theme="Tokyo_Night_Storm.conf"
+    tmux_theme="sky"
+    topbarcolorscheme="ripples"
+    topbarmaterialscheme="default"
+    topbariconscheme="dark"
+    musicbarscheme="#6FE7FB"
+elif [ "$chosen_theme" == "Graphite" ]; then
+    theme_name="Graphite-Rimless-Dark"
+    gnome_shell="Graphite-Rimless-Dark"
+    color_scheme="prefer-dark"
+    icon_theme="Tela-circle-black-dark"
+    cursor_theme="Bibata-Modern-Ice"
+    background_theme="/usr/share/backgrounds/default/arch-ascii.png"
+    picture_options="stretched"
+    vscode_theme="Just Black"
+    kitty_theme="Atom.conf"
+    tmux_theme="snow"
+    topbarcolorscheme="nowthatitstrue"
+    topbarmaterialscheme="default"
+    topbariconscheme="dark"
+    musicbarscheme="#197FAF"
+elif [ "$chosen_theme" == "CyborgGruvbox" ]; then
+    theme_name="Gruvbox-Dark-B"
+    gnome_shell="Gruvbox-Dark-B"
+    color_scheme="prefer-dark"
+    icon_theme="Material-Black-Mango-Suru"
+    cursor_theme="Fuchsia-Pop"
+    background_theme="/usr/share/backgrounds/default/cyborg_gruv.png"
+    picture_options="stretched"
+    vscode_theme="Gruvbox Material Dark"
+    kitty_theme="gruvbox_dark.conf"
+    tmux_theme="gold"
+    topbarcolorscheme="valhalla"
+    topbarmaterialscheme="virtuality_yellow"
+    topbariconscheme="gruv"
+    musicbarscheme="#EFD69C"
+elif [ "$chosen_theme" == "SweetDark" ]; then
+    theme_name="Sweet-Dark-v40"
+    gnome_shell="Sweet-Dark-v40"
+    color_scheme="prefer-dark"
+    icon_theme="Sweet-Purple"
+    cursor_theme="oreo_spark_purple_cursors"
+    background_theme="/usr/share/backgrounds/default/neon_circle.jpg"
+    picture_options="stretched"
+    vscode_theme="Radical"
+    kitty_theme="AdventureTime.conf"
+    tmux_theme="violet"
+    topbarcolorscheme="something"
+    topbarmaterialscheme="amaryllis"
+    topbariconscheme="dark"
+    musicbarscheme="#FE3DAF"
+elif [ "$chosen_theme" == "XXE" ]; then
+    theme_name="Gruvbox-Dark-B"
+    gnome_shell="Gruvbox-Dark-B"
+    color_scheme="prefer-dark"
+    icon_theme="Material-Black-Mango-Suru"
+    cursor_theme="Fuchsia-Pop"
+    background_theme="/usr/share/backgrounds/default/xxe.png"
+    picture_options="stretched"
+    vscode_theme="Gruvbox Material Dark"
+    kitty_theme="gruvbox_dark.conf"
+    tmux_theme="gold"
+    topbarcolorscheme="valhalla"
+    topbarmaterialscheme="virtuality_yellow"
+    topbariconscheme="gruv"
+    musicbarscheme="#FEFF00"
+else
+    echo "Please choose between the following themes: AkameGaKill, BlueEyesSamurai, Graphite, CyborgGruvbox, SweetDark, XXE"
+    exit 1
+fi
+
+if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
+    cp -rf "$HOME/.config/eww/css/savedcolors/_colorscheme_$topbarcolorscheme.scss" "$HOME/.config/eww/css/_colorscheme.scss" 2>/dev/null
+    cp -rf "$HOME/.config/eww/css/savedcolors/_iconcolor_$topbarcolorscheme.txt" "$HOME/.config/eww/css/_iconcolor.txt" 2>/dev/null
+    cp -rf "$HOME/.config/eww/css/savedcolors/_material_$topbarmaterialscheme.scss" "$HOME/.config/eww/css/_material.scss" 2>/dev/null
+    cp -rf "$HOME/.config/eww/images/svg/$topbariconscheme/"* "$HOME/.config/eww/images/svg/" 2>/dev/null
+    cp -rf "$HOME/.config/hypr/savedcolors/colors_$topbarcolorscheme.conf" "$HOME/.config/hypr/colors.conf" 2>/dev/null
+    cp -rf "$background_theme" "$HOME/.config/eww/images/wallpaper/wallpaper" 2>/dev/null
+    pkill swaybg 2>/dev/null
+    swaybg -i "$HOME/.config/eww/images/wallpaper/wallpaper" 2>/dev/null & #Note that swaybg needs to be runned in background
+    hyprctl setcursor "$cursor_theme" 24 2>/dev/null
+    sed -r -i "s/\"color4\":\"#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\"/\"color4\":\"$musicbarscheme\"/g" "$HOME/.config/eww/scripts/music" 2>/dev/null
+fi
+
+gsettings set org.gnome.desktop.interface gtk-theme ""
+gsettings set org.gnome.desktop.wm.preferences theme ""
+gsettings set org.gnome.shell.extensions.user-theme name ""
+sleep 1
+gsettings set org.gnome.desktop.interface gtk-theme "$theme_name"
+gsettings set org.gnome.desktop.wm.preferences theme "$theme_name"
+gsettings set org.gnome.shell.extensions.user-theme name "$gnome_shell" 2>/dev/null
+
+gsettings set org.gnome.desktop.interface color-scheme "$color_scheme"
+gsettings set org.gnome.desktop.interface icon-theme "$icon_theme"
+gsettings set org.gnome.desktop.interface cursor-theme "$cursor_theme"
+gsettings set org.gnome.desktop.background picture-uri-dark ""
+gsettings set org.gnome.desktop.background picture-uri-dark "file://$background_theme"
+gsettings set org.gnome.desktop.background picture-uri ""
+gsettings set org.gnome.desktop.background picture-uri "file://$background_theme"
+gsettings set org.gnome.desktop.background picture-options "$picture_options"
+
+sed -i "s/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \"$vscode_theme\",/g" "$HOME/.config/VSCodium/User/settings.json"
+cp -rf "$HOME/.config/kitty/kitty-themes/themes/$kitty_theme" "$HOME/.config/kitty/current-theme.conf" 2>/dev/null
+sed -i "s/set -g @tmux_power_theme.*/set -g @tmux_power_theme '$tmux_theme'/g" "$HOME/.tmux.conf"
+
+ln -sf "/usr/share/themes/$theme_name/gtk-4.0/assets" "$HOME/.config/gtk-4.0/assets"
+ln -sf "/usr/share/themes/$theme_name/gtk-4.0/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"
+ln -sf "/usr/share/themes/$theme_name/gtk-4.0/gtk-dark.css" "$HOME/.config/gtk-4.0/gtk-dark.css"
+ln -sf "/usr/share/themes/$theme_name/assets" "$HOME/.config/assets"

@@ -170,24 +170,8 @@ if args.theme:
         subprocess.call("sudo pacman -Rs --noconfirm "+current_theme_package, shell=True)
     
     subprocess.call("sudo pacman -S --noconfirm --overwrite \* "+theme_package, shell=True)
-    
-    if chosen_theme == "AkameGaKill":
-        subprocess.call("athena-akame-theme", shell=True)
 
-    elif chosen_theme == "BlueEyesSamurai":
-        subprocess.call("athena-blue-eyes-theme", shell=True)
-
-    elif chosen_theme == "Graphite":
-        subprocess.call("athena-graphite-theme", shell=True)
-
-    elif chosen_theme == "CyborgGruvbox":
-        subprocess.call("athena-gruvbox-theme", shell=True)
-
-    elif chosen_theme == "SweetDark":
-        subprocess.call("athena-sweet-dark-theme", shell=True)
-
-    elif chosen_theme == "XXE":
-        subprocess.call("athena-xxe-theme", shell=True)
+    subprocess.run(["theme-switcher", chosen_theme], stderr=subprocess.DEVNULL)
 
     exit()
 

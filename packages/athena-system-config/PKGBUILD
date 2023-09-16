@@ -22,6 +22,7 @@ package() {
   cp -rf "${srcdir}/etc/skel/.bash_aliases" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.blerc" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.face" "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}/etc/skel/.flag-work-once" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.local" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/sudoers.d" "${pkgdir}/etc/"
   cp -rf "${srcdir}/etc/vconsole.conf" "${pkgdir}/etc/"
@@ -33,4 +34,4 @@ package() {
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
 
-sha512sums=('6745d97e14f9cdad5e2c51c5b03a7dc251462480c4f06c2820dd7337dd2f4fb80e92d393e41129399da95138d6fbaf75ee0a9b12a8b8b0d9a78bee861906f290')
+sha512sums=('775b6ca0f5e4e7dab6452b895550e39a7822565ca71abc32e121e3542f35287af82c091a08ee8d3e8c4e98b51be670dba38f8210422239b1215dd69cb70fd99b')

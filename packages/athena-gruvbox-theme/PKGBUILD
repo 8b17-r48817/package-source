@@ -5,19 +5,16 @@ pkgdesc="Gruvbox theme for Athena."
 arch=('any')
 license=("GPL3")
 depends=('fuchsia-pop' 'gruvbox-gtk-theme' 'material-black-mango-suru')
-source=("$pkgname"
-        "cyborg_gruv.png"
+source=("cyborg_gruv.png"
         "$pkgname.tar.gz")
 sha512sums=('3614be4a0829854db3d1388aee1f4774f66c5e36f818b03ebab84e2e3dd8566035084954b590035fe086053245b864ef7ea0ceb85b4d5c8c586697bb1a702602'
             'bbd4a82c1dda3dc26271e36c2ff7c362d513e720696fa9912e7d025f049337f551a6f1e1969cb087303c2dd02344ac27523e1a6662d16daca9c616bbd7c80445'
             '6de4a4ae8b22b6fb135d057655f2c2bd32eaeb419839ef9786db55f0971b17a833549efeaa889cd7ac6d31918375525683f8b6171c59c44b949bb354bd0e5392')
 
 package() {
-  install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
-  install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "cyborg_gruv.png" "$pkgdir/usr/share/backgrounds/default/"
 
   cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
