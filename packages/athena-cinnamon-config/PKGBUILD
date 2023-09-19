@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Cinnamon configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('cinnamon')
+depends=('cinnamon' 'xdg-user-dirs')
 #source=("$pkgname.tar.gz")
 #sha512sums=('62e38df484f1b823022e8ff33fb254d44440d1cd8a7767ff816c820a5b91b95b3da94a7c6f1f7c87cb77d922b1e96d3c93cf83eb1805cf616bb560ee98916b72')
 
