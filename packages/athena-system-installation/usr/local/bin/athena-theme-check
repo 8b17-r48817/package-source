@@ -16,66 +16,36 @@ echo
 
 package=athena-akame-theme
 if pacman -Qq $package > /dev/null ; then
-
-  if pacman -Qq athena-kitty-config > /dev/null; then
-    cp -rf /etc/skel/.config/kitty/kitty-themes/themes/CrayonPonyFish.conf /etc/skel/.config/kitty/current-theme.conf
-  fi
-
   sed -i "s/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \"red-blood\",/g" /etc/skel/.config/VSCodium/User/settings.json
   sed -i "s/set -g @tmux_power_theme.*/set -g @tmux_power_theme 'redwine'/g" /etc/skel/.tmux.conf
 fi
 
 package=athena-blue-eyes-theme
 if pacman -Qq $package > /dev/null ; then
-
-  if pacman -Qq athena-kitty-config > /dev/null; then
-    cp -rf /etc/skel/.config/kitty/kitty-themes/themes/Tokyo_Night_Storm.conf /etc/skel/.config/kitty/current-theme.conf
-  fi
-
   sed -i "s/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \"Tokyo Night Storm\",/g" /etc/skel/.config/VSCodium/User/settings.json
   sed -i "s/set -g @tmux_power_theme.*/set -g @tmux_power_theme 'sky'/g" /etc/skel/.tmux.conf
 fi
 
 package=athena-graphite-theme
 if pacman -Qq $package > /dev/null ; then
-
-  if pacman -Qq athena-kitty-config > /dev/null; then
-    cp -rf /etc/skel/.config/kitty/kitty-themes/themes/Atom.conf /etc/skel/.config/kitty/current-theme.conf
-  fi
-
   sed -i "s/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \"Just Black\",/g" /etc/skel/.config/VSCodium/User/settings.json
   sed -i "s/set -g @tmux_power_theme.*/set -g @tmux_power_theme 'snow'/g" /etc/skel/.tmux.conf
 fi
 
 package=athena-gruvbox-theme
 if pacman -Qq $package > /dev/null ; then
-
-  if pacman -Qq athena-kitty-config > /dev/null; then
-    cp -rf /etc/skel/.config/kitty/kitty-themes/themes/gruvbox_dark.conf /etc/skel/.config/kitty/current-theme.conf
-  fi
-
   sed -i "s/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \"Gruvbox Material Dark\",/g" /etc/skel/.config/VSCodium/User/settings.json
   sed -i "s/set -g @tmux_power_theme.*/set -g @tmux_power_theme 'gold'/g" /etc/skel/.tmux.conf
 fi
 
 package=athena-sweet-dark-theme
 if pacman -Qq $package > /dev/null ; then
-
-  if pacman -Qq athena-kitty-config > /dev/null; then
-    cp -rf /etc/skel/.config/kitty/kitty-themes/themes/AdventureTime.conf /etc/skel/.config/kitty/current-theme.conf
-  fi
-
   sed -i "s/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \"Radical\",/g" /etc/skel/.config/VSCodium/User/settings.json
   sed -i "s/set -g @tmux_power_theme.*/set -g @tmux_power_theme 'violet'/g" /etc/skel/.tmux.conf
 fi
 
 package=athena-xxe-theme
 if pacman -Qq $package > /dev/null ; then
-
-  if pacman -Qq athena-kitty-config > /dev/null; then
-    cp -rf /etc/skel/.config/kitty/kitty-themes/themes/gruvbox_dark.conf /etc/skel/.config/kitty/current-theme.conf
-  fi
-
   sed -i "s/\"workbench.colorTheme\":.*/\"workbench.colorTheme\": \"Gruvbox Material Dark\",/g" /etc/skel/.config/VSCodium/User/settings.json
   sed -i "s/set -g @tmux_power_theme.*/set -g @tmux_power_theme 'gold'/g" /etc/skel/.tmux.conf
 fi
