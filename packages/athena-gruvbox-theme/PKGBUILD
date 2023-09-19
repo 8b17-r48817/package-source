@@ -5,17 +5,20 @@ pkgdesc="Gruvbox theme for Athena."
 arch=('any')
 license=("GPL3")
 depends=('fuchsia-pop' 'gruvbox-gtk-theme' 'material-black-mango-suru')
-source=("cyborg_gruv.png"
+source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/gruvbox-dark.conf"
+        "cyborg_gruv.png"
         "$pkgname.tar.gz")
-sha512sums=('3614be4a0829854db3d1388aee1f4774f66c5e36f818b03ebab84e2e3dd8566035084954b590035fe086053245b864ef7ea0ceb85b4d5c8c586697bb1a702602'
+sha512sums=('eff52b7261bda8d892643d05e78a8fc412a49590acef3284f680888b3de20b5f5d0362688d2a97c990d83d1deb4531c80433b86df04e16add79b0d4498dac707'
             'bbd4a82c1dda3dc26271e36c2ff7c362d513e720696fa9912e7d025f049337f551a6f1e1969cb087303c2dd02344ac27523e1a6662d16daca9c616bbd7c80445'
-            '6de4a4ae8b22b6fb135d057655f2c2bd32eaeb419839ef9786db55f0971b17a833549efeaa889cd7ac6d31918375525683f8b6171c59c44b949bb354bd0e5392')
+            'd5d9b5cbafe47307c466e62bc09dc6efbef4c35205e3c67d4083fe122cad6b2fb4b9de8e406177d88c6ed1c149a66a090e29b12b23f0d99c98378b02c89a266d')
 
 package() {
+  install -dm 755 "$pkgdir/etc/skel/.config/kitty"
   install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
   install -Dm 644 "cyborg_gruv.png" "$pkgdir/usr/share/backgrounds/default/"
+  install -Dm 644 "gruvbox-dark.conf" "$pkgdir/etc/skel/.config/kitty/current-theme.conf"
 
   cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
   cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"

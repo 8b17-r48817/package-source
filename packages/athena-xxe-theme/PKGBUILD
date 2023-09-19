@@ -5,17 +5,20 @@ pkgdesc="XXE theme for Athena."
 arch=('any')
 license=("GPL3")
 depends=('fuchsia-pop' 'gruvbox-gtk-theme' 'material-black-mango-suru')
-source=("xxe.png"
+source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/gruvbox-dark.conf"
+        "xxe.png"
         "$pkgname.tar.gz")
-sha512sums=('2b9ae541a074eb5eb6a0c09b897ad308fbe63b485b2a00de082d81ae133faab89154ee69bb1e153d2391578e569df43efa83f093bfa48ad335c7fab25eb6a7c1'
+sha512sums=('eff52b7261bda8d892643d05e78a8fc412a49590acef3284f680888b3de20b5f5d0362688d2a97c990d83d1deb4531c80433b86df04e16add79b0d4498dac707'
             '4493ea170f071e876460ae4be316df7f0f12c6aad741398b0b4469f0148963076b45da4fbbdb5600a5eae67c36e8e275b7fe0c813053d49f5fe731523b1fce7e'
-            '62961336c01841e3869e6ed29d1169872ed92c4398ced2316b7eae4a73e8d7205ca85426638f93ff5f03321b39dc4e3c0b8d328681f737405c776aadaf549826')
+            '51db416d86df091f0f9b595205f2524401e3e477fea89da8b8581f5b2b1a43fc9abc043e503df6d26971371c5586b7f7d37a4dab5a072f32c15b21845f378e16')
 
 package() {
+  install -dm 755 "$pkgdir/etc/skel/.config/kitty"
   install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
   install -Dm 644 "xxe.png" "$pkgdir/usr/share/backgrounds/default/"
+  install -Dm 644 "gruvbox-dark.conf" "$pkgdir/etc/skel/.config/kitty/current-theme.conf"
 
   cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
   cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"

@@ -5,17 +5,20 @@ pkgdesc="Blue Eyes Samurai theme for Athena."
 arch=('any')
 license=("GPL3")
 depends=('tokyonight-gtk-theme' 'oreo-blue-cursors')
-source=("blue-eyes.jpg"
+source=("https://github.com/kovidgoyal/kitty-themes/blob/master/themes/tokyo_night_storm.conf"
+        "blue-eyes.jpg"
         "$pkgname.tar.gz")
-sha512sums=('715a657877ad8d9636ee2ba84751f73230a6136cee5491c4e3f2ad51426fa245ec81f545f2f25f2ca483df6e385a1aa74d523c558370b99993ead9e039eea274'
+sha512sums=('d0f79b66761f7b84b1c74d3aae1c2c3a610f971507c737e3074a8fdd0a41c313ed6bf43091f8fd37a4d204e4ebcc5b776f478c7c65fdba31eed033f0516bdef3'
             'c4575e024afbec6cf5624957c1102a866a468f90c1c3f0e7368cbb6905b4f559649f96ee4321036d3c23042b87777f07020e78b423922aa3f38ad6b9f8396495'
-            '31dbb65c0cea983b221af91440157492ce238c9613577dda4172fdf58f59c4e6542288b196960d4fe2c4603ca009314e5adccca4fd93c13a54eee229787274be')
+            '2b41d632270a3a229767d536cd37e9b29de796cc411a9de24652646b030f8778e408e62063817ba43d90d7fe6fb21350ceb8d1a075750d694fe58bf5cfb0aea1')
 
 package() {
+  install -dm 755 "$pkgdir/etc/skel/.config/kitty"
   install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
   install -Dm 644 "blue-eyes.jpg" "$pkgdir/usr/share/backgrounds/default/"
+  install -Dm 644 "tokyo_night_storm.conf" "$pkgdir/etc/skel/.config/kitty/current-theme.conf"
 
   cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
   cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"

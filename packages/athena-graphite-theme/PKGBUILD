@@ -5,17 +5,21 @@ pkgdesc="Graphite Dark theme for Athena."
 arch=('any')
 license=("GPL3")
 depends=('bibata-modern-ice' 'graphite-gtk-theme' 'tela-circle-icon-theme-black')
-source=("arch-ascii.png"
+source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/Atom.conf"
+        "arch-ascii.png"
         "$pkgname.tar.gz")
-sha512sums=('14feec93dc05b1a4c4d4dac9d2097a583502f047e4b668b8e260e6afd665e83cba81af476fd6faeaf86d38033cb6e70d4c26127e39dfb684b2fdef9f6e08ef04'
+sha512sums=('a23c6f6e71c544110aa576a57174145a72eb7d2389a3927c154a7cb528fa2fb4a6baffd4f1287f53edcbf2553827af271acb24cdbc1d7369fc2820810f4194e4'
             '180debc64a86b577ca3f465157ccf853f87d74ba9f101559ddda74a32169910d7b0fef829fa7672bfb306c58131ab27300154557e36bc402c833f097244dd18e'
-            'a14c46a4e52dd87843ca8600bcfe2531a242808616a1f07bedec90b16b464142e3dc946309ef808c64ecf7b43e9678413caaee95492fd730f8b2cc3b58e1b35d')
+            '352af1c017fea8def868cbf3dbbaacca6d9d0486dc4e31b99b0047b9981f4956a29bd5099b4aa3761b9c354211571a97e8ea57dbe67bcce50543719ac5743ed0')
 
 package() {
+  install -dm 755 "$pkgdir/etc/skel/.config/kitty"
   install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
+  install -Dm 644 "arch-ascii.png" "$pkgdir/usr/share/backgrounds/default/"
+  install -Dm 644 "Atom.conf" "$pkgdir/etc/skel/.config/kitty/current-theme.conf"
+
   cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
   cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"
-  install -Dm 644 "arch-ascii.png" "$pkgdir/usr/share/backgrounds/default/"
 }
