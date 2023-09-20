@@ -42,7 +42,7 @@
   immutable: false
   expanded: false
   packages:
-    - athena-kitty-config
+    - kitty
 - name: "Konsole"
   description: "Default terminal for KDE. GPU accelerated, with tabs, tiling, image viewing, interactive unicode character input."
   critical: false
