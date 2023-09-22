@@ -1,11 +1,11 @@
 pkgname=htb-toolkit
-pkgver=48.40286da
+pkgver=51.c4136f2
 pkgrel=1
 pkgdesc='Play Hack The Box machines directly on your system.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/D3vil0p3r/htb-toolkit'
 license=('GPL')
-depends=('coreutils' 'gzip' 'imagemagick' 'libsecret' 'openssl' 'openvpn')
+depends=('coreutils' 'gzip' 'imagemagick' 'libsecret' 'noto-fonts-emoji' 'openssl' 'openvpn')
 makedepends=('git' 'cargo')
 source=("git+https://github.com/D3vil0p3r/$pkgname.git")
 sha512sums=('SKIP')
