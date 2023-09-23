@@ -7,6 +7,8 @@
   expanded: false
   packages:
     - bash
+    - bash-completion
+    - blesh-git
 - name: "Fish"
   description: "Install packages for Fish shell"
   critical: false
