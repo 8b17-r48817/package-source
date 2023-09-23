@@ -46,7 +46,7 @@ do
     find /etc/skel/.local/share/applications -type f -name '*.desktop' -exec sed -i -e "s/alacritty -e/$bin $arg_cmd/g" -e "s/cool-retro-term -e/$bin $arg_cmd/g" -e "s/foot -e/$bin $arg_cmd/g" -e "s/gnome-terminal --/$bin $arg_cmd/g" -e "s/kitty -e/$bin $arg_cmd/g" -e "s/konsole -e/$bin $arg_cmd/g" -e "s/urxvt -e/$bin $arg_cmd/g" -e "s/xterm -e/$bin $arg_cmd/g" {} +
 
     if pacman -Qq athena-gnome-config > /dev/null ; then
-        sed -i -e "s/gnome-terminal/$bin/g" /etc/profile.d/gnome-config.sh
+        sed -i -e "s/gnome-terminal/$bin/g" /etc/profile.d/gnome-init.sh
 
         sed -i -e "s/alacritty -e/$bin $arg_cmd/g" -e "s/cool-retro-term -e/$bin $arg_cmd/g" -e "s/foot -e/$bin $arg_cmd/g" -e "s/gnome-terminal --/$bin $arg_cmd/g" -e "s/kitty -e/$bin $arg_cmd/g" -e "s/konsole -e/$bin $arg_cmd/g" -e "s/urxvt -e/$bin $arg_cmd/g" -e "s/xterm -e/$bin $arg_cmd/g" /usr/share/athena-gnome-config/dconf-shell.ini
 
@@ -66,7 +66,7 @@ do
   
   if pacman -Qq $bin > /dev/null ; then
 
-    sed -i -e "s/gnome-terminal/$bin/g" /etc/profile.d/gnome-config.sh
+    sed -i -e "s/gnome-terminal/$bin/g" /etc/profile.d/gnome-init.sh
 
     sed -i -e "s/alacritty/$bin/g" -e "s/cool-retro-term/$bin/g" -e "s/foot/$bin/g" -e "s/gnome-terminal/$bin/g" -e "s/kitty/$bin/g" -e "s/konsole/$bin/g" -e "s/urxvt/$bin/g" -e "s/xterm/$bin/g" -e "s/terminator/$bin/g" -e "s/terminology/$bin/g" -e "s/xfce4-terminal/$bin/g" /etc/skel/.local/share/applications/shell.desktop
     
