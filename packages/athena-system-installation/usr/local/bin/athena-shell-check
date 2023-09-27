@@ -26,9 +26,9 @@ if pacman -Qq $package > /dev/null ; then
     sed -i 's/Bash/Fish/g' /etc/skel/.local/share/applications/*
     sed -i "s/export SHELL=.*/export SHELL=\$(which fish)/g" /etc/skel/.bashrc
 
-cat >> /etc/profile.d/shell.sh << EOF
-export SHELL=\$(which fish)
-EOF
+#cat >> /etc/profile.d/shell.sh << EOF
+#export SHELL=\$(which fish)
+#EOF
 fi
 
 package=athena-zsh
@@ -38,7 +38,7 @@ if pacman -Qq $package > /dev/null ; then
     sed -i 's/Bash/Zsh/g' /etc/skel/.local/share/applications/*
     sed -i "s/export SHELL=.*/export SHELL=\$(which zsh)/g" /etc/skel/.bashrc
 
-cat >> /etc/profile.d/shell.sh << EOF
-export SHELL=\$(which zsh)
-EOF
+#cat >> /etc/profile.d/shell.sh << EOF
+#export SHELL=\$(which zsh)
+#EOF
 fi
