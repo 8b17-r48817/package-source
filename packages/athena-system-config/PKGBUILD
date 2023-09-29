@@ -15,13 +15,12 @@ package() {
   mkdir -p "${pkgdir}/usr/local/bin"
   mkdir -p "${pkgdir}/usr/local/share"
   mkdir -p "${pkgdir}/usr/share/icons/hicolor"
-  mkdir -p "${pkgdir}/usr/share/pixmaps"
+  mkdir -p "${pkgdir}/usr/share/pixmaps/faces"
 
   cp -rf "${srcdir}"/etc/modprobe.d/* "${pkgdir}/etc/modprobe.d/"
   cp -rf "${srcdir}"/etc/pacman.d/hooks/* "${pkgdir}/etc/pacman.d/hooks/"
   cp -rf "${srcdir}/etc/skel/.bash_aliases" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.blerc" "${pkgdir}/etc/skel/"
-  cp -rf "${srcdir}/etc/skel/.face" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.flag-work-once" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.local" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/sudoers.d" "${pkgdir}/etc/"
@@ -33,4 +32,4 @@ package() {
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
 
-sha512sums=('7b464782af86f26e919e9f4cf7294b6b4e4ef82d6bfeba3e238001927f7aea2ccc8966abfe6df10a9ea8de646c16e7894be0458c8f59f7e623cec971d58283a2')
+sha512sums=('79e85000e813450da2ca0112f8c25d056c5fd7af6d82e42c9b0f179d9742994c408f070956900b46b32287a41d58b1640be753f3295e03baa31e60d59e3a94ee')
