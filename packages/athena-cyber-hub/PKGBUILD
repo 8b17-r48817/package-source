@@ -1,5 +1,5 @@
 pkgname=athena-cyber-hub
-pkgver=13.36e16da
+pkgver=18.98d79d1
 pkgrel=1
 pkgdesc="Running vulnerable labs and Cyber Security platforms."
 arch=('any')
@@ -225,9 +225,17 @@ package() {
     install -dm 755 $pkgdir/usr/share/$pkgname/platforms/greenbone
     curl -f -L https://greenbone.github.io/docs/latest/_static/docker-compose-22.4.yml -o $pkgdir/usr/share/$pkgname/platforms/greenbone/docker-compose.yml
 
+    cd $srcdir/$pkgname
     git clone https://github.com/DefectDojo/django-DefectDojo $srcdir/defectdojo
     cd $srcdir/defectdojo
     install -dm 755 $pkgdir/usr/share/$pkgname/platforms/defectdojo
     cp -a docker* dc* $pkgdir/usr/share/$pkgname/platforms/defectdojo/
     rm -rf $srcdir/defectdojo
+
+    cd $srcdir/$pkgname
+    git clone https://github.com/wazuh/wazuh-docker.git -b v4.5.2 $srcdir/wazuh-docker
+    cd $srcdir/wazuh-docker
+    install -dm 755 $pkgdir/usr/share/$pkgname/platforms/wazuh-docker
+    cp -a * $pkgdir/usr/share/$pkgname/platforms/wazuh-docker/
+    rm -rf $srcdir/wazuh-docker
 }
