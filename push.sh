@@ -16,6 +16,9 @@ fi
 arr_pkg=( $(ls | grep -E '\.zst$') )
 len=$((${#arr_pkg[@]} - 1))
 
+eval $(gpg-agent --daemon)
+gpg --armor --export-secret-keys | gpg --import --allow-secret-key-import -
+
 for i in $(seq 0 $len)
 do
     ##echo ${arr_pkg[$i]}
@@ -24,8 +27,7 @@ do
     #rm -rf $repo_path/x86_64/$replace $repo_path/x86_64/$replace.sig $repo_path/aarch64/$replace $repo_path/aarch64/$replace.sig
     echo "$replace"
     rm -rf ./$filename.sig $repo_path/x86_64/$replace $repo_path/x86_64/$replace.sig
-    echo -e "Type the passphrase to sign the package:"
-    gpg --detach-sign --use-agent --pinentry-mode loopback --passphrase --passphrase-fd 0 --output $filename.sig $filename
+    gpg --detach-sign --use-agent --output $filename.sig $filename
     cp -rf $filename $filename.sig $repo_path/x86_64/
     #cp -rf $filename $filename.sig $repo_path/aarch64/
     ##rm -rf $filename $filename.sig

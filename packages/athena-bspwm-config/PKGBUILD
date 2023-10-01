@@ -1,17 +1,17 @@
 pkgname=athena-bspwm-config
 _pkgname=bspwm
-pkgver=2.a473035
+pkgver=6.d4f9a68
 pkgrel=1
 pkgdesc="Bspwm configuration for Athena."
 arch=('any')
 url='https://github.com/Athena-OS/bspwm'
 license=("GPL")
-depends=('alacritty' 'armcord-git' 'base-devel' 'bat' 'bluez-utils' 'bluez' 'boo-sddm-git' 'brightnessctl' 'bspwm' 'btop' 'dunst' 'eww-git' 'feh' 'ffcast' 'ffmpegthumbnailer' 'geany' 'git' 'glfw-wayland' 'gnome-keyring' 'i3lock' 'imagemagick' 'jq' 'libwebp' 'lsd' 'maim' 'mlocate' 'mpc' 'mpd' 'ncmpcpp' 'net-tools' 'networkmanager' 'ntfs-3g' 'oh-my-zsh-git' 'openvpn' 'otf-droid-nerd' 'pacman-contrib' 'pamixer' 'papirus-icon-theme' 'pavucontrol' 'physlock' 'picom' 'playerctl' 'polkit-gnome' 'polybar' 'powerline' 'qt5-graphicaleffects' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-wayland' 'ranger' 'rofi' 'scrot' 'sddm' 'sxhkd' 'tdrop' 'thunar' 'tokyonight-gtk-theme' 'ttf-hack-nerd' 'ttf-inconsolata' 'ttf-jetbrains-mono-nerd' 'ttf-jetbrains-mono' 'ttf-joypixels' 'ttf-terminus-nerd' 'ueberzug' 'vim-airline' 'vim-airline-themes' 'vundle' 'webp-pixbuf-loader' 'xclip' 'xdg-user-dirs' 'xdotool' 'xfce4-taskmanager' 'xorg-xinit' 'xorg-xkill' 'xorg-xlsclients' 'xorg-xprop' 'xorg-xrandr' 'xorg-xsetroot' 'xorg-xwayland' 'xorg-xwininfo' 'zoxide' 'zsh-autosuggestions' 'zsh-history-substring-search' 'zsh-syntax-highlighting' 'zsh-theme-powerlevel10k')
+depends=('athena-alacritty-config' 'athena-nvim-config' 'athena-vim-config' 'athena-zsh' 'armcord-git' 'base-devel' 'bat' 'bluez-utils' 'bluez' 'boo-sddm-git' 'brightnessctl' 'bspwm' 'btop' 'dunst' 'eww-git' 'feh' 'ffcast' 'ffmpegthumbnailer' 'geany' 'git' 'glfw-wayland' 'gnome-keyring' 'i3lock' 'imagemagick' 'jq' 'libwebp' 'lsd' 'maim' 'mlocate' 'mpc' 'mpd' 'ncmpcpp' 'net-tools' 'networkmanager' 'ntfs-3g' 'oh-my-zsh-git' 'openvpn' 'otf-droid-nerd' 'pacman-contrib' 'pamixer' 'papirus-icon-theme' 'pavucontrol' 'physlock' 'picom' 'playerctl' 'polkit-gnome' 'polybar' 'powerline' 'qt5-graphicaleffects' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-wayland' 'ranger' 'rofi' 'scrot' 'sddm' 'sxhkd' 'tdrop' 'thunar' 'tokyonight-gtk-theme' 'ttf-hack-nerd' 'ttf-inconsolata' 'ttf-jetbrains-mono-nerd' 'ttf-jetbrains-mono' 'ttf-joypixels' 'ttf-terminus-nerd' 'ueberzug' 'vim-airline' 'vim-airline-themes' 'vundle' 'webp-pixbuf-loader' 'xclip' 'xdg-user-dirs' 'xdotool' 'xfce4-taskmanager' 'xorg-xinit' 'xorg-xkill' 'xorg-xlsclients' 'xorg-xprop' 'xorg-xrandr' 'xorg-xsetroot' 'xorg-xwayland' 'xorg-xwininfo' 'zoxide' 'zsh-theme-powerlevel10k')
 makedepends=('git' 'rsync')
 source=("git+https://github.com/Athena-OS/$_pkgname.git"
         "$pkgname.tar.gz")
 sha512sums=('SKIP'
-            '3a5dc74593c3fd10a945b61dafa1a4cb2634e2a40d693400abc0eae3ad86dc0ddf0832ce9205d3d1870bbec7d25f67689b1dbf66953ad8b2cf29e722d662ccf9')
+            'd15bd6613fdaf484786d95513ea595cc10d621b27f5942f7d9dd76b659566de0f03a528fbcbc3d05ff01d7baaace1e5d1a77d7e322f28d135feeb96e63fc0685')
 
 pkgver() {
   cd $_pkgname
@@ -32,8 +32,6 @@ package() {
   
   rsync -av --progress .config/ "$pkgdir/etc/skel/.config/"
   rsync -av --progress .p10k.zsh "$pkgdir/etc/skel/.p10k.zsh"
-  rsync -av --progress .vimrc "$pkgdir/etc/skel/.vimrc"
-  rsync -av --progress .zshrc "$pkgdir/etc/skel/.zshrc"
   rsync -av --progress .local/share/applications/ "$pkgdir/etc/skel/.local/share/applications/"
   rsync -av --progress .local/share/asciiart/ "$pkgdir/etc/skel/.local/share/asciiart/"
   rsync -av --progress .local/bin/ "$pkgdir/etc/skel/.local/bin/"
