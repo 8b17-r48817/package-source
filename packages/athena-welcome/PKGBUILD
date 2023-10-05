@@ -29,4 +29,4 @@ package() {
   chmod 755 "${pkgdir}/usr/share/athena-welcome/role-tools"
 
 }
-sha512sums=('f06496334bf834b7aebe618b323a5e7abbc0d33dce8a2f8a03cdfa81dab462286edb5ba21fb40bbe36d93871d378291e6a6d154f0d1e97fd30894ea7ee4f91e2')
+sha512sums=('5f384628e3341a7428965e102bd6c7f4fe654eeaa26b13c8b65bf91d7936fd79b971e8a8ba459afe5fb669b396c4501e02db11c42d76fc5c5df5046c1d05c448')

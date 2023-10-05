@@ -95,29 +95,29 @@ class Main(Gtk.Window):
         #subprocess.Popen(["/usr/bin/calamares_polkit", "-d"], shell=False)
 
     def on_aica_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["sudo", "cp", "/etc/calamares/settings-athena-advanced.conf", "/etc/calamares/settings.conf"],))
-        t.daemon = True
-        t.start()
+        #t = threading.Thread(target=self.run_app, args=(["sudo", "cp", "/etc/calamares/settings-athena-advanced.conf", "/etc/calamares/settings.conf"],))
+        #t.daemon = True
+        #t.start()
         #t = threading.Thread(target=self.run_app, args=(["sudo", "cp", "/etc/calamares/modules/packages-system-update.conf", "/etc/calamares/modules/packages.conf"],))
         #t.daemon = True
         #t.start()
-        subprocess.Popen(["/usr/bin/calamares_polkit", "-d"], shell=False)
+        subprocess.Popen(["/usr/bin/aegis-gui"], shell=False)
 
-    def on_offline_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["sudo", "cp", "/etc/calamares/settings-athena-offline.conf", "/etc/calamares/settings.conf"],))
-        t.daemon = True
-        t.start()
-        subprocess.Popen(["/usr/bin/calamares_polkit", "-d"], shell=False)
+    #def on_offline_clicked(self, widget):
+        #t = threading.Thread(target=self.run_app, args=(["sudo", "cp", "/etc/calamares/settings-athena-offline.conf", "/etc/calamares/settings.conf"],))
+        #t.daemon = True
+        #t.start()
+        #subprocess.Popen(["/usr/bin/calamares_polkit", "-d"], shell=False)
 
     def on_gp_clicked(self, widget):
         t = threading.Thread(target=self.run_app, args=(["/usr/bin/gparted"],))
         t.daemon = True
         t.start()
 
-    def on_calamares_update_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["gnome-terminal", "--", os.path.expandvars('$SHELL'), "-c", "/usr/local/bin/calamares-update"],))
-        t.daemon = True
-        t.start()
+    #def on_calamares_update_clicked(self, widget):
+        #t = threading.Thread(target=self.run_app, args=(["gnome-terminal", "--", os.path.expandvars('$SHELL'), "-c", "/usr/local/bin/calamares-update"],))
+        #t.daemon = True
+        #t.start()
 
     #def on_buttonatt_clicked(self, widget):
         #t = threading.Thread(target=self.run_app, args=(["/usr/bin/archlinux-tweak-tool"],))

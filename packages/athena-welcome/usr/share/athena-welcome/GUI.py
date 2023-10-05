@@ -181,17 +181,17 @@ def GUI(self, Gtk, GdkPixbuf):
     #                   MAIN BUTTONS
     # ======================================================================
 
-    button1 = Gtk.Button(label="")
-    button1_label = button1.get_child()
-    button1_label.set_markup("<span size='large'><b>Run GParted</b></span>")
-    button1.connect("clicked", self.on_gp_clicked)
-    button1.set_size_request(0, 50)
+    btngparted = Gtk.Button(label="")
+    btngparted_label = btngparted.get_child()
+    btngparted_label.set_markup("<span size='large'><b>Run GParted</b></span>")
+    btngparted.connect("clicked", self.on_gp_clicked)
+    btngparted.set_size_request(0, 50)
 
-    buttonkeys = Gtk.Button(label="")
-    buttonkeys_label = buttonkeys.get_child()
-    buttonkeys_label.set_markup("<span size='large'><b>Update Calamares Installer</b></span>")
-    buttonkeys.connect("clicked", self.on_calamares_update_clicked)
-    buttonkeys.set_size_request(0, 50)
+    #buttonkeys = Gtk.Button(label="")
+    #buttonkeys_label = buttonkeys.get_child()
+    #buttonkeys_label.set_markup("<span size='large'><b>Update Calamares Installer</b></span>")
+    #buttonkeys.connect("clicked", self.on_calamares_update_clicked)
+    #buttonkeys.set_size_request(0, 50)
 
     #button2 = Gtk.Button(label="")
     #button2_label = button2.get_child()
@@ -202,17 +202,17 @@ def GUI(self, Gtk, GdkPixbuf):
 
     btnonlinstall = Gtk.Button(label="")
     btnonlinstall_label = btnonlinstall.get_child()
-    btnonlinstall_label.set_markup("<span size='large'><b>Advanced Installation (Online)</b></span>")
+    btnonlinstall_label.set_markup("<span size='large'><b>Installation (Online)</b></span>")
 
     btnonlinstall.connect("clicked", self.on_aica_clicked)
     btnonlinstall.set_size_request(0, 50)
 
-    btnofflinstall = Gtk.Button(label="")
-    btnofflinstall_label = btnofflinstall.get_child()
-    btnofflinstall_label.set_markup("<span size='large'><b>Easy Installation (Offline)</b></span>")
+    #btnofflinstall = Gtk.Button(label="")
+    #btnofflinstall_label = btnofflinstall.get_child()
+    #btnofflinstall_label.set_markup("<span size='large'><b>Easy Installation (Offline)</b></span>")
 
-    btnofflinstall.connect("clicked", self.on_offline_clicked)
-    btnofflinstall.set_size_request(0, 50)
+    #btnofflinstall.connect("clicked", self.on_offline_clicked)
+    #btnofflinstall.set_size_request(0, 50)
 
     gridimg = Gtk.Grid ()
     pb = GdkPixbuf.Pixbuf.new_from_file_at_size('images/htb.png', 35, 35)
@@ -249,11 +249,11 @@ def GUI(self, Gtk, GdkPixbuf):
     self.buttonrtm.connect("clicked", self.on_buttonrtm_clicked)
     self.buttonrtm.set_size_request(420, 70)
 
-    self.button8 = Gtk.Button(label="")
-    button8_label = self.button8.get_child()
-    button8_label.set_markup("<span size='large'><b>Update All Mirrors</b></span>")
-    self.button8.connect("clicked", self.on_mirror_clicked)
-    self.button8.set_size_request(420, 70)
+    self.bntmirrors = Gtk.Button(label="")
+    bntmirrors_label = self.bntmirrors.get_child()
+    bntmirrors_label.set_markup("<span size='large'><b>Update All Mirrors</b></span>")
+    self.bntmirrors.connect("clicked", self.on_mirror_clicked)
+    self.bntmirrors.set_size_request(420, 70)
     
     #self.buttonatt = Gtk.Button(label="")
     #buttonatt_label = self.buttonatt.get_child()
@@ -268,17 +268,17 @@ def GUI(self, Gtk, GdkPixbuf):
     #self.buttonpamac.connect("clicked", self.on_buttonpamac_clicked)
     #self.buttonpamac.set_size_request(420, 70)
 
-    # grid.add(button1)
+    # grid.add(btngparted)
     if username == user:
         grid = Gtk.Grid()
-        grid.attach(self.button8, 3, 4, 2, 2)
-        #grid.attach(button13, 2, 0, 2, 2)
-        grid.attach(button1, 2, 0, 2, 2)
-        grid.attach(buttonkeys, 1, 4, 2, 2)
+        grid.attach(self.bntmirrors, 4, 2, 2, 2)
+        #grid.attach(btnroletools, 2, 0, 2, 2)
+        grid.attach(btngparted, 2, 2, 2, 2)
+        #grid.attach(buttonkeys, 1, 4, 2, 2)
         #grid.attach(button2, 1, 4, 2, 2)
         #grid.attach(btnonlinstall, 3, 4, 2, 2)
-        grid.attach(btnofflinstall, 1, 2, 2, 2)
-        grid.attach(btnonlinstall, 3, 2, 2, 2)
+        #grid.attach(btnofflinstall, 1, 2, 2, 2)
+        grid.attach(btnonlinstall, 3, 0, 2, 2)
         grid.set_column_homogeneous(True)
         grid.set_row_homogeneous(True)
 
@@ -292,7 +292,7 @@ def GUI(self, Gtk, GdkPixbuf):
         #Second Top Level Buttons
         grid = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         self.buttonrtm.set_size_request(300, 70)
-        self.button8.set_size_request(300, 70)
+        self.bntmirrors.set_size_request(300, 70)
         ##self.buttonatt.set_size_request(300, 70)
         
         
@@ -300,7 +300,7 @@ def GUI(self, Gtk, GdkPixbuf):
         #grid.pack_start(self.buttonpamac, True, False, 0)
         ##grid.pack_start(self.buttonatt, True, False, 0)
         grid.pack_start(self.buttonrtm, True, False, 0)
-        grid.pack_start(self.button8, True, False, 0)
+        grid.pack_start(self.bntmirrors, True, False, 0)
         hbox1.pack_end(role_combo, False, False, 0) #pack_end means starting from right position
         
     # grid.set_row_homogeneous(True)
@@ -352,10 +352,10 @@ def GUI(self, Gtk, GdkPixbuf):
     #       First Line Footer Buttons        #
     ###########################################
     if username != user:
-        button13 = Gtk.Button(label="Show Tools for Roles")
-        button13.connect("clicked", self.on_buttonroletools_clicked)
-        button13.set_tooltip_markup("Show all the tools for each role")
-        button13.set_size_request(300, 0)
+        btnroletools = Gtk.Button(label="Show Tools for Roles")
+        btnroletools.connect("clicked", self.on_buttonroletools_clicked)
+        btnroletools.set_tooltip_markup("Show all the tools for each role")
+        btnroletools.set_size_request(300, 0)
  
         buttonupdate = Gtk.Button(label="Upgrade Athena")
         buttonupdate.connect("clicked", self.on_buttonupdate_clicked)
@@ -367,7 +367,7 @@ def GUI(self, Gtk, GdkPixbuf):
         button14.set_tooltip_markup("Show the hacking variables")
         button14.set_size_request(300, 0)
 
-        hbox11.pack_start(button13, True, True, 0)
+        hbox11.pack_start(btnroletools, True, True, 0)
         hbox11.pack_start(buttonupdate, True, True, 0)
         hbox11.pack_end(button14, True, True, 0)
 
@@ -398,9 +398,9 @@ def GUI(self, Gtk, GdkPixbuf):
     #       Third Line Footer Buttons        #
     ###########################################
 
-    button8 = Gtk.Button(label="Discord")
-    button8.connect("clicked", self.on_link_clicked,
-                    "https://discord.gg/AHXqyJHhGc")
+    btndiscord = Gtk.Button(label="Discord")
+    btndiscord.connect("clicked", self.on_link_clicked,
+                    "https://discord.gg/athena-os-977645785170714644")
 
     button9 = Gtk.Button(label="Video Demo")
     button9.connect("clicked", self.on_link_clicked,
@@ -420,14 +420,14 @@ def GUI(self, Gtk, GdkPixbuf):
     button12.connect("clicked", Gtk.main_quit)
     button12.set_tooltip_markup("Quit the Athena Welcome")
 
-    hbox5.pack_start(button8, True, True, 0)
+    hbox5.pack_start(btndiscord, True, True, 0)
     hbox5.pack_start(button9, True, True, 0)
     hbox5.pack_start(button10, True, True, 0)
     hbox5.pack_start(button11, True, True, 0)
     hbox5.pack_start(button12, True, True, 0)
 
 
-    # hbox8.pack_start(self.button8, True, False, 0)
+    # hbox8.pack_start(self.btndiscord, True, False, 0)
 
     # ======================================================================
     #                   Add to startup
