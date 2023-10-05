@@ -80,11 +80,11 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
      #fi
 
      #If tun0 is down (i.e., after a reboot), the shell prompt must be updated with the running interfaces
-     if ! nmcli c show --active | grep -q tun ; then
+     #if ! nmcli c show --active | grep -q tun ; then
 
-        /usr/local/bin/prompt-reset
+     #   /usr/local/bin/prompt-reset
 
-     fi
+     #fi
 
      gsettings set org.gnome.shell disable-user-extensions false
 fi
