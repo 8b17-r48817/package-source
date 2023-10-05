@@ -7,13 +7,11 @@ license=("GPL3")
 depends=('afterglow-recolored-green')
 makedepends=('git')
 source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/Box.conf"
-        "$pkgname"
         "hackthebox.png"
         "$pkgname.tar.gz")
 sha512sums=('2bced57ecad432cefd060d4f617802a20fb154c4db236b0d9ee070152589ca7c2d9dfaeaaaf7048c5881bb4bb26cc8bbfff7e5f5ea502dbac8f8599135808fe1'
-            'f8074dd06a9694d726ecbded937e9fe1d3303db13793f7c8fbb3e30d8d3ff3216ee4d0d4a8dd072dfacc0536908c7002ade176abaad9184a98652547ea48b1d4'
             'b96074aade5396df359335c5c164b1fdb8280eef354ae487c0cb55ec269d1cf17a4bce9e57e1b94a9622382e23b5f75150432b9ae53eff158ff15a09b8b7034b'
-            'b79806f9771eb108dad45c6a6b9b046500921babb0dae4b8f218b5a2c3d59dcd072ef4680a74e9fe31b70e77b9417b63622117304637bca4eb0d061683920f65')
+            'e4b198b13a7871a7b0749db739042eee2adbf54d1c9d64dddc5f8605f7feff671ba1b9428f651f32d72763b2bbd0e302bd9e4b6646fa4cf80bab89e18af33c86')
 
 package() {
   install -dm 755 "$pkgdir/etc/skel/.config/kitty"
@@ -26,7 +24,6 @@ package() {
   cp -a HackTheBox-GTK-Theme/HackTheBox-BL "$pkgdir/usr/share/themes/"
   cp -a HackTheBox-GTK-Theme/HackTheBox-BBL "$pkgdir/usr/share/themes/"
   cp -a HackTheBox "$pkgdir/usr/share/icons/"
-  install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "hackthebox.png" "$pkgdir/usr/share/backgrounds/default/"
   install -Dm 644 "Box.conf" "$pkgdir/etc/skel/.config/kitty/current-theme.conf"
 

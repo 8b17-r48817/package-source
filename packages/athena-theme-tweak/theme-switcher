@@ -105,6 +105,21 @@ elif [ "$chosen_theme" == "XXE" ]; then
     topbarmaterialscheme="virtuality_yellow"
     topbariconscheme="gruv"
     musicbarscheme="#FEFF00"
+elif [ "$chosen_theme" == "HackTheBox" ]; then
+    theme_name="HackTheBox-BBL"
+    gnome_shell="HackTheBox-BBL"
+    color_scheme="prefer-dark"
+    icon_theme="HackTheBox"
+    cursor_theme="Afterglow-Dracula-Green"
+    background_theme="/usr/share/backgrounds/default/hackthebox.png"
+    picture_options="stretched"
+    vscode_theme="Hack The Box"
+    kitty_theme="Box.conf"
+    tmux_theme="forest"
+    topbarcolorscheme="finale"
+    topbarmaterialscheme="finale"
+    topbariconscheme="dark"
+    musicbarscheme="#9fef00"
 else
     echo "Please choose between the following themes: AkameGaKill, BlueEyesSamurai, Graphite, CyborgGruvbox, SweetDark, XXE"
     exit 1
