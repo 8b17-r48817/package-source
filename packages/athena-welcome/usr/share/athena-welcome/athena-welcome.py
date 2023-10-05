@@ -266,11 +266,11 @@ Do you want to install it?")
         while(True):
             if not self.is_connected():
                 dis = 1
-                GLib.idle_add(self.button8.set_sensitive, False)
+                GLib.idle_add(self.bntmirrors.set_sensitive, False)
                 GLib.idle_add(self.cc.set_markup, "<span foreground='orange'><b><i>Not connected to internet</i></b> \nCalamares will <b>not</b> install additional software</span>")  # noqa
             else:
                 if bb == 0 and dis == 1:
-                    GLib.idle_add(self.button8.set_sensitive, True)
+                    GLib.idle_add(self.bntmirrors.set_sensitive, True)
                     GLib.idle_add(self.cc.set_text, "")
                     bb = 1
             sleep(3)
@@ -293,7 +293,7 @@ Do you want to install it?")
 
     def mirror_update(self):
         GLib.idle_add(self.cc.set_markup, "<span foreground='orange'><b><i>Updating Arch Linux mirrorlist</i></b> \nThis may take some time, please wait...</span>")  # noqa
-        GLib.idle_add(self.button8.set_sensitive, False)
+        GLib.idle_add(self.bntmirrors.set_sensitive, False)
         subprocess.run(["pkexec", "/usr/bin/reflector", "--age", "6", "--connection-timeout", "15", "--download-timeout", "15", "--latest", "21", "--fastest", "21", "--threads", "21", "--sort", "rate", "--protocol", "https", "--save", "/etc/pacman.d/mirrorlist"], shell=False)
         GLib.idle_add(self.cc.set_markup, "<span foreground='orange'><b><i>Updating BlackArch mirrorlist</i></b> \nThis may take around 2 minutes, please wait...</span>")  # noqa
         subprocess.run(["pkexec", "/usr/local/bin/mirroars", "-n", "21", "-m", "15", "-p", "w", "-t", "-r", "blackarch", "/etc/pacman.d/blackarch-mirrorlist", "-w"], shell=False)
@@ -303,7 +303,7 @@ Do you want to install it?")
         subprocess.run(["pkexec", "/usr/bin/pacman", "-Syy"], shell=False)
         print("FINISHED!!!")
         GLib.idle_add(self.cc.set_markup, "<b>DONE</b>")
-        GLib.idle_add(self.button8.set_sensitive, True)
+        GLib.idle_add(self.bntmirrors.set_sensitive, True)
 
     #def btrfs_update(self):
     #    if GUI.DEBUG:
@@ -335,7 +335,7 @@ Do you want to install it?")
     #     md.run()
     #     md.destroy()
     #     GLib.idle_add(self.cc.set_markup, "")
-    #     GLib.idle_add(self.button8.set_sensitive, True)
+    #     GLib.idle_add(self.bntmirrors.set_sensitive, True)
 
     def MessageBox(self, title, message):
         md = Gtk.MessageDialog(parent=self,
