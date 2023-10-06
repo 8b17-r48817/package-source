@@ -92,7 +92,7 @@ done
 while true; do
     read -p $'\e[33m[09/15] Do you wish to update Vim plugin and config files? Type "n" or "N" if you customized them (y/n) \e[0m' yn
     case $yn in
-        [yY] ) rsync "/etc/skel/.vimrc" "$HOME/.vimrc"; break;;
+        [yY] ) rsync -a --delete "/etc/skel/.vim_runtime/" "$HOME/.vim_runtime/"; rsync "/etc/skel/.viminfo" "$HOME/.viminfo"; rsync "/etc/skel/.vimrc" "$HOME/.vimrc"; break;;
         [nN] ) break;;
         * ) echo "Invalid answer.";;
     esac

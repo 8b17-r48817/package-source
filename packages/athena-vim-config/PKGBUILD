@@ -10,7 +10,8 @@ source=("$pkgname.tar.gz")
 package() {
   mkdir -p "${pkgdir}/etc/skel"
 
+  cp -rf "${srcdir}/etc/skel/.vim_runtime" "${pkgdir}/etc/skel/"
+  cp -rf "${srcdir}/etc/skel/.viminfo" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.vimrc" "${pkgdir}/etc/skel/"
-  
 }
-sha512sums=('7760bf56adbcf5aa1fa4625efd01953ef72707a370ee11680ab6a02c35577468e9f2594913ae1e7bb0504cf91cca3e13e8fbb186fbfc606fcc48630515d4dcfb')
+sha512sums=('e9f9bad8d84d622476ec945399c0e75efbdc5135338715988451b9cf44bc45fdbee266addf28c209f5868283267c2a4bbdf385e9ee3ca8ebd7e0d8110824b971')
