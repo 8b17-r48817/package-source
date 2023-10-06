@@ -146,7 +146,7 @@ theme_map = {
     "CyborgGruvbox": "athena-gruvbox-theme",
     "Graphite": "athena-graphite-theme",
     "SweetDark": "athena-sweet-dark-theme",
-    "XXE": "athena-xxe-theme"
+    "XXE": "athena-xxe-theme",
     "HackTheBox": "athena-htb-theme"
 }
 
