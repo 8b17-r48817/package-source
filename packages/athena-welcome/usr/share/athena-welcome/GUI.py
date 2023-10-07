@@ -148,29 +148,29 @@ def GUI(self, Gtk, GdkPixbuf):
     else:
         strout = "none"
 
-    if "BT" == strout:
+    if "blue" == strout:
         role_combo.set_active(1)
-    elif "BBH" == strout:
+    elif "bugbounty" == strout:
         role_combo.set_active(2)
-    elif "CR" == strout:
+    elif "cracker" == strout:
         role_combo.set_active(3)
-    elif "DT" == strout:
+    elif "dos" == strout:
         role_combo.set_active(4)
-    elif "ES" == strout:
+    elif "student" == strout:
         role_combo.set_active(5)
-    elif "FA" == strout:
+    elif "forensic" == strout:
         role_combo.set_active(6)
-    elif "MA" == strout:
+    elif "malware" == strout:
         role_combo.set_active(7)
-    elif "MO" == strout:
+    elif "mobile" == strout:
         role_combo.set_active(8)
-    elif "NA" == strout:
+    elif "network" == strout:
         role_combo.set_active(9)
-    elif "OS" == strout:
+    elif "osint" == strout:
         role_combo.set_active(10)
-    elif "RT" == strout:
+    elif "red" == strout:
         role_combo.set_active(11)
-    elif "WP" == strout:
+    elif "web" == strout:
         role_combo.set_active(12)
     else:
         role_combo.set_active(0)

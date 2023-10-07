@@ -1,10 +1,10 @@
 pkgname=athena-welcome
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Welcome App for Athena."
 arch=('any')
 license=("custom")
-depends=('gnome-terminal' 'htb-toolkit' 'libwnck3' 'mirroars' 'reflector' 'rsync')
+depends=('cyber-toolkit' 'gnome-terminal' 'htb-toolkit' 'libwnck3' 'mirroars' 'reflector' 'rsync')
 source=("$pkgname.tar.gz")
 
 package() {
@@ -26,7 +26,5 @@ package() {
   cp -rf "${srcdir}/usr/share/applications/athena-welcome.desktop" "${pkgdir}/usr/share/applications/"
   cp -rf "${srcdir}/usr/share/icons/hicolor/scalable/apps/athena-hello-logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
   cp -rf "${srcdir}/usr/share/athena-welcome" "${pkgdir}/usr/share/"
-  chmod 755 "${pkgdir}/usr/share/athena-welcome/role-tools"
-
 }
-sha512sums=('6750c29b31fcfdc7e7c2bd539d0d6622cbbb25651c03f09a74359941ce802158bc43a25d522b3b08b024903932e8ce4b3c4b775ad54880c7507109b222ab676f')
+sha512sums=('4f23c499fc95a93984849be2ae8fe2c8738b071dd7558fb0b76b3c28c7473ed1d2efd731962f5da82ef9d8e451ece97f62ddd679e8dd1f22fecadd36eb77e6c0')

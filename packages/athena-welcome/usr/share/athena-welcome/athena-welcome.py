@@ -52,29 +52,29 @@ class Main(Gtk.Window):
             GUI.role_name = model[tree_iter][0]
             print("Selected: role=%s" % GUI.role_name)
             if "Blue Teamer" in GUI.role_name:
-                self.role_id = "BT"
+                self.role_id = "blue"
             elif "Bug Bounty Hunter" in GUI.role_name:
-                self.role_id = "BBH"
+                self.role_id = "bugbounty"
             elif "Cracker Specialist" in GUI.role_name:
-                self.role_id = "CR"
+                self.role_id = "cracker"
             elif "DoS Tester" in GUI.role_name:
-                self.role_id = "DT"
+                self.role_id = "dos"
             elif "Enthusiast Student" in GUI.role_name:
-                self.role_id = "ES"
+                self.role_id = "student"
             elif "Forensic Analyst" in GUI.role_name:
-                self.role_id = "FA"
+                self.role_id = "forensic"
             elif "Malware Analyst" in GUI.role_name:
-                self.role_id = "MA"
+                self.role_id = "malware"
             elif "Mobile Analyst" in GUI.role_name:
-                self.role_id = "MO"
+                self.role_id = "mobile"
             elif "Network Analyst" in GUI.role_name:
-                self.role_id = "NA"
+                self.role_id = "network"
             elif "OSINT Specialist" in GUI.role_name:
-                self.role_id = "OS"
+                self.role_id = "osint"
             elif "Red Teamer" in GUI.role_name:
-                self.role_id = "RT"
+                self.role_id = "red"
             elif "Web Pentester" in GUI.role_name:
-                self.role_id = "WP"
+                self.role_id = "web"
             
 
     def on_mirror_clicked(self, widget):
@@ -135,7 +135,7 @@ class Main(Gtk.Window):
         t.start()
 
     def on_buttonrtm_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["gnome-terminal", "--", os.path.expandvars('$SHELL'), "-c", "/usr/share/athena-welcome/role-tools "+self.role_id],))
+        t = threading.Thread(target=self.run_app, args=(["gnome-terminal", "--", os.path.expandvars('$SHELL'), "-c", "sudo cyber-toolkit "+self.role_id],))
         t.daemon = True
         t.start()
 

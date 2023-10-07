@@ -1,0 +1,32 @@
+pkgname=athena-lightdm-neon-theme
+pkgver=0.2.3
+pkgdesc='Modern and customizable theme for web-greeter with a nostalgic neon look'
+pkgrel=1
+arch=('any')
+license=('GPL')
+url='https://github.com/hertg/lightdm-neon'
+depends=('lightdm' 'web-greeter')
+makedepends=('npm' 'git')
+optdepends=()
+provides=()
+conflicts=()
+install='athena-lightdm-neon-theme.install'
+source=("${pkgname}-0.2.3.tar.gz::https://github.com/hertg/lightdm-neon/archive/refs/tags/v0.2.3.tar.gz")
+sha512sums=('99b3c1cfca997408e843141adc0c7597aebd3c618f88a989ff9cf98e77c674eab00c9ed7bc8b94c744deed28244ed560c3b11b776e09a94985b515e3ea6b8cf9')
+
+build() {
+  cd lightdm-neon-${pkgver}
+  sed -i "s/hello neon/Welcome to Athena OS/g" ./src/store/settings.ts
+  npm install
+  npm run build
+}
+
+package() {
+  # note: the directory is called "lightdm-neon-{version}", because the github 
+  # archive extracts to a directory called "{repository}-{version}", not what
+  # is specified in the source() of the PKGBUILD
+
+  cd "${srcdir}/lightdm-neon-${pkgver}"
+  install -dm755 "${pkgdir}/usr/share/web-greeter/themes/neon"
+  cp -r public/. "${pkgdir}/usr/share/web-greeter/themes/neon"
+}
