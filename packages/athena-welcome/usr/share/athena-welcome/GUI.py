@@ -20,7 +20,7 @@ if DEBUG:
 else:
     user = "liveuser"
 
-Settings = "/usr/share/athena-welcome/settings.conf" # The role is at system level because packages are installed at system level
+Settings = home + "/.config/athena-welcome/settings.conf" # The role is at system level because packages are installed at system level
 dot_desktop = "/usr/share/applications/athena-welcome.desktop"
 autostart = home + "/.config/autostart/athena-welcome.desktop"
 
@@ -143,7 +143,7 @@ def GUI(self, Gtk, GdkPixbuf):
         contents = f.read()
         f.close()
     if "role=" in contents:
-        strout = contents.split("role=")[1].replace('\n', '')  # Extract the latest installed role from the /usr/share/athena-welcome/settings.conf
+        strout = contents.split("role=")[1].replace('\n', '')  # Extract the latest installed role from the $HOME/.config/athena-welcome/settings.conf
     else:
         strout = "none"
 
