@@ -227,7 +227,7 @@ alias nz="$EDITOR ~/.zshrc"
 alias nf="$EDITOR ~/.config/fish/config.fish"
 
 #reading logs with bat
-alias lcalamares="bat /var/log/Calamares.log"
+alias laegis="bat /var/log/aegis.log"
 alias lpacman="bat /var/log/pacman.log"
 alias lxorg="bat /var/log/Xorg.0.log"
 alias lxorgo="bat /var/log/Xorg.0.log.old"

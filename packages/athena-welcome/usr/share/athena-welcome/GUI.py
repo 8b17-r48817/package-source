@@ -84,7 +84,7 @@ def GUI(self, Gtk, GdkPixbuf):
     if username == user:
 
         label2.set_markup(
-            "During the Calamares installation many options will be open to you. You have the freedom of choice.\n" +  # noqa
+            "During the installation many options will be open to you. You have the freedom of choice.\n" +  # noqa
             "We communicate with our community via a diversity of social media.\n" +  # noqa
             "Join us to learn the latest news, ask questions or for casual talk.\n" +  # noqa
             "Reach us on <b>Discord</b> for chatting or assistance.\n")
@@ -189,8 +189,8 @@ def GUI(self, Gtk, GdkPixbuf):
 
     #buttonkeys = Gtk.Button(label="")
     #buttonkeys_label = buttonkeys.get_child()
-    #buttonkeys_label.set_markup("<span size='large'><b>Update Calamares Installer</b></span>")
-    #buttonkeys.connect("clicked", self.on_calamares_update_clicked)
+    #buttonkeys_label.set_markup("<span size='large'><b>Update Aegis Installer</b></span>")
+    #buttonkeys.connect("clicked", self.on_aegis_update_clicked)
     #buttonkeys.set_size_request(0, 50)
 
     #button2 = Gtk.Button(label="")
@@ -593,7 +593,7 @@ def GUI(self, Gtk, GdkPixbuf):
 
     self.vbox.pack_start(hboxmiddle, False, False, 7)  # HTB Update and Tool list buttons grid
 
-    self.vbox.pack_start(grid, True, False, 7)  # Run GParted/Calamares
+    self.vbox.pack_start(grid, True, False, 7)  # Run GParted/Aegis
 
     # if self.results and self.is_connected():
     #     self.vbox.pack_start(self.vbox2, False, False, 0)  # Notice
