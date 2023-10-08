@@ -1,6 +1,6 @@
 pkgname=athena-welcome
 pkgver=2.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Welcome App for Athena."
 arch=('any')
 license=("custom")
@@ -25,4 +25,4 @@ package() {
   cp -rf "${srcdir}/usr/share/athena-welcome" "${pkgdir}/usr/share/"
   cp -rf "${srcdir}/usr/share/athena-welcome/settings.conf" "${pkgdir}/usr/share/athena-welcome/"
 }
-sha512sums=('b36040537d0939f43ae2e3cfed3d775e4bdb8a88ef8cdb80500abc58fa01a3fa3872e01ebccc68f6478c2e46ccf2fbd01f8ec4b8cbbdd011bbb1345343ca1233')
+sha512sums=('b0b0de8dafb6697305d056bd0d18f5575410e32c7a9ced0fda6515c5206b67c9ef9d12301ab440efc44c4347c78f7766da8c826075747c67b40810105c115b87')
