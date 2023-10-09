@@ -17,8 +17,7 @@ sha512sums=('99b3c1cfca997408e843141adc0c7597aebd3c618f88a989ff9cf98e77c674eab00
 build() {
   cd lightdm-neon-${pkgver}
   sed -i "s/hello neon/Welcome to Athena OS/g" ./src/store/settings.ts
-  sed -i "s/font:ne.Neonderthaw/font:ne.Neoneon/g" ./src/store/settings.ts
-  sed -i "s/font:r=\"Neonderthaw\"/font:r=\"Neoneon\"/g" ./src/store/settings.ts
+  sed -i "s/SignFont.Neonderthaw/SignFont.Neoneon/g" ./src/store/settings.ts
   npm install
   npm run build
 }
