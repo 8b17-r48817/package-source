@@ -1,5 +1,5 @@
 pkgname=cyber-toolkit
-pkgver=13.7795282
+pkgver=14.48a9f22
 pkgrel=1
 pkgdesc='Set your Cyber Security role.'
 arch=('x86_64' 'aarch64')
