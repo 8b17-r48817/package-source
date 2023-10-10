@@ -7,7 +7,7 @@ license=("custom")
 depends=('gnome-characters' 'gnome-control-center' 'gnome-keyring' 'gnome-menus' 'gnome-session' 'gnome-shell-extensions' 'gnome-shell-performance' 'gnome-system-monitor' 'gnome-terminal' 'gnome-themes-extra' 'gnome-tweaks' 'noto-fonts-emoji' 'polkit-gnome' 'qqc2-desktop-style' 'ttf-jetbrains-mono' 'wayland' 'xdg-desktop-portal' 'xdg-desktop-portal-gnome' 'xdg-user-dirs' 'gnome-shell-extension-appindicator-git' 'gnome-shell-extension-desktop-icons-ng-git' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-hide-activities-git' 'gnome-shell-extension-logo-menu-git' 'gnome-shell-extension-pop-shell-git' 'gnome-shell-extension-top-bar-organizer' 'gnome-shell-extension-ubuntu-dock-git' 'gnome-shell-extension-vitals-git')
 conflicts=('athena-gnome-material-shell-config')
 source=("$pkgname.tar.gz")
-sha512sums=('d5bb096040b0e3b3d3db040867ba9d2b91e6aaedec30c72361489aac72375256fd17d067fc2dabb50f5d4bd68143608e81b10cbc6472fbf67653b817a1047f13')
+sha512sums=('abd24c009e26e75ad1f99ac5bdede1062e39504c66b2d8dcb8a4b1d1ef3677f68f28e7dfb57f96311744a16313c94c6323c22f5923f27afc6f2a07d74d55133b')
 
 package() {
   mkdir -p "${pkgdir}/etc"
