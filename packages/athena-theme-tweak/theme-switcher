@@ -30,13 +30,13 @@ if [ "$chosen_theme" == "AkameGaKill" ]; then
     topbarmaterialscheme="finale"
     topbariconscheme="dark"
     musicbarscheme="#F98D89"
-elif [ "$chosen_theme" == "BlueEyesSamurai" ]; then
+elif [ "$chosen_theme" == "SamuraiGirl" ]; then
     theme_name="Tokyonight-Dark-B"
     gnome_shell="Tokyonight-Dark-B"
     color_scheme="prefer-dark"
     icon_theme="Tokyonight-Dark"
     cursor_theme="oreo_blue_cursors"
-    background_theme="/usr/share/backgrounds/default/blue-eyes.jpg"
+    background_theme="/usr/share/backgrounds/default/samurai-girl.jpg"
     picture_options="stretched"
     vscode_theme="Tokyo Night Storm"
     kitty_theme="Tokyo_Night_Storm.conf"
@@ -66,7 +66,7 @@ elif [ "$chosen_theme" == "CyborgGruvbox" ]; then
     color_scheme="prefer-dark"
     icon_theme="Material-Black-Mango-Suru"
     cursor_theme="Fuchsia-Pop"
-    background_theme="/usr/share/backgrounds/default/cyborg_gruv.png"
+    background_theme="/usr/share/backgrounds/default/cyborg-gruv.png"
     picture_options="stretched"
     vscode_theme="Gruvbox Material Dark"
     kitty_theme="gruvbox_dark.conf"
@@ -81,7 +81,7 @@ elif [ "$chosen_theme" == "SweetDark" ]; then
     color_scheme="prefer-dark"
     icon_theme="Sweet-Purple"
     cursor_theme="oreo_spark_purple_cursors"
-    background_theme="/usr/share/backgrounds/default/neon_circle.jpg"
+    background_theme="/usr/share/backgrounds/default/neon-circle.jpg"
     picture_options="stretched"
     vscode_theme="Radical"
     kitty_theme="AdventureTime.conf"
@@ -121,7 +121,7 @@ elif [ "$chosen_theme" == "HackTheBox" ]; then
     topbariconscheme="dark"
     musicbarscheme="#9fef00"
 else
-    echo "Please choose between the following themes: AkameGaKill, BlueEyesSamurai, Graphite, CyborgGruvbox, SweetDark, XXE"
+    echo "Please choose between the following themes: AkameGaKill, SamuraiGirl, Graphite, CyborgGruvbox, SweetDark, XXE"
     exit 1
 fi
 

@@ -15,6 +15,7 @@ package() {
   mkdir -p "${pkgdir}/usr/local/bin"
   mkdir -p "${pkgdir}/usr/local/share"
   mkdir -p "${pkgdir}/usr/share/applications"
+  mkdir -p "${pkgdir}/usr/share/desktop-directories"
   mkdir -p "${pkgdir}/usr/share/icons/hicolor"
   mkdir -p "${pkgdir}/usr/share/pixmaps/faces"
 
@@ -29,8 +30,9 @@ package() {
   cp -rf "${srcdir}"/usr/local/bin/* "${pkgdir}/usr/local/bin/"
   cp -rf "${srcdir}/usr/local/share/athena" "${pkgdir}/usr/local/share/"
   cp -rf "${srcdir}"/usr/share/applications/* "${pkgdir}/usr/share/applications/"
+  cp -rf "${srcdir}"/usr/share/desktop-directories/* "${pkgdir}/usr/share/desktop-directories/"
   cp -rf "${srcdir}"/usr/share/icons/hicolor/* "${pkgdir}/usr/share/icons/hicolor/"
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
 
-sha512sums=('63f71cb54164daeabbc034ff081cbe84d5ac077c52f6957d3a3e4fbf1965394b25927043b9e663afdfb836dcce5872342cd78f99a4342b5f75158d2417249174')
+sha512sums=('93256b1c681313c2b089303713ba3d3bccee8d97db330d8fecf794225a5addf4552e183259f44101880805487ab6aeb813e11eee754cfa9314556176d0752dfb')

@@ -55,7 +55,7 @@ def arg_parse():
     parser.add_argument("-e", "--emulator", choices=["alacritty", "cool-retro-term", "foot", "gnome-terminal", "kitty", "konsole", "terminator", "terminology", "urxvt", "xfce4-terminal", "xterm"], help="specify a terminal emulator to be set [alacritty|cool-retro-term|foot|gnome-terminal|kitty|konsole|terminator|terminology|urxvt|xfce4-terminal|xterm]")
     parser.add_argument("-h", "--help", action='store_true', help="show this help message and exit")
     parser.add_argument("-l", "--list", action='store_true', help="list all available Athena themes")
-    parser.add_argument("-t", "--theme", choices=["AkameGaKill", "BlueEyesSamurai", "Graphite", "CyborgGruvbox", "SweetDark", "XXE", "HackTheBox"], help="specify an Athena theme to be set [AkameGaKill|BlueEyesSamurai|Graphite|CyborgGruvbox|SweetDark|XXE|HackTheBox]")
+    parser.add_argument("-t", "--theme", choices=["AkameGaKill", "SamuraiGirl", "Graphite", "CyborgGruvbox", "SweetDark", "XXE", "HackTheBox"], help="specify an Athena theme to be set [AkameGaKill|SamuraiGirl|Graphite|CyborgGruvbox|SweetDark|XXE|HackTheBox]")
     
 
     args = parser.parse_args()
@@ -72,12 +72,12 @@ def help():
    print("-e, --emulator                specify a terminal emulator to be set [alacritty|cool-retro-term|foot|gnome-terminal|kitty|konsole|urxvt|xterm]")
    print("-h, --help                    show this help message and exit")
    print("-l, --list                    list all available Athena themes")
-   print("-t, --theme <theme-name>      specify an Athena theme to be set [AkameGaKill|BlueEyesSamurai|Graphite|CyborgGruvbox|SweetDark|XXE|HackTheBox]")
+   print("-t, --theme <theme-name>      specify an Athena theme to be set [AkameGaKill|SamuraiGirl|Graphite|CyborgGruvbox|SweetDark|XXE|HackTheBox]")
    print("\n")
    print("Usage Examples:")
    print("athena-theme-tweak -l")
    print("athena-theme-tweak -e alacritty")
-   print("athena-theme-tweak -t BlueEyesSamurai")
+   print("athena-theme-tweak -t SamuraiGirl")
    print("athena-theme-tweak -b")
 
 def print_banner():
@@ -142,10 +142,10 @@ if args.browser:
 
 theme_map = {
     "AkameGaKill": "athena-akame-theme",
-    "BlueEyesSamurai": "athena-blue-eyes-theme",
+    "SamuraiGirl": "athena-samurai-theme",
     "CyborgGruvbox": "athena-gruvbox-theme",
     "Graphite": "athena-graphite-theme",
-    "SweetDark": "athena-sweet-dark-theme",
+    "SweetDark": "athena-sweetdark-theme",
     "XXE": "athena-xxe-theme",
     "HackTheBox": "athena-htb-theme"
 }

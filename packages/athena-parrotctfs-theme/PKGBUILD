@@ -6,7 +6,7 @@ arch=('any')
 license=("GPL3")
 depends=('afterglow-recolored-purple' 'fish' 'layan-gtk-theme-git' 'material-black-cherry-suru' 'shell-color-scripts' 'starship')
 makedepends=('git')
-conflicts=('athena-akame-theme' 'athena-blue-eyes-theme' 'athena-graphite-theme' 'athena-gruvbox-theme' 'athena-sweet-dark-theme' 'athena-xxe-theme' 'athena-fish')
+conflicts=('athena-akame-theme' 'athena-graphite-theme' 'athena-gruvbox-theme' 'athena-samurai-theme' 'athena-sweetdark-theme' 'athena-xxe-theme' 'athena-fish')
 source=("git+https://github.com/parrotassassin15/ConfigFiles"
         "https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/AdventureTime.conf"
         "$pkgname"
@@ -16,7 +16,7 @@ sha512sums=('SKIP'
             '0dcd9eca5833d3c3a910c7a3ddd59d2fc8598cf0109fd5408388fc9f88d8cae364d8ac857d09674399cbdab26ea04a4f4585ff2c935ea04d916bf337087aa577'
             '6ca0e93783eea5c8c83a549155eb8b4e4dba3f77549a11eaa7cc37438f8b389d2594ecdfd3823d2391c24e5b4b74b9b76ec01411a9b22d61c4a18943b4002291'
             '70bd0d55c90fcc0355528551596ec5a439d7c79c87b4c2aa8260d67e19e69283bceeb99cfc4a0d8912a6036bcd112186b275ec96a63e5a5cf16936474bf7c6c8'
-            'cc8a022f7c5a98cc61e95f58afdd72f96def1816d31762d3b6dcc8aac498ba972bef3c46d8ac0e51ab87733ab0d0b67c1645ff0bb5b47b7850f0861edd262539')
+            'b5d7f5a3d176a94d29b82fcf3465d1d2d0ffba6ff4572f413f99e6b6eb620831325fb52dcd3f81e4164338e11d3370f49d55028ac3ff44521703f3d6fed74784')
 
 pkgver() {
   cd ConfigFiles

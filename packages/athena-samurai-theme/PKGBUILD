@@ -1,0 +1,25 @@
+pkgname=athena-samurai-theme
+pkgver=57.e9790345
+pkgrel=1
+pkgdesc="Samurai Girl theme for Athena."
+arch=('any')
+license=("GPL3")
+depends=('tokyonight-gtk-theme' 'oreo-blue-cursors')
+source=("https://github.com/kovidgoyal/kitty-themes/blob/master/themes/tokyo_night_storm.conf"
+        "samurai-girl.jpg"
+        "$pkgname.tar.gz")
+sha512sums=('a8ae76c878844acabe8b7d06d19f7421fa526b7adc104bb24fbe6f1592b04012259f02bb338d59fe1bc3df59a348827fbf112867309736555c8734dfffec233b'
+            'c4575e024afbec6cf5624957c1102a866a468f90c1c3f0e7368cbb6905b4f559649f96ee4321036d3c23042b87777f07020e78b423922aa3f38ad6b9f8396495'
+            '3f44504112f744d3b0325fee2c450bd21b923def1f90eeb392ebcd9b14f16b07d8328f13ed3b8b0daa8897a44e9f3ac4576edb3e3451d5582e7603931faffa15')
+
+package() {
+  install -dm 755 "$pkgdir/etc/skel/.config/kitty"
+  install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
+  install -dm 755 "$pkgdir/usr/share/backgrounds/default"
+
+  install -Dm 644 "samurai-girl.jpg" "$pkgdir/usr/share/backgrounds/default/"
+  install -Dm 644 "tokyo_night_storm.conf" "$pkgdir/etc/skel/.config/kitty/current-theme.conf"
+
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"
+}
