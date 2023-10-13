@@ -1,5 +1,5 @@
 pkgname=athena-system-config
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="System configuration for Athena."
 arch=('any')
@@ -14,6 +14,7 @@ package() {
   mkdir -p "${pkgdir}/usr/lib"
   mkdir -p "${pkgdir}/usr/local/bin"
   mkdir -p "${pkgdir}/usr/local/share"
+  mkdir -p "${pkgdir}/usr/share/applications"
   mkdir -p "${pkgdir}/usr/share/icons/hicolor"
   mkdir -p "${pkgdir}/usr/share/pixmaps/faces"
 
@@ -22,14 +23,14 @@ package() {
   cp -rf "${srcdir}/etc/skel/.bash_aliases" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.blerc" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.flag-work-once" "${pkgdir}/etc/skel/"
-  cp -rf "${srcdir}/etc/skel/.local" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/sudoers.d" "${pkgdir}/etc/"
 
   cp -rf "${srcdir}/usr/lib/os-release-athena" "${pkgdir}/usr/lib/"
   cp -rf "${srcdir}"/usr/local/bin/* "${pkgdir}/usr/local/bin/"
   cp -rf "${srcdir}/usr/local/share/athena" "${pkgdir}/usr/local/share/"
+  cp -rf "${srcdir}"/usr/share/applications/* "${pkgdir}/usr/share/applications/"
   cp -rf "${srcdir}"/usr/share/icons/hicolor/* "${pkgdir}/usr/share/icons/hicolor/"
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
 
-sha512sums=('1699d9ab229302683d250e4397d09a3b9c5990c511c0176effd465b56ef52b3611d0cee44938ac4f41a1631cba4777384d2d79a64477a8fb092aebbd61fd65fd')
+sha512sums=('e8810872f6b07cde2f3c6601b8a18827ddd7d94b10d6cdb95004679d65ddc617851a53d66141e1757e4015e4f37cb012fcd7f2483dbdde1551e360b00eb19bb9')

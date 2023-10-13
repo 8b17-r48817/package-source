@@ -1,0 +1,16 @@
+[Desktop Entry]
+X-AppInstall-Package=sqlitebrowser
+X-AppInstall-Popcon=359
+X-AppInstall-Section=main
+Encoding=UTF-8
+Name=SQLite database browser
+Comment=Light GUI editor for SQLite databases
+Comment=GUI editor for SQLite databases
+Exec=gnome-terminal -- /usr/bin/bash -c "if command -v sqlitebrowser &> /dev/null;then sqlitebrowser;$SHELL;else echo \\"sqlitebrowser is not installed. I'm retrieving it for you...\\";sudo pacman -S sqlitebrowser;sqlitebrowser;$SHELL;fi;"
+Icon=sqlitebrowser
+Terminal=false
+Type=Application
+Categories=04-database-assessment;Development;Utility;Database;
+StartupNotify=false
+MimeType=application/vnd.db4s-project+xml;application/sqlitebrowser;application/x-sqlitebrowser;application/vnd.sqlite3;application/geopackage+sqlite3;application/x-sqlite2;application/x-sqlite3;
+X-BlackArch-Package=sqlitebrowser

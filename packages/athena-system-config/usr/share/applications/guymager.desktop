@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=guymager (root)
+Comment=A forensic acquisition program
+Encoding=UTF-8
+Exec=gnome-terminal -- /usr/bin/bash -c "if command -v guymager &> /dev/null;then pkexec guymager;$SHELL;else echo \\"Guymager is not installed. I'm retrieving it for you...\\";sudo pacman -S guymager;pkexec guymager;$SHELL;fi;"
+Icon=kali-guymager
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=11-07-forensic-imaging-tools;004-respond;
+X-BlackArch-Package=guymager
