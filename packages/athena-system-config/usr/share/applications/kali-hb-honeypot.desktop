@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=heartbleed-honeypot
+Encoding=UTF-8
+Exec=gnome-terminal -- /usr/bin/bash -c "if command -v heartbleed-honeypot &> /dev/null;then sudo heartbleed-honeypot;$SHELL;else echo \\"heartbleed-honeypot is not installed. I'm retrieving it for you...\\";sudo pacman -S heartbleed-honeypot;sudo heartbleed-honeypot;$SHELL;fi;"
+Icon=kali-menu
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=001-identify;
+X-BlackArch-Package=heartbleed-honeypot

@@ -4,17 +4,18 @@ pkgrel=1
 pkgdesc="XFCE configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('xdg-user-dirs' 'xfce4-panel' 'xfce4-session' 'xfce4-settings' 'xfdesktop' 'xfwm4')
-#source=("$pkgname.tar.gz")
-#sha512sums=('62e38df484f1b823022e8ff33fb254d44440d1cd8a7767ff816c820a5b91b95b3da94a7c6f1f7c87cb77d922b1e96d3c93cf83eb1805cf616bb560ee98916b72')
+depends=('mugshot' 'ristretto' 'xdg-user-dirs' 'xfce4-cpugraph-plugin' 'xfce4-panel' 'xfce4-power-manager' 'xfce4-pulseaudio-plugin' 'xfce4-screenshooter' 'xfce4-session' 'xfce4-settings' 'xfdesktop' 'xfwm4')
+source=("$pkgname.tar.gz")
+sha512sums=('ed53ca06f93fdc307f322c44f4771d3098d283bf686067093087ef5908002596046d4d4aff93d25ffffb519344436ca5e55c74b93440cfe2dfad074681973e79')
 
-#package() {
-#  mkdir -p "${pkgdir}/etc/skel"
-#  mkdir -m 750 -p "${pkgdir}/etc/sudoers.d"
-#  mkdir -p "${pkgdir}/usr/share/athena-gnome-config"
-#
-#  cp -rf "${srcdir}/etc/profile.d" "${pkgdir}/etc/"
-#  cp -rf "${srcdir}/etc/skel/.flag-work-once" "${pkgdir}/etc/skel/"
-#  cp -rf "${srcdir}/etc/skel/.local" "${pkgdir}/etc/skel/"
-#  cp -rf "${srcdir}"/usr/share/athena-gnome-config/* "${pkgdir}/usr/share/athena-gnome-config/"
-#}
+package() {
+  mkdir -p "${pkgdir}/etc/profile.d"
+  mkdir -p "${pkgdir}/etc/skel/.config"
+  mkdir -p "${pkgdir}/etc/xdg/menus"
+
+  install -Dm644 "${srcdir}/xfce-init.sh" "${pkgdir}/etc/profile.d/"
+  install -Dm644 "${srcdir}/xfce-applications.menu" "${pkgdir}/etc/xdg/menus/"
+  touch "${pkgdir}/etc/skel/.flag-xfce-once"
+  cp -rf "${srcdir}/etc/skel/.config/xfce4" "${pkgdir}/etc/skel/.config/"
+  cp -rf "${srcdir}/etc/skel/.config/xfce4" "${pkgdir}/etc/skel/.config/"
+}
