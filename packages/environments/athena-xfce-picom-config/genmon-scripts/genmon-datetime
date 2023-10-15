@@ -2,16 +2,17 @@
 
 #genmon script for displaying the time
 #displays date and time on the tooltip
-
-readonly ICON="/usr/share/icons/assets/scalable/clock.svg"
+readonly FONTICON="\Uf43a"
+#readonly ICON="/usr/share/icons/assets/scalable/clock.svg"
 
 TIME=`date '+%H:%M'`
 DATE=$(echo "\uf073 ")
 DATE+=`date '+ %d %B %A %H:%M'`
 
 # Panel
-INFO="<img>${ICON}</img>"
-INFO+="<txt>${TIME}</txt>"
+#INFO="<img>${ICON}</img>"
+#INFO+="<txt>${TIME}</txt>"
+INFO+="<txt>${FONTICON}\n${TIME}</txt>"
 
 # Tooltip
 MORE_INFO="<tool>"

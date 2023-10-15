@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 MEM=$(printf "%.0f\n" $(free -m | grep Mem | awk '{print ($3/$2)*100}'))
-readonly ICON="/usr/share/icons/assets/scalable/pie-chart.svg"
+readonly FONTICON="\Uebe4"
+#readonly ICON="/usr/share/icons/assets/scalable/pie-chart.svg"
 
 # Panel
-INFO="<img>${ICON}</img>"
-INFO+="<txt>${MEM}%</txt>"
+#INFO="<img>${ICON}</img>"
+#INFO+="<txt>${MEM}%</txt>"
+INFO+="<txt>${FONTICON}\n${MEM}%</txt>"
 
 # Tooltip
 MORE_INFO="<tool>"

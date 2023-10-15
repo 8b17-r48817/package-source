@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-
-readonly ICON="/usr/share/icons/assets/scalable/cpu.svg"
+readonly FONTICON="\Uf4bc"
+#readonly ICON="/usr/share/icons/assets/scalable/cpu.svg"
 
 ## Files and Data
 PREV_TOTAL=0
@@ -45,8 +45,9 @@ CPU=$(get_cpu)
 
 
 # Panel
-INFO="<img>${ICON}</img>"
-INFO+="<txt>${CPU}%</txt>"
+#INFO="<img>${ICON}</img>"
+#INFO+="<txt>${CPU}%</txt>"
+INFO="<txt>${FONTICON}\n${CPU}%</txt>"
 
 # Tooltip
 MORE_INFO="<tool>"
