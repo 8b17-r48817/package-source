@@ -4,18 +4,12 @@ pkgrel=1
 pkgdesc="XFCE configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('mugshot' 'nautilus' 'ristretto' 'xdg-user-dirs' 'xfce4-cpugraph-plugin' 'xfce4-panel' 'xfce4-power-manager' 'xfce4-pulseaudio-plugin' 'xfce4-screenshooter' 'xfce4-session' 'xfce4-settings' 'xfdesktop' 'xfwm4')
+depends=('athena-xfce-base' 'nautilus')
 source=("$pkgname.tar.gz")
-sha512sums=('ed53ca06f93fdc307f322c44f4771d3098d283bf686067093087ef5908002596046d4d4aff93d25ffffb519344436ca5e55c74b93440cfe2dfad074681973e79')
+sha512sums=('f31ac9e9e89b624e72515037b95e71cce795313a004e7cb900ef8d86088a2637b8d7aa7016cdd8b378eaa19bba632b054cc66ba89f682e73700be6d8a30ab1ec')
 
 package() {
-  mkdir -p "${pkgdir}/etc/profile.d"
   mkdir -p "${pkgdir}/etc/skel/.config"
-  mkdir -p "${pkgdir}/etc/xdg/menus"
 
-  install -Dm644 "${srcdir}/xfce-init.sh" "${pkgdir}/etc/profile.d/"
-  install -Dm644 "${srcdir}/xfce-applications.menu" "${pkgdir}/etc/xdg/menus/"
-  touch "${pkgdir}/etc/skel/.flag-xfce-once"
-  cp -rf "${srcdir}/etc/skel/.config/xfce4" "${pkgdir}/etc/skel/.config/"
   cp -rf "${srcdir}/etc/skel/.config/xfce4" "${pkgdir}/etc/skel/.config/"
 }
