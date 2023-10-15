@@ -1,7 +1,7 @@
 pkgname=athena-lightdm-neon-theme
 pkgver=0.2.3
-pkgdesc='Modern and customizable theme for web-greeter with a nostalgic neon look'
 pkgrel=1
+pkgdesc='Modern and customizable theme for web-greeter with a nostalgic neon look'
 arch=('any')
 license=('GPL')
 url='https://github.com/hertg/lightdm-neon'

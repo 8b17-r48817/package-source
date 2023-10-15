@@ -1,0 +1,10 @@
+pkgname=athena-lightdm-everblush-theme
+pkgver=0.1.1
+pkgrel=1
+pkgdesc='LightDM GTK theme for gtk-greeter with a Everblush look'
+arch=('any')
+license=('GPL')
+url='https://github.com/hertg/lightdm-neon'
+depends=('athena-everblush-theme' 'lightdm' 'lightdm-gtk-greeter' 'lightdm-gtk-greeter-settings')
+conflicts=()
+install='athena-lightdm-everblush-theme.install'
