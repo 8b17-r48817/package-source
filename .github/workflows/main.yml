@@ -19,7 +19,7 @@ jobs:
       run: pacman -Syy --noconfirm archlinux-keyring pacman-mirrorlist blackarch-keyring blackarch-mirrorlist chaotic-keyring chaotic-mirrorlist
 
     - name: Install dependencies
-      run: pacman -Syyu --noconfirm git mirroars pacman-contrib reflector
+      run: pacman -Syyu --noconfirm git gtk-update-icon-cache mirroars pacman-contrib reflector
       
     - name: Setting builder user
       run: |
