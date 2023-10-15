@@ -6,7 +6,7 @@ arch=$(grep "^arch=" PKGBUILD | awk -F"'" '{print $2}')
 
 #NEED ONLY TO EDIT  sourcefiles VARIABLE
 
-sourcefiles="etc"
+sourcefiles="xfce4"
 
 tar -zcvf $pkgname.tar.gz $sourcefiles 
 updpkgsums

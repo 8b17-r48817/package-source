@@ -123,6 +123,7 @@
       </property>
       <property name="recent" type="array">
       </property>
+      <property name="view-mode" type="int" value="2"/>
     </property>
     <property name="plugin-10" type="string" value="power-manager-plugin"/>
     <property name="clipman" type="empty">
