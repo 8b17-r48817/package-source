@@ -4,8 +4,8 @@ detect_virt=$(systemd-detect-virt)
 
 if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "docker" ] && [ "$detect_virt" != "podman" ] && [ "$detect_virt" != "wsl" ]); then
 
-     FLAGFILE="$HOME/.flag-work-once"
-     #FLAGNET="$HOME/.flag-net-once"
+     FLAGFILE="$HOME/.flag-gnome-once"
+     #FLAGNET="$HOME/.flag-gnome-net-once"
 
      DCONF_CK="/usr/share/athena-gnome-config/dconf-custom-keybindings.ini"
      DCONF_DS="/usr/share/athena-gnome-config/dconf-desktop.ini"
@@ -34,7 +34,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
               theme-switcher AkameGaKill
          fi
 
-         package=athena-everblush--theme
+         package=athena-everblush-theme
          if pacman -Qq $package > /dev/null ; then
               theme-switcher Everblush
          fi
@@ -67,6 +67,11 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
          package=athena-xxe-theme
          if pacman -Qq $package > /dev/null ; then
               theme-switcher XXE
+         fi
+
+         package=athena-parrotctfs-theme
+         if pacman -Qq $package > /dev/null ; then
+              athena-parrotctfs-theme
          fi
 
          rm -rf "$FLAGFILE"

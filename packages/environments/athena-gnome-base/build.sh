@@ -6,13 +6,10 @@ arch=$(grep "^arch=" PKGBUILD | awk -F"'" '{print $2}')
 
 #NEED ONLY TO EDIT  sourcefiles VARIABLE
 
-sourcefiles="usr"
+#sourcefiles="gnome-applications.menu gnome-init.sh"
 
-#sed -i -e '/^sha256/d' -e '/^sha512/d' PKGBUILD
-
-tar -zcvf $pkgname.tar.gz $sourcefiles 
+#tar -zcvf $pkgname.tar.gz $sourcefiles
 updpkgsums
-#makepkg -g >> PKGBUILD
 makepkg -f -scr --noconfirm
 
 pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')

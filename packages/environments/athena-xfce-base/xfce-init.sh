@@ -22,7 +22,7 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
               theme-switcher AkameGaKill
          fi
 
-         package=athena-everblush--theme
+         package=athena-everblush-theme
          if pacman -Qq $package > /dev/null ; then
               theme-switcher Everblush
          fi
