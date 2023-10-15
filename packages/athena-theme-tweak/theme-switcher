@@ -30,13 +30,28 @@ if [ "$chosen_theme" == "AkameGaKill" ]; then
     topbarmaterialscheme="finale"
     topbariconscheme="dark"
     musicbarscheme="#F98D89"
-elif [ "$chosen_theme" == "SamuraiGirl" ]; then
-    theme_name="Tokyonight-Dark-B"
-    gnome_shell="Tokyonight-Dark-B"
+elif [ "$chosen_theme" == "CyborgGruvbox" ]; then
+    theme_name="Gruvbox-Dark-B"
+    gnome_shell="Gruvbox-Dark-B"
     color_scheme="prefer-dark"
-    icon_theme="Tokyonight-Dark"
-    cursor_theme="oreo_blue_cursors"
-    background_theme="/usr/share/backgrounds/default/samurai-girl.jpg"
+    icon_theme="Material-Black-Mango-Suru"
+    cursor_theme="Fuchsia-Pop"
+    background_theme="/usr/share/backgrounds/default/cyborg-gruv.png"
+    picture_options="stretched"
+    vscode_theme="Gruvbox Material Dark"
+    kitty_theme="gruvbox_dark.conf"
+    tmux_theme="gold"
+    topbarcolorscheme="valhalla"
+    topbarmaterialscheme="virtuality_yellow"
+    topbariconscheme="gruv"
+    musicbarscheme="#EFD69C"
+elif [ "$chosen_theme" == "Everblush" ]; then
+    theme_name="Everblush"
+    gnome_shell="Everblush"
+    color_scheme="prefer-dark"
+    icon_theme="Nordzy-cyan-dark"
+    cursor_theme="Radioactive-nord"
+    background_theme="/usr/share/backgrounds/default/mechanic-keyboard.png"
     picture_options="stretched"
     vscode_theme="Tokyo Night Storm"
     kitty_theme="Tokyo_Night_Storm.conf"
@@ -60,21 +75,36 @@ elif [ "$chosen_theme" == "Graphite" ]; then
     topbarmaterialscheme="default"
     topbariconscheme="dark"
     musicbarscheme="#197FAF"
-elif [ "$chosen_theme" == "CyborgGruvbox" ]; then
-    theme_name="Gruvbox-Dark-B"
-    gnome_shell="Gruvbox-Dark-B"
+elif [ "$chosen_theme" == "HackTheBox" ]; then
+    theme_name="HackTheBox-BBL"
+    gnome_shell="HackTheBox-BBL"
     color_scheme="prefer-dark"
-    icon_theme="Material-Black-Mango-Suru"
-    cursor_theme="Fuchsia-Pop"
-    background_theme="/usr/share/backgrounds/default/cyborg-gruv.png"
+    icon_theme="HackTheBox"
+    cursor_theme="Afterglow-Dracula-Green"
+    background_theme="/usr/share/backgrounds/default/hackthebox.png"
     picture_options="stretched"
-    vscode_theme="Gruvbox Material Dark"
-    kitty_theme="gruvbox_dark.conf"
-    tmux_theme="gold"
-    topbarcolorscheme="valhalla"
-    topbarmaterialscheme="virtuality_yellow"
-    topbariconscheme="gruv"
-    musicbarscheme="#EFD69C"
+    vscode_theme="Hack The Box"
+    kitty_theme="Box.conf"
+    tmux_theme="forest"
+    topbarcolorscheme="finale"
+    topbarmaterialscheme="finale"
+    topbariconscheme="dark"
+    musicbarscheme="#9fef00"
+elif [ "$chosen_theme" == "SamuraiGirl" ]; then
+    theme_name="Tokyonight-Dark-B"
+    gnome_shell="Tokyonight-Dark-B"
+    color_scheme="prefer-dark"
+    icon_theme="Tokyonight-Dark"
+    cursor_theme="oreo_blue_cursors"
+    background_theme="/usr/share/backgrounds/default/samurai-girl.jpg"
+    picture_options="stretched"
+    vscode_theme="Tokyo Night Storm"
+    kitty_theme="Tokyo_Night_Storm.conf"
+    tmux_theme="sky"
+    topbarcolorscheme="ripples"
+    topbarmaterialscheme="default"
+    topbariconscheme="dark"
+    musicbarscheme="#6FE7FB"
 elif [ "$chosen_theme" == "SweetDark" ]; then
     theme_name="Sweet-Dark-v40"
     gnome_shell="Sweet-Dark-v40"
@@ -105,23 +135,8 @@ elif [ "$chosen_theme" == "XXE" ]; then
     topbarmaterialscheme="virtuality_yellow"
     topbariconscheme="gruv"
     musicbarscheme="#FEFF00"
-elif [ "$chosen_theme" == "HackTheBox" ]; then
-    theme_name="HackTheBox-BBL"
-    gnome_shell="HackTheBox-BBL"
-    color_scheme="prefer-dark"
-    icon_theme="HackTheBox"
-    cursor_theme="Afterglow-Dracula-Green"
-    background_theme="/usr/share/backgrounds/default/hackthebox.png"
-    picture_options="stretched"
-    vscode_theme="Hack The Box"
-    kitty_theme="Box.conf"
-    tmux_theme="forest"
-    topbarcolorscheme="finale"
-    topbarmaterialscheme="finale"
-    topbariconscheme="dark"
-    musicbarscheme="#9fef00"
 else
-    echo "Please choose between the following themes: AkameGaKill, SamuraiGirl, Graphite, CyborgGruvbox, SweetDark, XXE, HackTheBox"
+    echo "Please choose between the following themes: AkameGaKill, CyborgGruvbox, Everblush, Graphite, HackTheBox, SamuraiGirl, SweetDark, XXE"
     exit 1
 fi
 
@@ -142,18 +157,18 @@ if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]]; then
 
 fi
 
-if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
-    cp -rf "$HOME/.config/eww/css/savedcolors/_colorscheme_$topbarcolorscheme.scss" "$HOME/.config/eww/css/_colorscheme.scss" 2>/dev/null
-    cp -rf "$HOME/.config/eww/css/savedcolors/_iconcolor_$topbarcolorscheme.txt" "$HOME/.config/eww/css/_iconcolor.txt" 2>/dev/null
-    cp -rf "$HOME/.config/eww/css/savedcolors/_material_$topbarmaterialscheme.scss" "$HOME/.config/eww/css/_material.scss" 2>/dev/null
-    cp -rf "$HOME/.config/eww/images/svg/$topbariconscheme/"* "$HOME/.config/eww/images/svg/" 2>/dev/null
-    cp -rf "$HOME/.config/hypr/savedcolors/colors_$topbarcolorscheme.conf" "$HOME/.config/hypr/colors.conf" 2>/dev/null
-    cp -rf "$background_theme" "$HOME/.config/eww/images/wallpaper/wallpaper" 2>/dev/null
-    pkill swaybg 2>/dev/null
-    swaybg -i "$HOME/.config/eww/images/wallpaper/wallpaper" 2>/dev/null & #Note that swaybg needs to be runned in background
-    hyprctl setcursor "$cursor_theme" 24 2>/dev/null
-    sed -r -i "s/\"color4\":\"#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\"/\"color4\":\"$musicbarscheme\"/g" "$HOME/.config/eww/scripts/music" 2>/dev/null
-fi
+#if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
+#    cp -rf "$HOME/.config/eww/css/savedcolors/_colorscheme_$topbarcolorscheme.scss" "$HOME/.config/eww/css/_colorscheme.scss" 2>/dev/null
+#    cp -rf "$HOME/.config/eww/css/savedcolors/_iconcolor_$topbarcolorscheme.txt" "$HOME/.config/eww/css/_iconcolor.txt" 2>/dev/null
+#    cp -rf "$HOME/.config/eww/css/savedcolors/_material_$topbarmaterialscheme.scss" "$HOME/.config/eww/css/_material.scss" 2>/dev/null
+#    cp -rf "$HOME/.config/eww/images/svg/$topbariconscheme/"* "$HOME/.config/eww/images/svg/" 2>/dev/null
+#    cp -rf "$HOME/.config/hypr/savedcolors/colors_$topbarcolorscheme.conf" "$HOME/.config/hypr/colors.conf" 2>/dev/null
+#    cp -rf "$background_theme" "$HOME/.config/eww/images/wallpaper/wallpaper" 2>/dev/null
+#    pkill swaybg 2>/dev/null
+#    swaybg -i "$HOME/.config/eww/images/wallpaper/wallpaper" 2>/dev/null & #Note that swaybg needs to be runned in background
+#    hyprctl setcursor "$cursor_theme" 24 2>/dev/null
+#    sed -r -i "s/\"color4\":\"#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\"/\"color4\":\"$musicbarscheme\"/g" "$HOME/.config/eww/scripts/music" 2>/dev/null
+#fi
 
 if [[ "$XDG_CURRENT_DESKTOP" =~ "GNOME" ]]; then
 

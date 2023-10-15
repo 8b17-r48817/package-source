@@ -34,9 +34,9 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
               theme-switcher AkameGaKill
          fi
 
-         package=athena-samurai-theme
+         package=athena-everblush--theme
          if pacman -Qq $package > /dev/null ; then
-             theme-switcher SamuraiGirl
+              theme-switcher Everblush
          fi
 
          package=athena-graphite-theme
@@ -52,6 +52,11 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
          package=athena-htb-theme
          if pacman -Qq $package > /dev/null ; then
               theme-switcher HackTheBox
+         fi
+
+         package=athena-samurai-theme
+         if pacman -Qq $package > /dev/null ; then
+             theme-switcher SamuraiGirl
          fi
 
          package=athena-sweetdark-theme
