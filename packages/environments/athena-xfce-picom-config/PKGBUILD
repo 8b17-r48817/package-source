@@ -4,10 +4,12 @@ pkgrel=1
 pkgdesc="XFCE and Picom configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('athena-everblush-theme' 'kvantum' 'mugshot' 'picom' 'ristretto' 'thunar' 'ttf-cousine-nerd' 'ttf-jetbrains-mono-nerd'  'ttf-roboto' 'ttf-roboto-mono' 'xdg-user-dirs' 'xfce4-cpugraph-plugin' 'xfce4-docklike-plugin' 'xfce4-genmon-plugin' 'xfce4-panel' 'xfce4-power-manager' 'xfce4-pulseaudio-plugin' 'xfce4-screenshooter' 'xfce4-session' 'xfce4-settings' 'xfdesktop' 'xfwm4')
+depends=('athena-everblush-theme' 'eww-git' 'findex-git' 'i3lock-color' 'kvantum' 'mugshot' 'picom' 'ristretto' 'thunar' 'ttf-cousine-nerd' 'ttf-jetbrains-mono-nerd'  'ttf-roboto' 'ttf-roboto-mono' 'xdg-user-dirs' 'xfce4-cpugraph-plugin' 'xfce4-docklike-plugin' 'xfce4-genmon-plugin' 'xfce4-panel' 'xfce4-power-manager' 'xfce4-pulseaudio-plugin' 'xfce4-screenshooter' 'xfce4-session' 'xfce4-settings' 'xfdesktop' 'xfwm4')
 conflicts=('athena-xfce-config')
 source=("feather.ttf"
+        "findex.desktop"
         "gtk.css"
+        "i3lock-everblush"
         "kvantum.kvconfig"
         "xfce-init.sh"
         "$pkgname.tar.gz")
@@ -19,6 +21,7 @@ sha512sums=('807c896223158da8fa396bb10a5eb9769259c66deb44d7482ac47e1d5d6df4e75b5
 
 package() {
   mkdir -p "${pkgdir}/etc/profile.d"
+  mkdir -p "${pkgdir}/etc/xdg/autostart"
   mkdir -p "${pkgdir}/etc/skel/.config/gtk-3.0"
   mkdir -m 750 -p "${pkgdir}/etc/sudoers.d"
   mkdir -p "${pkgdir}/usr/bin"
@@ -27,8 +30,10 @@ package() {
   mkdir -p "${pkgdir}/usr/share/Kvantum"
 
   install -Dm644 "${srcdir}/xfce-init.sh" "${pkgdir}/etc/profile.d/"
+  install -Dm644 "${srcdir}/findex.desktop" "${pkgdir}/etc/xdg/autostart/"
   install -Dm644 "${srcdir}/dots/.profile" "${pkgdir}/etc/skel/"
   install -Dm644 "${srcdir}/dots/.Xresources" "${pkgdir}/etc/skel/"
+  cp -a "${srcdir}/eww" "${pkgdir}/etc/skel/.config/"
   install -Dm644 "${srcdir}/picom.conf" "${pkgdir}/etc/skel/.config/"
   install -Dm644 "${srcdir}/gtk.css" "${pkgdir}/etc/skel/.config/gtk-3.0/"
   cp -a "${srcdir}/xfce4" "${pkgdir}/etc/skel/.config/"
@@ -37,6 +42,7 @@ package() {
   install -Dm755 "${srcdir}/genmon-scripts/genmon-cpu" "${pkgdir}/usr/bin/"
   install -Dm755 "${srcdir}/genmon-scripts/genmon-datetime" "${pkgdir}/usr/bin/"
   install -Dm755 "${srcdir}/genmon-scripts/genmon-mem" "${pkgdir}/usr/bin/"
+  install -Dm755 "${srcdir}/i3lock-everblush" "${pkgdir}/usr/bin/"
   cp -a "${srcdir}/Everblush" "${pkgdir}/usr/share/Kvantum/"
   install -Dm644 "${srcdir}/kvantum.kvconfig" "${pkgdir}/usr/share/Kvantum/"
 
