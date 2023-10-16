@@ -6,7 +6,7 @@ arch=$(grep "^arch=" PKGBUILD | awk -F"'" '{print $2}')
 
 #NEED ONLY TO EDIT  sourcefiles VARIABLE
 
-sourcefiles="assets dots Everblush eww genmon-scripts picom.conf xfce4"
+sourcefiles="assets dots Everblush Everblush-xfwm eww genmon-scripts picom.conf xfce4"
 
 #sed -i -e '/^sha256/d' -e '/^sha512/d' PKGBUILD
 

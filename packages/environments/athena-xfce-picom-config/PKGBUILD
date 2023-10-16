@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="XFCE and Picom configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('athena-everblush-theme' 'athena-xfce-base' 'eww-git' 'findex-git' 'i3lock-color' 'kvantum' 'picom' 'thunar' 'ttf-cousine-nerd' 'ttf-jetbrains-mono-nerd' 'ttf-nerd-fonts-symbols' 'ttf-roboto' 'ttf-roboto-mono' 'xfce4-docklike-plugin' 'xfce4-genmon-plugin')
+depends=('athena-xfce-base' 'eww-git' 'findex-git' 'i3lock-color' 'kvantum' 'picom' 'thunar' 'ttf-cousine-nerd' 'ttf-jetbrains-mono-nerd' 'ttf-nerd-fonts-symbols' 'ttf-roboto' 'ttf-roboto-mono' 'xfce4-docklike-plugin' 'xfce4-genmon-plugin')
 source=("feather.ttf"
         "findex.desktop"
         "gtk.css"
@@ -18,7 +18,7 @@ sha512sums=('807c896223158da8fa396bb10a5eb9769259c66deb44d7482ac47e1d5d6df4e75b5
             '6774132f1e51e7bce831d21aa4c083f1b95fc0839e4dc6c337e72eeb0156cb3d4cedce48dc91267c7e2c90904cdf19e785dce62266574681798e47bf3dbc4a19'
             '34c8a7a5ef398637b5e210e83cb7d9d1c7e8467047a45560fe781df43b4ae7b736fa3944b3e9ed8b2fe6a6e769c0648ad42356e02b60e89a80ad781afd8b5216'
             'af46c77a75f7323458363f2fbc83f9b87386bee0ac2865ddf14818b9d537718e869f7936f2de4b5bad6bfad89bd506419f8de4d6241356dc8d0d338701adeadf'
-            '6552fb015c6dc3b03717c856e10d0e72281d048233e1524c81dc2ba684522dd8a9f5790296454aa08ceb5d44b143b51de98ff5de7c213127901cff01dc71737c')
+            'fe5c3ce9df557128f390fac8635e18b1f30054e885d03f7e33370cc53834aac890fadafc182c5dd86ebb969f317a677211c3cfe8ccd6f43396045289266ae5ee')
 
 package() {
   mkdir -p "${pkgdir}/etc/xdg/autostart"
@@ -38,6 +38,7 @@ package() {
   cp -a "${srcdir}/xfce4" "${pkgdir}/etc/skel/.config/"
   install -Dm644 "${srcdir}/feather.ttf" "${pkgdir}/usr/share/fonts/TTF/"
   cp -a "${srcdir}/assets" "${pkgdir}/usr/share/icons/"
+  cp -a "$srcdir/Everblush-xfwm" "$pkgdir/usr/share/themes/"
   install -Dm755 "${srcdir}/genmon-scripts/genmon-cpu" "${pkgdir}/usr/bin/"
   install -Dm755 "${srcdir}/genmon-scripts/genmon-datetime" "${pkgdir}/usr/bin/"
   install -Dm755 "${srcdir}/genmon-scripts/genmon-mem" "${pkgdir}/usr/bin/"

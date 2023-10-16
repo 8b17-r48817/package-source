@@ -47,7 +47,6 @@ elif [ "$chosen_theme" == "CyborgGruvbox" ]; then
     musicbarscheme="#EFD69C"
 elif [ "$chosen_theme" == "Everblush" ]; then
     theme_name="Everblush"
-    theme_xfwm_name="Everblush-xfwm"
     gnome_shell="Everblush"
     color_scheme="prefer-dark"
     icon_theme="Nordzy-cyan-dark"
@@ -145,7 +144,7 @@ if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]]; then
     xfconf-query -c xsettings -p /Net/ThemeName -s "$theme_name"
     xfconf-query -c xsettings -p /Net/IconThemeName -s "$icon_theme"
     xfconf-query -c xsettings -p /Gtk/CursorThemeName -s "$cursor_theme"
-    xfconf-query -c xfwm4 -p /general/theme -s "$theme_xfwm_name"
+    xfconf-query -c xfwm4 -p /general/theme -s "Everblush-xfwm"
 
     # Get a list of monitors using xrandr
     monitors=($(xrandr --listmonitors | awk '{print $4}'))
