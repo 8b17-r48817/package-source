@@ -11,6 +11,7 @@ package() {
   mkdir -p "${pkgdir}/etc/modprobe.d"
   mkdir -p "${pkgdir}/etc/pacman.d/hooks"
   mkdir -p "${pkgdir}/etc/skel"
+  mkdir -p "${pkgdir}/etc/xdg/menus"
   mkdir -p "${pkgdir}/usr/lib"
   mkdir -p "${pkgdir}/usr/local/bin"
   mkdir -p "${pkgdir}/usr/local/share"
@@ -24,6 +25,8 @@ package() {
   cp -rf "${srcdir}/etc/skel/.bash_aliases" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/skel/.blerc" "${pkgdir}/etc/skel/"
   cp -rf "${srcdir}/etc/sudoers.d" "${pkgdir}/etc/"
+  install -Dm644 "${srcdir}/etc/xdg/menus/blue-applications.menu" "${pkgdir}/etc/xdg/menus/"
+  install -Dm644 "${srcdir}/etc/xdg/menus/red-applications.menu" "${pkgdir}/etc/xdg/menus/"
 
   cp -rf "${srcdir}/usr/lib/os-release-athena" "${pkgdir}/usr/lib/"
   cp -rf "${srcdir}"/usr/local/bin/* "${pkgdir}/usr/local/bin/"
@@ -34,4 +37,4 @@ package() {
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
 
-sha512sums=('e0ac6cd2ff97733c126e98d57b81a363da3b852622133e7bea8a0bd4632fd4647a24afd3f8f84201e76c714e1bd8be63f9b79a78014e965d99518b8072b84c29')
+sha512sums=('767271457fef90866f52163ce8287ce9e427105403cbdf9a46074386e554cc741977a94e1a09f33b9c8b7e5ece9e688edc0a927809c02fd4ad1973c04c5c65d0')
