@@ -10,14 +10,14 @@ source=("git+https://github.com/Everblush/gtk"
         "git+https://github.com/alvatip/Nordzy-icon"
         "git+https://github.com/alvatip/Radioactive-nord"
         "git+https://github.com/Everblush/wallpapers"
-        "https://github.com/kovidgoyal/kitty-themes/blob/master/themes/Atom.conf"
+        "https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/Atom.conf"
         "mechanic-keyboard.png"
         "$pkgname.tar.gz")
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '0a81bbf83cc17cf580222525d19801e0930ad443cbd1a9647819cbff5220a8c516c71dd1f8bc78f32c368b95d0438407cf70eb54789def190d556fcb576adf1e'
+            '22c3d829948177fbc8a36715a97b0bf9a1742a6db799fd7cb76414518bdc9434e8412073d44c6c7c1e3e1709c18e88fb62c973e57105a67315ed89fbac733bec'
             'f39efd5289beacf4e5bd0165c057aaa4904a034a7c3bbc8a563f244e5bcf534f2e902b1b1d24c461e6f569223df6905ac2ab95555e3fded4bc3d93bdff945599'
             '66b51021c8fccf2c09de4814fd94ec58a8e7e73927dd4aa60a46270b7ef754517bab81516977ceb34b3fd624ce6388f08c95cdaad08ed27db4af3e97019c3752')
 
