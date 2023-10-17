@@ -146,6 +146,9 @@ if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]]; then
     xfconf-query -c xsettings -p /Gtk/CursorThemeName -s "$cursor_theme"
     xfconf-query -c xfwm4 -p /general/theme -s "Everblush-xfwm"
 
+    # Copy is needed for the first start because xfconf-query command seems to not work there
+    # Using # as delimiter of sed instead of / since $background_theme contains / that could trigger sed error
+    sed -i "s#/usr/share/backgrounds/default/mechanic-keyboard.png#$background_theme#g" "$HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml"
     # Iterate through the monitors and set the wallpaper
     for x in $(xfconf-query -c xfce4-desktop -lv | grep last-image | awk '{print $1}'); do xfconf-query -c xfce4-desktop -p $x -s $background_theme; done
 
