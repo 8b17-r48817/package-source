@@ -146,14 +146,8 @@ if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]]; then
     xfconf-query -c xsettings -p /Gtk/CursorThemeName -s "$cursor_theme"
     xfconf-query -c xfwm4 -p /general/theme -s "Everblush-xfwm"
 
-    # Get a list of monitors using xrandr
-    monitors=($(xrandr --listmonitors | awk '{print $4}'))
-
     # Iterate through the monitors and set the wallpaper
-    for monitor in "${monitors[@]}"; do
-        monitor_name="${monitor/://}" # Remove the trailing colon
-        xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor$monitor_name/workspace0/last-image" -s "$background_theme"
-    done
+    for x in $(xfconf-query -c xfce4-desktop -lv | grep last-image | awk '{print $1}'); do xfconf-query -c xfce4-desktop -p $x -s $background_theme; done
 
 fi
 
