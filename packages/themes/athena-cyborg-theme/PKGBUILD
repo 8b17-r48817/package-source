@@ -1,10 +1,11 @@
-pkgname=athena-gruvbox-theme
-pkgver=1.0.1
+pkgname=athena-cyborg-theme
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="Gruvbox theme for Athena."
+pkgdesc="Cyborg gruvbox theme for Athena."
 arch=('any')
 license=("GPL3")
 depends=('fuchsia-pop' 'gruvbox-gtk-theme' 'material-black-mango-suru')
+install='cyborg-theme.install'
 source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/gruvbox-dark.conf"
         "cyborg-gruv.png"
         "$pkgname.tar.gz")
@@ -14,12 +15,12 @@ sha512sums=('eff52b7261bda8d892643d05e78a8fc412a49590acef3284f680888b3de20b5f5d0
 
 package() {
   install -dm 755 "$pkgdir/etc/skel/.config/kitty"
-  install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
+  install -dm 755 "$pkgdir/usr/share/athena-cyborg-theme"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
   install -Dm 644 "cyborg-gruv.png" "$pkgdir/usr/share/backgrounds/default/"
-  install -Dm 644 "gruvbox-dark.conf" "$pkgdir/etc/skel/.config/kitty/current-theme.conf"
+  install -Dm 644 "gruvbox-dark.conf" "$pkgdir/etc/skel/.config/kitty/"
 
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-cyborg-theme/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-cyborg-theme/"
 }

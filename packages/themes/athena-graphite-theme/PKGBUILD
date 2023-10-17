@@ -1,25 +1,26 @@
 pkgname=athena-graphite-theme
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Graphite Dark theme for Athena."
 arch=('any')
 license=("GPL3")
 depends=('bibata-modern-ice' 'graphite-gtk-theme' 'tela-circle-icon-theme-black')
+install='graphite-theme.install'
 source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/Atom.conf"
         "arch-ascii.png"
         "$pkgname.tar.gz")
 sha512sums=('a23c6f6e71c544110aa576a57174145a72eb7d2389a3927c154a7cb528fa2fb4a6baffd4f1287f53edcbf2553827af271acb24cdbc1d7369fc2820810f4194e4'
             '180debc64a86b577ca3f465157ccf853f87d74ba9f101559ddda74a32169910d7b0fef829fa7672bfb306c58131ab27300154557e36bc402c833f097244dd18e'
-            'c0be596c44bdd94641141fe37eba85c73370296a62d058aba935352f3208ab0c8e7429c2eb3eabb8318ce8295faa44f5d138bd1c5b281c23b61c55b2d65647cf')
+            'c0263e333f50c638dda360d8c908b5d81a7871f7a6c588b30afed8df1db2595355fb36827c48897fe15ea3f280b6d756813275b79fe4fcb93d4a2442f4e2b15d')
 
 package() {
   install -dm 755 "$pkgdir/etc/skel/.config/kitty"
-  install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
+  install -dm 755 "$pkgdir/usr/share/athena-graphite-theme"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
   install -Dm 644 "arch-ascii.png" "$pkgdir/usr/share/backgrounds/default/"
-  install -Dm 644 "Atom.conf" "$pkgdir/etc/skel/.config/kitty/current-theme.conf"
+  install -Dm 644 "Atom.conf" "$pkgdir/etc/skel/.config/kitty/"
 
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-graphite-theme/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-graphite-theme/"
 }

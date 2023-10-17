@@ -1,11 +1,12 @@
 pkgname=athena-htb-theme
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Hack The Box theme for Athena."
 arch=('any')
 license=("GPL3")
 depends=('afterglow-recolored-green')
 makedepends=('git')
+install='htb-theme.install'
 source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/Box.conf"
         "hackthebox.png"
         "$pkgname.tar.gz")
@@ -17,7 +18,7 @@ package() {
   install -dm 755 "$pkgdir/etc/skel/.config/kitty"
   install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/themes"
-  install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
+  install -dm 755 "$pkgdir/usr/share/athena-htb-theme"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
   cp -a HackTheBox-GTK-Theme/HackTheBox-B "$pkgdir/usr/share/themes/"
@@ -25,8 +26,8 @@ package() {
   cp -a HackTheBox-GTK-Theme/HackTheBox-BBL "$pkgdir/usr/share/themes/"
   cp -a HackTheBox "$pkgdir/usr/share/icons/"
   install -Dm 644 "hackthebox.png" "$pkgdir/usr/share/backgrounds/default/"
-  install -Dm 644 "Box.conf" "$pkgdir/etc/skel/.config/kitty/current-theme.conf"
+  install -Dm 644 "Box.conf" "$pkgdir/etc/skel/.config/kitty/"
 
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-htb-theme/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-htb-theme/"
 }

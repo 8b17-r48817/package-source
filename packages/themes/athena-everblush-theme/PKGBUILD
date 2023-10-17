@@ -6,6 +6,7 @@ arch=('any')
 license=("GPL3")
 depends=()
 makedepends=('git' 'npm')
+install='everblush-theme.install'
 source=("git+https://github.com/Everblush/gtk"
         "git+https://github.com/alvatip/Nordzy-icon"
         "git+https://github.com/alvatip/Radioactive-nord"
@@ -59,12 +60,12 @@ package() {
 
     cd "${srcdir}"
     install -dm 755 "$pkgdir/etc/skel/.config/kitty"
-    install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
+    install -dm 755 "$pkgdir/usr/share/athena-everblush-theme"
     install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
     install -Dm 644 "mechanic-keyboard.png" "$pkgdir/usr/share/backgrounds/default/"
-    install -Dm 644 "Atom.conf" "$pkgdir/etc/skel/.config/kitty/current-theme.conf"
+    install -Dm 644 "Atom.conf" "$pkgdir/etc/skel/.config/kitty/"
 
-    cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
-    cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"
+    cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-everblush-theme/"
+    cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-everblush-theme/"
 }

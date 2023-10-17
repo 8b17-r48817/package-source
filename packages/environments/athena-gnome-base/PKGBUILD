@@ -9,7 +9,7 @@ source=("gnome-applications.menu"
         "gnome-init.sh")
 install='athena-gnome-base.install'
 sha512sums=('aa55e8094b5ce8113c8df2182fe3d1842c53431f5b2e2f9f5d92348a1844cfb47acc4a07ce55a3c93fcec67122e48624613e60aa957c9aced10059be3b1f5de7'
-            'da1821034482b95efb89cd5c95580f262e5a25ac46a57a5c48935d70488ba7878db0debb8b9ad8d68550b4877eb2647b9be25e95223a98fe3cf6dda0afae8192')
+            '14db5fc40a6debf97772abde42e9a33a782ab5f4b3a09c7fd330bd62e45681f2b3f024f1f85333c1dd8090ffbdf1d14e1db8768d00e024b1b337b53eaee19dbd')
 
 package() {
   install -dm 755 "${pkgdir}/etc/profile.d"

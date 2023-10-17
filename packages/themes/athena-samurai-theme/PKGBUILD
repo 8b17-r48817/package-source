@@ -5,6 +5,7 @@ pkgdesc="Samurai Girl theme for Athena."
 arch=('any')
 license=("GPL3")
 depends=('tokyonight-gtk-theme' 'oreo-blue-cursors')
+install='samurai-theme.install'
 source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/tokyo_night_storm.conf"
         "samurai-girl.jpg"
         "$pkgname.tar.gz")
@@ -14,12 +15,12 @@ sha512sums=('d35b99dc34b145b674bfab93d82624ea22268fbd5b8295801dcff621d6a986190ab
 
 package() {
   install -dm 755 "$pkgdir/etc/skel/.config/kitty"
-  install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
+  install -dm 755 "$pkgdir/usr/share/athena-samurai-theme"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
 
   install -Dm 644 "samurai-girl.jpg" "$pkgdir/usr/share/backgrounds/default/"
-  install -Dm 644 "tokyo_night_storm.conf" "$pkgdir/etc/skel/.config/kitty/current-theme.conf"
+  install -Dm 644 "tokyo_night_storm.conf" "$pkgdir/etc/skel/.config/kitty/"
 
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-samurai-theme/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-samurai-theme/"
 }

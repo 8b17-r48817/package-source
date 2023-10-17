@@ -2,7 +2,7 @@
 
 # Check if the number of command-line arguments is correct
 if [ $# -ne 1 ]; then
-    echo "Usage: $0 <chosen_theme>"
+    echo "Usage: $0 <chosen_theme> AkameGaKill|Cyborg|Everblush|Graphite|HackTheBox|SamuraiGirl|SweetDark|XXE"
     exit 1
 fi
 
@@ -30,7 +30,7 @@ if [ "$chosen_theme" == "AkameGaKill" ]; then
     topbarmaterialscheme="finale"
     topbariconscheme="dark"
     musicbarscheme="#F98D89"
-elif [ "$chosen_theme" == "CyborgGruvbox" ]; then
+elif [ "$chosen_theme" == "Cyborg" ]; then
     theme_name="Gruvbox-Dark-B"
     gnome_shell="Gruvbox-Dark-B"
     color_scheme="prefer-dark"
@@ -136,7 +136,7 @@ elif [ "$chosen_theme" == "XXE" ]; then
     topbariconscheme="gruv"
     musicbarscheme="#FEFF00"
 else
-    echo "Please choose between the following themes: AkameGaKill, CyborgGruvbox, Everblush, Graphite, HackTheBox, SamuraiGirl, SweetDark, XXE"
+    echo "Please choose between the following themes: AkameGaKill, Cyborg, Everblush, Graphite, HackTheBox, SamuraiGirl, SweetDark, XXE"
     exit 1
 fi
 

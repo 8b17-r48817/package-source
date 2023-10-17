@@ -6,7 +6,8 @@ arch=('any')
 license=("GPL3")
 depends=('afterglow-recolored-purple' 'fish' 'layan-gtk-theme-git' 'material-black-cherry-suru' 'shell-color-scripts' 'starship')
 makedepends=('git')
-conflicts=('athena-akame-theme' 'athena-graphite-theme' 'athena-gruvbox-theme' 'athena-samurai-theme' 'athena-sweetdark-theme' 'athena-xxe-theme' 'athena-fish')
+install='parrotctfs-theme.install'
+conflicts=('athena-fish')
 source=("git+https://github.com/parrotassassin15/ConfigFiles"
         "https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes/AdventureTime.conf"
         "$pkgname"
@@ -27,16 +28,16 @@ pkgver() {
 package() {
   install -dm 755 "$pkgdir/etc/skel/.config/kitty"
   install -dm 755 "$pkgdir/usr/bin"
-  install -dm 755 "$pkgdir/usr/share/icons/hicolor/scalable"
+  install -dm 755 "$pkgdir/usr/share/athena-parrotctfs-theme"
   install -dm 755 "$pkgdir/usr/share/backgrounds/default"
   install -dm 755 "$pkgdir/etc/skel/.config"
 
   install -Dm 755 "$pkgname" "$pkgdir/usr/bin/"
   install -Dm 644 "PCTFs.png" "$pkgdir/usr/share/backgrounds/default/"
-  install -Dm 644 "AdventureTime.conf" "$pkgdir/etc/skel/.config/kitty/current-theme.conf"
+  install -Dm 644 "AdventureTime.conf" "$pkgdir/etc/skel/.config/kitty/"
 
-  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/icons/hicolor/scalable/"
-  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/icons/hicolor/scalable/"
+  cp -a "$srcdir/icons/apps" "$pkgdir/usr/share/athena-parrotctfs-theme/"
+  cp -a "$srcdir/icons/categories" "$pkgdir/usr/share/athena-parrotctfs-theme/"
 
   install -Dm 644 "ConfigFiles/custom-prompt/starship/starship.toml" "$pkgdir/etc/skel/.config/"
   cp -a "ConfigFiles/custom-prompt/fish" "$pkgdir/etc/skel/.config/"
