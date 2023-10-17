@@ -20,7 +20,7 @@ sha512sums=('SKIP'
             'SKIP'
             'a23c6f6e71c544110aa576a57174145a72eb7d2389a3927c154a7cb528fa2fb4a6baffd4f1287f53edcbf2553827af271acb24cdbc1d7369fc2820810f4194e4'
             'f39efd5289beacf4e5bd0165c057aaa4904a034a7c3bbc8a563f244e5bcf534f2e902b1b1d24c461e6f569223df6905ac2ab95555e3fded4bc3d93bdff945599'
-            '3209cc1f9f162bf454a760e57a6699ccb502171c1bab009f2c715f4e4e7263b1bd4260ecfe3e81b88266bba4039fbf9d8ff536c8ae660479dd846ae16aa203f9')
+            'e44dfd47f55df23bf029e572958bde9c2ce7825f025ac292d33acd6e8207a6874d0c1a861b318e7f5a7b60a81da9d38538cda23e6da3b979a8f97d78d32dd359')
 
 pkgver() {
     cd gtk
@@ -41,7 +41,7 @@ package() {
 
     cd "$srcdir/gtk"
 
-    # Install Everblush theme in /usr/share/themesZ
+    # Install Everblush theme in /usr/share/themes
     make DESTDIR="$pkgdir" install
 
     # Install icon theme

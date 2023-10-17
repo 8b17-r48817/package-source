@@ -26,6 +26,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/fonts/TTF"
   mkdir -p "${pkgdir}/usr/share/icons"
   mkdir -p "${pkgdir}/usr/share/Kvantum"
+  mkdir -p "${pkgdir}/usr/share/themes"
 
   install -Dm644 "${srcdir}/findex.desktop" "${pkgdir}/etc/xdg/autostart/"
   install -Dm644 "${srcdir}/dots/.profile" "${pkgdir}/etc/skel/"
@@ -43,5 +44,4 @@ package() {
   install -Dm755 "${srcdir}/i3lock-everblush" "${pkgdir}/usr/bin/"
   cp -a "${srcdir}/Everblush" "${pkgdir}/usr/share/Kvantum/"
   install -Dm644 "${srcdir}/kvantum.kvconfig" "${pkgdir}/usr/share/Kvantum/"
-
 }

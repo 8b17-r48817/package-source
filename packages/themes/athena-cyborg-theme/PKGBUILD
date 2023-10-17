@@ -11,7 +11,7 @@ source=("https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master/themes
         "$pkgname.tar.gz")
 sha512sums=('eff52b7261bda8d892643d05e78a8fc412a49590acef3284f680888b3de20b5f5d0362688d2a97c990d83d1deb4531c80433b86df04e16add79b0d4498dac707'
             'bbd4a82c1dda3dc26271e36c2ff7c362d513e720696fa9912e7d025f049337f551a6f1e1969cb087303c2dd02344ac27523e1a6662d16daca9c616bbd7c80445'
-            '920b314688a6a3709c365db08f95cd2f806c95057f8029a31ae5aba01f0bb5a3b291e482b6c5e482df9d629438bd533105fbd54244997726baa99ce327ddd1e0')
+            'cc749a96328766cf4ee3c13d34012fe1698a8a4b6e1c826194a082cc4c24cd0482dc9695000d0f4d454a8263d06ff15a1d57b2b034864bd225f9db544d976ff6')
 
 package() {
   install -dm 755 "$pkgdir/etc/skel/.config/kitty"
