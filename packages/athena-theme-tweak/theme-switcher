@@ -140,7 +140,8 @@ else
     exit 1
 fi
 
-if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]]; then
+# I add check on tty because on Live Environment, when I run startx (that is run in tty), $XDG_CURRENT_DESKTOP is empty
+if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]] || [[ $(tty) == */dev/tty* ]]; then
     xfconf-query -c xsettings -p /Net/ThemeName -s "$theme_name"
     xfconf-query -c xsettings -p /Net/IconThemeName -s "$icon_theme"
     xfconf-query -c xsettings -p /Gtk/CursorThemeName -s "$cursor_theme"
