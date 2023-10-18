@@ -144,6 +144,8 @@
       <property name="default-category" type="int" value="0"/>
       <property name="sort-categories" type="bool" value="false"/>
       <property name="favorites" type="array">
+        <value type="string" value="athena-welcome.desktop"/>
+        <value type="string" value="org.athenaos.aegisgui.desktop"/>
       </property>
     </property>
     <property name="plugin-9" type="string" value="launcher">
