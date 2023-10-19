@@ -142,7 +142,7 @@
       <property name="launcher-show-name" type="bool" value="true"/>
       <property name="hover-switch-category" type="bool" value="true"/>
       <property name="default-category" type="int" value="0"/>
-      <property name="sort-categories" type="bool" value="false"/>
+      <property name="sort-categories" type="bool" value="true"/>
       <property name="favorites" type="array">
         <value type="string" value="athena-welcome.desktop"/>
         <value type="string" value="org.athenaos.aegisgui.desktop"/>
