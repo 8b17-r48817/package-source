@@ -28,13 +28,13 @@
     </Layout>
 
   <Menu>
-    <Name>Red Team</Name>
+    <Name>0-> Red Team</Name>
     <Directory>00-red-team.directory</Directory>
     <MergeFile>red-applications.menu</MergeFile>
   </Menu>
 
   <Menu>
-    <Name>Blue Team</Name>    
+    <Name>0-> Blue Team</Name>    
     <Directory>00-blue-team.directory</Directory>
     <MergeFile>blue-applications.menu</MergeFile>
   </Menu>
