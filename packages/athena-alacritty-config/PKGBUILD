@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Alacritty configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('alacritty')
+depends=('alacritty' 'ttf-jetbrains-mono-nerd')
 source=("$pkgname.tar.gz")
 
 package() {
@@ -12,4 +12,4 @@ package() {
 
   cp -rf "${srcdir}/etc/skel/.config" "${pkgdir}/etc/skel/"
 }
-sha512sums=('4179adea24ec85db20810e7c8acf0180d743acea8662f34b16b620d5b0ac95c5e5406febb6c7481ec7afaa477d2ab927912dcfab12e821ae0427149445779c0e')
+sha512sums=('b05a38c5fdba8b14ba32393a69c796f6873d652fff45c56aada04d6443cd27ce01ebd60ef8d73968fd6b3d2139aa05bb38e78334eb881d2ba12742984ae87a22')
