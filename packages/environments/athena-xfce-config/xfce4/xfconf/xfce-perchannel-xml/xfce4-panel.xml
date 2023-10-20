@@ -140,6 +140,7 @@
         <value type="string" value="xfce-mouse-settings.desktop"/>
       </property>
       <property name="launcher-show-name" type="bool" value="true"/>
+      <property name="launcher-show-description" type="bool" value="false"/>
       <property name="hover-switch-category" type="bool" value="true"/>
       <property name="default-category" type="int" value="0"/>
       <property name="sort-categories" type="bool" value="true"/>

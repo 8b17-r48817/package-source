@@ -6,7 +6,7 @@ arch=('any')
 license=("custom")
 depends=('athena-xfce-base' 'nautilus')
 source=("$pkgname.tar.gz")
-sha512sums=('524d2d0287ba79b233316b36b67a7bae575a9cf756c9bedb9a1a37125e4955b3b9b271aa135809754eb54a1c438eaa4ea99f923b022cccce4119abb6140dbcda')
+sha512sums=('d3e8da0565105e7d7aaf4c495fc7f26999ca6d8ea2ec7a249ae8d69f3b33b6d280b6d7598de475a0cf42d1cba150e618f4ca797f16f113e83484d424dd3dbada')
 
 package() {
   mkdir -p "${pkgdir}/etc/skel/.config"

@@ -43,6 +43,7 @@
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
+/*
 .genmon_plugin {
 	padding: 5px;
 }
@@ -54,6 +55,7 @@
 .genmon_plugin label {
 	margin-left: 0px;
 }
+*/
 
 /* Docklike plugin */
 #docklike-plugin .group {
