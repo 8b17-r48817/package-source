@@ -7,7 +7,7 @@ license=("custom")
 source=("theme-switcher"
         "$pkgname.py")
 sha512sums=('ed68eb30b7ecf43435ef1a2d5045598f8661758cf4ab6a48066ed15b931681311bd496edc9512da1eb1ca8faefdbdca9b0028b0a4d5be57ad75b7ff80453e962'
-            '0dcde90fb3adc3c1feb561ebcbc4ee80b02d1d9801c2992924ae6f2403cf211dff907affbb889f901ea417cd8120cf9dfde082d995971335c8474d08efdfc815')
+            'da7d830b90e02cdc04e09f0fba20f53c5bdc23037ed1d845c881eade37fffcf9811c933f1c6a6a86f84a0c5e0f75cd4d2a92371cc6854a88b6b73feb7fd3002a')
 
 package() {
 

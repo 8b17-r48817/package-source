@@ -125,7 +125,7 @@ class Main(Gtk.Window):
         #t.start()
 
     def on_buttonhtb_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["gnome-terminal", "--", "htb-toolkit", "-u"],))
+        t = threading.Thread(target=self.run_app, args=(["shell-rocket", "htb-toolkit -u"],))
         t.daemon = True
         t.start()
 
@@ -135,7 +135,7 @@ class Main(Gtk.Window):
         t.start()
 
     def on_buttonrtm_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["gnome-terminal", "--", os.path.expandvars('$SHELL'), "-c", "sudo cyber-toolkit "+self.role_id],))
+        t = threading.Thread(target=self.run_app, args=(["shell-rocket", "sudo cyber-toolkit "+self.role_id],))
         t.daemon = True
         t.start()
 
@@ -145,7 +145,7 @@ class Main(Gtk.Window):
         t.start()
 
     def on_buttonupdate_clicked(self, widget):
-        t = threading.Thread(target=self.run_app, args=(["gnome-terminal", "--", os.path.expandvars('$SHELL'), "-c", "/usr/local/bin/athena-upgrade"],))
+        t = threading.Thread(target=self.run_app, args=(["shell-rocket", "/usr/local/bin/athena-upgrade"],))
         t.daemon = True
         t.start()
 
