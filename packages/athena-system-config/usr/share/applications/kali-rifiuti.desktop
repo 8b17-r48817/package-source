@@ -2,7 +2,7 @@
 Name=rifiuti
 Comment=Tool to extract information from MS recycle bins info2 files.
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v rifiuti &> /dev/null;then rifiuti;$SHELL;else echo \\"rifiuti is not installed. I'm retrieving it for you...\\";sudo pacman -S rifiuti2;rifiuti;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v rifiuti &> /dev/null;then rifiuti;$SHELL;else echo \\"rifiuti is not installed. I'm retrieving it for you...\\";sudo pacman -S rifiuti2;rifiuti;$SHELL;fi;"
 Icon=kali-menu
 StartupNotify=false
 Terminal=false

@@ -2,7 +2,7 @@
 Name=ncrack
 Comment=Network authentication cracking tool
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v ncrack &> /dev/null;then ncrack -h;$SHELL;else echo \\"ncrack is not installed. I'm retrieving it for you...\\";sudo pacman -S ncrack;ncrack -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v ncrack &> /dev/null;then ncrack -h;$SHELL;else echo \\"ncrack is not installed. I'm retrieving it for you...\\";sudo pacman -S ncrack;ncrack -h;$SHELL;fi;"
 Icon=kali-ncrack
 StartupNotify=false
 Terminal=false

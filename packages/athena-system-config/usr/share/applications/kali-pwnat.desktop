@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=pwnat
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v pwnat &> /dev/null;then pwnat -h;$SHELL;else echo \\"pwnat is not installed. I'm retrieving it for you...\\";sudo pacman -S pwnat;pwnat -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v pwnat &> /dev/null;then pwnat -h;$SHELL;else echo \\"pwnat is not installed. I'm retrieving it for you...\\";sudo pacman -S pwnat;pwnat -h;$SHELL;fi;"
 Icon=kali-pwnat
 StartupNotify=false
 Terminal=false

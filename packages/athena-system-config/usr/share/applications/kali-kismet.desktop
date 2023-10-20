@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=kismet
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v kismet &> /dev/null;then kismet -h;$SHELL;else echo \\"kismet is not installed. I'm retrieving it for you...\\";sudo pacman -S kismet;kismet -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v kismet &> /dev/null;then kismet -h;$SHELL;else echo \\"kismet is not installed. I'm retrieving it for you...\\";sudo pacman -S kismet;kismet -h;$SHELL;fi;"
 Icon=kali-kismet
 StartupNotify=false
 Terminal=false

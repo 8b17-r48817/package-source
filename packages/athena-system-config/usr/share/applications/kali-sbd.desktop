@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=sbd
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v sbd &> /dev/null;then sbd -h;$SHELL;else echo \\"sbd is not installed. I'm retrieving it for you...\\";sudo pacman -S sbd;sbd -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v sbd &> /dev/null;then sbd -h;$SHELL;else echo \\"sbd is not installed. I'm retrieving it for you...\\";sudo pacman -S sbd;sbd -h;$SHELL;fi;"
 Icon=kali-sbd
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=pth-smbclient
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v pth-smbclient &> /dev/null;then pth-smbclient -h;$SHELL;else echo \\"pth-smbclient is not installed. I'm retrieving it for you...\\";sudo pacman -S pth-toolkit;pth-smbclient -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v pth-smbclient &> /dev/null;then pth-smbclient -h;$SHELL;else echo \\"pth-smbclient is not installed. I'm retrieving it for you...\\";sudo pacman -S pth-toolkit;pth-smbclient -h;$SHELL;fi;"
 Icon=kali-pth
 StartupNotify=false
 Terminal=false

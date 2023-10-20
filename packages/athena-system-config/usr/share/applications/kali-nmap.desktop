@@ -2,7 +2,7 @@
 Name=nmap
 Comment=Network exploration tool and security / port scanner
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v nmap &> /dev/null;then nmap;$SHELL;else echo \\"nmap is not installed. I'm retrieving it for you...\\";sudo pacman -S nmap;nmap;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v nmap &> /dev/null;then nmap;$SHELL;else echo \\"nmap is not installed. I'm retrieving it for you...\\";sudo pacman -S nmap;nmap;$SHELL;fi;"
 Icon=kali-nmap
 StartupNotify=false
 Terminal=false

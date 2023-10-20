@@ -2,7 +2,7 @@
 Name=truecrack
 Comment=Brute-force password cracker for TrueCrypt (Copyright) volumes.
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v truecrack &> /dev/null;then truecrack -h;$SHELL;else echo \\"truecrack is not installed. I'm retrieving it for you...\\";sudo pacman -S truecrack;truecrack -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v truecrack &> /dev/null;then truecrack -h;$SHELL;else echo \\"truecrack is not installed. I'm retrieving it for you...\\";sudo pacman -S truecrack;truecrack -h;$SHELL;fi;"
 Icon=kali-menu
 StartupNotify=false
 Terminal=false

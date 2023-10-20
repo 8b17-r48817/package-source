@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=voiphopper
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v voiphopper &> /dev/null;then voiphopper;$SHELL;else echo \\"voiphopper is not installed. I'm retrieving it for you...\\";sudo pacman -S voiphopper;voiphopper;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v voiphopper &> /dev/null;then voiphopper;$SHELL;else echo \\"voiphopper is not installed. I'm retrieving it for you...\\";sudo pacman -S voiphopper;voiphopper;$SHELL;fi;"
 Icon=kali-voiphopper
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=cisco-auditing-tool
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v CAT &> /dev/null;then CAT;$SHELL;else echo \\"Cisco Auditing Tool is not installed. I'm retrieving it for you...\\";sudo pacman -S cisco-auditing-tool;CAT;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v CAT &> /dev/null;then CAT;$SHELL;else echo \\"Cisco Auditing Tool is not installed. I'm retrieving it for you...\\";sudo pacman -S cisco-auditing-tool;CAT;$SHELL;fi;"
 Icon=kali-menu
 StartupNotify=false
 Terminal=false

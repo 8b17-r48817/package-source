@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=bully
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v bully &> /dev/null;then bully;$SHELL;else echo \\"Bully is not installed. I'm retrieving it for you...\\";sudo pacman -S bully;bully;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v bully &> /dev/null;then bully;$SHELL;else echo \\"Bully is not installed. I'm retrieving it for you...\\";sudo pacman -S bully;bully;$SHELL;fi;"
 Icon=kali-bully
 StartupNotify=false
 Terminal=false

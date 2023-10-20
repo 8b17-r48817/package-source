@@ -2,7 +2,7 @@
 Name=wapiti
 Comment=A web application vulnerability scanner in Python
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v wapiti &> /dev/null;then wapiti -h;$SHELL;else echo \\"wapiti is not installed. I'm retrieving it for you...\\";sudo pacman -S wapiti;wapiti -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v wapiti &> /dev/null;then wapiti -h;$SHELL;else echo \\"wapiti is not installed. I'm retrieving it for you...\\";sudo pacman -S wapiti;wapiti -h;$SHELL;fi;"
 Icon=kali-wapiti
 StartupNotify=false
 Terminal=false

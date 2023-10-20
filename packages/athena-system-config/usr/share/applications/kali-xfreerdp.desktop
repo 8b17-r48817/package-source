@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=xfreerdp
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v xfreerdp &> /dev/null;then xfreerdp;$SHELL;else echo \\"xfreerdp is not installed. I'm retrieving it for you...\\";sudo pacman -S freerdp;xfreerdp;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v xfreerdp &> /dev/null;then xfreerdp;$SHELL;else echo \\"xfreerdp is not installed. I'm retrieving it for you...\\";sudo pacman -S freerdp;xfreerdp;$SHELL;fi;"
 Icon=kali-pth
 StartupNotify=false
 Terminal=false

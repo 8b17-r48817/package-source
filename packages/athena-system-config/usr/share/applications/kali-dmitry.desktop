@@ -2,7 +2,7 @@
 Name=dmitry
 Comment=Deepmagic Information Gathering Tool
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v dmitry &> /dev/null;then dmitry;$SHELL;else echo \\"dmitry is not installed. I'm retrieving it for you...\\";sudo pacman -S dmitry;dmitry;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v dmitry &> /dev/null;then dmitry;$SHELL;else echo \\"dmitry is not installed. I'm retrieving it for you...\\";sudo pacman -S dmitry;dmitry;$SHELL;fi;"
 Icon=kali-dmitry
 StartupNotify=false
 Terminal=false

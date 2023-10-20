@@ -2,7 +2,7 @@
 Name=vinetto
 Comment=Extract thumbnails and associated metadata from Thumbs.db files
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v vinetto &> /dev/null;then vinetto -h;$SHELL;else echo \\"vinetto is not installed. I'm retrieving it for you...\\";sudo pacman -S vinetto;vinetto -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v vinetto &> /dev/null;then vinetto -h;$SHELL;else echo \\"vinetto is not installed. I'm retrieving it for you...\\";sudo pacman -S vinetto;vinetto -h;$SHELL;fi;"
 Icon=kali-menu
 StartupNotify=false
 Terminal=false

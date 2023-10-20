@@ -2,7 +2,7 @@
 Name=cewl
 Comment=Custom word list generator
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v cewl &> /dev/null;then cewl --help;$SHELL;else echo \\"CeWL is not installed. I'm retrieving it for you...\\";sudo pacman -S cewl;cewl --help;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v cewl &> /dev/null;then cewl --help;$SHELL;else echo \\"CeWL is not installed. I'm retrieving it for you...\\";sudo pacman -S cewl;cewl --help;$SHELL;fi;"
 Icon=kali-cewl
 StartupNotify=false
 Terminal=false

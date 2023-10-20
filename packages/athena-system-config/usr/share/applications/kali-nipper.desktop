@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=nipper
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v nipper &> /dev/null;then nipper --help;$SHELL;else echo \\"nipper is not installed. I'm retrieving it for you...\\";sudo pacman -S nipper;nipper --help;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v nipper &> /dev/null;then nipper --help;$SHELL;else echo \\"nipper is not installed. I'm retrieving it for you...\\";sudo pacman -S nipper;nipper --help;$SHELL;fi;"
 Icon=kali-menu
 StartupNotify=false
 Terminal=false

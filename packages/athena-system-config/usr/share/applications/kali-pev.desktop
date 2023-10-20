@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=pev
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v readpe &> /dev/null;then readpe --help ; peres --help ; pedis --help ; pestr --help;$SHELL;else echo \\"pev is not installed. I'm retrieving it for you...\\";sudo pacman -S pev;readpe --help ; peres --help ; pedis --help ; pestr --help;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v readpe &> /dev/null;then readpe --help ; peres --help ; pedis --help ; pestr --help;$SHELL;else echo \\"pev is not installed. I'm retrieving it for you...\\";sudo pacman -S pev;readpe --help ; peres --help ; pedis --help ; pestr --help;$SHELL;fi;"
 Icon=kali-menu
 StartupNotify=false
 Terminal=false

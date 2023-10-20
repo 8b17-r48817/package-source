@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=sslyze
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v sslyze &> /dev/null;then sslyze -h;$SHELL;else echo \\"sslyze is not installed. I'm retrieving it for you...\\";sudo pacman -S sslyze;sslyze -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v sslyze &> /dev/null;then sslyze -h;$SHELL;else echo \\"sslyze is not installed. I'm retrieving it for you...\\";sudo pacman -S sslyze;sslyze -h;$SHELL;fi;"
 Icon=kali-sslyze
 StartupNotify=false
 Terminal=false

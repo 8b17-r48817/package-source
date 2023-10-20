@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=grokevt-ripdll
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v grokevt-ripdll &> /dev/null;then grokevt-ripdll -h;$SHELL;else echo \\"grokevt-ripdll is not installed. I'm retrieving it for you...\\";sudo pacman -S grokevt;grokevt-ripdll -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v grokevt-ripdll &> /dev/null;then grokevt-ripdll -h;$SHELL;else echo \\"grokevt-ripdll is not installed. I'm retrieving it for you...\\";sudo pacman -S grokevt;grokevt-ripdll -h;$SHELL;fi;"
 Icon=kali-menu
 StartupNotify=false
 Terminal=false

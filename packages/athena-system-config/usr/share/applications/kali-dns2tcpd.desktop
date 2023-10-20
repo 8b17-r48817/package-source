@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=dns2tcpd
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v dns2tcpd &> /dev/null;then dns2tcpd;$SHELL;else echo \\"dns2tcpd is not installed. I'm retrieving it for you...\\";sudo pacman -S dns2tcp;dns2tcpd;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v dns2tcpd &> /dev/null;then dns2tcpd;$SHELL;else echo \\"dns2tcpd is not installed. I'm retrieving it for you...\\";sudo pacman -S dns2tcp;dns2tcpd;$SHELL;fi;"
 Icon=kali-dns2tcp
 StartupNotify=false
 Terminal=false

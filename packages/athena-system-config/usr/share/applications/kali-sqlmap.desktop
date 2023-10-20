@@ -2,7 +2,7 @@
 Name=sqlmap
 Comment=Automatic SQL injection tool
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v sqlmap &> /dev/null;then sqlmap --wizard;$SHELL;else echo \\"sqlmap is not installed. I'm retrieving it for you...\\";sudo pacman -S sqlmap;sqlmap --wizard;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v sqlmap &> /dev/null;then sqlmap --wizard;$SHELL;else echo \\"sqlmap is not installed. I'm retrieving it for you...\\";sudo pacman -S sqlmap;sqlmap --wizard;$SHELL;fi;"
 Icon=kali-sqlmap
 StartupNotify=false
 Terminal=false

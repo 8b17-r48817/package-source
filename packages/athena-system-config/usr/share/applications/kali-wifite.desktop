@@ -2,7 +2,7 @@
 Name=wifite
 Comment=Python script to automate wireless auditing using aircrack-ng tools
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v wifite &> /dev/null;then wifite --help;$SHELL;else echo \\"wifite is not installed. I'm retrieving it for you...\\";sudo pacman -S wifite;wifite --help;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v wifite &> /dev/null;then wifite --help;$SHELL;else echo \\"wifite is not installed. I'm retrieving it for you...\\";sudo pacman -S wifite;wifite --help;$SHELL;fi;"
 Icon=kali-wifite
 StartupNotify=false
 Terminal=false

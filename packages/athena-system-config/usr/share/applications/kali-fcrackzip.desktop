@@ -2,7 +2,7 @@
 Name=fcrackzip
 Comment=A Free/Fast Zip Password Cracker
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v fcrackzip &> /dev/null;then fcrackzip --help;$SHELL;else echo \\"fcrackzip is not installed. I'm retrieving it for you...\\";sudo pacman -S fcrackzip;fcrackzip --help;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v fcrackzip &> /dev/null;then fcrackzip --help;$SHELL;else echo \\"fcrackzip is not installed. I'm retrieving it for you...\\";sudo pacman -S fcrackzip;fcrackzip --help;$SHELL;fi;"
 Icon=kali-menu
 StartupNotify=false
 Terminal=false

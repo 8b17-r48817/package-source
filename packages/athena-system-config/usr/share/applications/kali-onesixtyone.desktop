@@ -2,7 +2,7 @@
 Name=onesixtyone
 Comment=Fast and simple SNMP scanner
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v onesixtyone &> /dev/null;then onesixtyone;$SHELL;else echo \\"onesixtyone is not installed. I'm retrieving it for you...\\";sudo pacman -S onesixtyone;onesixtyone;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v onesixtyone &> /dev/null;then onesixtyone;$SHELL;else echo \\"onesixtyone is not installed. I'm retrieving it for you...\\";sudo pacman -S onesixtyone;onesixtyone;$SHELL;fi;"
 Icon=kali-onesixtyone
 StartupNotify=false
 Terminal=false

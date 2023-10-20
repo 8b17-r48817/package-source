@@ -2,7 +2,7 @@
 Name=pasco
 Comment=Tool to extract information from MS IE cache files
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v pasco &> /dev/null;then pasco;$SHELL;else echo \\"pasco is not installed. I'm retrieving it for you...\\";sudo pacman -S pasco;pasco;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v pasco &> /dev/null;then pasco;$SHELL;else echo \\"pasco is not installed. I'm retrieving it for you...\\";sudo pacman -S pasco;pasco;$SHELL;fi;"
 Icon=kali-menu
 StartupNotify=false
 Terminal=false

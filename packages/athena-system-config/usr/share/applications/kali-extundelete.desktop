@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=extundelete
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v extundelete &> /dev/null;then extundelete --help;$SHELL;else echo \\"extundelete is not installed. I'm retrieving it for you...\\";sudo pacman -S extundelete;extundelete --help;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v extundelete &> /dev/null;then extundelete --help;$SHELL;else echo \\"extundelete is not installed. I'm retrieving it for you...\\";sudo pacman -S extundelete;extundelete --help;$SHELL;fi;"
 Icon=kali-menu
 StartupNotify=false
 Terminal=false

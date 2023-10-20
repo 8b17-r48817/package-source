@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=istat
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v istat &> /dev/null;then istat;$SHELL;else echo \\"istat is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;istat;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v istat &> /dev/null;then istat;$SHELL;else echo \\"istat is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;istat;$SHELL;fi;"
 Icon=kali-istat
 StartupNotify=false
 Terminal=false

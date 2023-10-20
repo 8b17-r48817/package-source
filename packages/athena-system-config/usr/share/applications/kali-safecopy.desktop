@@ -2,7 +2,7 @@
 Name=safecopy
 Comment=Rescue data from a source that causes IO errors
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v safecopy &> /dev/null;then safecopy -h;$SHELL;else echo \\"safecopy is not installed. I'm retrieving it for you...\\";sudo pacman -S safecopy;safecopy -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v safecopy &> /dev/null;then safecopy -h;$SHELL;else echo \\"safecopy is not installed. I'm retrieving it for you...\\";sudo pacman -S safecopy;safecopy -h;$SHELL;fi;"
 Icon=kali-menu
 StartupNotify=false
 Terminal=false

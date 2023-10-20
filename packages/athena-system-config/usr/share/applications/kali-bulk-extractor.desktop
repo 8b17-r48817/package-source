@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=bulk_extractor
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v bulk_extractor &> /dev/null;then bulk_extractor -h;$SHELL;else echo \\"Bulk Extractor is not installed. I'm retrieving it for you...\\";sudo pacman -S bulk-extractor;bulk_extractor -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v bulk_extractor &> /dev/null;then bulk_extractor -h;$SHELL;else echo \\"Bulk Extractor is not installed. I'm retrieving it for you...\\";sudo pacman -S bulk-extractor;bulk_extractor -h;$SHELL;fi;"
 Icon=kali-bulk-extractor
 StartupNotify=false
 Terminal=false

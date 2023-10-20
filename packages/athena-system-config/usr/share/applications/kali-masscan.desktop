@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=masscan
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v masscan &> /dev/null;then masscan --help;$SHELL;else echo \\"masscan is not installed. I'm retrieving it for you...\\";sudo pacman -S masscan;masscan --help;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v masscan &> /dev/null;then masscan --help;$SHELL;else echo \\"masscan is not installed. I'm retrieving it for you...\\";sudo pacman -S masscan;masscan --help;$SHELL;fi;"
 Icon=kali-masscan
 StartupNotify=false
 Terminal=false

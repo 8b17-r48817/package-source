@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=undbx
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v undbx &> /dev/null;then undbx -h;$SHELL;else echo \\"undbx is not installed. I'm retrieving it for you...\\";sudo pacman -S undbx;undbx -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v undbx &> /dev/null;then undbx -h;$SHELL;else echo \\"undbx is not installed. I'm retrieving it for you...\\";sudo pacman -S undbx;undbx -h;$SHELL;fi;"
 Icon=kali-menu
 StartupNotify=false
 Terminal=false

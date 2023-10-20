@@ -2,7 +2,7 @@
 Name=sslsplit
 Comment=Transparent SSL/TLS interception
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v sslsplit &> /dev/null;then sslsplit -h;$SHELL;else echo \\"sslsplit is not installed. I'm retrieving it for you...\\";sudo pacman -S sslsplit;sslsplit -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v sslsplit &> /dev/null;then sslsplit -h;$SHELL;else echo \\"sslsplit is not installed. I'm retrieving it for you...\\";sudo pacman -S sslsplit;sslsplit -h;$SHELL;fi;"
 Icon=kali-sslsplit
 StartupNotify=false
 Terminal=false

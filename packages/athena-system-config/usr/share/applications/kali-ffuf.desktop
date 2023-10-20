@@ -2,7 +2,7 @@
 Name=ffuf
 Comment=Fast web fuzzer written in Go
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v ffuf &> /dev/null;then ffuf -h;$SHELL;else echo \\"ffuf is not installed. I'm retrieving it for you...\\";sudo pacman -S ffuf;ffuf -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v ffuf &> /dev/null;then ffuf -h;$SHELL;else echo \\"ffuf is not installed. I'm retrieving it for you...\\";sudo pacman -S ffuf;ffuf -h;$SHELL;fi;"
 Icon=kali-ffuf
 StartupNotify=false
 Terminal=false

@@ -2,7 +2,7 @@
 Name=minicom
 Comment=Friendly menu driven serial communication program
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v minicom &> /dev/null;then minicom -h;$SHELL;else echo \\"minicom is not installed. I'm retrieving it for you...\\";sudo pacman -S minicom;minicom -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v minicom &> /dev/null;then minicom -h;$SHELL;else echo \\"minicom is not installed. I'm retrieving it for you...\\";sudo pacman -S minicom;minicom -h;$SHELL;fi;"
 Icon=kali-minicom
 StartupNotify=false
 Terminal=false

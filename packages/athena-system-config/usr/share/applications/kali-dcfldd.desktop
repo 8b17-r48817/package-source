@@ -2,7 +2,7 @@
 Name=dcfldd
 Comment=Enhanced version of dd for forensics and security
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v dcfldd &> /dev/null;then dcfldd --help;$SHELL;else echo \\"dcfldd is not installed. I'm retrieving it for you...\\";sudo pacman -S dcfldd;dcfldd --help;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v dcfldd &> /dev/null;then dcfldd --help;$SHELL;else echo \\"dcfldd is not installed. I'm retrieving it for you...\\";sudo pacman -S dcfldd;dcfldd --help;$SHELL;fi;"
 Icon=kali-menu
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=regripper
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v regripper &> /dev/null;then regripper;$SHELL;else echo \\"regripper is not installed. I'm retrieving it for you...\\";sudo pacman -S regripper;regripper;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v regripper &> /dev/null;then regripper;$SHELL;else echo \\"regripper is not installed. I'm retrieving it for you...\\";sudo pacman -S regripper;regripper;$SHELL;fi;"
 Icon=kali-menu
 StartupNotify=false
 Terminal=false

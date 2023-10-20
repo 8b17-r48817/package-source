@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Empire
 Encoding=UTF-8
-Exec=gnome-terminal -- /usr/bin/bash -c "if command -v empire &> /dev/null;then empire -h;$SHELL;else echo \\"Empire is not installed. I'm retrieving it for you...\\";sudo pacman -S empire;empire -h;$SHELL;fi;"
+Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v empire &> /dev/null;then empire -h;$SHELL;else echo \\"Empire is not installed. I'm retrieving it for you...\\";sudo pacman -S empire;empire -h;$SHELL;fi;"
 Icon=kali-powershell-empire
 StartupNotify=false
 Terminal=false
