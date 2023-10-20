@@ -93,7 +93,7 @@
       <property name="button-title" type="string" value="Menu"/>
       <property name="button-icon" type="string" value="/usr/share/icons/assets/scalable/shield.svg"/>
       <property name="launcher-show-description" type="bool" value="false"/>
-      <property name="launcher-show-tooltip" type="bool" value="false"/>
+      <property name="launcher-show-tooltip" type="bool" value="true"/>
       <property name="launcher-icon-size" type="int" value="1"/>
       <property name="category-icon-size" type="int" value="-1"/>
       <property name="recent-items-max" type="int" value="0"/>
