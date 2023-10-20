@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=pdfid
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v pdfid &> /dev/null;then pdfid -h;$SHELL;else echo \\"pdfid is not installed. I'm retrieving it for you...\\";sudo pacman -S pdfid;pdfid -h;$SHELL;fi;"
+Exec=shell-rocket "if command -v pdfid &> /dev/null;then pdfid -h;$SHELL;else echo \\"pdfid is not installed. I'm retrieving it for you...\\";sudo pacman -S pdfid;pdfid -h;$SHELL;fi;"
 Icon=kali-pdfid
 StartupNotify=false
 Terminal=false

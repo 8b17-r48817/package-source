@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=nikto
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v nikto &> /dev/null;then nikto -h;$SHELL;else echo \\"nikto is not installed. I'm retrieving it for you...\\";sudo pacman -S nikto;nikto -h;$SHELL;fi;"
+Exec=shell-rocket "if command -v nikto &> /dev/null;then nikto -h;$SHELL;else echo \\"nikto is not installed. I'm retrieving it for you...\\";sudo pacman -S nikto;nikto -h;$SHELL;fi;"
 Icon=kali-nikto
 StartupNotify=false
 Terminal=false

@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=recoverdm
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v recoverdm &> /dev/null;then recoverdm -h;$SHELL;else echo \\"recoverdm is not installed. I'm retrieving it for you...\\";sudo pacman -S recoverdm;recoverdm -h;$SHELL;fi;"
-Icon=kali-menu
+Exec=shell-rocket "if command -v recoverdm &> /dev/null;then recoverdm -h;$SHELL;else echo \\"recoverdm is not installed. I'm retrieving it for you...\\";sudo pacman -S recoverdm;recoverdm -h;$SHELL;fi;"
+Icon=kali-minicom
 StartupNotify=false
 Terminal=false
 Type=Application

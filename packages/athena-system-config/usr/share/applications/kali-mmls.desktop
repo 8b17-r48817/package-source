@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=mmls
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v mmls &> /dev/null;then mmls;$SHELL;else echo \\"mmls is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;mmls;$SHELL;fi;"
+Exec=shell-rocket "if command -v mmls &> /dev/null;then mmls;$SHELL;else echo \\"mmls is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;mmls;$SHELL;fi;"
 Icon=kali-mmls
 StartupNotify=false
 Terminal=false

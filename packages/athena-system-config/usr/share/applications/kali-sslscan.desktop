@@ -2,7 +2,7 @@
 Name=sslscan
 Comment=Fast SSL/TLS scanner
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v sslscan &> /dev/null;then sslscan;$SHELL;else echo \\"sslscan is not installed. I'm retrieving it for you...\\";sudo pacman -S sslscan;sslscan;$SHELL;fi;"
+Exec=shell-rocket "if command -v sslscan &> /dev/null;then sslscan;$SHELL;else echo \\"sslscan is not installed. I'm retrieving it for you...\\";sudo pacman -S sslscan;sslscan;$SHELL;fi;"
 Icon=kali-sslscan
 StartupNotify=false
 Terminal=false

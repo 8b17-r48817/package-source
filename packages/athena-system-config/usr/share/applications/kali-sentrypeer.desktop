@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=sentrypeer
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v sentrypeer &> /dev/null;then sentrypeer -h;$SHELL;else echo \\"sentrypeer is not installed. I'm retrieving it for you...\\";sudo pacman -S sentrypeer;sentrypeer -h;$SHELL;fi;"
-Icon=kali-menu
+Exec=shell-rocket "if command -v sentrypeer &> /dev/null;then sentrypeer -h;$SHELL;else echo \\"sentrypeer is not installed. I'm retrieving it for you...\\";sudo pacman -S sentrypeer;sentrypeer -h;$SHELL;fi;"
+Icon=kali-minicom
 StartupNotify=false
 Terminal=false
 Type=Application

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+TERMINAL_EXEC="gnome-terminal --"
+
+if [[ -n "$NO_REPETITION" ]]; then
+  "$@"
+else
+  NO_REPETITION=1 $TERMINAL_EXEC /usr/bin/bash -c "$@"
+fi

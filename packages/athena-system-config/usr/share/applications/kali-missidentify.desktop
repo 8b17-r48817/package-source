@@ -2,8 +2,8 @@
 Name=missidentify
 Comment=Find executable files without an executable extension
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v missidentify &> /dev/null;then missidentify -h;$SHELL;else echo \\"missidentify is not installed. I'm retrieving it for you...\\";sudo pacman -S missidentify;missidentify -h;$SHELL;fi;"
-Icon=kali-menu
+Exec=shell-rocket "if command -v missidentify &> /dev/null;then missidentify -h;$SHELL;else echo \\"missidentify is not installed. I'm retrieving it for you...\\";sudo pacman -S missidentify;missidentify -h;$SHELL;fi;"
+Icon=kali-minicom
 StartupNotify=false
 Terminal=false
 Type=Application

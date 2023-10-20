@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=thc-pptp-bruter
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v thc-pptp-bruter &> /dev/null;then thc-pptp-bruter;$SHELL;else echo \\"thc-pptp-bruter is not installed. I'm retrieving it for you...\\";sudo pacman -S thc-pptp-bruter;thc-pptp-bruter;$SHELL;fi;"
+Exec=shell-rocket "if command -v thc-pptp-bruter &> /dev/null;then thc-pptp-bruter;$SHELL;else echo \\"thc-pptp-bruter is not installed. I'm retrieving it for you...\\";sudo pacman -S thc-pptp-bruter;thc-pptp-bruter;$SHELL;fi;"
 Icon=kali-thc-pptp-bruter
 StartupNotify=false
 Terminal=false

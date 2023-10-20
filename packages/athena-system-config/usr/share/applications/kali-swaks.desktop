@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=swaks
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v swaks &> /dev/null;then swaks --help;$SHELL;else echo \\"swaks is not installed. I'm retrieving it for you...\\";sudo pacman -S swaks;swaks --help;$SHELL;fi;"
+Exec=shell-rocket "if command -v swaks &> /dev/null;then swaks --help;$SHELL;else echo \\"swaks is not installed. I'm retrieving it for you...\\";sudo pacman -S swaks;swaks --help;$SHELL;fi;"
 Icon=kali-swaks
 StartupNotify=false
 Terminal=false

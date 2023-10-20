@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=pth-winexe
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v pth-winexe &> /dev/null;then pth-winexe -h;$SHELL;else echo \\"pth-winexe is not installed. I'm retrieving it for you...\\";sudo pacman -S pth-toolkit;pth-winexe -h;$SHELL;fi;"
+Exec=shell-rocket "if command -v pth-winexe &> /dev/null;then pth-winexe -h;$SHELL;else echo \\"pth-winexe is not installed. I'm retrieving it for you...\\";sudo pacman -S pth-toolkit;pth-winexe -h;$SHELL;fi;"
 Icon=kali-pth
 StartupNotify=false
 Terminal=false

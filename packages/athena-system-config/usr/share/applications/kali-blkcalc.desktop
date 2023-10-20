@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=blkcalc
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v blkcalc &> /dev/null;then blkcalc;$SHELL;else echo \\"Blkcalc is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;blkcalc;$SHELL;fi;"
+Exec=shell-rocket "if command -v blkcalc &> /dev/null;then blkcalc;$SHELL;else echo \\"Blkcalc is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;blkcalc;$SHELL;fi;"
 Icon=kali-blkcalc
 StartupNotify=false
 Terminal=false

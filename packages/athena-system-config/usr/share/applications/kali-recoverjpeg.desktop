@@ -2,8 +2,8 @@
 Name=recoverjpeg
 Comment=Recover jpeg pictures from a filesystem image
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v recoverjpeg &> /dev/null;then recoverjpeg -h;$SHELL;else echo \\"recoverjpeg is not installed. I'm retrieving it for you...\\";sudo pacman -S recoverjpeg;recoverjpeg -h;$SHELL;fi;"
-Icon=kali-menu
+Exec=shell-rocket "if command -v recoverjpeg &> /dev/null;then recoverjpeg -h;$SHELL;else echo \\"recoverjpeg is not installed. I'm retrieving it for you...\\";sudo pacman -S recoverjpeg;recoverjpeg -h;$SHELL;fi;"
+Icon=kali-minicom
 StartupNotify=false
 Terminal=false
 Type=Application

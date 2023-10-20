@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=thcping6
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v thcping6 &> /dev/null;then thcping6;$SHELL;else echo \\"thcping6 is not installed. I'm retrieving it for you...\\";sudo pacman -S thc-ipv6;thcping6;$SHELL;fi;"
+Exec=shell-rocket "if command -v thcping6 &> /dev/null;then thcping6;$SHELL;else echo \\"thcping6 is not installed. I'm retrieving it for you...\\";sudo pacman -S thc-ipv6;thcping6;$SHELL;fi;"
 Icon=kali-thcping6
 StartupNotify=false
 Terminal=false

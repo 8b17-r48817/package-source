@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=ifind
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v ifind &> /dev/null;then ifind;$SHELL;else echo \\"ifind is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;ifind;$SHELL;fi;"
+Exec=shell-rocket "if command -v ifind &> /dev/null;then ifind;$SHELL;else echo \\"ifind is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;ifind;$SHELL;fi;"
 Icon=kali-ifind
 StartupNotify=false
 Terminal=false

@@ -2,7 +2,7 @@
 Name=netcat
 Comment=TCP/IP swiss army knife
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v nc &> /dev/null;then nc -h;$SHELL;else echo \\"Netcat is not installed. I'm retrieving it for you...\\";sudo pacman -S openbsd-netcat;nc -h;$SHELL;fi;"
+Exec=shell-rocket "if command -v nc &> /dev/null;then nc -h;$SHELL;else echo \\"Netcat is not installed. I'm retrieving it for you...\\";sudo pacman -S openbsd-netcat;nc -h;$SHELL;fi;"
 Icon=kali-netcat
 StartupNotify=false
 Terminal=false

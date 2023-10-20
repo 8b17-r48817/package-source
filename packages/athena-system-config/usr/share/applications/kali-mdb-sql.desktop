@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=mdb-sql
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v mdb-sql &> /dev/null;then mdb-sql -h;$SHELL;else echo \\"mdb-sql is not installed. I'm retrieving it for you...\\";sudo pacman -S mdbtools;mdb-sql -h;$SHELL;fi;"
+Exec=shell-rocket "if command -v mdb-sql &> /dev/null;then mdb-sql -h;$SHELL;else echo \\"mdb-sql is not installed. I'm retrieving it for you...\\";sudo pacman -S mdbtools;mdb-sql -h;$SHELL;fi;"
 Icon=kali-mdb-sql
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=icat-sleuthkit
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v icat &> /dev/null;then icat;$SHELL;else echo \\"icat is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;icat;$SHELL;fi;"
+Exec=shell-rocket "if command -v icat &> /dev/null;then icat;$SHELL;else echo \\"icat is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;icat;$SHELL;fi;"
 Icon=kali-icat
 StartupNotify=false
 Terminal=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=rebind
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v rebind_dns &> /dev/null;then rebind_dns;$SHELL;else echo \\"Rebind is not installed. I'm retrieving it for you...\\";sudo pacman -S rebind;rebind_dns;$SHELL;fi;"
+Exec=shell-rocket "if command -v rebind_dns &> /dev/null;then rebind_dns;$SHELL;else echo \\"Rebind is not installed. I'm retrieving it for you...\\";sudo pacman -S rebind;rebind_dns;$SHELL;fi;"
 Icon=kali-rebind
 StartupNotify=false
 Terminal=false

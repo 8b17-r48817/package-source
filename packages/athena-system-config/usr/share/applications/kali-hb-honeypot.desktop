@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=heartbleed-honeypot
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v heartbleed-honeypot &> /dev/null;then sudo heartbleed-honeypot;$SHELL;else echo \\"heartbleed-honeypot is not installed. I'm retrieving it for you...\\";sudo pacman -S heartbleed-honeypot;sudo heartbleed-honeypot;$SHELL;fi;"
-Icon=kali-menu
+Exec=shell-rocket "if command -v heartbleed-honeypot &> /dev/null;then sudo heartbleed-honeypot;$SHELL;else echo \\"heartbleed-honeypot is not installed. I'm retrieving it for you...\\";sudo pacman -S heartbleed-honeypot;sudo heartbleed-honeypot;$SHELL;fi;"
+Icon=kali-minicom
 StartupNotify=false
 Terminal=false
 Type=Application

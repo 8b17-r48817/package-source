@@ -2,7 +2,7 @@
 Name=tcpreplay
 Comment=Replay network traffic stored in pcap files
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v tcpreplay &> /dev/null;then tcpreplay -h;$SHELL;else echo \\"tcpreplay is not installed. I'm retrieving it for you...\\";sudo pacman -S tcpreplay;tcpreplay -h;$SHELL;fi;"
+Exec=shell-rocket "if command -v tcpreplay &> /dev/null;then tcpreplay -h;$SHELL;else echo \\"tcpreplay is not installed. I'm retrieving it for you...\\";sudo pacman -S tcpreplay;tcpreplay -h;$SHELL;fi;"
 Icon=kali-tcpreplay
 StartupNotify=false
 Terminal=false

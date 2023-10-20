@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=mimikatz
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if test -d /usr/share/windows/mimikatz;then cd /usr/share/windows/mimikatz;$SHELL;else echo \\"Mimikatz is not installed. I'm retrieving it for you...\\";sudo pacman -S --noconfirm mimikatz;cd /usr/share/windows/mimikatz;$SHELL;fi;"
+Exec=shell-rocket "if test -d /usr/share/windows/mimikatz;then cd /usr/share/windows/mimikatz;$SHELL;else echo \\"Mimikatz is not installed. I'm retrieving it for you...\\";sudo pacman -S --noconfirm mimikatz;cd /usr/share/windows/mimikatz;$SHELL;fi;"
 Icon=kali-mimikatz
 StartupNotify=false
 Terminal=false

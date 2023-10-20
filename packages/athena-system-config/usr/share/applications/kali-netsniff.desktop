@@ -2,7 +2,7 @@
 Name=netsniff-ng
 Comment=The packet sniffing beast
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v netsniff-ng &> /dev/null;then netsniff-ng -h;$SHELL;else echo \\"netsniff-ng is not installed. I'm retrieving it for you...\\";sudo pacman -S netsniff-ng;netsniff-ng -h;$SHELL;fi;"
+Exec=shell-rocket "if command -v netsniff-ng &> /dev/null;then netsniff-ng -h;$SHELL;else echo \\"netsniff-ng is not installed. I'm retrieving it for you...\\";sudo pacman -S netsniff-ng;netsniff-ng -h;$SHELL;fi;"
 Icon=kali-netsniff-ng
 StartupNotify=false
 Terminal=false

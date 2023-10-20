@@ -2,7 +2,7 @@
 Name=galleta
 Comment=Tool to extract information from MSIE cookie files
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v galleta &> /dev/null;then galleta;$SHELL;else echo \\"galleta is not installed. I'm retrieving it for you...\\";sudo pacman -S galleta;galleta;$SHELL;fi;"
+Exec=shell-rocket "if command -v galleta &> /dev/null;then galleta;$SHELL;else echo \\"galleta is not installed. I'm retrieving it for you...\\";sudo pacman -S galleta;galleta;$SHELL;fi;"
 Icon=kali-galleta
 StartupNotify=false
 Terminal=false

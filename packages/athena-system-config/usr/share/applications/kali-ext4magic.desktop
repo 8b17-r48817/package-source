@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=ext4magic
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v ext4magic &> /dev/null;then ext4magic -h;$SHELL;else echo \\"ext4magic is not installed. I'm retrieving it for you...\\";sudo pacman -S ext4magic;ext4magic -h;$SHELL;fi;"
-Icon=kali-menu
+Exec=shell-rocket "if command -v ext4magic &> /dev/null;then ext4magic -h;$SHELL;else echo \\"ext4magic is not installed. I'm retrieving it for you...\\";sudo pacman -S ext4magic;ext4magic -h;$SHELL;fi;"
+Icon=kali-minicom
 StartupNotify=false
 Terminal=false
 Type=Application

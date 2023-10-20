@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=burpsuite
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v burpsuite &> /dev/null;then nohup burpsuite;$SHELL;else echo \\"Burpsuite is not installed. I'm retrieving it for you...\\";sudo pacman -S burpsuite;nohup burpsuite;$SHELL;fi;"
+Exec=shell-rocket "if command -v burpsuite &> /dev/null;then nohup burpsuite;$SHELL;else echo \\"Burpsuite is not installed. I'm retrieving it for you...\\";sudo pacman -S burpsuite;nohup burpsuite;$SHELL;fi;"
 Icon=kali-burpsuite
 StartupNotify=false
 Terminal=false

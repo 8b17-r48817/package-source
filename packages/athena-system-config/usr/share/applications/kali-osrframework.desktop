@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=osrframework
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v osr-osrframework-cli &> /dev/null;then osr-osrframework-cli -h;$SHELL;else echo \\"osr-osrframework-cli is not installed. I'm retrieving it for you...\\";sudo pacman -S osrframework;osr-osrframework-cli -h;$SHELL;fi;"
-Icon=kali-menu
+Exec=shell-rocket "if command -v osr-osrframework-cli &> /dev/null;then osr-osrframework-cli -h;$SHELL;else echo \\"osr-osrframework-cli is not installed. I'm retrieving it for you...\\";sudo pacman -S osrframework;osr-osrframework-cli -h;$SHELL;fi;"
+Icon=kali-minicom
 StartupNotify=false
 Terminal=false
 Type=Application

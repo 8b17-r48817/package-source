@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=sigfind
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v sigfind &> /dev/null;then sigfind;$SHELL;else echo \\"sigfind is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;sigfind;$SHELL;fi;"
+Exec=shell-rocket "if command -v sigfind &> /dev/null;then sigfind;$SHELL;else echo \\"sigfind is not installed. I'm retrieving it for you...\\";sudo pacman -S sleuthkit;sigfind;$SHELL;fi;"
 Icon=kali-sigfind
 StartupNotify=false
 Terminal=false

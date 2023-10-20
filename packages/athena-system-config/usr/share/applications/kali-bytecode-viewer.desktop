@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=bytecode-viewer
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v bytecode-viewer &> /dev/null;then bytecode-viewer;$SHELL;else echo \\"bytecode-viewer is not installed. I'm retrieving it for you...\\";sudo pacman -S bytecode-viewer;bytecode-viewer;$SHELL;fi;"
+Exec=shell-rocket "if command -v bytecode-viewer &> /dev/null;then bytecode-viewer;$SHELL;else echo \\"bytecode-viewer is not installed. I'm retrieving it for you...\\";sudo pacman -S bytecode-viewer;bytecode-viewer;$SHELL;fi;"
 Icon=kali-bytecode-viewer
 StartupNotify=false
 Terminal=false

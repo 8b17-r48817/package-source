@@ -2,8 +2,8 @@
 Name=dc3dd
 Comment=Convert and copy a file
 Encoding=UTF-8
-Exec=NO_REPETITION=1 gnome-terminal -- /usr/bin/bash -c "if command -v dc3dd &> /dev/null;then dc3dd --help;$SHELL;else echo \\"dc3dd is not installed. I'm retrieving it for you...\\";sudo pacman -S dc3dd;dc3dd --help;$SHELL;fi;"
-Icon=kali-menu
+Exec=shell-rocket "if command -v dc3dd &> /dev/null;then dc3dd --help;$SHELL;else echo \\"dc3dd is not installed. I'm retrieving it for you...\\";sudo pacman -S dc3dd;dc3dd --help;$SHELL;fi;"
+Icon=kali-minicom
 StartupNotify=false
 Terminal=false
 Type=Application
