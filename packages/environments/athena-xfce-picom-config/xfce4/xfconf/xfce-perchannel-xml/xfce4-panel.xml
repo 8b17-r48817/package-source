@@ -47,38 +47,6 @@
       <property name="numbering" type="bool" value="false"/>
     </property>
     <property name="plugin-6" type="string" value="systray">
-      <property name="names-visible" type="array">
-        <value type="string" value="pnmixer"/>
-        <value type="string" value="manjaro-settings-manager-daemon"/>
-        <value type="string" value="networkmanager applet"/>
-        <value type="string" value="orage"/>
-        <value type="string" value="pamac-tray"/>
-        <value type="string" value="blueman-applet"/>
-        <value type="string" value="clipman"/>
-        <value type="string" value="xfce4-power-manager"/>
-        <value type="string" value="xnoise"/>
-      </property>
-      <property name="show-frame" type="bool" value="false"/>
-      <property name="known-legacy-items" type="array">
-        <value type="string" value="blueberry-tray.py"/>
-        <value type="string" value="wi-fi network connection “wvf-26315” active: wvf-26315 (67%)"/>
-        <value type="string" value="ethernet network connection “wired connection 1” active"/>
-        <value type="string" value="thunar"/>
-        <value type="string" value="networkmanager applet"/>
-      </property>
-      <property name="known-items" type="array">
-        <value type="string" value="TelegramDesktop"/>
-      </property>
-      <property name="icon-size" type="int" value="0"/>
-      <property name="square-icons" type="bool" value="true"/>
-      <property name="single-row" type="bool" value="true"/>
-      <property name="hidden-items" type="array">
-      </property>
-      <property name="hidden-legacy-items" type="array">
-      </property>
-      <property name="menu-is-primary" type="bool" value="false"/>
-      <property name="symbolic-icons" type="bool" value="true"/>
-      <property name="hide-new-items" type="bool" value="false"/>
     </property>
     <property name="plugin-7" type="string" value="separator">
       <property name="expand" type="bool" value="true"/>
