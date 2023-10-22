@@ -1,7 +1,6 @@
 <svg width="52" height="53" viewBox="0 0 52 53" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_55_3606)" filter="url(#filter0_d_55_3606)">
 <mask id="mask0_55_3606" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="2" y="0" width="48" height="48">
-<path d="M50 0H2V48H50V0Z" fill="white"/>
 </mask>
 <g mask="url(#mask0_55_3606)">
 <path d="M44 20C44 18.896 44.896 18 46 18C47.104 18 48 18.896 48 20V40C48 42.76 45.76 45 43 45H14C12.896 45 12 44.104 12 43C12 41.896 12.896 41 14 41H42C43.104 41 44 40.104 44 39V20Z" fill="#9FEF00"/>
@@ -19,8 +18,5 @@
 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_55_3606"/>
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_55_3606" result="shape"/>
 </filter>
-<clipPath id="clip0_55_3606">
-<rect width="48" height="48" fill="white" transform="translate(2)"/>
-</clipPath>
 </defs>
 </svg>
