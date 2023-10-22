@@ -6,4 +6,4 @@ Comment=Fish Shell
 Icon=shell
 Exec=gnome-terminal
 Terminal=false
-Categories=Tags;Describing;Application
+Categories=Tags;Describing;Application;Utility

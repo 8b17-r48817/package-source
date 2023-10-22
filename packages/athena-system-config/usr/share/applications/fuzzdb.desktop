@@ -6,4 +6,4 @@ Comment=FuzzDB
 Icon=kali-ike-scan
 Exec=shell-rocket "if test -d /usr/share/payloads/fuzzdb;then cd /usr/share/payloads/fuzzdb;$SHELL;else echo \\"FuzzDB not found. I'm retrieving it for you...\\";sudo pacman -S --noconfirm athena-fuzzdb;cd /usr/share/payloads/fuzzdb;$SHELL;fi;"
 Terminal=false
-Categories=Tags;Describing;Application
+Categories=Tags;Describing;Application;Utility

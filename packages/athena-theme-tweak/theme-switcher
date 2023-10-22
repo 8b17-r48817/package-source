@@ -155,6 +155,14 @@ if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]] || [[ $(tty) == */dev/tty* ]]; then
 
 fi
 
+if [[ "$XDG_CURRENT_DESKTOP" =~ "KDE" ]]; then
+    plasma-apply-lookandfeel -a com.github.vinceliuice.MacSonoma-Dark # It applies Plasma Global Theme and Color Scheme too
+    dbus-send --session --dest=org.kde.GtkConfig --type=method_call /GtkConfig org.kde.GtkConfig.setGtkTheme "string:$theme_name"
+    /usr/lib/plasma-changeicons "$icon_theme"
+    plasma-apply-cursortheme "$cursor_theme"
+    plasma-apply-wallpaperimage "$background_theme"
+fi
+
 #if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
 #    cp -rf "$HOME/.config/eww/css/savedcolors/_colorscheme_$topbarcolorscheme.scss" "$HOME/.config/eww/css/_colorscheme.scss" 2>/dev/null
 #    cp -rf "$HOME/.config/eww/css/savedcolors/_iconcolor_$topbarcolorscheme.txt" "$HOME/.config/eww/css/_iconcolor.txt" 2>/dev/null
