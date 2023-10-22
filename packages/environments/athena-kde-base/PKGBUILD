@@ -5,17 +5,19 @@ pkgdesc="KDE base configuration for Athena."
 arch=('any')
 license=("custom")
 depends=('bluez-qt5' 'discover' 'dolphin' 'elisa' 'gwenview' 'kcalc' 'kde-gtk-config' 'kdeconnect' 'kdeplasma-addons' 'kfind' 'kinfocenter' 'kmenuedit' 'konsole' 'kpipewire' 'kscreen' 'kwin-effects-kinetic' 'kwin-scripts-forceblur' 'kwrite' 'plasma-browser-integration' 'plasma-desktop' 'plasma-nm' 'plasma-systemmonitor' 'plasma-thunderbolt' 'plasma-vault' 'plasma-welcome' 'plasma-workspace' 'plasma-pa' 'polkit-kde-agent' 'spectacle' 'systemsettings' 'xdg-desktop-portal-kde')
-source=("kwinrc"
+source=("applications-kmenuedit.menu"
+        "kwinrc"
         "kwinrulesrc")
-#sha512sums=('62e38df484f1b823022e8ff33fb254d44440d1cd8a7767ff816c820a5b91b95b3da94a7c6f1f7c87cb77d922b1e96d3c93cf83eb1805cf616bb560ee98916b72')
+sha512sums=('95b77baa43bc02b79761b18fae7c1b58dfdae029ba327d9fb7be6a1eb9c88d728bc52c3f95dd3b21a7b99920798baf7d7190c922ae2df8f53aff62a63c32f37f'
+            '47e279795a920ec0e6a4619d16970c0b34df73af41143a786fd60b83f1f4b40901426c61849d0d34895eb4cf22a837c91327dc2126e2e75aa0d2f2456209970a'
+            'a5d2d3b60bd951c10d4495465129800163d63a2ec676dda81607ef885f6378690e0363f46a7c3fd0e8481cd25e9b2920731c041563aaade18bee1d0db07525e1')
 
-#package() {
-#  mkdir -p "${pkgdir}/etc"
-#  mkdir -m 750 -p "${pkgdir}/etc/sudoers.d"
-#  mkdir -p "${pkgdir}/usr/share/athena-gnome-config"
-#
-#  cp -rf "${srcdir}/etc/profile.d" "${pkgdir}/etc/"
-#  cp -rf "${srcdir}/etc/skel/.local" "${pkgdir}/etc/skel/"
-#  cp -rf "${srcdir}"/usr/share/athena-gnome-config/* "${pkgdir}/usr/share/athena-gnome-config/"
-#  touch "${pkgdir}/etc/skel/.flag-kde-once"
-#}
+package() {
+  install -d 755 "${pkgdir}/etc/skel/.config"
+  install -d 755 "${pkgdir}/etc/xdg/menus"
+
+  cp -rf "${srcdir}/kwinrc" "${pkgdir}/etc/skel/.config/"
+  cp -rf "${srcdir}/kwinrulesrc" "${pkgdir}/etc/skel/.config/"
+  cp -rf "${srcdir}/applications-kmenuedit.menu" "${pkgdir}/etc/xdg/menus/"
+  kbuildsycoca5
+}

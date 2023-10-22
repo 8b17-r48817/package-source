@@ -275,7 +275,7 @@ DialogHeight=510
 DialogWidth=680
 
 [Containments][84][Applets][111][Configuration][General]
-icon=athena-hello-logo
+icon=athenaos-blue-crest
 
 [Containments][84][Applets][112]
 immutability=1

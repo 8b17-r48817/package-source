@@ -2,7 +2,7 @@
 Name=readpst
 Encoding=UTF-8
 Exec=shell-rocket "if command -v readpst &> /dev/null;then readpst -h;$SHELL;else echo \\"readpst is not installed. I'm retrieving it for you...\\";sudo pacman -S libpst;readpst -h;$SHELL;fi;"
-Icon=kali-minicom
+Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false
 Type=Application

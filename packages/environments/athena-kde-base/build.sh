@@ -6,10 +6,10 @@ arch=$(grep "^arch=" PKGBUILD | awk -F"'" '{print $2}')
 
 #NEED ONLY TO EDIT  sourcefiles VARIABLE
 
-#sourcefiles="etc usr"
+#sourcefiles="plasmoids"
 
 #tar -zcvf $pkgname.tar.gz $sourcefiles 
-#updpkgsums
+updpkgsums
 makepkg -f -scr --noconfirm
 
 pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')

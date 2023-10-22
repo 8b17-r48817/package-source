@@ -10,6 +10,6 @@ DOCUMENTATION_URL="https://www.athenaos.org"
 SUPPORT_URL="https://bbs.archlinux.org"
 BUG_REPORT_URL="https://github.com/Athena-OS/athena-iso/issues"
 PRIVACY_POLICY_URL="https://www.athenaos.org/en/policy/privacy-policy/"
-LOGO=athena-hello-logo
+LOGO=athenaos-hello-logo
 IMAGE_ID=athena
 IMAGE_VERSION=rolling

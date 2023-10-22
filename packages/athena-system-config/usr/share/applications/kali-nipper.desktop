@@ -2,7 +2,7 @@
 Name=nipper
 Encoding=UTF-8
 Exec=shell-rocket "if command -v nipper &> /dev/null;then nipper --help;$SHELL;else echo \\"nipper is not installed. I'm retrieving it for you...\\";sudo pacman -S nipper;nipper --help;$SHELL;fi;"
-Icon=kali-minicom
+Icon=athenaos-blue-net
 StartupNotify=false
 Terminal=false
 Type=Application
