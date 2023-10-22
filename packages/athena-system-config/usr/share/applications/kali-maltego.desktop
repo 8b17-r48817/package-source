@@ -9,4 +9,3 @@ Type=Application
 Categories=01-info-gathering;01-07-osint-analysis;12-reporting;13-social-engineering-tools;001-identify;
 Comment=Visualise, Map and Mine Data
 X-BlackArch-Package=maltego
-Actions=ShowWebsite;
