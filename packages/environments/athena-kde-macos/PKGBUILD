@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="KDE MacOS configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('albert' 'apple-fonts' 'athena-kde-base' 'kvantum' 'latte-dock' 'lightly-qt' 'plasma5-applets-betterinlineclock-git' 'plasma5-applets-bigsur-inlinebattery' 'plasma5-applets-control-centre' 'plasma5-applets-corner-menu' 'plasma5-applets-latte-separator' 'plasma5-applets-plasma-drawer' 'plasma5-applets-window-appmenu' 'plasma5-applets-window-buttons' 'plasma5-applets-window-title' 'ttf-material-design-icons-extended' 'whitesur-cursor-theme-git' 'whitesur-gtk-theme-git' 'whitesur-icon-theme-git')
+depends=('albert' 'apple-fonts' 'athena-kde-base' 'kvantum' 'latte-dock' 'lightly-qt' 'macsonoma-kde-theme-git' 'plasma5-applets-bigsur-inlinebattery' 'plasma5-applets-control-centre' 'plasma5-applets-corner-menu' 'plasma5-applets-latte-separator' 'plasma5-applets-plasma-drawer' 'plasma5-applets-window-appmenu' 'plasma5-applets-window-buttons' 'plasma5-applets-window-title' 'ttf-material-design-icons-extended' 'whitesur-cursor-theme-git' 'whitesur-gtk-theme-git' 'whitesur-icon-theme-git')
 #source=("$pkgname.tar.gz")
 #sha512sums=('62e38df484f1b823022e8ff33fb254d44440d1cd8a7767ff816c820a5b91b95b3da94a7c6f1f7c87cb77d922b1e96d3c93cf83eb1805cf616bb560ee98916b72')
 
