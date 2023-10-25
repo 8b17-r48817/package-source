@@ -1,12 +1,12 @@
 pkgname=athena-hyprland-config
 _pkgname=dots-hyprland
-pkgver=408.69d48382
+pkgver=427.bc9a7f22
 pkgrel=1
 pkgdesc="Hyprland configuration for Athena."
 arch=('any')
 url='https://github.com/end-4/dots-hyprland'
 license=("GPL3")
-depends=('aylurs-gtk-shell-git' 'bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'cliphist' 'coreutils' 'curl' 'findutils' 'foot' 'fuzzel' 'fzf' 'gawk' 'geticons-git' 'gnome-control-center' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia-git' 'ibus' 'imagemagick' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'nwg-look' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'plasma-browser-integration' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pillow' 'python-poetry' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swappy' 'swaybg' 'swayidle' 'swww' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi' 'xdg-desktop-portal-hyprland-git' 'xdg-user-dirs' 'xorg-xrandr' 'yad')
+depends=('aylurs-gtk-shell' 'bc' 'blueberry' 'bluez' 'boost' 'boost-libs' 'cava' 'cliphist' 'coreutils' 'curl' 'findutils' 'foot' 'fuzzel' 'fzf' 'gawk' 'geticons-git' 'gnome-control-center' 'gnome-keyring' 'gnome-system-monitor' 'gojq' 'grim' 'gtklock' 'gtklock-playerctl-module' 'gtklock-powerbar-module' 'gtklock-userinfo-module' 'hyprland-nvidia-git' 'ibus' 'imagemagick' 'libqalculate' 'light' 'nautilus' 'nerd-fonts-noto-sans-mono-extended' 'network-manager-applet' 'networkmanager' 'nlohmann-json' 'noto-fonts-emoji' 'nwg-look' 'pavucontrol' 'pipewire' 'pipewire-pulse' 'plasma-browser-integration' 'playerctl' 'polkit-gnome' 'procps' 'python-desktop-entry-lib' 'python-material-color-utilities' 'python-pillow' 'python-poetry' 'python-pywal' 'ripgrep' 'slurp' 'socat' 'sox' 'swappy' 'swaybg' 'swayidle' 'swww' 'udev' 'upower' 'util-linux' 'wget' 'wireplumber' 'wl-clipboard' 'wlogout' 'wofi' 'xdg-desktop-portal-hyprland-git' 'xdg-user-dirs' 'xorg-xrandr' 'yad')
 makedepends=('git' 'rsync')
 install='hyprland.install'
 source=("git+https://github.com/end-4/$_pkgname#branch=illogical-impulse"
@@ -29,7 +29,6 @@ package() {
   install -dm 755 "$pkgdir/etc/profile.d/"
   install -dm 755 "$pkgdir/etc/skel/.config"
   install -dm 755 "$pkgdir/etc/skel/.local/share"
-  install -dm 755 "$pkgdir/etc/skel/.themes"
   install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/gnome-text-editor/styles"
   install -dm 755 "$pkgdir/usr/share/$pkgname"
@@ -49,7 +48,6 @@ package() {
   rsync -av --progress ./.config/starship.toml "$pkgdir/etc/skel/.config/"
   rsync -av --progress ./.local/bin "$pkgdir/etc/skel/.local/"
   rsync -av --progress ./.local/share/fonts "$pkgdir/etc/skel/.local/share/"
-  rsync -av --progress ./.themes/ "$pkgdir/etc/skel/.themes/"
   rsync -av --progress "./Import Manually/execs (add to path)/" "$pkgdir/etc/skel/.local/bin/"
   #rsync -av --progress "./Import Manually/gnome-text-editor themes (Paste to root)/usr/share/gnome-text-editor/styles/" "$pkgdir/usr/share/gnome-text-editor/styles/"
 
