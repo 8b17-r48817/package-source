@@ -45,7 +45,7 @@ jobs:
     - name: Build and sign packages
       run: |
         export PASSPHRASE=${{ secrets.PACKAGE_SIGNING_PASSPHRASE }}
-        chmod +x build_and_sign_packages.sh
+        chmod +x build_and_sign_cyberroles.sh
         chown -R builder ~/.gnupg/
         sudo -E -u builder ./build_and_sign_cyberroles.sh
 
