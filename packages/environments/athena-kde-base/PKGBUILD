@@ -8,21 +8,25 @@ depends=('bluez-qt5' 'discover' 'dolphin' 'elisa' 'gwenview' 'kcalc' 'kde-gtk-co
 source=("applications-kmenuedit.menu"
         "kwinrc"
         "kwinrulesrc"
-        "kde-init.sh")
+        "kde-init.desktop"
+        "kde-init")
 sha512sums=('95b77baa43bc02b79761b18fae7c1b58dfdae029ba327d9fb7be6a1eb9c88d728bc52c3f95dd3b21a7b99920798baf7d7190c922ae2df8f53aff62a63c32f37f'
-            '47e279795a920ec0e6a4619d16970c0b34df73af41143a786fd60b83f1f4b40901426c61849d0d34895eb4cf22a837c91327dc2126e2e75aa0d2f2456209970a'
+            '718ea3b26877086cc9ee5b82873a7e19469a5661819bf1846634de163cdadb965a63659ff1cd6d72945c3505c75196599c469b999c6b780a4b91ba29df702e94'
             'a5d2d3b60bd951c10d4495465129800163d63a2ec676dda81607ef885f6378690e0363f46a7c3fd0e8481cd25e9b2920731c041563aaade18bee1d0db07525e1'
+            '4693dcdc626a96c1404b153cd535828569eae6a9af46873a4e459cdfc40e8017bed054dea0616b2dfeb95c2a4ede7eea079d0141a3b605f58715beb9cb3999b9'
             'd2b14ed2a4213dd0f268d92185f8f89c4f9fdfc0f2ab85a74d00613f88db6c490755a4446750e2e808f90f14e604a6ba990d833dc8a326809bd977a54dfb0945')
 
 package() {
-  install -dm 755 "${pkgdir}/etc/profile.d"
   install -dm 755 "${pkgdir}/etc/skel/.config"
+  install -dm 755 "${pkgdir}/etc/xdg/autostart"
   install -dm 755 "${pkgdir}/etc/xdg/menus"
+  install -dm 755 "${pkgdir}/usr/bin"
 
-  install -Dm644 "${srcdir}/kde-init.sh" "${pkgdir}/etc/profile.d/"
   install -Dm644 "${srcdir}/kwinrc" "${pkgdir}/etc/skel/.config/"
   install -Dm644 "${srcdir}/kwinrulesrc" "${pkgdir}/etc/skel/.config/"
+  install -Dm644 "${srcdir}/kde-init.desktop" "${pkgdir}/etc/xdg/autostart/"
   install -Dm644 "${srcdir}/applications-kmenuedit.menu" "${pkgdir}/etc/xdg/menus/"
+  install -Dm755 "${srcdir}/kde-init" "${pkgdir}/usr/bin/"
   touch "${pkgdir}/etc/skel/.flag-kde-once"
   kbuildsycoca5
 }
