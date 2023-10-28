@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="KDE base configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('bluez-qt5' 'discover' 'dolphin' 'elisa' 'gwenview' 'kcalc' 'kde-gtk-config' 'kdeconnect' 'kdeplasma-addons' 'kfind' 'kinfocenter' 'kmenuedit' 'konsole' 'kpipewire' 'kscreen' 'kwin-effects-kinetic' 'kwin-scripts-forceblur' 'kwrite' 'plasma-browser-integration' 'plasma-desktop' 'plasma-nm' 'plasma-systemmonitor' 'plasma-thunderbolt' 'plasma-vault' 'plasma-welcome' 'plasma-workspace' 'plasma-pa' 'polkit-kde-agent' 'spectacle' 'systemsettings' 'xdg-desktop-portal-kde')
+depends=('bluez-qt5' 'discover' 'dolphin' 'elisa' 'gwenview' 'kcalc' 'kde-gtk-config' 'kdeconnect' 'kdeplasma-addons' 'kfind' 'kinfocenter' 'kmenuedit' 'kpipewire' 'kscreen' 'kwin-effects-kinetic' 'kwin-scripts-forceblur' 'kwrite' 'plasma-browser-integration' 'plasma-desktop' 'plasma-nm' 'plasma-systemmonitor' 'plasma-thunderbolt' 'plasma-vault' 'plasma-welcome' 'plasma-workspace' 'plasma-pa' 'polkit-kde-agent' 'spectacle' 'systemsettings' 'xdg-desktop-portal-kde')
 source=("applications-kmenuedit.menu"
         "kwinrc"
         "kwinrulesrc"

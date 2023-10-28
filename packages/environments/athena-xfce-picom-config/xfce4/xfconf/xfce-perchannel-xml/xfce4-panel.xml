@@ -88,6 +88,7 @@
         <value type="string" value="firefox-esr.desktop"/>
         <value type="string" value="brave.desktop"/>
         <value type="string" value="xfce4-terminal-emulator.desktop"/>
+        <value type="string" value="alacritty.desktop"/>
         <value type="string" value="kitty.desktop"/>
         <value type="string" value="gparted.desktop"/>
       </property>

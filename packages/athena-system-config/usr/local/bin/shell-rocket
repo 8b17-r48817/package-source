@@ -1,6 +1,11 @@
 #!/bin/bash
 
-TERMINAL_EXEC="gnome-terminal --"
+TERMINAL_EXEC="alacritty -e"
+
+# Set fallback terminal if needed
+if [[ "$TERMINAL_EXEC" =~ "terminator" ]] || [[ "$TERMINAL_EXEC" =~ "terminology" ]] || [[ "$TERMINAL_EXEC" =~ "xfce4-terminal" ]]; then
+  TERMINAL_EXEC="alacritty -e"
+fi
 
 if [[ -n "$NO_REPETITION" ]]; then
   "$@"
