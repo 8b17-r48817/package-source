@@ -1,6 +1,6 @@
 pkgname=aegis
 _pkgname=athena-aegis
-pkgver=1.3.5
+pkgver=123.93be842
 pkgrel=1
 pkgdesc="Scriptable backend & TUI Installer for Athena OS."
 arch=('x86_64' 'aarch64')
@@ -11,6 +11,12 @@ makedepends=('cargo')
 #source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 source=("git+https://github.com/Athena-OS/$pkgname.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 prepare() {
     cd $pkgname
