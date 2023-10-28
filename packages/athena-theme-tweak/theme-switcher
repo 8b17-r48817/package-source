@@ -155,13 +155,14 @@ if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]] || [[ $(tty) == */dev/tty* ]]; then
 
 fi
 
-if [[ "$XDG_CURRENT_DESKTOP" =~ "KDE" ]] || [[ $(tty) == */dev/tty* ]]; then
-    plasma-apply-lookandfeel -a com.github.vinceliuice.MacSonoma-Dark # It applies Plasma Global Theme and Color Scheme too
-    dbus-send --session --dest=org.kde.GtkConfig --type=method_call /GtkConfig org.kde.GtkConfig.setGtkTheme "string:$theme_name"
-    /usr/lib/plasma-changeicons "$icon_theme"
-    plasma-apply-cursortheme "$cursor_theme"
-    plasma-apply-wallpaperimage "$background_theme"
-    kwriteconfig5 --file kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "$background_theme"
+if [[ "$XDG_CURRENT_DESKTOP" =~ "KDE" ]]; then
+    plasma-apply-lookandfeel -a org.kde.breezedark.desktop # It applies Plasma Global Theme and Color Scheme too
+    #dbus-send --session --dest=org.kde.GtkConfig --type=method_call /GtkConfig org.kde.GtkConfig.setGtkTheme "string:$theme_name"
+    #/usr/lib/plasma-changeicons "$icon_theme"
+    #plasma-apply-cursortheme "$cursor_theme"
+    #kwriteconfig5 --file "$HOME/.config/plasma-org.kde.plasma.desktop-appletsrc" --group 'Containments' --group '1' --group 'Wallpaper' --group 'org.kde.image' --group 'General' --key 'Image' "$background_theme"
+    #kwriteconfig5 --file "$HOME/.config/plasma-org.kde.plasma.desktop-appletsrc" --group 'Containments' --group '211' --group 'Wallpaper' --group 'org.kde.image' --group 'General' --key 'Image' "$background_theme" # Check inside "plasma-org.kde.plasma.desktop-appletsrc" file to verify if the 'group' values are correct on 'Image' key
+    #kwriteconfig5 --file kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "$background_theme"
 fi
 
 #if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then

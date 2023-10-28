@@ -9,6 +9,7 @@ source=("dolphinrc"
         "ksplashrc"
         "lattedockrc"
         "MacOS_Dock.layout.latte"
+        "org.kde.latte-dock.desktop"
         "plasma-org.kde.plasma.desktop-appletsrc"
         "$pkgname.tar.gz")
 sha512sums=('cfbea0b71a64d36436b1d78aa152994438e8544ce2fe35f4a46548814dc3696040b0e4c8c8bb35b5753ffd0f5c9a0800f18b242c6a430fd300d89eccbd277d5c'
@@ -19,14 +20,16 @@ sha512sums=('cfbea0b71a64d36436b1d78aa152994438e8544ce2fe35f4a46548814dc3696040b
             '01efb420512c4a32bf126490d11169b9e4cf2ea00842fa0b44425cce612e1fd5343b6c58ac5c83438261b595cb509458f23450ee6d226357dfd3b245779b4d5f')
 
 package() {
-  install -d 755 "${pkgdir}/etc/skel/.config/latte"
-  install -d 755 "${pkgdir}/usr/share/albert/widgetsboxmodel/themes"
+  install -dm 755 "${pkgdir}/etc/skel/.config/latte"
+  install -dm 755 "${pkgdir}/etc/xdg/autostart"
+  install -dm 755 "${pkgdir}/usr/share/albert/widgetsboxmodel/themes"
 
   install -Dm644 "dolphinrc" "${pkgdir}/etc/skel/.config/"
   install -Dm644 "ksplashrc" "${pkgdir}/etc/skel/.config/"
   install -Dm644 "lattedockrc" "${pkgdir}/etc/skel/.config/"
   install -Dm644 "plasma-org.kde.plasma.desktop-appletsrc" "${pkgdir}/etc/skel/.config/"
   install -Dm644 "MacOS_Dock.layout.latte" "${pkgdir}/etc/skel/.config/latte/"
+  install -Dm644 "org.kde.latte-dock.desktop" "${pkgdir}/etc/xdg/autostart/"
   install -Dm644 "albert_theme_macos/Albert_Sonoma_Dark.qss" "${pkgdir}/usr/share/albert/widgetsboxmodel/themes/"
   install -Dm644 "albert_theme_macos/Albert_Sonoma_Light.qss" "${pkgdir}/usr/share/albert/widgetsboxmodel/themes/"
 }

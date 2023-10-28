@@ -27,10 +27,6 @@ DialogWidth=680
 [Containments][184][Configuration]
 PreloadWeight=42
 
-[Containments][184][Wallpaper][org.kde.image][General]
-Image=file:///usr/share/backgrounds/default/hackthebox.png
-SlidePaths=/home/athena/.local/share/wallpapers/,/usr/share/wallpapers/
-
 [Containments][2][Applets][14][Configuration]
 PreloadWeight=42
 

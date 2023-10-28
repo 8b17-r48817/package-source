@@ -1,6 +1,6 @@
 #!/bin/sh
 
-to_exclude=("seclists" "argus-clients" "xplico" "faradaysec" "inguma" "fuzzdb" "smartphone-pentest-framework" "trape" "binflow" "fastnetmon" "vpnpivot" "wolpertinger" "ncpfs" "sigploit" "archivebox" "witchxtool")
+to_exclude=("seclists" "argus-clients" "xplico" "faradaysec" "inguma" "fuzzdb" "smartphone-pentest-framework" "trape" "binflow" "fastnetmon" "vpnpivot" "wolpertinger" "ncpfs" "sigploit" "archivebox" "witchxtool" "yaaf")
 
 sed -i '/depends=/d' PKGBUILD
 sed -i '/^$/d' PKGBUILD #Delete all empty lines
