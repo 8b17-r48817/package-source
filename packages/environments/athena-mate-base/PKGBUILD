@@ -1,0 +1,25 @@
+pkgname=athena-mate-base
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="MATE base configuration for Athena."
+arch=('any')
+license=("custom")
+depends=('caja' 'eom' 'marco' 'mate-control-center' 'mate-desktop' 'mate-media' 'mate-netbook' 'mate-panel' 'mate-polkit' 'mate-power-manager' 'mate-session-manager' 'mate-tweak' 'xdg-user-dirs')
+source=("mate-applications.menu"
+        "mate-init.desktop"
+        "mate-init")
+sha512sums=('a936face7680f861d24c20444a0455f51767e19ff112520c5eb4896f22ea9193178bdec214186f4160565e80a71d9c61c28b0c7c0c106f1979337e9a2988c429'
+            'aa5d8c1adde6afe962e0c3f8852b39dc6160cd5bf4a5436794f9da18d61f08ffcc2d4c3e7163f1b75f8b9f4c3d17b292b538339368b1375134fa05fffbf63e76'
+            'bc4fa5812fcaf2868387adc5609195703b327edabf367f8a06658a65e38212cb9ecdd0ed3aa9ae49e74f7d6b9c79055b997eb75291746a62b15189dd844e7caa')
+
+package() {
+  install -dm 755 "${pkgdir}/etc/skel"
+  install -dm 755 "${pkgdir}/etc/xdg/autostart"
+  install -dm 755 "${pkgdir}/etc/xdg/menus"
+  install -dm 755 "${pkgdir}/usr/bin"
+
+  install -Dm644 "${srcdir}/mate-init.desktop" "${pkgdir}/etc/xdg/autostart/"
+  install -Dm644 "${srcdir}/mate-applications.menu" "${pkgdir}/etc/xdg/menus/"
+  install -Dm755 "${srcdir}/mate-init" "${pkgdir}/usr/bin/"
+  touch "${pkgdir}/etc/skel/.flag-mate-once"
+}

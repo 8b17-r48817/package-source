@@ -9,10 +9,10 @@ arch=$(grep "^arch=" PKGBUILD | awk -F"'" '{print $2}')
 #sourcefiles="etc usr"
 
 #tar -zcvf $pkgname.tar.gz $sourcefiles 
-#updpkgsums
+updpkgsums
 makepkg -f -scr --noconfirm
 
 pkgver=$(grep "^pkgver=" PKGBUILD | awk -F"=" '{print $2}')
 pkgfile=$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst
-#rm -rf src pkg $pkgname.tar.gz
+rm -rf src pkg $pkgname.tar.gz
 
