@@ -1,6 +1,6 @@
 pkgname=athena-bspwm-config
 _pkgname=bspwm
-pkgver=8.32aa97f
+pkgver=10.43f827c
 pkgrel=1
 pkgdesc="Bspwm configuration for Athena."
 arch=('any')
@@ -22,8 +22,6 @@ pkgver() {
 package() {
   cd $_pkgname
 
-  install -dm 755 "$pkgdir/etc/profile.d/"
-  install -dm 755 "$pkgdir/etc/skel/.config/gtk-3.0"
   install -dm 755 "$pkgdir/etc/skel/.local/bin"
   install -dm 755 "$pkgdir/etc/skel/.local/share/applications"
   install -dm 755 "$pkgdir/etc/skel/.local/share/fonts"
