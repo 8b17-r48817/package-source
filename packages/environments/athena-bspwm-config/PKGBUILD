@@ -1,6 +1,6 @@
 pkgname=athena-bspwm-config
 _pkgname=bspwm
-pkgver=6.d4f9a68
+pkgver=8.32aa97f
 pkgrel=1
 pkgdesc="Bspwm configuration for Athena."
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('git' 'rsync')
 source=("git+https://github.com/Athena-OS/$_pkgname.git"
         "$pkgname.tar.gz")
 sha512sums=('SKIP'
-            'd15bd6613fdaf484786d95513ea595cc10d621b27f5942f7d9dd76b659566de0f03a528fbcbc3d05ff01d7baaace1e5d1a77d7e322f28d135feeb96e63fc0685')
+            'a06a96be570d3dd6a3860c01e68f219079b680f5a9a804c50755a9613c7daa7d2ecc6e83287bda547b449a84b6747e3c5278cd05b4d23b46a501ea47070d32b7')
 
 pkgver() {
   cd $_pkgname
