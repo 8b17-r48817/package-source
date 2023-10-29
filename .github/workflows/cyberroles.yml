@@ -1,8 +1,8 @@
 name: Build and Push Cyber Roles
 
 on:
-  schedule:
-    - cron: '22 5 * * 0'
+  #schedule:
+  #  - cron: '22 5 * * 0'
   workflow_dispatch:
 
 jobs:
