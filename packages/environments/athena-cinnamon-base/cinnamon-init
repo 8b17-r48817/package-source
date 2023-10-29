@@ -4,8 +4,8 @@ detect_virt=$(systemd-detect-virt)
 
 if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "docker" ] && [ "$detect_virt" != "podman" ] && [ "$detect_virt" != "wsl" ]); then
 
-     FLAGFILE="$HOME/.flag-mate-once"
-     #FLAGNET="$HOME/.flag-mate-net-once"
+     FLAGFILE="$HOME/.flag-cinnamon-once"
+     #FLAGNET="$HOME/.flag-cinnamon-net-once"
 
      if [ -f "$FLAGFILE" ]; then
 

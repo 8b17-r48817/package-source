@@ -6,7 +6,7 @@ arch=('any')
 license=("custom")
 source=("theme-switcher"
         "$pkgname.py")
-sha512sums=('fe810344c3bd4ac92690c4bcf83ca9743f2d97e1e84fe2d83fd061ebe1c04a724e9590240f78e793707c5e814344a4698a57b2ea04cef5b06cd554a6a91bd198'
+sha512sums=('52fd8107cb36524e09ad13dc120b1f567a12c1fe6124143d3113391fe4b59073cb0cf729dbc79d8b76fb1d6b0bcf3a0b656d833a57d4759578ebae248d78854f'
             'da7d830b90e02cdc04e09f0fba20f53c5bdc23037ed1d845c881eade37fffcf9811c933f1c6a6a86f84a0c5e0f75cd4d2a92371cc6854a88b6b73feb7fd3002a')
 
 package() {

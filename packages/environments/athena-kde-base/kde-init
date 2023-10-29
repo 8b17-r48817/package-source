@@ -5,7 +5,7 @@ detect_virt=$(systemd-detect-virt)
 if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "docker" ] && [ "$detect_virt" != "podman" ] && [ "$detect_virt" != "wsl" ]); then
 
      FLAGFILE="$HOME/.flag-kde-once"
-     #FLAGNET="$HOME/.flag-xfce-net-once"
+     #FLAGNET="$HOME/.flag-kde-net-once"
 
      if [ -f "$FLAGFILE" ]; then
 

@@ -1,0 +1,25 @@
+pkgname=athena-cinnamon-base
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Cinnamon base configuration for Athena."
+arch=('any')
+license=("custom")
+depends=('cinnamon' 'xdg-user-dirs')
+source=("cinnamon-applications.menu"
+        "cinnamon-init.desktop"
+        "cinnamon-init")
+sha512sums=('4ca36297c680ce28e34f6f03d4c8958e90a48aea9a03f7c7edf88bbce9bcb126bf8b2f9f9695a62d03bc2a49407059076d800f9a78720191b5e2f276d36cb000'
+            '95ef3d38e50a5f361bc9de18c817123ac7347cfcdfd0eb0a72ff5fdc3de42cf5ef83a3997146cffb2c08b1b8c4b508ab9dcac030c6cd8c8a35f142ec89524015'
+            '2731852ab9474eb5214e9b2021cddf73cf7a51e67b8d8322ab03b96233ab34487c7193d75bfa602d018f09b443b3e47155b5790d602686fe20bbfc66b81a7821')
+
+package() {
+  install -dm 755 "${pkgdir}/etc/skel"
+  install -dm 755 "${pkgdir}/etc/xdg/autostart"
+  install -dm 755 "${pkgdir}/etc/xdg/menus"
+  install -dm 755 "${pkgdir}/usr/bin"
+
+  install -Dm644 "${srcdir}/cinnamon-init.desktop" "${pkgdir}/etc/xdg/autostart/"
+  install -Dm644 "${srcdir}/cinnamon-applications.menu" "${pkgdir}/etc/xdg/menus/"
+  install -Dm755 "${srcdir}/cinnamon-init" "${pkgdir}/usr/bin/"
+  touch "${pkgdir}/etc/skel/.flag-cinnamon-once"
+}

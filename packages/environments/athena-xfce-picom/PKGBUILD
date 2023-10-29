@@ -1,4 +1,4 @@
-pkgname=athena-xfce-picom-config
+pkgname=athena-xfce-picom
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="XFCE and Picom configuration for Athena."

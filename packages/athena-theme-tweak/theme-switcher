@@ -172,6 +172,21 @@ if [[ "$XDG_CURRENT_DESKTOP" =~ "MATE" ]]; then
     dconf write /org/mate/desktop/background/picture-filename "'$background_theme'"
 fi
 
+if [[ "$XDG_CURRENT_DESKTOP" =~ "Cinnamon" ]]; then
+    gsettings set org.cinnamon.desktop.interface gtk-theme ""
+    gsettings set org.cinnamon.desktop.wm.preferences theme ""
+    sleep 1
+    gsettings set org.cinnamon.desktop.interface gtk-theme "$theme_name"
+    gsettings set org.cinnamon.desktop.wm.preferences theme "$theme_name"
+
+    gsettings set org.cinnamon.desktop.interface gtk-color-scheme "$color_scheme"
+    gsettings set org.cinnamon.desktop.interface icon-theme "$icon_theme"
+    gsettings set org.cinnamon.desktop.interface cursor-theme "$cursor_theme"
+    gsettings set org.cinnamon.desktop.background picture-uri ""
+    gsettings set org.cinnamon.desktop.background picture-uri "file://$background_theme"
+    gsettings set org.cinnamon.desktop.background picture-options "$picture_options"
+fi
+
 #if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
 #    cp -rf "$HOME/.config/eww/css/savedcolors/_colorscheme_$topbarcolorscheme.scss" "$HOME/.config/eww/css/_colorscheme.scss" 2>/dev/null
 #    cp -rf "$HOME/.config/eww/css/savedcolors/_iconcolor_$topbarcolorscheme.txt" "$HOME/.config/eww/css/_iconcolor.txt" 2>/dev/null
