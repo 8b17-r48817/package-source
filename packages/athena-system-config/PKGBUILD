@@ -1,6 +1,6 @@
 pkgname=athena-system-config
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="System configuration for Athena."
 arch=('any')
 license=("custom")
@@ -8,17 +8,18 @@ depends=('athena-theme-tweak' 'terminus-font')
 source=("$pkgname.tar.gz")
 
 package() {
-  mkdir -p "${pkgdir}/etc/modprobe.d"
-  mkdir -p "${pkgdir}/etc/pacman.d/hooks"
-  mkdir -p "${pkgdir}/etc/skel"
-  mkdir -p "${pkgdir}/etc/xdg/menus"
-  mkdir -p "${pkgdir}/usr/lib"
-  mkdir -p "${pkgdir}/usr/local/bin"
-  mkdir -p "${pkgdir}/usr/local/share"
-  mkdir -p "${pkgdir}/usr/share/applications"
-  mkdir -p "${pkgdir}/usr/share/desktop-directories"
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor"
-  mkdir -p "${pkgdir}/usr/share/pixmaps/faces"
+  install -dm 755 "${pkgdir}/usr/bin"
+  install -dm 755 "${pkgdir}/etc/modprobe.d"
+  install -dm 755 "${pkgdir}/etc/pacman.d/hooks"
+  install -dm 755 "${pkgdir}/etc/skel"
+  install -dm 755 "${pkgdir}/etc/xdg/menus"
+  install -dm 755 "${pkgdir}/usr/lib"
+  install -dm 755 "${pkgdir}/usr/local/bin"
+  install -dm 755 "${pkgdir}/usr/local/share"
+  install -dm 755 "${pkgdir}/usr/share/applications"
+  install -dm 755 "${pkgdir}/usr/share/desktop-directories"
+  install -dm 755 "${pkgdir}/usr/share/icons/hicolor"
+  install -dm 755 "${pkgdir}/usr/share/pixmaps/faces"
 
   cp -rf "${srcdir}"/etc/modprobe.d/* "${pkgdir}/etc/modprobe.d/"
   cp -rf "${srcdir}"/etc/pacman.d/hooks/* "${pkgdir}/etc/pacman.d/hooks/"
@@ -29,6 +30,7 @@ package() {
   install -Dm644 "${srcdir}/etc/xdg/menus/red-applications.menu" "${pkgdir}/etc/xdg/menus/"
 
   cp -rf "${srcdir}/usr/lib/os-release-athena" "${pkgdir}/usr/lib/"
+  cp -rf "${srcdir}/usr/bin/shell-rocket" "${pkgdir}/usr/bin/"
   cp -rf "${srcdir}"/usr/local/bin/* "${pkgdir}/usr/local/bin/"
   cp -rf "${srcdir}/usr/local/share/athena" "${pkgdir}/usr/local/share/"
   cp -rf "${srcdir}"/usr/share/applications/* "${pkgdir}/usr/share/applications/"
@@ -37,4 +39,4 @@ package() {
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
 
-sha512sums=('28ee8c6c51b15c9b64cff4966479f0437c49efbb4e2cbf8b1ca4629b010a0b5205621cc0f1725bd813c003e155329a39d7dd2472e6d52d8c0313e0849731235f')
+sha512sums=('e6be53b781f9929aa87bd9e0736ff203d4735d6e8c04da005bec3a7e8f0177e38bfc80f58f887aa48a5a0087888612b27ceb343775a52d2b85bd1ed49533e63e')
