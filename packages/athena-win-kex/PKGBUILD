@@ -1,5 +1,5 @@
 pkgname=athena-win-kex
-pkgver=6.6a6144a
+pkgver=9.238de4f
 pkgrel=1
 pkgdesc="Win Kex for Athena"
 arch=('any')

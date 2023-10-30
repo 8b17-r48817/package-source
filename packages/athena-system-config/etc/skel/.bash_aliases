@@ -328,7 +328,7 @@ alias eprofile='subl ~/.profile'
 
 alias cats='highlight -O ansi --force'
 
-alias cat='bat --paging=never -p --theme OneHalfDark'
+alias cat='bat -pp --theme OneHalfDark'
 
 alias ..="cd ../"
 alias ...="cd ../../"

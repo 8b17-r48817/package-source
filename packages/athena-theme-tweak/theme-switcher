@@ -7,6 +7,7 @@ if [ $# -ne 1 ]; then
 fi
 
 chosen_theme="$1"
+detect_virt=$(systemd-detect-virt)
 
 # Remove directories
 rm -rf "$HOME/.config/assets"
@@ -141,7 +142,7 @@ else
 fi
 
 # I add check on tty because on Live Environment, when I run startx (that is run in tty), $XDG_CURRENT_DESKTOP is empty
-if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]] || [[ $(tty) == */dev/tty* ]]; then
+if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]] || [[ $(tty) == */dev/tty* ]] || [[ "$detect_virt" == "wsl" ]]; then
     xfconf-query -c xsettings -p /Net/ThemeName -s "$theme_name"
     xfconf-query -c xsettings -p /Net/IconThemeName -s "$icon_theme"
     xfconf-query -c xsettings -p /Gtk/CursorThemeName -s "$cursor_theme"
@@ -152,7 +153,6 @@ if [[ "$XDG_CURRENT_DESKTOP" =~ "XFCE" ]] || [[ $(tty) == */dev/tty* ]]; then
     sed -i "s#/usr/share/backgrounds/default/mechanic-keyboard.png#$background_theme#g" "$HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml"
     # Iterate through the monitors and set the wallpaper
     for x in $(xfconf-query -c xfce4-desktop -lv | grep last-image | awk '{print $1}'); do xfconf-query -c xfce4-desktop -p $x -s $background_theme; done
-
 fi
 
 if [[ "$XDG_CURRENT_DESKTOP" =~ "KDE" ]]; then
@@ -201,7 +201,6 @@ fi
 #fi
 
 if [[ "$XDG_CURRENT_DESKTOP" =~ "GNOME" ]]; then
-
     gsettings set org.gnome.desktop.interface gtk-theme ""
     gsettings set org.gnome.desktop.wm.preferences theme ""
     gsettings set org.gnome.shell.extensions.user-theme name ""
