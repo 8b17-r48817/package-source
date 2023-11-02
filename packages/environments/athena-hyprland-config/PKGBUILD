@@ -1,6 +1,6 @@
 pkgname=athena-hyprland-config
 _pkgname=dots-hyprland
-pkgver=435.7b0fc441
+pkgver=438.a560f6e5
 pkgrel=1
 pkgdesc="Hyprland configuration for Athena."
 arch=('any')
@@ -18,7 +18,7 @@ sha512sums=('SKIP'
             '297f8a0ee6668703d2dc37eef759f19cd7b3636b48b3cf7db4c932baba753c5c519aae429aab1408d96bf724f211bb945dbbcb0a6e4cba280af1422b87703a8c'
             'b65c9160af36f9fa12e67fc9543c3a37a667cfd7dc39c0f76b8453049631a477500f1077ee80c787b3640c94b9de76d3a482ebd42d2fab81d49cf0e83334ffb3'
             'da4b315b631f612a46fc1e7e510b193efbc25a60f0699099a4bc1bf475d87747fe3e1557a1b70bd7a84a5f9406ada3191c9a635fc6adffd35cf4791f6fcb406a'
-            '1f56e27f72bdce41a7392c64cb37017ee0a16d22165de7dfdab4afa1f39eb15b0e3ac7f5d7d8c5bd8e837ee8fe73a5204fc9e152bf041544c7f29e217dba89e3')
+            'a7a8b2f5e34d83d7f413b33941869dd29d4b3277821f63fe6972d8dbed6937743229bde2bbc49bd1ef91eda733ec720c9a501e395815197dc83d7e7718c90b31')
 
 pkgver() {
   cd $_pkgname
