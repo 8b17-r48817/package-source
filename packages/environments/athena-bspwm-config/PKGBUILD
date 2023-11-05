@@ -1,6 +1,6 @@
 pkgname=athena-bspwm-config
 _pkgname=bspwm
-pkgver=12.8547c9e
+pkgver=13.d701077
 pkgrel=1
 pkgdesc="Bspwm configuration for Athena."
 arch=('any')
