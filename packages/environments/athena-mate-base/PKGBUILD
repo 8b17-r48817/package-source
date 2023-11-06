@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="MATE base configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('caja' 'eom' 'marco' 'mate-control-center' 'mate-desktop' 'mate-media' 'mate-netbook' 'mate-panel' 'mate-polkit' 'mate-power-manager' 'mate-session-manager' 'mate-tweak' 'xdg-user-dirs')
+depends=('caja' 'eom' 'marco' 'mate-control-center' 'mate-desktop' 'mate-media' 'mate-netbook' 'mate-panel' 'mate-polkit' 'mate-power-manager' 'mate-session-manager' 'mate-tweak' 'mate-utils' 'xdg-user-dirs')
 source=("dconf-panel.ini"
         "mate-applications.menu"
         "mate-init.desktop"
