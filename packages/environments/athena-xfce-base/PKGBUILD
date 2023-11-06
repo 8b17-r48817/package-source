@@ -1,27 +1,30 @@
 pkgname=athena-xfce-base
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="XFCE base configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('mugshot' 'network-manager-applet' 'ristretto' 'xdg-user-dirs' 'xfce4-cpugraph-plugin' 'xfce4-panel' 'xfce4-power-manager' 'xfce4-pulseaudio-plugin' 'xfce4-screenshooter' 'xfce4-session' 'xfce4-settings' 'xfce4-whiskermenu-plugin' 'xfdesktop' 'xfwm4' 'xorg-xrandr')
+depends=('mugshot' 'network-manager-applet' 'ristretto' 'xdg-user-dirs' 'xfce4-appfinder' 'xfce4-cpugraph-plugin' 'xfce4-panel' 'xfce4-power-manager' 'xfce4-pulseaudio-plugin' 'xfce4-screenshooter' 'xfce4-session' 'xfce4-settings' 'xfce4-taskmanager' 'xfce4-whiskermenu-plugin' 'xfdesktop' 'xfwm4' 'xorg-xrandr')
 source=("xfce-applications.menu"
         "xfce-init.desktop"
         "xfce-init"
+        "xfce4-keyboard-shortcuts.xml"
         "$pkgname.tar.gz")
 install='athena-xfce-base.install'
 sha512sums=('e53cc2e573489c83f1126c543c0fe944fe73e894d1bd534b5d7b1e796efa02773255dadfbeeb3c68a6519be3f43f4d0e6d468ced5e5cce3a7dddc5c0e7be2705'
             '12c16f08a8d503a76277f984ef8493bcc8eb22bae52a414b0d23222b27f93c2a89612f678fcf334c0d8dc27a03ae12672e2ccc52b6850b4c0265161ead125589'
             '6c1b167ed997659bcfd9b249e123a5e8d4c6e4167a3224404e400cbc02bd6e08044949f4f940c08ecc054a12faf3731f408cfd1270137b2c76b1141c1d5d677c'
-            'b5bb720af475789c80bf229a9f372d2643356f16064f4851650aaf5226463c752dfff4ee9892f74d095c9228784fcf98af1d79b67ecb4d9dc293a3dab4729226')
+            '21ce8f2824702ce182a3ce33bff2a52f3fd778b396587264cad23869b6cf53c3ac706ba541d877b43248484e084f1281cdd526b4cbea318d44f4648686867d25'
+            'f6991c66e6276ddaebf169fd159c077f5f1e8826a70bca926724c3eb638b1ce738006a06f67d51715aa164697e4a75836bf206e91599bd6c4053e12ab86e4b6a')
 
 package() {
-  install -dm 755 "${pkgdir}/etc/skel"
+  install -dm 755 "${pkgdir}/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml"
   install -dm 755 "${pkgdir}/etc/xdg/autostart"
   install -dm 755 "${pkgdir}/usr/bin"
   install -dm 755 "${pkgdir}/usr/share/xfce4"
   install -dm 755 "${pkgdir}/usr/share/themes"
 
+  install -Dm644 "${srcdir}/xfce4-keyboard-shortcuts.xml" "${pkgdir}/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/"
   install -Dm644 "${srcdir}/xfce-init.desktop" "${pkgdir}/etc/xdg/autostart/"
   install -Dm755 "${srcdir}/xfce-init" "${pkgdir}/usr/bin/"
   install -Dm644 "${srcdir}/xfce-applications.menu" "${pkgdir}/usr/share/xfce4/xfce-applications.menu"
