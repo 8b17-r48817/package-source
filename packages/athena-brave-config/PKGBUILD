@@ -1,6 +1,6 @@
 pkgname=athena-brave-config
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Brave configuration for Athena."
 arch=('any')
 license=("custom")
