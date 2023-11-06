@@ -7,7 +7,11 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
      FLAGFILE="$HOME/.flag-mate-once"
      #FLAGNET="$HOME/.flag-mate-net-once"
 
+     DCONF_PN="/usr/share/mate/dconf-panel.ini"
+
      if [ -f "$FLAGFILE" ]; then
+
+         cat $DCONF_PN | dconf load /org/mate/panel/
 
          sh ~/.vim_runtime/install_awesome_parameterized.sh ~/.vim_runtime $USER
 
