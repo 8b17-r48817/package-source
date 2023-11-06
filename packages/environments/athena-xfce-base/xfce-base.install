@@ -1,6 +1,7 @@
 post_install() {
   echo "Setting XFCE menu"
   mv /usr/share/xfce4/xfce-applications.menu /etc/xdg/menus/
+  rmdir /usr/share/xfce4
 }
 
 post_upgrade() {
