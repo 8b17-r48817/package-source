@@ -7,7 +7,7 @@ license=("custom")
 depends=('athena-gnome-base' 'gnome-shell-extension-appindicator-git' 'gnome-shell-extension-arc-menu-git' 'gnome-shell-extension-desktop-icons-ng-git' 'gnome-shell-extension-fly-pie-git' 'gnome-shell-extension-hide-activities-git' 'gnome-shell-extension-logo-menu-git' 'gnome-shell-extension-pop-shell-git' 'gnome-shell-extension-top-bar-organizer' 'gnome-shell-extension-ubuntu-dock-git' 'gnome-shell-extension-vitals-git')
 conflicts=('athena-gnome-material-shell-config')
 source=("$pkgname.tar.gz")
-sha512sums=('187bd2668155b1dfaf75ba50285b6dabcf77cff11d938bb4967f09bb70be1b96468c1e3c2a0d89b41fc23d5b05cbe26bdc2f577f1500d767888f895eb747436f')
+sha512sums=('d0dd4567ecd4f1a1279348c4a531eecf25e6b69945b3337523408dc0e6332086b1d53f051cc312cda02f5e9af9ec43bf4c4a993bf6a66f1b67f5125f18bacf92')
 
 package() {
   mkdir -p "${pkgdir}/etc"
