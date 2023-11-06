@@ -1,7 +1,6 @@
 post_install() {
   echo "Setting MATE menu"
   mv /usr/share/mate/mate-applications.menu /etc/xdg/menus/
-  rmdir /usr/share/mate
 }
 
 post_upgrade() {
