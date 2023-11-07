@@ -59,7 +59,7 @@
     </property>
     <property name="plugin-8" type="string" value="whiskermenu">
       <property name="button-title" type="string" value="Menu"/>
-      <property name="button-icon" type="string" value="/usr/share/icons/assets/scalable/shield.svg"/>
+      <property name="button-icon" type="string" value="/usr/share/icons/hicolor/scalable/apps/athenaos-blue-crest.svg"/>
       <property name="launcher-show-description" type="bool" value="false"/>
       <property name="launcher-show-tooltip" type="bool" value="true"/>
       <property name="launcher-icon-size" type="int" value="1"/>
