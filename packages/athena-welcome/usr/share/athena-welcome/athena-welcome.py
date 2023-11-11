@@ -295,10 +295,10 @@ Do you want to install it?")
         GLib.idle_add(self.cc.set_markup, "<span foreground='orange'><b><i>Updating Arch Linux mirrorlist</i></b> \nThis may take some time, please wait...</span>")  # noqa
         GLib.idle_add(self.bntmirrors.set_sensitive, False)
         subprocess.run(["pkexec", "/usr/bin/rate-mirrors", "--concurrency", "40", "--disable-comments", "--allow-root", "--save", "/etc/pacman.d/mirrorlist", "arch"], shell=False)
-        GLib.idle_add(self.cc.set_markup, "<span foreground='orange'><b><i>Updating BlackArch mirrorlist</i></b> \nThis may take around 2 minutes, please wait...</span>")  # noqa
-        subprocess.run([["pkexec", "/usr/bin/rate-mirrors", "--concurrency", "40", "--disable-comments", "--allow-root", "--save", "/etc/pacman.d/blackarch-mirrorlist", "blackarch"], shell=False)
+        GLib.idle_add(self.cc.set_markup, "<span foreground='orange'><b><i>Updating BlackArch mirrorlist</i></b> \nThis may take some time, please wait..</span>")  # noqa
+        subprocess.run(["pkexec", "/usr/bin/rate-mirrors", "--concurrency", "40", "--disable-comments", "--allow-root", "--save", "/etc/pacman.d/blackarch-mirrorlist", "blackarch"], shell=False)
         GLib.idle_add(self.cc.set_markup, "<span foreground='orange'><b><i>Updating Chaotic AUR mirrorlist</i></b> \nThis may take some time, please wait...</span>")  # noqa
-        subprocess.run([["pkexec", "/usr/bin/rate-mirrors", "--concurrency", "40", "--disable-comments", "--allow-root", "--save", "/etc/pacman.d/chaotic-mirrorlist", "chaotic-aur"], shell=False)
+        subprocess.run(["pkexec", "/usr/bin/rate-mirrors", "--concurrency", "40", "--disable-comments", "--allow-root", "--save", "/etc/pacman.d/chaotic-mirrorlist", "chaotic-aur"], shell=False)
         GLib.idle_add(self.cc.set_markup, "<span foreground='orange'><b><i>Running pacman sync...</i></b></span>")  # noqa
         subprocess.run(["pkexec", "/usr/bin/pacman", "-Syy"], shell=False)
         print("FINISHED!!!")

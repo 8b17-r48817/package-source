@@ -26,4 +26,4 @@ package() {
   install -Dm644 "${srcdir}/usr/share/icons/hicolor/scalable/apps/athenaos-hello-logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
   cp -rf "${srcdir}/usr/share/athena-welcome" "${pkgdir}/usr/share/"
 }
-sha256sums=('dd0acd2f263858b9061e0fa32e05749c31c20ebe67b603396f19fa8eed7a1430')
+sha256sums=('71918dd511857e68921f3cd85649393dece8a366e9ea25581fe6a0dfe135563f')

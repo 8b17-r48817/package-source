@@ -91,7 +91,7 @@ def GUI(self, Gtk, GdkPixbuf):
             #"\n<span size='x-large'><b>Use the Easy Installation\n" + # noqa
             #"if the Advanced Installation fails</b></span>\n")  # noqa
     else:
-        label2.set_markup("Press <b>[CTRL+SPACE]</b> for the <b>Red Team menu</b>, <b>[CTRL+ALT+A]</b> for the <b>Blue Team menu</b> or <b>[CTRL+SHIFT+SPACE]</b> for the <b>PWNage menu</b> to explore them.\n\n" + # noqa
+        label2.set_markup(#"Press <b>[CTRL+SPACE]</b> for the <b>Red Team menu</b>, <b>[CTRL+ALT+A]</b> for the <b>Blue Team menu</b> or <b>[CTRL+SHIFT+SPACE]</b> for the <b>PWNage menu</b> to explore them.\n\n" + # noqa
                           "Choose your role and click the <b>Set Your Role</b> button to retrieve the main resources you need!\n\n" + #noqa
 			  "Click <b>HTB Update</b> to set your Hack The Box API key and start your hacking experience!\n\n" + #noqa
                     
