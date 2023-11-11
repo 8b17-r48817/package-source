@@ -12,4 +12,4 @@ package() {
 
   install -Dm644 "${srcdir}/alacritty.yml" "${pkgdir}/etc/skel/.config/alacritty/"
 }
-sha512sums=('7d955d4303272fc92839d1ccf8611cc2ba3dd62f33b04032f633244debfed27a7ad9b88d61904690b89510648e2d6afd13109d99d5a43c46c786acea99fd9fe9')
+sha512sums=('f493b3de3cadfb46178dd9e90ad058d0b7b8e946d6398edc134ac52b852b954ab9dd69bb735777cb030099cb8870eb51e0bc09aaffbb5b2d2a6ec0fb1ac19c1b')
