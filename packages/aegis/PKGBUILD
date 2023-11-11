@@ -1,12 +1,12 @@
 pkgname=aegis
 _pkgname=athena-aegis
-pkgver=135.97aa9fe
+pkgver=136.78b4b7f
 pkgrel=1
 pkgdesc="Scriptable backend & TUI Installer for Athena OS."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Athena-OS/${pkgname}"
 license=('GPL3')
-depends=('parted' 'arch-install-scripts')
+depends=('parted' 'arch-install-scripts' 'rate-mirrors')
 makedepends=('cargo')
 #source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 source=("git+https://github.com/Athena-OS/$pkgname.git")

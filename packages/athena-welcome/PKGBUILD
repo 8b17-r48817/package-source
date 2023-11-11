@@ -1,10 +1,10 @@
 pkgname=athena-welcome
-pkgver=2.0.3
-pkgrel=4
+pkgver=2.0.4
+pkgrel=1
 pkgdesc="Welcome App for Athena."
 arch=('any')
 license=("custom")
-depends=('athena-system-config' 'cyber-toolkit' 'htb-toolkit' 'libwnck3' 'mirroars' 'reflector' 'rsync')
+depends=('athena-system-config' 'cyber-toolkit' 'htb-toolkit' 'libwnck3' 'rate-mirrors' 'rsync')
 source=("$pkgname.tar.gz")
 
 package() {
@@ -26,4 +26,4 @@ package() {
   install -Dm644 "${srcdir}/usr/share/icons/hicolor/scalable/apps/athenaos-hello-logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
   cp -rf "${srcdir}/usr/share/athena-welcome" "${pkgdir}/usr/share/"
 }
-sha256sums=('0231a0a5b8ae8679428de458256262d44f32898a566e7fa9b9e2b57a8bfa1f52')
+sha256sums=('dd0acd2f263858b9061e0fa32e05749c31c20ebe67b603396f19fa8eed7a1430')

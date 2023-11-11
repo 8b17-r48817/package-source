@@ -19,7 +19,7 @@ jobs:
       run: pacman -Syy --noconfirm archlinux-keyring pacman-mirrorlist blackarch-keyring blackarch-mirrorlist chaotic-keyring chaotic-mirrorlist
 
     - name: Install dependencies
-      run: pacman -Syyu --noconfirm git gtk-update-icon-cache kservice5 mirroars pacman-contrib reflector
+      run: pacman -Syyu --noconfirm git gtk-update-icon-cache kservice5 pacman-contrib rate-mirrors
       
     - name: Setting builder user
       run: |
@@ -38,9 +38,9 @@ jobs:
         
     - name: Set fastest mirrors
       run: |
-        reflector --age 6 --connection-timeout 15 --download-timeout 15 --latest 21 --fastest 21 --threads 21 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
-        mirroars -n 21 -m 15 -p -w -t -r blackarch /etc/pacman.d/blackarch-mirrorlist
-        mirroars -n 21 -m 15 -p -w -t -r chaotic-aur /etc/pacman.d/chaotic-mirrorlist
+        rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/mirrorlist arch
+        rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/blackarch-mirrorlist blackarch
+        rate-mirrors --concurrency 40 --disable-comments --allow-root --save /etc/pacman.d/chaotic-mirrorlist chaotic-aur
         
     - name: Build and sign packages
       run: |
