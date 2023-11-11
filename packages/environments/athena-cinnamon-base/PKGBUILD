@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Cinnamon base configuration for Athena."
 arch=('any')
 license=("custom")
-depends=('cinnamon' 'xdg-user-dirs')
+depends=('cinnamon' 'ffmpeg' 'gnome-screenshot' 'xdg-user-dirs' 'xdotool' 'xorg-xdpyinfo' 'xorg-xwininfo')
 source=("2.json"
         "dconf-applets.ini"
         "cinnamon-applications.menu"
