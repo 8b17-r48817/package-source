@@ -1,6 +1,6 @@
 pkgname=aegis
 _pkgname=athena-aegis
-pkgver=139.d64027a
+pkgver=140.8b6ceba
 pkgrel=1
 pkgdesc="Scriptable backend & TUI Installer for Athena OS."
 arch=('x86_64' 'aarch64')
