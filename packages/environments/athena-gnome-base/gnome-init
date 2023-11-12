@@ -19,6 +19,12 @@ if ([ ! -z "$DISPLAY" ] && [ "$DISPLAY" != ":0" ]) || ([ "$detect_virt" != "dock
          xdg-mime default org.gnome.Nautilus.desktop inode/directory
          
          ############################################################
+         # SETTING KEYMAP SET FOR X AND VCONSOLE TO GNOME WAYLAND
+         
+         keymap=$(localectl status | awk '/VC Keymap/ {print $3}')
+         gsettings set org.gnome.desktop.input-sources sources "[('xkb', '$keymap')]"
+
+         ############################################################
      
          cat $DCONF_CK | dconf load /org/gnome/settings-daemon/plugins/media-keys/
          cat $DCONF_DS | dconf load /org/gnome/desktop/
