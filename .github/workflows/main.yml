@@ -71,3 +71,4 @@ jobs:
         git add --all
         git commit -m "Add built packages"
         git push https://D3vil0p3r:${{ secrets.DESTINATION_REPO_TOKEN }}@github.com/Athena-OS/athena-repository.git main
+        sshpass -p "${{ secrets.MIRROR_SECRET }}" rsync -avzzlr --delete -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" x86_64 ${{ secrets.MIRROR_USER }}@89.116.236.99:/srv/mirrors/athena
