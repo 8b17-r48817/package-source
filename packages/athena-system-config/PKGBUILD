@@ -1,6 +1,6 @@
 pkgname=athena-system-config
-pkgver=1.0.3
-pkgrel=6
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="System configuration for Athena."
 arch=('any')
 license=("custom")
@@ -39,4 +39,4 @@ package() {
   cp -rf "${srcdir}"/usr/share/pixmaps/* "${pkgdir}/usr/share/pixmaps/"
 }
 
-sha512sums=('b6010d1acfa787321bb3f85edc53b9988dce495657ad218b69522d2b3b892498f160f34368ccd27debfd8aa6cf1eca1061be94d0dcbd94ef70ec72f2154bc7cd')
+sha512sums=('5b1798b5e5cb6ae16e2c6ad0a58fb1ddfe1fa3626e97fa46ab4874090f19eee4933d3cfdd12f0392768a20e44f21576c34f9b6e29a606c14b640c6a872e85ba7')
