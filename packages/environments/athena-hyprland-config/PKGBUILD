@@ -1,6 +1,6 @@
 pkgname=athena-hyprland-config
 _pkgname=dots-hyprland
-pkgver=438.a560f6e5
+pkgver=446.6e22e302
 pkgrel=1
 pkgdesc="Hyprland configuration for Athena."
 arch=('any')
