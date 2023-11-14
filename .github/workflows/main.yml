@@ -19,7 +19,7 @@ jobs:
       run: pacman -Syy --noconfirm archlinux-keyring pacman-mirrorlist blackarch-keyring blackarch-mirrorlist chaotic-keyring chaotic-mirrorlist
 
     - name: Install dependencies
-      run: pacman -Syyu --noconfirm git gtk-update-icon-cache kservice5 pacman-contrib rate-mirrors sshpass
+      run: pacman -Syyu --noconfirm git gtk-update-icon-cache kservice5 openssh pacman-contrib rate-mirrors rsync sshpass
       
     - name: Setting builder user
       run: |
