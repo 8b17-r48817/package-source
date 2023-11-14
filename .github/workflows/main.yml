@@ -20,10 +20,6 @@ jobs:
 
     - name: Install dependencies
       run: pacman -Syyu --noconfirm git gtk-update-icon-cache kservice5 openssh pacman-contrib rate-mirrors rsync sshpass
-
-    - name: Build and sign packages
-      run: |
-        sshpass -p "${{ secrets.MIRROR_SECRET }}" rsync -avzzlr --delete -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" . ${{ secrets.MIRROR_USER }}@hub.athenaos.org:/srv/mirrors/athena
       
     - name: Setting builder user
       run: |
